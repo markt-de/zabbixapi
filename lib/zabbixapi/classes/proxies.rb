@@ -11,7 +11,7 @@ class ZabbixApi
     #
     # @return [String]
     def identify
-      'host'
+      'name'
     end
 
     # Delete Proxy object using Zabbix API

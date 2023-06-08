@@ -28,7 +28,7 @@ class ZabbixApi
       api_request(
         method: 'user.login',
         params: {
-          user: @options[:user],
+          username: @options[:user],
           password: @options[:password]
         }
       )
