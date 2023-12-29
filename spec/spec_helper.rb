@@ -1,5 +1,16 @@
 require 'zabbixapi'
 
+RSpec.configure do |config|
+  config.define_derived_metadata(file_path: %r{/spec/acceptance/}) do |metadata|
+    metadata[:type] = :acceptance
+  end
+
+  # Don't run acceptance tests unless a host is provided
+  unless (ENV.key?('ZABBIX_HOST_URL') || ENV.key?('ZABBIX_RUN_ACCEPTANCE'))
+    config.filter_run_excluding type: :acceptance
+  end
+end
+
 def zbx
   # settings
   @api_url = ENV['ZABBIX_HOST_URL'] || 'http://localhost:8080/api_jsonrpc.php'
