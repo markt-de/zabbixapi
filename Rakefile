@@ -12,14 +12,20 @@ RuboCop::RakeTask.new
 require 'yard'
 YARD::Rake::YardocTask.new
 
-require 'yardstick/rake/measurement'
-Yardstick::Rake::Measurement.new do |measurement|
-  measurement.output = 'measurement/report.txt'
-end
+task default: [:spec, :rubocop]
 
-require 'yardstick/rake/verify'
-Yardstick::Rake::Verify.new do |verify|
-  verify.threshold = 67.1
-end
+begin
+  require 'yardstick/rake/measurement'
+  Yardstick::Rake::Measurement.new do |measurement|
+    measurement.output = 'measurement/report.txt'
+  end
 
-task default: [:spec, :rubocop, :verify_measurements]
+  require 'yardstick/rake/verify'
+  Yardstick::Rake::Verify.new do |verify|
+    verify.threshold = 67.1
+  end
+
+  Rake::Task[:default].enhance(:verify_measurements)
+rescue LoadError
+  # yardstick not present
+end
