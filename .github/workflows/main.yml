@@ -1,5 +1,8 @@
 name: CI
 
+env:
+  BUNDLE_WITHOUT: development
+
 on:
   push:
     branches:
