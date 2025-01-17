@@ -19,6 +19,7 @@ require 'zabbixapi/classes/items'
 require 'zabbixapi/classes/maintenance'
 require 'zabbixapi/classes/mediatypes'
 require 'zabbixapi/classes/proxies'
+require 'zabbixapi/classes/proxygroup'
 require 'zabbixapi/classes/problems'
 require 'zabbixapi/classes/roles'
 require 'zabbixapi/classes/screens'
@@ -137,6 +138,10 @@ class ZabbixApi
     @proxies ||= Proxies.new(@client)
   end
 
+  # @return [ZabbixApi::Proxygroup]
+  def proxygroup
+    @proxygroup ||= Proxygroup.new(@client)
+  end
   # @return [ZabbixApi::Roles]
   def roles
     @roles ||= Roles.new(@client)

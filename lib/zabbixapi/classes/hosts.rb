@@ -44,8 +44,7 @@ class ZabbixApi
         interfaces: [],
         status: 0,
         available: 1,
-        groups: [],
-        proxyid: nil
+        groups: []
       }
     end
 
