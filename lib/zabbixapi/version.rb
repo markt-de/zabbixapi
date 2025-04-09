@@ -1,3 +1,3 @@
 class ZabbixApi
-  VERSION = '5.0.0-alpha2'.freeze
+  VERSION = '5.0.0-alpha3'.freeze
 end
