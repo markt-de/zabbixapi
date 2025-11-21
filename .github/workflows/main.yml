@@ -57,7 +57,7 @@ jobs:
           ZBX_SERVER_HOST: zabbix-server
           PHP_TZ: "US/Eastern"
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
