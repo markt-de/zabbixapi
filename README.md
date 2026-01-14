@@ -89,8 +89,9 @@ dropped.
 
 ## Copyright
 
-- Copyright (c) 2021 [contributors]
-- Copyright (c) 2015-2018 Express 42 and [contributors]
+- Originally created by [Express 42 Team](https://express42.com/)
+- Copyright (c) 2015-2021 [Express 42](https://express42.com/) and [contributors]
+- Transfered to [markt-de](https://github.com/orgs/markt-de/repositories) in 2026 (see [issue #128](../../issues/128))
 
 See [LICENSE] for details.
 
