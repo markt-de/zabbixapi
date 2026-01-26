@@ -1,0 +1,98 @@
+name: Publish Ruby Gem
+
+# Only use SEMVER tags.
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+*'
+
+jobs:
+  # Build and store the GEM.
+  build:
+    name: Build Gem
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libxml2-dev
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: ruby
+
+      - name: Build gem
+        run: gem build *.gemspec
+
+      - name: Store gem as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: built-gem
+          path: ./*.gem
+
+  # Final releases: publish on GitHub and on rubygems.org.
+  release_production:
+    name: Publish to RubyGems and GitHub
+    runs-on: ubuntu-latest
+    needs: build
+    if: ${{ !contains(github.ref, '-') }}
+
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download built gem
+        uses: actions/download-artifact@v4
+        with:
+          name: built-gem
+          path: .
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: ruby
+
+      - name: Configure RubyGems Credentials
+        uses: rubygems/configure-rubygems-credentials@v1.0.0
+
+      - name: Publish to RubyGems.org
+        run: gem push "$(ls -t *.gem | head -n 1)"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ./*.gem
+
+  # Pre-releases: publish on GitHub, but not on rubygems.org.
+  release_prerelease:
+    name: Publish to GitHub Releases (Pre-release)
+    runs-on: ubuntu-latest
+    needs: build
+    if: ${{ contains(github.ref, '-') }}
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download built gem
+        uses: actions/download-artifact@v4
+        with:
+          name: built-gem
+          path: .
+
+      - name: Create GitHub Pre-Release
+        uses: softprops/action-gh-release@v2
+        with:
+          prerelease: true
+          files: ./*.gem
