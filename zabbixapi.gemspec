@@ -9,7 +9,7 @@ require 'zabbixapi/version'
 Gem::Specification.new do |spec|
   spec.add_dependency 'http', '~> 5.0'
   spec.add_dependency 'json', '~> 2.6'
-  spec.add_development_dependency 'bundler', '~> 2.1'
+  spec.add_development_dependency 'bundler', '>= 2.1'
 
   spec.name        = 'zabbixapi'
   spec.version     = ZabbixApi::VERSION
