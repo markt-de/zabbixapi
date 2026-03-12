@@ -21,15 +21,14 @@ class ZabbixApi
     # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
     # @return [Integer] Zabbix object id (usergroup)
     def rules(data)
-      rules = data[:rules] || 2
       result = @client.api_request(
         method: "#{method_name}.update",
         params: {
           roleid: data[:roleid],
-          rules: data[:hostgroupids].map { |t| { permission: permission, id: t } }
+          rules: data[:rules]
         }
       )
-      result ? result['usrgrpids'][0].to_i : nil
+      result ? result['roleids'][0].to_i : nil
     end
 
     # Add users to usergroup using Zabbix API
@@ -79,8 +78,8 @@ class ZabbixApi
         }
       )
 
-      result.map do |rule|
-        rule['roleid']
+      result.map do |role|
+        role['roleid']
       end.compact
     end
 
@@ -94,7 +93,7 @@ class ZabbixApi
       user_groups = data[:usrgrpids].map do |t|
         {
           usrgrpid: t,
-          userids: data[:userids],
+          users: data[:userids].map { |u| { userid: u } },
         }
       end
       result = @client.api_request(

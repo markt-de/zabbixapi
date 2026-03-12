@@ -7,8 +7,8 @@ require 'zabbixapi/basic/basic_init'
 require 'zabbixapi/basic/basic_logic'
 
 require 'zabbixapi/classes/actions'
-require 'zabbixapi/classes/applications'
 require 'zabbixapi/classes/configurations'
+require 'zabbixapi/classes/drules'
 require 'zabbixapi/classes/errors'
 require 'zabbixapi/classes/events'
 require 'zabbixapi/classes/graphs'
@@ -18,11 +18,10 @@ require 'zabbixapi/classes/httptests'
 require 'zabbixapi/classes/items'
 require 'zabbixapi/classes/maintenance'
 require 'zabbixapi/classes/mediatypes'
+require 'zabbixapi/classes/problems'
 require 'zabbixapi/classes/proxies'
 require 'zabbixapi/classes/proxygroup'
-require 'zabbixapi/classes/problems'
 require 'zabbixapi/classes/roles'
-require 'zabbixapi/classes/screens'
 require 'zabbixapi/classes/scripts'
 require 'zabbixapi/classes/server'
 require 'zabbixapi/classes/templates'
@@ -32,7 +31,6 @@ require 'zabbixapi/classes/usergroups'
 require 'zabbixapi/classes/usermacros'
 require 'zabbixapi/classes/users'
 require 'zabbixapi/classes/valuemaps'
-require 'zabbixapi/classes/drules'
 
 class ZabbixApi
   # @return [ZabbixApi::Client]
@@ -76,11 +74,6 @@ class ZabbixApi
   # @return [ZabbixApi::Actions]
   def actions
     @actions ||= Actions.new(@client)
-  end
-
-  # @return [ZabbixApi::Applications]
-  def applications
-    @applications ||= Applications.new(@client)
   end
 
   # @return [ZabbixApi::Configurations]
@@ -142,14 +135,10 @@ class ZabbixApi
   def proxygroup
     @proxygroup ||= Proxygroup.new(@client)
   end
+
   # @return [ZabbixApi::Roles]
   def roles
     @roles ||= Roles.new(@client)
-  end
-
-  # @return [ZabbixApi::Screens]
-  def screens
-    @screens ||= Screens.new(@client)
   end
 
   # @return [ZabbixApi::Scripts]

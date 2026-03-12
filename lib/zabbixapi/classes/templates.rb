@@ -60,7 +60,6 @@ class ZabbixApi
       result = @client.api_request(
         method: "#{method_name}.massUpdate",
         params: {
-          hosts: data[:hosts_id].map { |t| { hostid: t } },
           templates: data[:templates_id].map { |t| { templateid: t } }
         }
       )
@@ -77,7 +76,6 @@ class ZabbixApi
       result = @client.api_request(
         method: "#{method_name}.massAdd",
         params: {
-          hosts: data[:hosts_id].map { |t| { hostid: t } },
           templates: data[:templates_id].map { |t| { templateid: t } }
         }
       )
@@ -94,10 +92,8 @@ class ZabbixApi
       result = @client.api_request(
         method: "#{method_name}.massRemove",
         params: {
-          hostids: data[:hosts_id],
           templateids: data[:templates_id],
-          groupids: data[:group_id],
-          force: 1
+          groupids: data[:group_id]
         }
       )
       result.empty? ? false : true

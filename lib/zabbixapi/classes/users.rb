@@ -11,7 +11,7 @@ class ZabbixApi
     #
     # @return [String]
     def identify
-      'alias'
+      'username'
     end
 
     def medias_helper(data, action)
@@ -20,7 +20,7 @@ class ZabbixApi
         params: data[:userids].map do |t|
           {
             userid: t,
-            user_medias: data[:media],
+            medias: data[:media],
           }
         end,
       )

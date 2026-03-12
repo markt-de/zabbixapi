@@ -43,7 +43,6 @@ class ZabbixApi
         host: nil,
         interfaces: [],
         status: 0,
-        available: 1,
         groups: []
       }
     end
@@ -59,7 +58,7 @@ class ZabbixApi
         method: "#{method_name}.massRemove",
         params: {
           hostids: data[:hosts_id],
-          templates: data[:templates_id]
+          templateids: data[:templates_id]
         }
       )
       result.empty? ? false : true
