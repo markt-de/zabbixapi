@@ -21,7 +21,7 @@ class ZabbixApi
     # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
     # @return [Integer] The Proxy object id that was deleted
     def delete(data)
-      result = @client.api_request(method: 'proxy.delete', params: data)
+      result = @client.api_request(method: "#{method_name}.delete", params: data)
       result.empty? ? nil : result['proxyids'][0].to_i
     end
 

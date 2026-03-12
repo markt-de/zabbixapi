@@ -24,7 +24,7 @@ class ZabbixApi
       log "[DEBUG] Call dump_by_id with parameters: #{data.inspect}"
 
       @client.api_request(
-        method: 'host.get',
+        method: "#{method_name}.get",
         params: {
           filter: {
             key.to_sym => data[key.to_sym]
@@ -56,7 +56,7 @@ class ZabbixApi
     # @return [Boolean]
     def unlink_templates(data)
       result = @client.api_request(
-        method: 'host.massRemove',
+        method: "#{method_name}.massRemove",
         params: {
           hostids: data[:hosts_id],
           templates: data[:templates_id]
@@ -91,7 +91,7 @@ class ZabbixApi
       dump_by_id(key.to_sym => data[key.to_sym]).each do |item|
         dump = symbolize_keys(item) if item[key].to_i == data[key.to_sym].to_i
       end
-       # Convert 'hostgroups' to 'groups' if 'hostgroups' is present in dump
+      # Convert 'hostgroups' to 'groups' if 'hostgroups' is present in dump
       # This is due to host.get returning existing data as the hostgroups key
       # but we have to update as the groups key
       if dump[:hostgroups]

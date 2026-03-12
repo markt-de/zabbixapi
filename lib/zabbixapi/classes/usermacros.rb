@@ -1,17 +1,17 @@
 class ZabbixApi
   class Usermacros < Basic
-    # The id field name used for identifying specific User macro objects via Zabbix API
-    #
-    # @return [String]
-    def identify
-      'macro'
-    end
-
     # The method name used for interacting with User macros via Zabbix API
     #
     # @return [String]
     def method_name
       'usermacro'
+    end
+
+    # The id field name used for identifying specific User macro objects via Zabbix API
+    #
+    # @return [String]
+    def identify
+      'macro'
     end
 
     # Get User macro object id from Zabbix API based on provided data
@@ -29,7 +29,7 @@ class ZabbixApi
       name = data[identify.to_sym]
       raise ApiError.new("#{identify} not supplied in call to get_id") if name.nil?
 
-      result = request(data, 'usermacro.get', 'hostmacroid')
+      result = request(data, "#{method_name}.get", 'hostmacroid')
 
       !result.empty? && result[0].key?('hostmacroid') ? result[0]['hostmacroid'].to_i : nil
     end
@@ -49,7 +49,7 @@ class ZabbixApi
       name = data[identify.to_sym]
       raise ApiError.new("#{identify} not supplied in call to get_id_global") if name.nil?
 
-      result = request(data, 'usermacro.get', 'globalmacroid')
+      result = request(data, "#{method_name}.get", 'globalmacroid')
 
       !result.empty? && result[0].key?('globalmacroid') ? result[0]['globalmacroid'].to_i : nil
     end
@@ -63,7 +63,7 @@ class ZabbixApi
     def get_full_data(data)
       log "[DEBUG] Call get_full_data with parameters: #{data.inspect}"
 
-      request(data, 'usermacro.get', 'hostmacroid')
+      request(data, "#{method_name}.get", 'hostmacroid')
     end
 
     # Get full/extended Global macro data from Zabbix API
@@ -75,7 +75,7 @@ class ZabbixApi
     def get_full_data_global(data)
       log "[DEBUG] Call get_full_data_global with parameters: #{data.inspect}"
 
-      request(data, 'usermacro.get', 'globalmacroid')
+      request(data, "#{method_name}.get", 'globalmacroid')
     end
 
     # Create new User macro object using Zabbix API (with defaults)
@@ -86,7 +86,7 @@ class ZabbixApi
     # @return [Integer] The object id if a single object is created
     # @return [Boolean] True/False if multiple objects are created
     def create(data)
-      request(data, 'usermacro.create', 'hostmacroids')
+      request(data, "#{method_name}.create", 'hostmacroids')
     end
 
     # Create new Global macro object using Zabbix API (with defaults)
@@ -97,7 +97,7 @@ class ZabbixApi
     # @return [Integer] The object id if a single object is created
     # @return [Boolean] True/False if multiple objects are created
     def create_global(data)
-      request(data, 'usermacro.createglobal', 'globalmacroids')
+      request(data, "#{method_name}.createglobal", 'globalmacroids')
     end
 
     # Delete User macro object using Zabbix API
@@ -109,7 +109,7 @@ class ZabbixApi
     # @return [Boolean] True/False if multiple objects are deleted
     def delete(data)
       data_delete = [data]
-      request(data_delete, 'usermacro.delete', 'hostmacroids')
+      request(data_delete, "#{method_name}.delete", 'hostmacroids')
     end
 
     # Delete Global macro object using Zabbix API
@@ -121,7 +121,7 @@ class ZabbixApi
     # @return [Boolean] True/False if multiple objects are deleted
     def delete_global(data)
       data_delete = [data]
-      request(data_delete, 'usermacro.deleteglobal', 'globalmacroids')
+      request(data_delete, "#{method_name}.deleteglobal", 'globalmacroids')
     end
 
     # Update User macro object using Zabbix API
@@ -133,7 +133,7 @@ class ZabbixApi
     # @return [Integer] The object id if a single object is created
     # @return [Boolean] True/False if multiple objects are created
     def update(data)
-      request(data, 'usermacro.update', 'hostmacroids')
+      request(data, "#{method_name}.update", 'hostmacroids')
     end
 
     # Update Global macro object using Zabbix API
@@ -145,7 +145,7 @@ class ZabbixApi
     # @return [Integer] The object id if a single object is created
     # @return [Boolean] True/False if multiple objects are created
     def update_global(data)
-      request(data, 'usermacro.updateglobal', 'globalmacroids')
+      request(data, "#{method_name}.updateglobal", 'globalmacroids')
     end
 
     # Get or Create User macro object using Zabbix API

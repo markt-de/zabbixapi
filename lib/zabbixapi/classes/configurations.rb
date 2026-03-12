@@ -26,7 +26,7 @@ class ZabbixApi
     # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
     # @return [Hash]
     def export(data)
-      @client.api_request(method: 'configuration.export', params: data)
+      @client.api_request(method: "#{method_name}.export", params: data)
     end
 
     # Import configuration data using Zabbix API
@@ -36,7 +36,7 @@ class ZabbixApi
     # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
     # @return [Hash]
     def import(data)
-      @client.api_request(method: 'configuration.import', params: data)
+      @client.api_request(method: "#{method_name}.import", params: data)
     end
   end
 end

@@ -30,7 +30,7 @@ class ZabbixApi
     def permissions(data)
       permission = data[:permission] || 2
       result = @client.api_request(
-        method: 'usergroup.update',
+        method: "#{method_name}.update",
         params: {
           usrgrpid: data[:usrgrpid],
           rights: data[:hostgroupids].map { |t| { permission: permission, id: t } }
@@ -64,7 +64,7 @@ class ZabbixApi
         }
       end
       result = @client.api_request(
-        method: 'usergroup.update',
+        method: "#{method_name}.update",
         params: user_groups,
       )
       result ? result['usrgrpids'][0].to_i : nil

@@ -20,7 +20,7 @@ class ZabbixApi
     # Returns nothing
     def execute(data)
       @client.api_request(
-        method: 'script.execute',
+        method: "#{method_name}.execute",
         params: {
           scriptid: data[:scriptid],
           hostid: data[:hostid]
@@ -29,7 +29,7 @@ class ZabbixApi
     end
 
     def getscriptsbyhost(data)
-      @client.api_request(method: 'script.getscriptsbyhosts', params: data)
+      @client.api_request(method: "#{method_name}.getscriptsbyhosts", params: data)
     end
   end
 end

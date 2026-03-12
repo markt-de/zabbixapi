@@ -7,20 +7,6 @@ class ZabbixApi
       'user'
     end
 
-    # The keys field name used for User objects via Zabbix API
-    #
-    # @return [String]
-    def keys
-      'userids'
-    end
-
-    # The key field name used for User objects via Zabbix API
-    #
-    # @return [String]
-    def key
-      'userid'
-    end
-
     # The id field name used for identifying specific User objects via Zabbix API
     #
     # @return [String]
@@ -30,7 +16,7 @@ class ZabbixApi
 
     def medias_helper(data, action)
       result = @client.api_request(
-        method: "user.#{action}",
+        method: "#{method_name}.#{action}",
         params: data[:userids].map do |t|
           {
             userid: t,

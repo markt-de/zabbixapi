@@ -14,22 +14,6 @@ class ZabbixApi
       'name'
     end
 
-    # The key field name used for Problem objects via Zabbix API
-    # However, Problem object does not have a unique identifier
-    #
-    # @return [String]
-    def key
-      'problemid'
-    end
-
-    # Returns the object's plural id field name (identify) based on key
-    # However, Problem object does not have a unique identifier
-    #
-    # @return [String]
-    def keys
-      'problemids'
-    end
-
     # Dump Problem object data by key from Zabbix API
     #
     # @param data [Hash] Should include desired object's key and value
@@ -40,7 +24,7 @@ class ZabbixApi
       log "[DEBUG] Call dump_by_id with parameters: #{data.inspect}"
 
       @client.api_request(
-        method: 'problem.get',
+        method: "#{method_name}.get",
         params: {
           filter: {
             identify.to_sym => data[identify.to_sym]

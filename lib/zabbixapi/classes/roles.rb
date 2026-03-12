@@ -7,13 +7,6 @@ class ZabbixApi
       'role'
     end
 
-    # The key field name used for Role objects via Zabbix API
-    #
-    # @return [String]
-    def key
-      'roleid'
-    end
-
     # The id field name used for identifying specific Role objects via Zabbix API
     #
     # @return [String]
@@ -30,7 +23,7 @@ class ZabbixApi
     def rules(data)
       rules = data[:rules] || 2
       result = @client.api_request(
-        method: 'role.update',
+        method: "#{method_name}.update",
         params: {
           roleid: data[:roleid],
           rules: data[:hostgroupids].map { |t| { permission: permission, id: t } }
@@ -60,7 +53,7 @@ class ZabbixApi
       log "[DEBUG] Call dump_by_id with parameters: #{data.inspect}"
 
       @client.api_request(
-        method: 'role.get',
+        method: "#{method_name}.get",
         params: {
           output: 'extend',
           selectRules: 'extend',
@@ -77,7 +70,7 @@ class ZabbixApi
     # @return [Array] Returns array of Graph ids
     def get_ids_by_name(data)
       result = @client.api_request(
-        method: 'role.get',
+        method: "#{method_name}.get",
         params: {
           filter: {
             name: data[:name]

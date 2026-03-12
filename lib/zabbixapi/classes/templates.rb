@@ -21,7 +21,7 @@ class ZabbixApi
     # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
     # @return [Integer] The Template object id that was deleted
     def delete(data)
-      result = @client.api_request(method: 'template.delete', params: [data])
+      result = @client.api_request(method: "#{method_name}.delete", params: [data])
       result.empty? ? nil : result['templateids'][0].to_i
     end
 
@@ -32,7 +32,7 @@ class ZabbixApi
     # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
     # @return [Array] Returns array of Template ids
     def get_ids_by_host(data)
-      @client.api_request(method: 'template.get', params: data).map do |tmpl|
+      @client.api_request(method: "#{method_name}.get", params: data).map do |tmpl|
         tmpl['templateid']
       end
     end
@@ -58,7 +58,7 @@ class ZabbixApi
     # @return [Boolean]
     def mass_update(data)
       result = @client.api_request(
-        method: 'template.massUpdate',
+        method: "#{method_name}.massUpdate",
         params: {
           hosts: data[:hosts_id].map { |t| { hostid: t } },
           templates: data[:templates_id].map { |t| { templateid: t } }
@@ -75,7 +75,7 @@ class ZabbixApi
     # @return [Boolean]
     def mass_add(data)
       result = @client.api_request(
-        method: 'template.massAdd',
+        method: "#{method_name}.massAdd",
         params: {
           hosts: data[:hosts_id].map { |t| { hostid: t } },
           templates: data[:templates_id].map { |t| { templateid: t } }
@@ -92,7 +92,7 @@ class ZabbixApi
     # @return [Boolean]
     def mass_remove(data)
       result = @client.api_request(
-        method: 'template.massRemove',
+        method: "#{method_name}.massRemove",
         params: {
           hostids: data[:hosts_id],
           templateids: data[:templates_id],

@@ -42,7 +42,7 @@ class ZabbixApi
     # @return [Array] Returns array of Graph ids
     def get_ids_by_host(data)
       result = @client.api_request(
-        method: 'graph.get',
+        method: "#{method_name}.get",
         params: {
           filter: {
             host: data[:host]

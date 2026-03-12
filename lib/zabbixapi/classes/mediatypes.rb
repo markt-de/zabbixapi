@@ -19,24 +19,18 @@ class ZabbixApi
     # @return [Hash]
     def default_options
       {
-        name: '', # Name
-        description: '', # Description
-        type: 0, # 0 - Email, 1 - External script, 2 - SMS, 3 - Jabber, 100 - EzTexting
+        name: '',
+        description: '',
+        type: 0,
         smtp_server: '',
         smtp_helo: '',
-        smtp_email: '', # Email address of Zabbix server
-        exec_path: '',  # Name of external script
-        gsm_modem: '',  # Serial device name of GSM modem
-        username: '', # Jabber user name used by Zabbix server
-        passwd: '' # Jabber password used by Zabbix server
+        smtp_email: '',
+        exec_path: '',
+        gsm_modem: '',
+        username: '',
+        passwd: ''
       }
     end
-
-    # def log(message)
-    #   STDERR.puts
-    #   STDERR.puts message.to_s
-    #   STDERR.puts
-    # end
 
     # Update MediaType object using API
     #

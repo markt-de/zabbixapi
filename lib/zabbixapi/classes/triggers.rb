@@ -24,7 +24,7 @@ class ZabbixApi
       log "[DEBUG] Call dump_by_id with parameters: #{data.inspect}"
 
       @client.api_request(
-        method: 'trigger.get',
+        method: "#{method_name}.get",
         params: {
           filter: {
             key.to_sym => data[key.to_sym]

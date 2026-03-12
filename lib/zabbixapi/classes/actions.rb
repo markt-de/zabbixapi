@@ -30,10 +30,10 @@ class ZabbixApi
             identify.to_sym => data[identify.to_sym]
           },
           output: 'extend',
-          selectOperations: "extend",
-          selectRecoveryOperations: "extend",
-          selectAcknowledgeOperations: "extend",
-          selectFilter: "extend",
+          selectOperations: 'extend',
+          selectRecoveryOperations: 'extend',
+          selectUpdateOperations: 'extend',
+          selectFilter: 'extend'
         }
       )
     end

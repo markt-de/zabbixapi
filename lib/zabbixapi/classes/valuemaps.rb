@@ -7,13 +7,6 @@ class ZabbixApi
       'valuemap'
     end
 
-    # The key field name used for ValueMap objects via Zabbix API
-    #
-    # @return [String]
-    def key
-      'valuemapid'
-    end
-
     # The id field name used for identifying specific ValueMap objects via Zabbix API
     #
     # @return [String]

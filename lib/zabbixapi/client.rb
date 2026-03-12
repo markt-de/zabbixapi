@@ -47,8 +47,8 @@ class ZabbixApi
     #
     def logout
       api_request(
-	 :method => 'user.logout',
-	 :params => []
+	 method: 'user.logout',
+	 params: []
       )
     end
 
