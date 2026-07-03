@@ -15,7 +15,7 @@ describe 'template' do
       it 'should return integer id' do
         templateid = zbx.templates.create(
           host: @template,
-          groups: [groupid: @hostgroupid]
+          groups: [{ groupid: @hostgroupid }]
         )
         expect(templateid).to be_kind_of(Integer)
       end
@@ -33,7 +33,7 @@ describe 'template' do
       @template = gen_name 'template'
       @templateid = zbx.templates.create(
         host: @template,
-        groups: [groupid: @hostgroupid]
+        groups: [{ groupid: @hostgroupid }]
       )
     end
 
@@ -42,7 +42,7 @@ describe 'template' do
         expect(
           zbx.templates.get_or_create(
             host: @template,
-            groups: [groupid: @hostgroupid]
+            groups: [{ groupid: @hostgroupid }]
           )
         ).to eq @templateid
       end
@@ -71,7 +71,7 @@ describe 'template' do
         template = gen_name 'template'
         templateid = zbx.templates.create(
           host: template,
-          groups: [groupid: @hostgroupid]
+          groups: [{ groupid: @hostgroupid }]
         )
         expect(zbx.templates.delete(templateid)).to eq templateid
       end
@@ -92,7 +92,7 @@ describe 'template' do
               useip: 1
             }
           ],
-          groups: [groupid: @hostgroupid]
+          groups: [{ groupid: @hostgroupid }]
         )
       end
 

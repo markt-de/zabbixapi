@@ -1,23 +1,21 @@
-# encoding: utf-8
-
 require 'spec_helper'
 
 describe 'drule' do
   before do
     @drulename = gen_name 'drule'
-    @usergroupid = zbx.usergroups.create(:name => gen_name('usergroup'))
+    @usergroupid = zbx.usergroups.create(name: gen_name('usergroup'))
     @dcheckdata = [{
-      :type => '9', # zabbix agent
-      :uniq => '0', # (default) do not use this check as a uniqueness criteria
-      :key_ => 'system.hostname',
-      :ports => '10050',
+      type: '9', # zabbix agent
+      uniq: '0', # (default) do not use this check as a uniqueness criteria
+      key_: 'system.hostname',
+      ports: '10050'
     }]
     @druledata = {
-      :name => @drulename,
-      :delay => '60',
-      :status => '0', # action is enabled
-      :iprange => '192.168.0.0/24', # iprange to discover zabbix agents in
-      :dchecks => @dcheckdata,
+      name: @drulename,
+      delay: '60',
+      status: '0', # action is enabled
+      iprange: '192.168.0.0/24', # iprange to discover zabbix agents in
+      dchecks: @dcheckdata
     }
   end
 

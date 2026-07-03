@@ -25,7 +25,7 @@ describe 'host' do
               useip: 1
             }
           ],
-          groups: [groupid: @hostgroupid]
+          groups: [{ groupid: @hostgroupid }]
         )
         expect(hostid).to be_kind_of(Integer)
       end
@@ -82,7 +82,7 @@ describe 'host' do
             useip: 1
           }
         ],
-        groups: [groupid: @hostgroupid]
+        groups: [{ groupid: @hostgroupid }]
       )
     end
 
@@ -91,7 +91,7 @@ describe 'host' do
         expect(
           zbx.hosts.get_or_create(
             host: @host,
-            groups: [groupid: @hostgroupid]
+            groups: [{ groupid: @hostgroupid }]
           )
         ).to eq @hostid
       end
@@ -125,7 +125,7 @@ describe 'host' do
                 dns: ''
               }
             ],
-            groups: [groupid: @hostgroupid]
+            groups: [{ groupid: @hostgroupid }]
           )
         ).to eq @hostid
       end
@@ -147,7 +147,7 @@ describe 'host' do
         expect(
           zbx.hosts.update(
             hostid: @hostid,
-            groups: [groupid: @hostgroupid2]
+            groups: [{ groupid: @hostgroupid2 }]
           )
         ).to eq @hostid
 

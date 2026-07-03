@@ -196,7 +196,7 @@ describe 'ZabbixApi::Graphs' do
     let(:id) { '111' }
 
     before do
-      allow(graphs_mock).to receive(:update).with(templateid: 1234).and_return(id)
+      allow(graphs_mock).to receive(:update).with({ templateid: 1234 }).and_return(id)
     end
 
     it 'updates an object returns the Graph ID' do

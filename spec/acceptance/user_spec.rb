@@ -4,9 +4,9 @@ describe 'user' do
   before :all do
     @usergroup = gen_name 'usergroup'
     @usergroupid = {
-      usrgrpid: zbx.usergroups.create(name: @usergroup),
+      usrgrpid: zbx.usergroups.create(name: @usergroup)
     }
-    @roleid = "1"
+    @roleid = '1'
     puts "USERGROUPID: #{@usergroupid}"
 
     @mediatype = gen_name 'mediatype'

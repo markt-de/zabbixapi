@@ -7,7 +7,7 @@ describe 'item' do
     @template = gen_name 'template'
     @templateid = zbx.templates.create(
       host: @template,
-      groups: [groupid: @hostgroupid]
+      groups: [{ groupid: @hostgroupid }]
     )
     @application = gen_name 'application'
     @applicationid = zbx.applications.create(

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'ZabbixApi::Basic' do
   let(:basic_mock) { ZabbixApi::Basic.new(client) }
-  let(:client) { double('mock_client', options: {}, api_request: {} ) }
+  let(:client) { double('mock_client', options: {}, api_request: {}) }
   let(:data) { {} }
 
   after { subject }

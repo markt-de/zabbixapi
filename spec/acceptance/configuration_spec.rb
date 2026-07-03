@@ -7,7 +7,7 @@ describe 'configuration' do
     @template    = gen_name 'template'
     @template_id = zbx.templates.create(
       host: @template,
-      groups: [groupid: @hostgroup_id]
+      groups: [{ groupid: @hostgroup_id }]
     )
     @source = zbx.configurations.export(
       format: 'xml',

@@ -33,8 +33,8 @@ describe 'ZabbixApi::Triggers' do
             key.to_sym => data[key.to_sym]
           },
           output: 'extend',
-          select_items: 'extend',
-          select_functions: 'extend'
+          selectItems: 'extend',
+          selectFunctions: 'extend'
         }
       ).and_return(result)
     end
@@ -72,8 +72,8 @@ describe 'ZabbixApi::Triggers' do
     end
 
     before do
-      allow(triggers_mock).to receive(:dump_by_id).with(test: '1').and_return(id_hash)
-      allow(triggers_mock).to receive(:symbolize_keys).with('test' => 1).and_return(dump)
+      allow(triggers_mock).to receive(:dump_by_id).with({ test: '1' }).and_return(id_hash)
+      allow(triggers_mock).to receive(:symbolize_keys).with({ 'test' => 1 }).and_return(dump)
       allow(triggers_mock).to receive(:hash_equals?).with(dump, data).and_return(hash_equals)
       allow(triggers_mock).to receive(:key).and_return(key)
       allow(triggers_mock).to receive(:method_name).and_return(method_name)
@@ -81,12 +81,10 @@ describe 'ZabbixApi::Triggers' do
       allow(triggers_mock).to receive(:create).with(data_to_create).and_return(newly_created_item_id)
       allow(client).to receive(:api_request).with(
         method: "#{method_name}.update",
-        params: [
-          {
-            triggerid: data[:triggerid],
-            status: '1'
-          }
-        ]
+        params: {
+          triggerid: data[:triggerid],
+          status: 1
+        }
       ).and_return(result)
     end
 

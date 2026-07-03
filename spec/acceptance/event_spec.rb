@@ -61,8 +61,8 @@ describe 'event' do
   context 'when incorrect method' do
     describe 'create' do
       it 'should raise ApiError' do
-        expect{zbx.events.create(@eventdata)}.
-          to raise_error(ZabbixApi::ApiError, /.*\"data\": \"Incorrect method \\\"event.create\\\"\.\"/)
+        expect { zbx.events.create(@eventdata) }
+          .to raise_error(ZabbixApi::ApiError, /.*"data": "Incorrect method \\"event.create\\"\."/)
       end
     end
   end

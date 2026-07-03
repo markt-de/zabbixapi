@@ -7,7 +7,7 @@ describe 'httptest' do
     @template = gen_name 'template'
     @templateid = zbx.templates.create(
       host: @template,
-      groups: [groupid: @hostgroupid]
+      groups: [{ groupid: @hostgroupid }]
     )
   end
 

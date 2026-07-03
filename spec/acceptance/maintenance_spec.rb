@@ -13,7 +13,7 @@ describe 'maintenance' do
           groupids: [@hostgroupid],
           active_since: '1358844540',
           active_till: '1390466940',
-          timeperiods: [timeperiod_type: 3, every: 1, dayofweek: 64, start_time: 64_800, period: 3_600]
+          timeperiods: [{ timeperiod_type: 3, every: 1, dayofweek: 64, start_time: 64_800, period: 3_600 }]
         )
         expect(maintenanceid).to be_kind_of(Integer)
         zbx.maintenance.delete(maintenanceid)
@@ -34,7 +34,7 @@ describe 'maintenance' do
         groupids: [@hostgroupid_when_exists],
         active_since: '1358844540',
         active_till: '1390466940',
-        timeperiods: [timeperiod_type: 3, every: 1, dayofweek: 64, start_time: 64_800, period: 3_600]
+        timeperiods: [{ timeperiod_type: 3, every: 1, dayofweek: 64, start_time: 64_800, period: 3_600 }]
       )
     end
 

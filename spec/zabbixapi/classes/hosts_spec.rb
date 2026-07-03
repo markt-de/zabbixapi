@@ -33,7 +33,7 @@ describe 'ZabbixApi::Hosts' do
             testkey: 222
           },
           output: 'extend',
-          selectGroups: 'shorten'
+          selectHostGroups: 'extend'
         }
       ).and_return(result)
     end
@@ -54,9 +54,7 @@ describe 'ZabbixApi::Hosts' do
         host: nil,
         interfaces: [],
         status: 0,
-        available: 1,
-        groups: [],
-        proxy_hostid: nil
+        groups: []
       }
     end
 
@@ -77,7 +75,7 @@ describe 'ZabbixApi::Hosts' do
         method: 'host.massRemove',
         params: {
           hostids: data[:hosts_id],
-          templates: data[:templates_id]
+          templateids: data[:templates_id]
         }
       ).and_return(result)
     end

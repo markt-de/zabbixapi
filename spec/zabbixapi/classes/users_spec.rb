@@ -13,7 +13,7 @@ describe 'ZabbixApi::Users' do
   describe '.identify' do
     subject { users_mock.identify }
 
-    it { is_expected.to eq 'alias' }
+    it { is_expected.to eq 'username' }
   end
 
   describe '.key' do
@@ -31,8 +31,8 @@ describe 'ZabbixApi::Users' do
   describe '.medias_helper' do
     subject { users_mock.medias_helper(data, action) }
 
-    let(:data) { { userids: [1234, 5678], media: 'testmedia'} }
-    #let(:result) { { 'mediaids' => ['111'], 'testidentify' => 1 } }
+    let(:data) { { userids: [1234, 5678], media: 'testmedia' } }
+    # let(:result) { { 'mediaids' => ['111'], 'testidentify' => 1 } }
     let(:result) { { 'userids' => ['111'] } }
     let(:action) { 'updateMedia' }
 
@@ -40,7 +40,7 @@ describe 'ZabbixApi::Users' do
       users = data[:userids].map do |t|
         {
           userid: t,
-          user_medias: data[:media],
+          medias: data[:media]
         }
       end
       allow(client).to receive(:api_request).with(

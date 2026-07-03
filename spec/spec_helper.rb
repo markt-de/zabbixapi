@@ -6,9 +6,7 @@ RSpec.configure do |config|
   end
 
   # Don't run acceptance tests unless a host is provided
-  unless (ENV.key?('ZABBIX_HOST_URL') || ENV.key?('ZABBIX_RUN_ACCEPTANCE'))
-    config.filter_run_excluding type: :acceptance
-  end
+  config.filter_run_excluding type: :acceptance unless ENV.key?('ZABBIX_HOST_URL') || ENV.key?('ZABBIX_RUN_ACCEPTANCE')
 end
 
 def zbx

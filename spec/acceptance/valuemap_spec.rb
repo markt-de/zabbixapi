@@ -11,8 +11,10 @@ describe 'valuemap' do
         valuemapid = zbx.valuemaps.create_or_update(
           name: @valuemap,
           mappings: [
-            'newvalue' => 'test',
-            'value' => 'test'
+            {
+              'newvalue' => 'test',
+              'value' => 'test'
+            }
           ]
         )
         expect(valuemapid).to be_kind_of(Integer)
@@ -25,8 +27,10 @@ describe 'valuemap' do
       @valuemapid = zbx.valuemaps.create_or_update(
         name: @valuemap,
         mappings: [
-          'newvalue' => 'test',
-          'value' => 'test'
+          {
+            'newvalue' => 'test',
+            'value' => 'test'
+          }
         ]
       )
     end
@@ -37,8 +41,10 @@ describe 'valuemap' do
           zbx.valuemaps.create_or_update(
             name: @valuemap,
             mappings: [
-              'newvalue' => 'test',
-              'value' => 'test'
+              {
+                'newvalue' => 'test',
+                'value' => 'test'
+              }
             ]
           )
         ).to eq @valuemapid

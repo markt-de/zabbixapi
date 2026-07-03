@@ -102,7 +102,7 @@ describe 'ZabbixApi::Basic' do
     let(:normalized_hash) { { four: '5' } }
 
     before do
-      allow(basic_mock).to receive(:normalize_hash).with(four: 5).and_return(normalized_hash)
+      allow(basic_mock).to receive(:normalize_hash).with({ four: 5 }).and_return(normalized_hash)
     end
 
     context 'when array is passed' do

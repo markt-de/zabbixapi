@@ -26,8 +26,6 @@ describe 'ZabbixApi::Templates' do
 
     before do
       allow(templates_mock).to receive(:log)
-      allow(templates_mock).to receive(:identify).and_return(identify)
-      allow(templates_mock).to receive(:method_name).and_return(method_name)
       allow(client).to receive(:api_request).with(
         method: 'template.delete',
         params: [data]
@@ -104,7 +102,6 @@ describe 'ZabbixApi::Templates' do
       allow(client).to receive(:api_request).with(
         method: 'template.massUpdate',
         params: {
-          hosts: [{ hostid: 1234 }, { hostid: 5678 }],
           templates: [{ templateid: 1111 }, { templateid: 2222 }]
         }
       ).and_return(result)
@@ -133,7 +130,6 @@ describe 'ZabbixApi::Templates' do
       allow(client).to receive(:api_request).with(
         method: 'template.massAdd',
         params: {
-          hosts: [{ hostid: 1234 }, { hostid: 5678 }],
           templates: [{ templateid: 1111 }, { templateid: 2222 }]
         }
       ).and_return(result)
@@ -162,10 +158,8 @@ describe 'ZabbixApi::Templates' do
       allow(client).to receive(:api_request).with(
         method: 'template.massRemove',
         params: {
-          hostids: data[:hosts_id],
           templateids: data[:templates_id],
-          groupids: data[:group_id],
-          force: 1
+          groupids: data[:group_id]
         }
       ).and_return(result)
     end

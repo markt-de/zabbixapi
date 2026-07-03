@@ -85,7 +85,7 @@ describe 'ZabbixApi::Basic' do
 
     context 'when ID already exists' do
       it 'calls update' do
-        expect(basic_mock).to receive(:update).with(test: 1, key: '1')
+        expect(basic_mock).to receive(:update).with({ test: 1, key: '1' })
         subject
       end
     end
@@ -111,8 +111,8 @@ describe 'ZabbixApi::Basic' do
     let(:operation_name) { 'update' }
 
     before do
-      allow(basic_mock).to receive(:dump_by_id).with(test: '1').and_return(id_hash)
-      allow(basic_mock).to receive(:symbolize_keys).with('test' => 1).and_return(test: '1')
+      allow(basic_mock).to receive(:dump_by_id).with({ test: '1' }).and_return(id_hash)
+      allow(basic_mock).to receive(:symbolize_keys).with({ 'test' => 1 }).and_return({ test: '1' })
       allow(basic_mock).to receive(:hash_equals?).with(dump, data).and_return(hash_equals)
       allow(basic_mock).to receive(:key).and_return('test')
     end

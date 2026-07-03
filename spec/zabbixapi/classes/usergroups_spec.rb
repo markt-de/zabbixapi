@@ -34,32 +34,32 @@ describe 'ZabbixApi::Usergroups' do
       rights = data[:hostgroupids].map do |t|
         {
           id: t,
-          permission: data[:permission],
+          permission: data[:permission]
         }
       end
       user_groups = {
         rights: rights,
-        usrgrpid: data[:usrgrpid],
+        usrgrpid: data[:usrgrpid]
       }
       nil_rights = data[:hostgroupids].map do |t|
         {
           id: t,
-          permission: 2,
+          permission: 2
         }
       end
       nil_user_group = {
         rights: nil_rights,
-        usrgrpid: data[:usrgrpid],
+        usrgrpid: data[:usrgrpid]
       }
       allow(usergroups_mock).to receive(:log)
       allow(usergroups_mock).to receive(:key).and_return(key)
       allow(client).to receive(:api_request).with(
         method: 'usergroup.update',
-        params: user_groups,
+        params: user_groups
       ).and_return(result)
       allow(client).to receive(:api_request).with(
         method: 'usergroup.update',
-        params: nil_user_group,
+        params: nil_user_group
       ).and_return(result)
     end
 
@@ -120,8 +120,8 @@ describe 'ZabbixApi::Usergroups' do
     before do
       user_groups = data[:usrgrpids].map do |t|
         {
-          userids: data[:userids],
-          usrgrpid: t,
+          users: data[:userids],
+          usrgrpid: t
         }
       end
       allow(usergroups_mock).to receive(:log)
@@ -158,15 +158,15 @@ describe 'ZabbixApi::Usergroups' do
     before do
       user_groups = data[:usrgrpids].map do |t|
         {
-          userids: data[:userids],
-          usrgrpid: t,
+          users: data[:userids],
+          usrgrpid: t
         }
       end
       allow(usergroups_mock).to receive(:log)
       allow(usergroups_mock).to receive(:key).and_return(key)
       allow(client).to receive(:api_request).with(
         method: 'usergroup.update',
-        params: user_groups,
+        params: user_groups
       ).and_return(result)
     end
 
