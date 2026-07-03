@@ -7,7 +7,6 @@ Examples Index
     - [Custom Queries](README.md#custom-queries)
 - Supported Zabbix Objects
     - [Actions](Actions.md)
-    - [Applications](Applications.md)
     - [Configurations](Configurations.md)
     - [Graphs](Graphs.md)
     - [Hostgroups](Hostgroups.md)
@@ -18,7 +17,6 @@ Examples Index
     - [MediaTypes](MediaTypes.md)
     - [Problems](Problems.md)
     - [Proxies](Proxies.md)
-    - [Screens](Screens.md)
     - [Templates](Templates.md)
     - [Triggers](Triggers.md)
     - [Usergroups](Usergroups.md)
