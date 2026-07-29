@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'jruby-openssl', platforms: :jruby
 gem 'rake', '~> 13.0'
-gem 'yard', '>= 0.9'
+gem 'yard', '~> 0.9.44'
 
 group :development do
   gem 'irb'
@@ -10,8 +10,8 @@ group :development do
 end
 
 group :test do
-  gem 'rspec', '~> 3.10'
-  gem 'rubocop', '~> 1.7'
+  gem 'rspec', '~> 3.13'
+  gem 'rubocop', '~> 1.88'
 end
 
 gemspec
