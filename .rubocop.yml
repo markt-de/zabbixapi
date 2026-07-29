@@ -1,61 +1,37 @@
 AllCops:
-  DisplayCopNames: true
+  TargetRubyVersion: 3.3
+  NewCops: disable
+  SuggestExtensions: false
 
-Metrics/AbcSize:
-  Max: 58 # TODO: Lower to 15
-
-Metrics/BlockLength:
-  Max: 35
-  Exclude:
-    - spec/**/*.rb
-
-Metrics/BlockNesting:
-  Max: 2
-
-Metrics/CyclomaticComplexity:
-  Max: 10
-
-Metrics/LineLength:
-  AllowURI: true
+Metrics:
   Enabled: false
-
-Metrics/MethodLength:
-  CountComments: false
-  Max: 35 # TODO: Lower to 15
-
-Metrics/ModuleLength:
-  Max: 150 # TODO: Lower to 100
-
-Metrics/ParameterLists:
-  Max: 4
-  CountKeywordArgs: true
-
-Metrics/PerceivedComplexity:
-  Max: 10
 
 Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
 
-Style/Documentation:
+Layout/LineLength:
   Enabled: false
 
-Style/DoubleNegation:
+Style/Documentation:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/HashSyntax:
+  EnforcedShorthandSyntax: never
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/OptionalBooleanParameter:
   Enabled: false
 
 Style/RaiseArgs:
   EnforcedStyle: compact
 
+Style/StringConcatenation:
+  Enabled: false
+
 Style/SymbolArray:
   EnforcedStyle: brackets
-
-Style/TrailingCommaInArrayLiteral:
-  EnforcedStyleForMultiline: 'comma'
-
-Style/TrailingCommaInHashLiteral:
-  EnforcedStyleForMultiline: 'comma'
