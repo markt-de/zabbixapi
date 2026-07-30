@@ -57,7 +57,7 @@ class ZabbixApi
       dump.delete(:items)
 
       old_expression = data[:expression]
-      data[:expression] = data[:expression].gsub(/\{.*\:/, '{') # TODO: ugly regexp
+      data[:expression] = data[:expression].gsub(/\{.*:/, '{') # TODO: ugly regexp
       data.delete(:templateid)
 
       log "[DEBUG] expression: #{dump[:expression]}\n data: #{data[:expression]}"
@@ -90,16 +90,20 @@ class ZabbixApi
       id
     end
 
-    # Create or update Trigger object using Zabbix API
+    # Create or (currently) get a Trigger object using the Zabbix API
     #
-    # @param data [Hash] Needs to include description and hostid to properly identify Triggers via Zabbix API
+    # Delegates to {#get_or_create}: an existing Trigger (matched by description and
+    # hostid) is returned as-is and NOT updated in place, since trigger expressions
+    # and recovery settings cannot be safely reconciled here. To change an existing
+    # Trigger call {#update} or {#safe_update} explicitly.
+    #
+    # @param data [Hash] Needs to include description and hostid to identify the Trigger
     # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
     # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
     # @return [Integer] Zabbix object id
     def create_or_update(data)
-      triggerid = get_id(description: data[:description], hostid: data[:hostid])
-
-      triggerid ? update(data.merge(triggerid: triggerid)) : create(data)
+      log "[DEBUG] Call create_or_update with parameters: #{data.inspect}"
+      get_or_create(data)
     end
   end
 end

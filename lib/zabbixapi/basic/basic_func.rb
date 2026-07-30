@@ -4,7 +4,7 @@ class ZabbixApi
     #
     # @param message [String]
     def log(message)
-      puts message.to_s if @client.options[:debug]
+      puts message if @client.options[:debug]
     end
 
     # Compare two hashes for equality
@@ -45,7 +45,7 @@ class ZabbixApi
     def normalize_hash(hash)
       result = hash.dup
 
-      result.delete(:hostid) # TODO: remove to logig. TemplateID and HostID has different id
+      result.delete(:hostid)
 
       result.each do |key, value|
         result[key] = value.is_a?(Array) ? normalize_array(value) : value.to_s

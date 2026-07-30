@@ -16,14 +16,14 @@ class ZabbixApi
 
     # Get or Create ValueMap object using Zabbix API
     #
-    # @param data [Hash] Needs to include valuemapids [List] to properly identify ValueMaps via Zabbix API
+    # @param data [Hash] Needs to include name to properly identify ValueMaps via Zabbix API
     # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
     # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
     # @return [Integer] Zabbix object id
     def get_or_create(data)
       log "[DEBUG] Call get_or_create with parameters: #{data.inspect}"
 
-      unless (id = get_id(valuemapids: data[:valuemapids]))
+      unless (id = get_id(name: data[:name]))
         id = create(data)
       end
       id

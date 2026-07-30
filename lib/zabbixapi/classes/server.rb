@@ -10,7 +10,7 @@ class ZabbixApi
     # @return [String] Zabbix API version number
     def initialize(client)
       @client = client
-      @version = @client.api_version()
+      @version = @client.api_version
     end
   end
 end

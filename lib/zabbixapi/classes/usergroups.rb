@@ -60,12 +60,12 @@ class ZabbixApi
       user_groups = data[:usrgrpids].map do |t|
         {
           usrgrpid: t,
-          users: data[:userids],
+          users: data[:userids]
         }
       end
       result = @client.api_request(
         method: "#{method_name}.update",
-        params: user_groups,
+        params: user_groups
       )
       result ? result['usrgrpids'][0].to_i : nil
     end

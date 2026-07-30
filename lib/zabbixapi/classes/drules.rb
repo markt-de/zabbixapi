@@ -23,7 +23,7 @@ class ZabbixApi
         iprange: nil,
         delay: 3600,
         status: 0,
-        concurrency_max: 0,
+        concurrency_max: 0
       }
     end
 

@@ -14,12 +14,12 @@ class ZabbixApi
       'name'
     end
 
-    # Set permissions for usergroup using Zabbix API
+    # Set the rules for a Role using the Zabbix API
     #
-    # @param data [Hash] Needs to include usrgrpids and hostgroupids along with permissions to set
+    # @param data [Hash] Needs to include roleid and the rules structure to set
     # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
     # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Integer] Zabbix object id (usergroup)
+    # @return [Integer] Zabbix Role id
     def rules(data)
       result = @client.api_request(
         method: "#{method_name}.update",
@@ -93,12 +93,12 @@ class ZabbixApi
       user_groups = data[:usrgrpids].map do |t|
         {
           usrgrpid: t,
-          users: data[:userids].map { |u| { userid: u } },
+          users: data[:userids].map { |u| { userid: u } }
         }
       end
       result = @client.api_request(
         method: 'usergroup.update',
-        params: user_groups,
+        params: user_groups
       )
       result ? result['usrgrpids'][0].to_i : nil
     end

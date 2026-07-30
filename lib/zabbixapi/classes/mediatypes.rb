@@ -77,7 +77,7 @@ class ZabbixApi
       result = @client.api_request(
         method: "#{method_name}.get",
         params: {
-          filter: {name: name},
+          filter: { name: name },
           output: [key, identify]
         }
       )

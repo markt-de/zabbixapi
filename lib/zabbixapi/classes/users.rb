@@ -20,9 +20,9 @@ class ZabbixApi
         params: data[:userids].map do |t|
           {
             userid: t,
-            medias: data[:media],
+            medias: data[:media]
           }
-        end,
+        end
       )
       result ? result['userids'][0].to_i : nil
     end

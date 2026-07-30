@@ -93,21 +93,15 @@ class ZabbixApi
       # Convert 'hostgroups' to 'groups' if 'hostgroups' is present in dump
       # This is due to host.get returning existing data as the hostgroups key
       # but we have to update as the groups key
-      if dump[:hostgroups]
-        dump[:groups] = dump.delete(:hostgroups).map { |g| { groupid: g[:groupid].to_i } }
-      end
+      dump[:groups] = dump.delete(:hostgroups).map { |g| { groupid: g[:groupid].to_i } } if dump[:hostgroups]
       # Normalsation setps
       # 1. Only compare the fields in `data`, since we only care if *those* differ
       dump = dump.select { |k, _| data.key?(k) }
       # 2. Ensure groups are ordered correctly
-      if dump[:groups]
-        dump[:groups] = dump[:groups].map { |g| { groupid: g[:groupid].to_i } }.sort_by { |g| g[:groupid] }
-      end
+      dump[:groups] = dump[:groups].map { |g| { groupid: g[:groupid].to_i } }.sort_by { |g| g[:groupid] } if dump[:groups]
       log "[DEBUG] dump is: #{dump}"
 
-      if data[:groups]
-        data[:groups] = data[:groups].map { |g| { groupid: g["groupid"].to_i } }.sort_by { |g| g[:groupid] }
-      end
+      data[:groups] = data[:groups].map { |g| { groupid: g['groupid'].to_i } }.sort_by { |g| g[:groupid] } if data[:groups]
       log "[DEBUG] data is: #{data}"
 
       if hash_equals?(dump, data) && !force
