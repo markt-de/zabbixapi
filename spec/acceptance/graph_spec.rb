@@ -9,18 +9,13 @@ describe 'graph' do
       host: @template,
       groups: [{ groupid: @hostgroupid }]
     )
-    @application = gen_name 'application'
-    @applicationid = zbx.applications.create(
-      name: @application,
-      hostid: @templateid
-    )
     @item = gen_name 'item'
     @itemid = zbx.items.create(
       name: @item,
       key_: "proc.num[#{gen_name 'proc'}]",
       status: 0,
       hostid: @templateid,
-      applications: [@applicationid]
+      tags: [{ tag: 'component', value: 'proc' }]
     )
 
     @color = '123456'
@@ -29,10 +24,9 @@ describe 'graph' do
   def gitems
     {
       itemid: @itemid,
-      calc_fnc: '3',
+      calc_fnc: '2',
       color: @color,
-      type: '0',
-      periods_cnt: '5'
+      type: '0'
     }
   end
 
@@ -97,7 +91,7 @@ describe 'graph' do
 
     describe 'get_ids_by_host' do
       it 'should contains id of graph' do
-        graph_array = zbx.graphs.get_ids_by_host(host: @host)
+        graph_array = zbx.graphs.get_ids_by_host(host: @template)
         expect(graph_array).to be_kind_of(Array)
         expect(graph_array).to include(@graphid.to_s)
       end

@@ -15,4 +15,14 @@ describe 'ZabbixApi::Events' do
 
     it { is_expected.to eq 'name' }
   end
+
+  # The event API provides only event.get and event.acknowledge.
+  describe 'unsupported write operations' do
+    [:create, :delete, :update, :create_or_update, :get_or_create].each do |unsupported|
+      it "raises on ##{unsupported}" do
+        expect { events_mock.public_send(unsupported, {}) }
+          .to raise_error(ZabbixApi::ApiError, /only provides event\.get/)
+      end
+    end
+  end
 end

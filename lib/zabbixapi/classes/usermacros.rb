@@ -14,6 +14,18 @@ class ZabbixApi
       'macro'
     end
 
+    # The key field name used for User macro objects via Zabbix API
+    #
+    # The usermacro API has no single id property: host macros use hostmacroid and global
+    # macros use globalmacroid. The inherited methods that rely on key operate on host
+    # macros, so host macros are the default here; the *_global variants pass their own
+    # result key explicitly.
+    #
+    # @return [String]
+    def key
+      'hostmacroid'
+    end
+
     # Get User macro object id from Zabbix API based on provided data
     #
     # @param data [Hash] Needs to include macro to properly identify user macros via Zabbix API

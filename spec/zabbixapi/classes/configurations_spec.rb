@@ -4,22 +4,18 @@ describe 'ZabbixApi::Configurations' do
   let(:configurations_mock) { ZabbixApi::Configurations.new(client) }
   let(:client) { double }
 
-  describe '.array_flag' do
-    subject { configurations_mock.array_flag }
-
-    it { is_expected.to be_truthy }
-  end
-
   describe '.method_name' do
     subject { configurations_mock.method_name }
 
     it { is_expected.to eq 'configuration' }
   end
 
+  # There is no configuration object in the API, so there is no natural key to identify one
+  # by; only export/import are supported.
   describe '.identify' do
-    subject { configurations_mock.identify }
-
-    it { is_expected.to eq 'host' }
+    it 'raises, because the configuration API has no object to identify' do
+      expect { configurations_mock.identify }.to raise_error(ZabbixApi::ApiError)
+    end
   end
 
   describe '.export' do

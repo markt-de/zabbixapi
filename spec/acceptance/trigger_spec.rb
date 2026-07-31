@@ -9,11 +9,6 @@ describe 'trigger' do
       host: @template,
       groups: [{ groupid: @hostgroupid }]
     )
-    @application = gen_name 'application'
-    @applicationid = zbx.applications.create(
-      name: @application,
-      hostid: @templateid
-    )
     @item = gen_name 'item'
     @proc = "proc.num[#{gen_name 'proc'}]"
     @itemid = zbx.items.create(
@@ -21,7 +16,7 @@ describe 'trigger' do
       key_: @proc,
       status: 0,
       hostid: @templateid,
-      applications: [@applicationid]
+      tags: [{ tag: 'component', value: 'proc' }]
     )
   end
 
@@ -31,7 +26,7 @@ describe 'trigger' do
         @trigger = gen_name 'trigger'
         triggerid = zbx.triggers.create(
           description: @trigger,
-          expression: "{#{@template}:#{@proc}.last(0)}<1",
+          expression: "last(/#{@template}/#{@proc})<1",
           comments: 'Bla-bla is faulty (disaster)',
           priority: 5,
           status: 0,
@@ -57,7 +52,7 @@ describe 'trigger' do
       @trigger = gen_name 'trigger'
       @triggerid = zbx.triggers.create(
         description: @trigger,
-        expression: "{#{@template}:#{@proc}.last(0)}<1",
+        expression: "last(/#{@template}/#{@proc})<1",
         comments: 'Bla-bla is faulty (disaster)',
         priority: 5,
         status: 0,

@@ -9,8 +9,6 @@ describe 'action' do
       eventsource: '0', # event source is a triggerid
       status: '0', # action is enabled
       esc_period: '120', # how long each step should take
-      def_shortdata: 'Email header',
-      def_longdata: 'Email content',
       maintenance_mode: '1',
       filter: {
         evaltype: '1', # perform 'and' between the conditions

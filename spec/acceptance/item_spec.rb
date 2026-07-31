@@ -9,11 +9,6 @@ describe 'item' do
       host: @template,
       groups: [{ groupid: @hostgroupid }]
     )
-    @application = gen_name 'application'
-    @applicationid = zbx.applications.create(
-      name: @application,
-      hostid: @templateid
-    )
   end
 
   context 'when name not exists' do
@@ -28,7 +23,7 @@ describe 'item' do
           key_: "proc.num[#{gen_name 'proc'}]",
           status: 0,
           hostid: @templateid,
-          applications: [@applicationid]
+          tags: [{ tag: 'component', value: 'proc' }]
         )
         expect(itemid).to be_kind_of(Integer)
       end
@@ -49,7 +44,7 @@ describe 'item' do
         key_: 'proc.num[aaa]',
         status: 0,
         hostid: @templateid,
-        applications: [@applicationid]
+        tags: [{ tag: 'component', value: 'proc' }]
       )
     end
 
@@ -61,7 +56,7 @@ describe 'item' do
             key_: "proc.num[#{gen_name 'proc'}]",
             status: 0,
             hostid: @templateid,
-            applications: [@applicationid]
+            tags: [{ tag: 'component', value: 'proc' }]
           )
         ).to eq @itemid
       end
@@ -102,7 +97,7 @@ describe 'item' do
             key_: "proc.num[#{gen_name 'proc'}]",
             status: 0,
             hostid: @templateid,
-            applications: [@applicationid]
+            tags: [{ tag: 'component', value: 'proc' }]
           )
         ).to eq @itemid
       end
@@ -113,7 +108,7 @@ describe 'item' do
           key_: "proc.num[#{gen_name 'proc'}]",
           status: 0,
           hostid: @templateid,
-          applications: [@applicationid]
+          tags: [{ tag: 'component', value: 'proc' }]
         )
 
         expect(new_item_id).to be_kind_of(Integer)

@@ -50,53 +50,73 @@ class ZabbixApi
       templateid
     end
 
-    # Mass update Templates for Hosts using Zabbix API
+    # Mass update objects related to the given Templates using Zabbix API
     #
-    # @param data [Hash] Should include hosts_id array and templates_id array
+    # Replaces the given template groups and macros on the given templates. This manages
+    # objects *belonging to* templates - it cannot link templates to hosts; use
+    # {Hosts#unlink_templates} or host.massAdd for that.
+    #
+    # @param data [Hash] Should include templates_id array; optionally groups_id array and macros array
     # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
     # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
     # @return [Boolean]
     def mass_update(data)
       result = @client.api_request(
         method: "#{method_name}.massUpdate",
-        params: {
-          templates: data[:templates_id].map { |t| { templateid: t } }
-        }
+        params: mass_params(data)
       )
       result.empty? ? false : true
     end
 
-    # Mass add Templates to Hosts using Zabbix API
+    # Mass add objects related to the given Templates using Zabbix API
     #
-    # @param data [Hash] Should include hosts_id array and templates_id array
+    # Adds the given template groups and macros to the given templates. This manages objects
+    # *belonging to* templates - it cannot link templates to hosts; use
+    # {Hosts#unlink_templates} or host.massAdd for that.
+    #
+    # @param data [Hash] Should include templates_id array; optionally groups_id array and macros array
     # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
     # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
     # @return [Boolean]
     def mass_add(data)
       result = @client.api_request(
         method: "#{method_name}.massAdd",
-        params: {
-          templates: data[:templates_id].map { |t| { templateid: t } }
-        }
+        params: mass_params(data)
       )
       result.empty? ? false : true
     end
 
-    # Mass remove Templates to Hosts using Zabbix API
+    # Mass remove objects related to the given Templates using Zabbix API
     #
-    # @param data [Hash] Should include hosts_id array and templates_id array
+    # Removes the given template groups and macros from the given templates.
+    #
+    # @param data [Hash] Should include templates_id array; optionally group_id array and macros array
     # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
     # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
     # @return [Boolean]
     def mass_remove(data)
+      params = { templateids: data[:templates_id] }
+      params[:groupids] = data[:group_id] if data[:group_id]
+      params[:macros] = data[:macros] if data[:macros]
+
       result = @client.api_request(
         method: "#{method_name}.massRemove",
-        params: {
-          templateids: data[:templates_id],
-          groupids: data[:group_id]
-        }
+        params: params
       )
       result.empty? ? false : true
+    end
+
+  private
+
+    # Build the shared parameter set for template.massAdd / template.massUpdate
+    #
+    # @param data [Hash]
+    # @return [Hash]
+    def mass_params(data)
+      params = { templates: data[:templates_id].map { |t| { templateid: t } } }
+      params[:groups] = data[:groups_id].map { |g| { groupid: g } } if data[:groups_id]
+      params[:macros] = data[:macros] if data[:macros]
+      params
     end
   end
 end

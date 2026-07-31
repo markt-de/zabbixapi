@@ -430,4 +430,56 @@ describe 'ZabbixApi::Usermacros' do
       end
     end
   end
+
+  # These two come from Basic and depend on key/keys. The usermacro API has no
+  # "usermacroid", so they only work because key is overridden to hostmacroid.
+  describe '.key' do
+    subject { usermacros_mock.key }
+
+    it { is_expected.to eq 'hostmacroid' }
+  end
+
+  describe '.keys' do
+    subject { usermacros_mock.keys }
+
+    it { is_expected.to eq 'hostmacroids' }
+  end
+
+  describe '.dump_by_id' do
+    subject { usermacros_mock.dump_by_id(hostmacroid: 222) }
+
+    let(:result) { [{ 'hostmacroid' => '222', 'macro' => '{$FOO}' }] }
+
+    before do
+      allow(usermacros_mock).to receive(:log)
+      allow(client).to receive(:api_request).with(
+        method: 'usermacro.get',
+        params: {
+          filter: { hostmacroid: 222 },
+          output: 'extend'
+        }
+      ).and_return(result)
+    end
+
+    it 'filters on hostmacroid' do
+      expect(subject).to eq result
+    end
+  end
+
+  describe '.all' do
+    subject { usermacros_mock.all }
+
+    let(:result) { [{ 'hostmacroid' => '222', 'macro' => '{$FOO}' }] }
+
+    before do
+      allow(client).to receive(:api_request).with(
+        method: 'usermacro.get',
+        params: { output: 'extend' }
+      ).and_return(result)
+    end
+
+    it 'maps macro to hostmacroid' do
+      expect(subject).to eq('{$FOO}' => '222')
+    end
+  end
 end

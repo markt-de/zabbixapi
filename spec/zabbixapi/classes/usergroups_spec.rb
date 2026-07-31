@@ -38,7 +38,7 @@ describe 'ZabbixApi::Usergroups' do
         }
       end
       user_groups = {
-        rights: rights,
+        hostgroup_rights: rights,
         usrgrpid: data[:usrgrpid]
       }
       nil_rights = data[:hostgroupids].map do |t|
@@ -48,7 +48,7 @@ describe 'ZabbixApi::Usergroups' do
         }
       end
       nil_user_group = {
-        rights: nil_rights,
+        hostgroup_rights: nil_rights,
         usrgrpid: data[:usrgrpid]
       }
       allow(usergroups_mock).to receive(:log)
@@ -69,7 +69,7 @@ describe 'ZabbixApi::Usergroups' do
           method: 'usergroup.update',
           params: {
             usrgrpid: data[:usrgrpid],
-            rights: data[:hostgroupids].map { |t| { permission: permission, id: t } }
+            hostgroup_rights: data[:hostgroupids].map { |t| { permission: permission, id: t } }
           }
         )
         subject
@@ -89,7 +89,7 @@ describe 'ZabbixApi::Usergroups' do
           method: 'usergroup.update',
           params: {
             usrgrpid: data[:usrgrpid],
-            rights: data[:hostgroupids].map { |t| { permission: permission, id: t } }
+            hostgroup_rights: data[:hostgroupids].map { |t| { permission: permission, id: t } }
           }
         )
         subject
@@ -120,7 +120,7 @@ describe 'ZabbixApi::Usergroups' do
     before do
       user_groups = data[:usrgrpids].map do |t|
         {
-          users: data[:userids],
+          users: data[:userids].map { |u| { userid: u } },
           usrgrpid: t
         }
       end
@@ -158,7 +158,7 @@ describe 'ZabbixApi::Usergroups' do
     before do
       user_groups = data[:usrgrpids].map do |t|
         {
-          users: data[:userids],
+          users: data[:userids].map { |u| { userid: u } },
           usrgrpid: t
         }
       end

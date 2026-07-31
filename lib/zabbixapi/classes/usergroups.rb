@@ -33,7 +33,7 @@ class ZabbixApi
         method: "#{method_name}.update",
         params: {
           usrgrpid: data[:usrgrpid],
-          rights: data[:hostgroupids].map { |t| { permission: permission, id: t } }
+          hostgroup_rights: data[:hostgroupids].map { |t| { permission: permission, id: t } }
         }
       )
       result ? result['usrgrpids'][0].to_i : nil
@@ -60,7 +60,7 @@ class ZabbixApi
       user_groups = data[:usrgrpids].map do |t|
         {
           usrgrpid: t,
-          users: data[:userids]
+          users: data[:userids].map { |u| { userid: u } }
         }
       end
       result = @client.api_request(

@@ -15,7 +15,7 @@ describe 'usergroup' do
       @user = gen_name 'user'
       @roleid = '1'
       @userid = zbx.users.create(
-        alias: @user,
+        username: @user,
         name: @user,
         surname: @user,
         passwd: @user,
@@ -27,7 +27,7 @@ describe 'usergroup' do
       @usergroupid2 = zbx.usergroups.create(name: @usergroup2)
       @user2 = gen_name 'user'
       @userid2 = zbx.users.create(
-        alias: @user2,
+        username: @user2,
         name: @user2,
         surname: @user2,
         passwd: @user2,

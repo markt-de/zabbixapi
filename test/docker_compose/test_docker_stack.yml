@@ -5,7 +5,7 @@ version: '3.8'
 
 services:
   db:
-    image: postgres:13-alpine
+    image: postgres:16-alpine
     restart: always
     environment:
       POSTGRES_PASSWORD: password
@@ -16,7 +16,7 @@ services:
     ports:
       - "5432:5432"
   server:
-    image: zabbix/zabbix-server-pgsql:alpine-5.2-latest
+    image: zabbix/zabbix-server-pgsql:alpine-7.0-latest
     depends_on:
       - db
     environment:
@@ -28,7 +28,7 @@ services:
     ports:
       - 10051:10051
   frontend:
-    image: zabbix/zabbix-web-apache-pgsql:alpine-5.2-latest
+    image: zabbix/zabbix-web-apache-pgsql:alpine-7.0-latest
     depends_on:
       - db
       - server

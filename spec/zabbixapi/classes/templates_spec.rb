@@ -93,10 +93,8 @@ describe 'ZabbixApi::Templates' do
   describe '.mass_update' do
     subject { templates_mock.mass_update(data) }
 
-    let(:data) { { hosts_id: [1234, 5678], templates_id: [1111, 2222] } }
+    let(:data) { { templates_id: [1111, 2222] } }
     let(:result) { [{ 'testkey' => '111', 'testidentify' => 1 }] }
-    let(:id) { nil }
-    let(:id_through_create) { 222 }
 
     before do
       allow(client).to receive(:api_request).with(
@@ -115,6 +113,23 @@ describe 'ZabbixApi::Templates' do
 
     context 'when api_request doesn not return empty result' do
       it { is_expected.to be_truthy }
+    end
+
+    # template.massUpdate operates on objects belonging to templates: groups and macros.
+    context 'when template groups and macros are given' do
+      let(:data) { { templates_id: [1111], groups_id: [10], macros: [{ macro: '{$A}', value: '1' }] } }
+
+      it 'passes groups and macros through' do
+        expect(client).to receive(:api_request).with(
+          method: 'template.massUpdate',
+          params: {
+            templates: [{ templateid: 1111 }],
+            groups: [{ groupid: 10 }],
+            macros: [{ macro: '{$A}', value: '1' }]
+          }
+        ).and_return(result)
+        subject
+      end
     end
   end
 

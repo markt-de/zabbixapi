@@ -16,17 +16,27 @@ describe 'ZabbixApi::Problems' do
     it { is_expected.to eq 'name' }
   end
 
-  # Problem object does not have a unique identifier
+  # Problems are identified by the id of the event that created them; the API has no
+  # problemid property.
   describe '.key' do
     subject { problems_mock.key }
 
-    it { is_expected.to eq 'problemid' }
+    it { is_expected.to eq 'eventid' }
   end
 
-  # Problem object does not have a unique identifier
   describe '.keys' do
     subject { problems_mock.keys }
 
-    it { is_expected.to eq 'problemids' }
+    it { is_expected.to eq 'eventids' }
+  end
+
+  # problem.get is the only method the API provides.
+  describe 'unsupported write operations' do
+    [:create, :delete, :update, :create_or_update, :get_or_create].each do |unsupported|
+      it "raises on ##{unsupported}" do
+        expect { problems_mock.public_send(unsupported, {}) }
+          .to raise_error(ZabbixApi::ApiError, /only provides problem\.get/)
+      end
+    end
   end
 end

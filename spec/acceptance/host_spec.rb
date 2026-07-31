@@ -52,10 +52,10 @@ describe 'host' do
         )
 
         expect(hostid).to be_kind_of Integer
-        host = zbx.query(method: 'host.get', params: { hostids: [hostid], selectGroups: 'extend' }).first
+        host = zbx.query(method: 'host.get', params: { hostids: [hostid], selectHostGroups: 'extend' }).first
 
         expect(host['hostid'].to_i).to eq hostid
-        expect(host['groups'].size).to eq 2
+        expect(host['hostgroups'].size).to eq 2
       end
     end
 
@@ -151,7 +151,7 @@ describe 'host' do
           )
         ).to eq @hostid
 
-        expect(zbx.hosts.dump_by_id(hostid: @hostid).first['groups'].first['groupid']).to eq @hostgroupid2.to_s
+        expect(zbx.hosts.dump_by_id(hostid: @hostid).first['hostgroups'].first['groupid']).to eq @hostgroupid2.to_s
       end
 
       it 'should update interfaces when use with force: true' do
