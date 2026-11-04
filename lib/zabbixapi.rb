@@ -24,6 +24,7 @@ require 'zabbixapi/classes/proxygroup'
 require 'zabbixapi/classes/roles'
 require 'zabbixapi/classes/scripts'
 require 'zabbixapi/classes/server'
+require 'zabbixapi/classes/templategroups'
 require 'zabbixapi/classes/templates'
 require 'zabbixapi/classes/triggers'
 require 'zabbixapi/classes/usergroups'
@@ -31,32 +32,41 @@ require 'zabbixapi/classes/usermacros'
 require 'zabbixapi/classes/users'
 require 'zabbixapi/classes/valuemaps'
 
+# The gem's entry point: one {ZabbixApi::Client}, a memoized wrapper per API object, and {#query} for raw requests.
 class ZabbixApi
   # @return [ZabbixApi::Client]
   attr_reader :client
 
-  # Initializes a new ZabbixApi object
+  # Initializes a new ZabbixApi object and remembers it as the process-wide current connection
   #
   # @param options [Hash]
   # @return [ZabbixApi]
   def self.connect(options = {})
-    new(options)
+    @current = new(options)
   end
 
+  # The connection most recently established by {ZabbixApi.connect}
+  #
+  # @raise [ApiError] when no connection has been established yet
   # @return [ZabbixApi]
   def self.current
-    @current ||= ZabbixApi.new
+    raise ApiError.new('no current connection: call ZabbixApi.connect first') unless @current
+
+    @current
   end
 
   # Executes an API request directly using a custom query
   #
+  # `method` and `params` may be given as symbol or string keys; `params` is sent unchanged.
+  #
   # @param data [Hash]
-  # @return [Hash]
+  # @return [Hash, Array, String, Boolean] the JSON-RPC result, as the server returned it
   def query(data)
+    data = data.transform_keys(&:to_sym)
     @client.api_request(method: data[:method], params: data[:params])
   end
 
-  # Invalidate current authentication token
+  # Ends a user.login session; a no-op returning true under token authentication
   # @return [Boolean]
   def logout
     @client.logout
@@ -65,7 +75,7 @@ class ZabbixApi
   # Initializes a new ZabbixApi object
   #
   # @param options [Hash]
-  # @return [ZabbixApi::Client]
+  # @return [ZabbixApi]
   def initialize(options = {})
     @client = Client.new(options)
   end
@@ -148,6 +158,11 @@ class ZabbixApi
   # @return [ZabbixApi::Server]
   def server
     @server ||= Server.new(@client)
+  end
+
+  # @return [ZabbixApi::TemplateGroups]
+  def templategroups
+    @templategroups ||= TemplateGroups.new(@client)
   end
 
   # @return [ZabbixApi::Templates]

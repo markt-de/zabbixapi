@@ -1,50 +1,44 @@
 class ZabbixApi
+  # Wrapper for the `user` API object.
   class Users < Basic
-    # The method name used for interacting with Users via Zabbix API
+    # The Zabbix API object name
     #
     # @return [String]
     def method_name
       'user'
     end
 
-    # The id field name used for identifying specific User objects via Zabbix API
+    # The field a user is looked up by
     #
     # @return [String]
     def identify
       'username'
     end
 
-    def medias_helper(data, action)
+    # Set the media list of one or more users using the Zabbix API
+    #
+    # `user.update`'s `medias` parameter replaces the user's existing non-provisioned media
+    # rather than adding to it, and the Zabbix API offers no "append media" call.
+    # Every medium that is to survive must therefore be named in `medias`, or it is removed.
+    #
+    # @param data [Hash] Needs userids (Array of user ids) and medias (Array of media objects),
+    #   which together become each named user's complete media list
+    # @raise [ApiError] when userids or medias is not supplied
+    # @return [Integer, nil] The first affected user id, or nil if the API returned nothing
+    def update_medias(data)
+      userids = require_field!(data, 'userids', 'update_medias')
+      medias = require_field!(data, 'medias', 'update_medias')
+
       result = @client.api_request(
-        method: "#{method_name}.#{action}",
-        params: data[:userids].map do |t|
+        method: "#{method_name}.update",
+        params: userids.map do |t|
           {
             userid: t,
-            medias: data[:media]
+            medias: medias
           }
         end
       )
       result ? result['userids'][0].to_i : nil
-    end
-
-    # Add media to users using Zabbix API
-    #
-    # @param data [Hash] Needs to include userids and media to mass add media to users
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Integer] Zabbix object id (media)
-    def add_medias(data)
-      medias_helper(data, 'update')
-    end
-
-    # Update media for users using Zabbix API
-    #
-    # @param data [Hash] Needs to include userids and media to mass update media for users
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Integer] Zabbix object id (user)
-    def update_medias(data)
-      medias_helper(data, 'update')
     end
   end
 end

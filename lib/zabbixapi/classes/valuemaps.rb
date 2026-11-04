@@ -1,13 +1,14 @@
 class ZabbixApi
+  # Wrapper for the `valuemap` API object.
   class ValueMaps < Basic
-    # The method name used for interacting with ValueMaps via Zabbix API
+    # The Zabbix API object name
     #
     # @return [String]
     def method_name
       'valuemap'
     end
 
-    # The id field name used for identifying specific ValueMap objects via Zabbix API
+    # The field a value map is looked up by
     #
     # @return [String]
     def identify
@@ -16,28 +17,37 @@ class ZabbixApi
 
     # Get or Create ValueMap object using Zabbix API
     #
-    # @param data [Hash] Needs to include name to properly identify ValueMaps via Zabbix API
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Integer] Zabbix object id
+    # `hostid` scopes the lookup: a value map name is only unique within its host or
+    # template. Without it the lookup spans every host and template: several matches raise,
+    # and a single match elsewhere is returned instead of creating the one asked for.
+    #
+    # @param data [Hash] Needs to include name and hostid to properly identify ValueMaps via Zabbix API
+    # @raise [ApiError] when data carries no name, or more than one value map matches the lookup
+    # @return [Integer, nil] Zabbix object id, or nil when the create result is empty
     def get_or_create(data)
       log "[DEBUG] Call get_or_create with parameters: #{data.inspect}"
 
-      unless (id = get_id(name: data[:name]))
+      data = symbolize_keys(data)
+      unless (id = get_id(name: data[:name], hostid: data[:hostid]))
         id = create(data)
       end
       id
     end
 
-    # Create or update Item object using Zabbix API
+    # Create or update ValueMap object using Zabbix API
     #
-    # @param data [Hash] Needs to include valuemapids to properly identify ValueMaps via Zabbix API
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Integer] Zabbix object id
+    # `hostid` scopes the lookup, as in {#get_or_create}, but must not be forwarded to the
+    # update: it is a *constant* property, and `valuemap.update` rejects it as an unexpected
+    # parameter.
+    #
+    # @param data [Hash] Needs to include name and hostid to properly identify ValueMaps via Zabbix API
+    # @raise [ApiError] when data carries no name, or more than one value map matches the lookup
+    # @return [Integer, nil] Zabbix object id, or nil when the result is empty
     def create_or_update(data)
-      valuemapid = get_id(name: data[:name])
-      valuemapid ? update(data.merge(valuemapid: valuemapid)) : create(data)
+      data = symbolize_keys(data)
+      valuemapid = get_id(name: data[:name], hostid: data[:hostid])
+
+      valuemapid ? update(data.reject { |field, _| field == :hostid }.merge(valuemapid: valuemapid)) : create(data)
     end
   end
 end

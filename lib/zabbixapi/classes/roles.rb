@@ -1,13 +1,14 @@
 class ZabbixApi
+  # Wrapper for the `role` API object.
   class Roles < Basic
-    # The method name used for interacting with Role via Zabbix API
+    # The Zabbix API object name
     #
     # @return [String]
     def method_name
       'role'
     end
 
-    # The id field name used for identifying specific Role objects via Zabbix API
+    # The field a role is looked up by
     #
     # @return [String]
     def identify
@@ -16,11 +17,13 @@ class ZabbixApi
 
     # Set the rules for a Role using the Zabbix API
     #
+    # `role.update` merges the given rules into the stored ones: a rules property left out keeps
+    # its value.
+    #
     # @param data [Hash] Needs to include roleid and the rules structure to set
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Integer] Zabbix Role id
+    # @return [Integer, nil] Zabbix Role id, or nil when the server returns no result
     def rules(data)
+      data = symbolize_keys(data)
       result = @client.api_request(
         method: "#{method_name}.update",
         params: {
@@ -31,23 +34,13 @@ class ZabbixApi
       result ? result['roleids'][0].to_i : nil
     end
 
-    # Add users to usergroup using Zabbix API
-    #
-    # @deprecated Zabbix has removed massAdd in favor of update.
-    # @param data [Hash] Needs to include userids and usrgrpids to mass add users to groups
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Integer] Zabbix object id (usergroup)
-    def add_user(data)
-      update_users(data)
-    end
-
     # Dump Role object data by key from Zabbix API
     #
-    # @param data [Hash] Should include desired object's key and value
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Hash]
+    # Selects each role's `rules` as well, which {Basic#update} compares with a payload's `rules`.
+    #
+    # @param data [Hash] the role's id under {#key} or `id`
+    # @raise [ApiError] when data carries no id
+    # @return [Array<Hash>]
     def dump_by_id(data)
       log "[DEBUG] Call dump_by_id with parameters: #{data.inspect}"
 
@@ -56,51 +49,30 @@ class ZabbixApi
         params: {
           output: 'extend',
           selectRules: 'extend',
-          roleids: data[:id]
+          keys.to_sym => [require_id!(data, :id)]
         }
       )
     end
 
     # Get Role ids by Role Name from Zabbix API
     #
-    # @param data [Hash] Should include host value to query for matching graphs
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Array] Returns array of Graph ids
+    # @param data [Hash] Should include the name to query for matching roles
+    # @raise [ApiError] when name is not supplied
+    # @return [Array<Integer>] Returns array of Role ids
     def get_ids_by_name(data)
       result = @client.api_request(
         method: "#{method_name}.get",
         params: {
           filter: {
-            name: data[:name]
+            name: require_field!(data, 'name', 'get_ids_by_name')
           },
           output: 'extend'
         }
       )
 
       result.map do |role|
-        role['roleid']
+        role['roleid']&.to_i
       end.compact
-    end
-
-    # Update users in Userroles using Zabbix API
-    #
-    # @param data [Hash] Needs to include userids and usrgrpids to mass update users in groups
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Integer] Zabbix object id (usergroup)
-    def update_users(data)
-      user_groups = data[:usrgrpids].map do |t|
-        {
-          usrgrpid: t,
-          users: data[:userids].map { |u| { userid: u } }
-        }
-      end
-      result = @client.api_request(
-        method: 'usergroup.update',
-        params: user_groups
-      )
-      result ? result['usrgrpids'][0].to_i : nil
     end
   end
 end

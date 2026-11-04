@@ -1,13 +1,14 @@
 class ZabbixApi
+  # Wrapper for the `host` API object.
   class Hosts < Basic
-    # The method name used for interacting with Hosts via Zabbix API
+    # The Zabbix API object name
     #
     # @return [String]
     def method_name
       'host'
     end
 
-    # The id field name used for identifying specific Host objects via Zabbix API
+    # The field a host is looked up by
     #
     # @return [String]
     def identify
@@ -16,10 +17,11 @@ class ZabbixApi
 
     # Dump Host object data by key from Zabbix API
     #
-    # @param data [Hash] Should include desired object's key and value
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Hash]
+    # Selects each host's `hostgroups` as well, which {#update} compares with a payload's `groups`.
+    #
+    # @param data [Hash] the host's id under {#key}
+    # @raise [ApiError] when data carries no id
+    # @return [Array<Hash>]
     def dump_by_id(data)
       log "[DEBUG] Call dump_by_id with parameters: #{data.inspect}"
 
@@ -27,7 +29,7 @@ class ZabbixApi
         method: "#{method_name}.get",
         params: {
           filter: {
-            key.to_sym => data[key.to_sym]
+            key.to_sym => require_id!(data)
           },
           output: 'extend',
           selectHostGroups: 'extend'
@@ -35,7 +37,7 @@ class ZabbixApi
       )
     end
 
-    # The default options used when creating Host objects via Zabbix API
+    # Properties {Basic#create} merges under each host it sends
     #
     # @return [Hash]
     def default_options
@@ -49,62 +51,56 @@ class ZabbixApi
 
     # Unlink/Remove Templates from Hosts using Zabbix API
     #
-    # @param data [Hash] Should include hosts_id array and templates_id array
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
+    # `clear: true` unlinks *and clears*: the items, triggers, graphs and web scenarios the hosts
+    # inherited go with the link. `host.massRemove` then gets the ids as `templateids_clear`
+    # instead of `templateids`.
+    #
+    # @param data [Hash] Should include hosts_id array and templates_id array, optionally clear
     # @return [Boolean]
     def unlink_templates(data)
+      data = symbolize_keys(data)
+      field = data[:clear] ? :templateids_clear : :templateids
       result = @client.api_request(
         method: "#{method_name}.massRemove",
         params: {
           hostids: data[:hosts_id],
-          templateids: data[:templates_id]
+          field => data[:templates_id]
         }
       )
       result.empty? ? false : true
     end
 
-    # Create or update Host object using Zabbix API
-    #
-    # @param data [Hash] Needs to include host to properly identify Hosts via Zabbix API
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Integer] Zabbix object id
-    def create_or_update(data)
-      hostid = get_id(host: data[:host])
-      hostid ? update(data.merge(hostid: hostid)) : create(data)
-    end
-
     # Update Zabbix object using API
     #
-    # @param data [Hash] Should include object's id field name (identify) and id value
+    # Reads the host first and sends no update when it already holds the given values, `groups`
+    # compared by `groupid` in any order; see {#skip_update?}. Takes one host; only create and
+    # delete accept an Array.
+    #
+    # @param data [Hash] the fields to set, with the host's id under {#key}
     # @param force [Boolean] Whether to force an object update even if provided data matches Zabbix
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Integer] The object id if a single object is created
-    # @return [Boolean] True/False if multiple objects are created
+    # @raise [ApiError] when data carries no id
+    # @return [Integer, nil] The id of the updated host, also when the update was skipped, or nil when the result is empty
     def update(data, force = false)
       log "[DEBUG] Call update with parameters: #{data.inspect}"
 
+      data = symbolize_keys(data)
       dump = {}
       dump_by_id(key.to_sym => data[key.to_sym]).each do |item|
         dump = symbolize_keys(item) if item[key].to_i == data[key.to_sym].to_i
       end
-      # Convert 'hostgroups' to 'groups' if 'hostgroups' is present in dump
-      # This is due to host.get returning existing data as the hostgroups key
-      # but we have to update as the groups key
+      # host.get answers the groups as `hostgroups`, host.update takes them as `groups`
       dump[:groups] = dump.delete(:hostgroups).map { |g| { groupid: g[:groupid].to_i } } if dump[:hostgroups]
-      # Normalsation setps
-      # 1. Only compare the fields in `data`, since we only care if *those* differ
+      # Compare only the fields the payload carries, and the groups in groupid order
       dump = dump.select { |k, _| data.key?(k) }
-      # 2. Ensure groups are ordered correctly
       dump[:groups] = dump[:groups].map { |g| { groupid: g[:groupid].to_i } }.sort_by { |g| g[:groupid] } if dump[:groups]
       log "[DEBUG] dump is: #{dump}"
 
-      data[:groups] = data[:groups].map { |g| { groupid: g['groupid'].to_i } }.sort_by { |g| g[:groupid] } if data[:groups]
+      # The payload's groups take the same shape. `data` is the copy `symbolize_keys` made, so
+      # either key style works and the caller's hash is never written.
+      data[:groups] = data[:groups].map { |g| { groupid: g[:groupid].to_i } }.sort_by { |g| g[:groupid] } if data[:groups]
       log "[DEBUG] data is: #{data}"
 
-      if hash_equals?(dump, data) && !force
+      if skip_update?(dump, data) && !force
         log "[DEBUG] Equal keys #{dump} and #{data}, skip update"
         data[key.to_sym].to_i
       else

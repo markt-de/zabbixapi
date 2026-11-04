@@ -1,13 +1,14 @@
 class ZabbixApi
+  # Wrapper for the `action` API object.
   class Actions < Basic
-    # The method name used for interacting with Actions via Zabbix API
+    # The Zabbix API object name
     #
     # @return [String]
     def method_name
       'action'
     end
 
-    # The id field name used for identifying specific Action objects via Zabbix API
+    # The field an action is looked up by
     #
     # @return [String]
     def identify
@@ -16,16 +17,18 @@ class ZabbixApi
 
     # Get full/extended Action object data from API
     #
-    # @param data [Hash] Should include object's id field name (identify) and id value
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Hash]
+    # Filters on the {#identify} value alone; without one, every action is returned. Each action
+    # includes its `operations`, `recovery_operations`, `update_operations` and `filter`.
+    #
+    # @param data [Hash] the {#identify} field and its value
+    # @return [Array<Hash>]
     def get_full_data(data)
       log "[DEBUG] Call get_full_data with parameters: #{data.inspect}"
 
+      data = symbolize_keys(data)
       @client.api_request(
         method: "#{method_name}.get",
-        params: {
+        params: compact_params(
           filter: {
             identify.to_sym => data[identify.to_sym]
           },
@@ -34,7 +37,7 @@ class ZabbixApi
           selectRecoveryOperations: 'extend',
           selectUpdateOperations: 'extend',
           selectFilter: 'extend'
-        }
+        )
       )
     end
   end

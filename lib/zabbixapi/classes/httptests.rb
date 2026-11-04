@@ -1,20 +1,21 @@
 class ZabbixApi
+  # Wrapper for the `httptest` API object, a web scenario.
   class HttpTests < Basic
-    # The method name used for interacting with HttpTests via Zabbix API
+    # The Zabbix API object name
     #
     # @return [String]
     def method_name
       'httptest'
     end
 
-    # The id field name used for identifying specific HttpTest objects via Zabbix API
+    # The field a web scenario is looked up by
     #
     # @return [String]
     def identify
       'name'
     end
 
-    # The default options used when creating HttpTest objects via Zabbix API
+    # Properties {Basic#create} merges under each web scenario it sends
     #
     # @return [Hash]
     def default_options
@@ -28,12 +29,12 @@ class ZabbixApi
     # Get or Create HttpTest object using Zabbix API
     #
     # @param data [Hash] Needs to include name and hostid to properly identify HttpTests via Zabbix API
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Integer] Zabbix object id
+    # @raise [ApiError] when data carries no name, or more than one web scenario matches the lookup
+    # @return [Integer, nil] Zabbix object id, or nil when the create result is empty
     def get_or_create(data)
       log "[DEBUG] Call get_or_create with parameters: #{data.inspect}"
 
+      data = symbolize_keys(data)
       unless (id = get_id(name: data[:name], hostid: data[:hostid]))
         id = create(data)
       end
@@ -42,13 +43,18 @@ class ZabbixApi
 
     # Create or update HttpTest object using Zabbix API
     #
+    # `hostid` scopes the lookup, since web scenario names are only unique per host. It must
+    # not be forwarded to the update: `httptest.update` rejects it as an unexpected
+    # parameter.
+    #
     # @param data [Hash] Needs to include name and hostid to properly identify HttpTests via Zabbix API
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Integer] Zabbix object id
+    # @raise [ApiError] when data carries no name, or more than one web scenario matches the lookup
+    # @return [Integer, nil] Zabbix object id, or nil when the result is empty
     def create_or_update(data)
+      data = symbolize_keys(data)
       httptestid = get_id(name: data[:name], hostid: data[:hostid])
-      httptestid ? update(data.merge(httptestid: httptestid)) : create(data)
+
+      httptestid ? update(data.reject { |field, _| field == :hostid }.merge(httptestid: httptestid)) : create(data)
     end
   end
 end

@@ -1,20 +1,21 @@
 class ZabbixApi
+  # Wrapper for the `usergroup` API object.
   class Usergroups < Basic
-    # The method name used for interacting with Usergroups via Zabbix API
+    # The Zabbix API object name
     #
     # @return [String]
     def method_name
       'usergroup'
     end
 
-    # The key field name used for Usergroup objects via Zabbix API
+    # The id field name, `usrgrpid` in the API rather than the derived `usergroupid`
     #
     # @return [String]
     def key
       'usrgrpid'
     end
 
-    # The id field name used for identifying specific Usergroup objects via Zabbix API
+    # The field a user group is looked up by
     #
     # @return [String]
     def identify
@@ -23,11 +24,13 @@ class ZabbixApi
 
     # Set permissions for usergroup using Zabbix API
     #
-    # @param data [Hash] Needs to include usrgrpids and hostgroupids along with permissions to set
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Integer] Zabbix object id (usergroup)
+    # Replaces the group's host group permissions with the given host groups, each at
+    # `permission`, which defaults to 2, read-only access.
+    #
+    # @param data [Hash] usrgrpid, the hostgroupids to grant, and optionally permission
+    # @return [Integer, nil] Zabbix object id (usergroup), or nil when the server returns no result
     def permissions(data)
+      data = symbolize_keys(data)
       permission = data[:permission] || 2
       result = @client.api_request(
         method: "#{method_name}.update",
@@ -39,24 +42,19 @@ class ZabbixApi
       result ? result['usrgrpids'][0].to_i : nil
     end
 
-    # Add users to usergroup using Zabbix API
+    # Set the user list of one or more user groups using the Zabbix API
     #
-    # @deprecated Zabbix has removed massAdd in favor of update.
-    # @param data [Hash] Needs to include userids and usrgrpids to mass add users to groups
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Integer] Zabbix object id (usergroup)
-    def add_user(data)
-      update_users(data)
-    end
-
-    # Update users in usergroups using Zabbix API
+    # `usergroup.update`'s `users` parameter replaces the current membership rather than
+    # adding to it, and the Zabbix API offers no append call. Every user who is to remain in a
+    # group must therefore be named in `userids`, or they are removed from it, losing whatever
+    # access that group granted them.
     #
-    # @param data [Hash] Needs to include userids and usrgrpids to mass update users in groups
-    # @raise [ApiError] Error returned when there is a problem with the Zabbix API call.
-    # @raise [HttpError] Error raised when HTTP status from Zabbix Server response is not a 200 OK.
-    # @return [Integer] Zabbix object id (usergroup)
+    # @param data [Hash] Needs usrgrpids (Array of user group ids) and userids (Array of user
+    #   ids), which together become each named group's complete user list
+    # @return [Integer, nil] the id of the first group updated, or nil when the server returns no
+    #   result
     def update_users(data)
+      data = symbolize_keys(data)
       user_groups = data[:usrgrpids].map do |t|
         {
           usrgrpid: t,
