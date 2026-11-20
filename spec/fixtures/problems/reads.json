@@ -1,0 +1,551 @@
+{
+  "class": "problems",
+  "scenario": "reads",
+  "recorded_at": "2026-10-19T08:54:10Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "problem.get",
+      "params": {
+        "source": 0,
+        "object": 0,
+        "evaltype": 0,
+        "sortfield": [
+          "eventid"
+        ],
+        "sortorder": "DESC",
+        "output": "extend",
+        "selectAcknowledges": "extend",
+        "selectTags": "extend",
+        "selectSuppressionData": "extend"
+      },
+      "result": [
+        {
+          "eventid": "25",
+          "source": "0",
+          "object": "0",
+          "objectid": "22391",
+          "clock": "1787926766",
+          "ns": "320879524",
+          "r_eventid": "0",
+          "r_clock": "0",
+          "r_ns": "0",
+          "correlationid": "0",
+          "userid": "0",
+          "name": "Linux: Zabbix agent is not available (for 3m)",
+          "acknowledged": "0",
+          "severity": "3",
+          "cause_eventid": "0",
+          "suppressed": "0",
+          "acknowledges": [],
+          "opdata": "",
+          "suppression_data": [],
+          "tags": [
+            {
+              "tag": "scope",
+              "value": "availability"
+            },
+            {
+              "tag": "component",
+              "value": "system"
+            },
+            {
+              "tag": "class",
+              "value": "os"
+            },
+            {
+              "tag": "target",
+              "value": "linux"
+            }
+          ],
+          "urls": []
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "method": "problem.get",
+      "params": {
+        "filter": {
+          "name": "Linux: Zabbix agent is not available (for 3m)"
+        },
+        "source": 0,
+        "object": 0,
+        "evaltype": 0,
+        "sortfield": [
+          "eventid"
+        ],
+        "sortorder": "DESC",
+        "output": "extend",
+        "selectAcknowledges": "extend",
+        "selectTags": "extend",
+        "selectSuppressionData": "extend"
+      },
+      "result": [
+        {
+          "eventid": "25",
+          "source": "0",
+          "object": "0",
+          "objectid": "22391",
+          "clock": "1787926766",
+          "ns": "320879524",
+          "r_eventid": "0",
+          "r_clock": "0",
+          "r_ns": "0",
+          "correlationid": "0",
+          "userid": "0",
+          "name": "Linux: Zabbix agent is not available (for 3m)",
+          "acknowledged": "0",
+          "severity": "3",
+          "cause_eventid": "0",
+          "suppressed": "0",
+          "acknowledges": [],
+          "opdata": "",
+          "suppression_data": [],
+          "tags": [
+            {
+              "tag": "scope",
+              "value": "availability"
+            },
+            {
+              "tag": "component",
+              "value": "system"
+            },
+            {
+              "tag": "class",
+              "value": "os"
+            },
+            {
+              "tag": "target",
+              "value": "linux"
+            }
+          ],
+          "urls": []
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "method": "problem.get",
+      "params": {
+        "filter": {
+          "name": "Linux: Zabbix agent is not available (for 3m)"
+        },
+        "source": 0,
+        "object": 0,
+        "evaltype": 0,
+        "sortfield": [
+          "eventid"
+        ],
+        "sortorder": "DESC",
+        "output": "extend",
+        "selectAcknowledges": "extend",
+        "selectTags": "extend",
+        "selectSuppressionData": "extend"
+      },
+      "result": [
+        {
+          "eventid": "25",
+          "source": "0",
+          "object": "0",
+          "objectid": "22391",
+          "clock": "1787926766",
+          "ns": "320879524",
+          "r_eventid": "0",
+          "r_clock": "0",
+          "r_ns": "0",
+          "correlationid": "0",
+          "userid": "0",
+          "name": "Linux: Zabbix agent is not available (for 3m)",
+          "acknowledged": "0",
+          "severity": "3",
+          "cause_eventid": "0",
+          "suppressed": "0",
+          "acknowledges": [],
+          "opdata": "",
+          "suppression_data": [],
+          "tags": [
+            {
+              "tag": "scope",
+              "value": "availability"
+            },
+            {
+              "tag": "component",
+              "value": "system"
+            },
+            {
+              "tag": "class",
+              "value": "os"
+            },
+            {
+              "tag": "target",
+              "value": "linux"
+            }
+          ],
+          "urls": []
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "method": "problem.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-problems-no-such-problem"
+        },
+        "source": 0,
+        "object": 0,
+        "evaltype": 0,
+        "sortfield": [
+          "eventid"
+        ],
+        "sortorder": "DESC",
+        "output": "extend",
+        "selectAcknowledges": "extend",
+        "selectTags": "extend",
+        "selectSuppressionData": "extend"
+      },
+      "result": []
+    },
+    {
+      "n": 5,
+      "method": "problem.get",
+      "params": {
+        "eventids": [
+          25
+        ],
+        "groupids": [
+          4
+        ],
+        "hostids": [
+          10084
+        ],
+        "objectids": [
+          22391
+        ],
+        "source": 0,
+        "object": 0,
+        "acknowledged": false,
+        "action": 2,
+        "action_userids": [
+          1
+        ],
+        "suppressed": false,
+        "symptom": false,
+        "severities": [
+          3
+        ],
+        "evaltype": 2,
+        "tags": [],
+        "recent": true,
+        "eventid_from": "25",
+        "eventid_till": "25",
+        "time_from": 1787926766,
+        "time_till": 1787926766,
+        "sortfield": [
+          "eventid"
+        ],
+        "countOutput": false,
+        "sortorder": "ASC",
+        "output": "extend",
+        "selectAcknowledges": "extend",
+        "selectTags": "extend",
+        "selectSuppressionData": "extend"
+      },
+      "result": []
+    },
+    {
+      "n": 6,
+      "method": "problem.get",
+      "params": {
+        "filter": {
+          "severity": 3
+        },
+        "source": 0,
+        "object": 0,
+        "evaltype": 0,
+        "sortfield": [
+          "eventid"
+        ],
+        "sortorder": "DESC",
+        "output": "extend",
+        "search": {
+          "name": "Linux: Zabbix agent is not available (for 3m)"
+        },
+        "searchByAny": true,
+        "searchWildcardsEnabled": true,
+        "startSearch": true,
+        "excludeSearch": true,
+        "editable": true,
+        "limit": 1,
+        "preservekeys": true,
+        "selectAcknowledges": "extend",
+        "selectTags": "extend",
+        "selectSuppressionData": "extend"
+      },
+      "result": []
+    },
+    {
+      "n": 7,
+      "method": "problem.get",
+      "params": {
+        "source": 0,
+        "object": 0,
+        "evaltype": 0,
+        "sortfield": [
+          "eventid"
+        ],
+        "sortorder": "DESC",
+        "output": [
+          "eventid"
+        ],
+        "selectAcknowledges": "extend",
+        "selectTags": "extend",
+        "selectSuppressionData": "extend"
+      },
+      "result": [
+        {
+          "eventid": "25",
+          "acknowledges": [],
+          "suppression_data": [],
+          "tags": [
+            {
+              "tag": "scope",
+              "value": "availability"
+            },
+            {
+              "tag": "component",
+              "value": "system"
+            },
+            {
+              "tag": "class",
+              "value": "os"
+            },
+            {
+              "tag": "target",
+              "value": "linux"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "method": "problem.get",
+      "params": {
+        "source": 0,
+        "object": 0,
+        "evaltype": 0,
+        "countOutput": true,
+        "sortorder": "DESC",
+        "output": "extend",
+        "selectAcknowledges": "extend",
+        "selectTags": "extend",
+        "selectSuppressionData": "extend"
+      },
+      "result": "1"
+    },
+    {
+      "n": 9,
+      "method": "problem.get",
+      "params": {
+        "source": 0,
+        "object": 0,
+        "evaltype": 0,
+        "sortfield": [
+          "eventid"
+        ],
+        "countOutput": false,
+        "sortorder": "DESC",
+        "output": "extend",
+        "selectAcknowledges": "extend",
+        "selectTags": "extend",
+        "selectSuppressionData": "extend"
+      },
+      "result": [
+        {
+          "eventid": "25",
+          "source": "0",
+          "object": "0",
+          "objectid": "22391",
+          "clock": "1787926766",
+          "ns": "320879524",
+          "r_eventid": "0",
+          "r_clock": "0",
+          "r_ns": "0",
+          "correlationid": "0",
+          "userid": "0",
+          "name": "Linux: Zabbix agent is not available (for 3m)",
+          "acknowledged": "0",
+          "severity": "3",
+          "cause_eventid": "0",
+          "suppressed": "0",
+          "acknowledges": [],
+          "opdata": "",
+          "suppression_data": [],
+          "tags": [
+            {
+              "tag": "scope",
+              "value": "availability"
+            },
+            {
+              "tag": "component",
+              "value": "system"
+            },
+            {
+              "tag": "class",
+              "value": "os"
+            },
+            {
+              "tag": "target",
+              "value": "linux"
+            }
+          ],
+          "urls": []
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "method": "problem.get",
+      "params": {
+        "filter": {
+          "name": "Linux: Zabbix agent is not available (for 3m)"
+        },
+        "output": [
+          "eventid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "eventid": "25",
+          "name": "Linux: Zabbix agent is not available (for 3m)"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "method": "problem.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-problems-no-such-problem"
+        },
+        "output": [
+          "eventid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 12,
+      "method": "problem.get",
+      "params": {
+        "filter": {
+          "eventid": 25
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "eventid": "25",
+          "source": "0",
+          "object": "0",
+          "objectid": "22391",
+          "clock": "1787926766",
+          "ns": "320879524",
+          "r_eventid": "0",
+          "r_clock": "0",
+          "r_ns": "0",
+          "correlationid": "0",
+          "userid": "0",
+          "name": "Linux: Zabbix agent is not available (for 3m)",
+          "acknowledged": "0",
+          "severity": "3",
+          "cause_eventid": "0",
+          "suppressed": "0",
+          "opdata": "",
+          "urls": []
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "method": "problem.get",
+      "params": {
+        "eventids": [
+          25
+        ],
+        "output": [
+          "eventid",
+          "name"
+        ],
+        "selectAcknowledges": "count"
+      },
+      "result": [
+        {
+          "eventid": "25",
+          "name": "Linux: Zabbix agent is not available (for 3m)",
+          "acknowledges": "0"
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "method": "problem.get",
+      "params": {
+        "sortfield": [
+          "clock"
+        ]
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/sortfield/1\": value must be \"eventid\"."
+      }
+    },
+    {
+      "n": 15,
+      "method": "problem.get",
+      "params": {
+        "filter": {
+          "suppressed": 0
+        }
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/filter\": unexpected parameter \"suppressed\"."
+      }
+    },
+    {
+      "n": 16,
+      "method": "problem.get",
+      "params": {
+        "countOutput": true,
+        "sortfield": [
+          "eventid"
+        ]
+      },
+      "error": {
+        "code": -32500,
+        "message": "Application error.",
+        "data": "Database error occurred."
+      }
+    },
+    {
+      "n": 17,
+      "method": "problem.get",
+      "params": {
+        "source": 9
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/source\": value must be one of 0, 3, 4."
+      }
+    }
+  ]
+}

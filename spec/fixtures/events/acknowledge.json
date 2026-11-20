@@ -1,0 +1,210 @@
+{
+  "class": "events",
+  "scenario": "acknowledge",
+  "recorded_at": "2026-10-14T16:50:46Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "event.get",
+      "params": {
+        "output": [
+          "eventid",
+          "source",
+          "object",
+          "objectid"
+        ],
+        "eventids": [
+          1179
+        ],
+        "selectHosts": [
+          "hostid",
+          "host"
+        ]
+      },
+      "result": [
+        {
+          "eventid": "1179",
+          "source": "0",
+          "object": "0",
+          "objectid": "28174",
+          "hosts": [
+            {
+              "hostid": "12082",
+              "host": "zbxapi-spec-events-h1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": 1179,
+        "action": 2
+      },
+      "result": {
+        "eventids": [
+          1179
+        ]
+      }
+    },
+    {
+      "n": 3,
+      "method": "event.get",
+      "params": {
+        "output": [
+          "eventid",
+          "source",
+          "object",
+          "objectid"
+        ],
+        "eventids": [
+          1179,
+          1180
+        ],
+        "selectHosts": [
+          "hostid",
+          "host"
+        ]
+      },
+      "result": [
+        {
+          "eventid": "1179",
+          "source": "0",
+          "object": "0",
+          "objectid": "28174",
+          "hosts": [
+            {
+              "hostid": "12082",
+              "host": "zbxapi-spec-events-h1"
+            }
+          ]
+        },
+        {
+          "eventid": "1180",
+          "source": "0",
+          "object": "0",
+          "objectid": "28175",
+          "hosts": [
+            {
+              "hostid": "12082",
+              "host": "zbxapi-spec-events-h1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": [
+          1179,
+          1180
+        ],
+        "action": 4,
+        "message": "zbxapi-spec note"
+      },
+      "result": {
+        "eventids": [
+          1179,
+          1180
+        ]
+      }
+    },
+    {
+      "n": 5,
+      "method": "event.get",
+      "params": {
+        "output": [
+          "eventid",
+          "source",
+          "object",
+          "objectid"
+        ],
+        "eventids": [
+          1179
+        ],
+        "selectHosts": [
+          "hostid",
+          "host"
+        ]
+      },
+      "result": [
+        {
+          "eventid": "1179",
+          "source": "0",
+          "object": "0",
+          "objectid": "28174",
+          "hosts": [
+            {
+              "hostid": "12082",
+              "host": "zbxapi-spec-events-h1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": 1179,
+        "action": 2
+      },
+      "result": {
+        "eventids": [
+          1179
+        ]
+      }
+    },
+    {
+      "n": 7,
+      "method": "event.get",
+      "params": {
+        "output": [
+          "eventid",
+          "source",
+          "object",
+          "objectid"
+        ],
+        "eventids": [
+          1180
+        ],
+        "selectHosts": [
+          "hostid",
+          "host"
+        ]
+      },
+      "result": [
+        {
+          "eventid": "1180",
+          "source": "0",
+          "object": "0",
+          "objectid": "28175",
+          "hosts": [
+            {
+              "hostid": "12082",
+              "host": "zbxapi-spec-events-h1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": 1180,
+        "action": 1
+      },
+      "error": {
+        "code": -32500,
+        "message": "Application error.",
+        "data": "Cannot close problem: trigger does not allow manual closing."
+      }
+    }
+  ]
+}

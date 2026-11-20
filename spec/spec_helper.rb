@@ -1,33 +1,18 @@
 require 'zabbixapi'
 
+# live.rb first: import_guard.rb sorts before it and reads constants live.rb defines at load time.
+require_relative 'support/live/live'
+Dir[File.join(__dir__, 'support', '**', '*.rb')].sort.each { |file| require file }
+
 RSpec.configure do |config|
+  config.disable_monkey_patching!
+  config.expect_with(:rspec) { |expectations| expectations.syntax = :expect }
+  config.mock_with(:rspec) { |mocks| mocks.verify_partial_doubles = true }
+
+  # Everything under spec/acceptance/ reaches the server ZABBIX_URL names, and runs only when both
+  # ZABBIX_URL and ZABBIX_TOKEN are set; the unit suite never opens a socket.
   config.define_derived_metadata(file_path: %r{/spec/acceptance/}) do |metadata|
     metadata[:type] = :acceptance
   end
-
-  # Don't run acceptance tests unless a host is provided
-  config.filter_run_excluding type: :acceptance unless ENV.key?('ZABBIX_HOST_URL') || ENV.key?('ZABBIX_RUN_ACCEPTANCE')
-end
-
-def zbx
-  # settings
-  @api_url = ENV['ZABBIX_HOST_URL'] || 'http://localhost:8080/api_jsonrpc.php'
-  @api_login = ENV['ZABBIX_USERNAME'] || 'Admin'
-  @api_password = ENV['ZABBIX_PASSWORD'] || 'zabbix'
-
-  @zbx ||= ZabbixApi.connect(
-    url: @api_url,
-    user: @api_login,
-    password: @api_password,
-    debug: ENV['ZABBIX_DEBUG'] ? true : false
-  )
-end
-
-def gen_id
-  rand(1_000_000_000)
-end
-
-def gen_name(prefix)
-  suffix = rand(1_000_000_000)
-  "#{prefix}_#{suffix}"
+  config.filter_run_excluding(type: :acceptance) unless Live.configured?
 end

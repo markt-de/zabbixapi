@@ -1,0 +1,915 @@
+{
+  "class": "usergroups",
+  "scenario": "crud",
+  "recorded_at": "2026-09-14T18:18:30Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "usergroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-usergroups-minimal"
+        }
+      ],
+      "result": {
+        "usrgrpids": [
+          "87"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "usergroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-usergroups-minimal"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "User group \"zbxapi-spec-usergroups-minimal\" already exists."
+      }
+    },
+    {
+      "n": 3,
+      "method": "usergroup.create",
+      "params": [
+        {
+          "debug_mode": 0
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": the parameter \"name\" is missing."
+      }
+    },
+    {
+      "n": 4,
+      "method": "usergroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-usergroups-withid",
+          "usrgrpid": 99
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"usrgrpid\"."
+      }
+    },
+    {
+      "n": 5,
+      "method": "usergroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-usergroups-udir",
+          "gui_access": 1,
+          "userdirectoryid": 1
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"userdirectoryid\"."
+      }
+    },
+    {
+      "n": 6,
+      "method": "usergroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-usergroups-guiaccess",
+          "gui_access": 4
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/gui_access\": value must be one of 0, 1, 2, 3."
+      }
+    },
+    {
+      "n": 7,
+      "method": "usergroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-usergroups-full",
+          "gui_access": 3,
+          "debug_mode": 1,
+          "hostgroup_rights": [
+            {
+              "id": 434,
+              "permission": 3
+            }
+          ],
+          "templategroup_rights": [
+            {
+              "id": 436,
+              "permission": 2
+            }
+          ],
+          "tag_filters": [
+            {
+              "groupid": 434,
+              "tag": "env",
+              "value": "prod"
+            }
+          ],
+          "users": [
+            {
+              "userid": 49
+            }
+          ]
+        }
+      ],
+      "result": {
+        "usrgrpids": [
+          "88"
+        ]
+      }
+    },
+    {
+      "n": 8,
+      "method": "usergroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-usergroups-perm1",
+          "hostgroup_rights": [
+            {
+              "id": 434,
+              "permission": 1
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/hostgroup_rights/1/permission\": value must be one of 0, 2, 3."
+      }
+    },
+    {
+      "n": 9,
+      "method": "usergroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-usergroups-minimal"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "usrgrpid": "87",
+          "name": "zbxapi-spec-usergroups-minimal",
+          "gui_access": "0",
+          "users_status": "0",
+          "debug_mode": "0",
+          "userdirectoryid": "0",
+          "mfa_status": "0",
+          "mfaid": "0"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "method": "usergroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-usergroups-minimal"
+        },
+        "output": [
+          "usrgrpid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "usrgrpid": "87",
+          "name": "zbxapi-spec-usergroups-minimal"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "method": "usergroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-usergroups-absent"
+        },
+        "output": [
+          "usrgrpid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 12,
+      "method": "usergroup.get",
+      "params": {
+        "filter": {
+          "usrgrpid": 87
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "usrgrpid": "87",
+          "name": "zbxapi-spec-usergroups-minimal",
+          "gui_access": "0",
+          "users_status": "0",
+          "debug_mode": "0",
+          "userdirectoryid": "0",
+          "mfa_status": "0",
+          "mfaid": "0"
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "method": "usergroup.get",
+      "params": {
+        "usrgrpids": [
+          88
+        ],
+        "selectUsers": "extend",
+        "selectHostGroupRights": "extend",
+        "selectTemplateGroupRights": "extend",
+        "selectTagFilters": "extend"
+      },
+      "result": [
+        {
+          "usrgrpid": "88",
+          "name": "zbxapi-spec-usergroups-full",
+          "gui_access": "3",
+          "users_status": "0",
+          "debug_mode": "1",
+          "userdirectoryid": "0",
+          "mfa_status": "0",
+          "mfaid": "0",
+          "users": [
+            {
+              "userid": "49",
+              "username": "zbxapi-spec-usergroups-u1",
+              "name": "",
+              "surname": "",
+              "url": "",
+              "autologin": "0",
+              "autologout": "15m",
+              "lang": "default",
+              "refresh": "30s",
+              "theme": "default",
+              "attempt_failed": "0",
+              "attempt_ip": "",
+              "attempt_clock": "0",
+              "rows_per_page": "50",
+              "timezone": "default",
+              "roleid": "120",
+              "userdirectoryid": "0",
+              "ts_provisioned": "0",
+              "provisioned": "0",
+              "gui_access": "3",
+              "debug_mode": "1",
+              "users_status": "0"
+            }
+          ],
+          "hostgroup_rights": [
+            {
+              "id": "434",
+              "permission": "3"
+            }
+          ],
+          "templategroup_rights": [
+            {
+              "id": "436",
+              "permission": "2"
+            }
+          ],
+          "tag_filters": [
+            {
+              "groupid": "434",
+              "tag": "env",
+              "value": "prod"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "method": "usergroup.get",
+      "params": {
+        "output": [
+          "name"
+        ],
+        "userids": [
+          49
+        ]
+      },
+      "result": [
+        {
+          "usrgrpid": "88",
+          "name": "zbxapi-spec-usergroups-full"
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "method": "usergroup.get",
+      "params": {
+        "countOutput": true,
+        "usrgrpids": [
+          87,
+          88
+        ]
+      },
+      "result": "2"
+    },
+    {
+      "n": 16,
+      "method": "usergroup.get",
+      "params": {
+        "output": "extend"
+      },
+      "result": [
+        {
+          "usrgrpid": "7",
+          "name": "Zabbix administrators",
+          "gui_access": "0",
+          "users_status": "0",
+          "debug_mode": "0",
+          "userdirectoryid": "0",
+          "mfa_status": "0",
+          "mfaid": "0"
+        },
+        {
+          "usrgrpid": "8",
+          "name": "Guests",
+          "gui_access": "0",
+          "users_status": "0",
+          "debug_mode": "0",
+          "userdirectoryid": "0",
+          "mfa_status": "0",
+          "mfaid": "0"
+        },
+        {
+          "usrgrpid": "9",
+          "name": "Disabled",
+          "gui_access": "0",
+          "users_status": "1",
+          "debug_mode": "0",
+          "userdirectoryid": "0",
+          "mfa_status": "0",
+          "mfaid": "0"
+        },
+        {
+          "usrgrpid": "11",
+          "name": "Enabled debug mode",
+          "gui_access": "0",
+          "users_status": "0",
+          "debug_mode": "1",
+          "userdirectoryid": "0",
+          "mfa_status": "0",
+          "mfaid": "0"
+        },
+        {
+          "usrgrpid": "12",
+          "name": "No access to the frontend",
+          "gui_access": "3",
+          "users_status": "0",
+          "debug_mode": "0",
+          "userdirectoryid": "0",
+          "mfa_status": "0",
+          "mfaid": "0"
+        },
+        {
+          "usrgrpid": "13",
+          "name": "Internal",
+          "gui_access": "1",
+          "users_status": "0",
+          "debug_mode": "0",
+          "userdirectoryid": "0",
+          "mfa_status": "0",
+          "mfaid": "0"
+        },
+        {
+          "usrgrpid": "87",
+          "name": "zbxapi-spec-usergroups-minimal",
+          "gui_access": "0",
+          "users_status": "0",
+          "debug_mode": "0",
+          "userdirectoryid": "0",
+          "mfa_status": "0",
+          "mfaid": "0"
+        },
+        {
+          "usrgrpid": "88",
+          "name": "zbxapi-spec-usergroups-full",
+          "gui_access": "3",
+          "users_status": "0",
+          "debug_mode": "1",
+          "userdirectoryid": "0",
+          "mfa_status": "0",
+          "mfaid": "0"
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "method": "usergroup.get",
+      "params": {
+        "filter": {
+          "usrgrpid": 87
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "usrgrpid": "87",
+          "name": "zbxapi-spec-usergroups-minimal",
+          "gui_access": "0",
+          "users_status": "0",
+          "debug_mode": "0",
+          "userdirectoryid": "0",
+          "mfa_status": "0",
+          "mfaid": "0"
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "method": "usergroup.get",
+      "params": {
+        "filter": {
+          "usrgrpid": 87
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "usrgrpid": "87",
+          "name": "zbxapi-spec-usergroups-minimal",
+          "gui_access": "0",
+          "users_status": "0",
+          "debug_mode": "0",
+          "userdirectoryid": "0",
+          "mfa_status": "0",
+          "mfaid": "0"
+        }
+      ]
+    },
+    {
+      "n": 19,
+      "method": "usergroup.update",
+      "params": [
+        {
+          "usrgrpid": 87,
+          "name": "zbxapi-spec-usergroups-renamed",
+          "debug_mode": 1
+        }
+      ],
+      "result": {
+        "usrgrpids": [
+          "87"
+        ]
+      }
+    },
+    {
+      "n": 20,
+      "method": "usergroup.get",
+      "params": {
+        "filter": {
+          "usrgrpid": 88
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "usrgrpid": "88",
+          "name": "zbxapi-spec-usergroups-full",
+          "gui_access": "3",
+          "users_status": "0",
+          "debug_mode": "1",
+          "userdirectoryid": "0",
+          "mfa_status": "0",
+          "mfaid": "0"
+        }
+      ]
+    },
+    {
+      "n": 21,
+      "method": "usergroup.update",
+      "params": [
+        {
+          "usrgrpid": 88,
+          "users": [
+            {
+              "userid": 49
+            }
+          ]
+        }
+      ],
+      "result": {
+        "usrgrpids": [
+          "88"
+        ]
+      }
+    },
+    {
+      "n": 22,
+      "method": "usergroup.get",
+      "params": {
+        "filter": {
+          "usrgrpid": 87
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "usrgrpid": "87",
+          "name": "zbxapi-spec-usergroups-renamed",
+          "gui_access": "0",
+          "users_status": "0",
+          "debug_mode": "1",
+          "userdirectoryid": "0",
+          "mfa_status": "0",
+          "mfaid": "0"
+        }
+      ]
+    },
+    {
+      "n": 23,
+      "method": "usergroup.update",
+      "params": [
+        {
+          "usrgrpid": 87,
+          "gui_access": 4
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/gui_access\": value must be one of 0, 1, 2, 3."
+      }
+    },
+    {
+      "n": 24,
+      "method": "usergroup.update",
+      "params": {
+        "usrgrpid": 87,
+        "hostgroup_rights": [
+          {
+            "permission": 2,
+            "id": 434
+          }
+        ]
+      },
+      "result": {
+        "usrgrpids": [
+          "87"
+        ]
+      }
+    },
+    {
+      "n": 25,
+      "method": "usergroup.update",
+      "params": {
+        "usrgrpid": 87,
+        "hostgroup_rights": [
+          {
+            "permission": 0,
+            "id": 434
+          }
+        ]
+      },
+      "result": {
+        "usrgrpids": [
+          "87"
+        ]
+      }
+    },
+    {
+      "n": 26,
+      "method": "usergroup.update",
+      "params": {
+        "usrgrpid": 87,
+        "hostgroup_rights": [
+          {
+            "permission": 3,
+            "id": 434
+          },
+          {
+            "permission": 3,
+            "id": 435
+          }
+        ]
+      },
+      "result": {
+        "usrgrpids": [
+          "87"
+        ]
+      }
+    },
+    {
+      "n": 27,
+      "method": "usergroup.update",
+      "params": {
+        "usrgrpid": 87,
+        "hostgroup_rights": [
+          {
+            "permission": 2,
+            "id": 434
+          }
+        ]
+      },
+      "result": {
+        "usrgrpids": [
+          "87"
+        ]
+      }
+    },
+    {
+      "n": 28,
+      "method": "usergroup.update",
+      "params": {
+        "usrgrpid": null,
+        "hostgroup_rights": [
+          {
+            "permission": 2,
+            "id": 434
+          }
+        ]
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/usrgrpid\": a number is expected."
+      }
+    },
+    {
+      "n": 29,
+      "method": "usergroup.update",
+      "params": [
+        {
+          "usrgrpid": 88,
+          "users": [
+            {
+              "userid": 49
+            },
+            {
+              "userid": 50
+            }
+          ]
+        }
+      ],
+      "result": {
+        "usrgrpids": [
+          "88"
+        ]
+      }
+    },
+    {
+      "n": 30,
+      "method": "usergroup.update",
+      "params": [
+        {
+          "usrgrpid": 88,
+          "users": [
+            {
+              "userid": 49
+            }
+          ]
+        },
+        {
+          "usrgrpid": 87,
+          "users": [
+            {
+              "userid": 49
+            }
+          ]
+        }
+      ],
+      "result": {
+        "usrgrpids": [
+          "88",
+          "87"
+        ]
+      }
+    },
+    {
+      "n": 31,
+      "method": "usergroup.update",
+      "params": [
+        {
+          "usrgrpid": 88,
+          "users": []
+        }
+      ],
+      "result": {
+        "usrgrpids": [
+          "88"
+        ]
+      }
+    },
+    {
+      "n": 32,
+      "method": "usergroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-usergroups-renamed"
+        },
+        "output": [
+          "usrgrpid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "usrgrpid": "87",
+          "name": "zbxapi-spec-usergroups-renamed"
+        }
+      ]
+    },
+    {
+      "n": 33,
+      "method": "usergroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-usergroups-goc"
+        },
+        "output": [
+          "usrgrpid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 34,
+      "method": "usergroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-usergroups-goc"
+        }
+      ],
+      "result": {
+        "usrgrpids": [
+          "89"
+        ]
+      }
+    },
+    {
+      "n": 35,
+      "method": "usergroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-usergroups-goc"
+        },
+        "output": [
+          "usrgrpid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "usrgrpid": "89",
+          "name": "zbxapi-spec-usergroups-goc"
+        }
+      ]
+    },
+    {
+      "n": 36,
+      "method": "usergroup.get",
+      "params": {
+        "filter": {
+          "usrgrpid": "89"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "usrgrpid": "89",
+          "name": "zbxapi-spec-usergroups-goc",
+          "gui_access": "0",
+          "users_status": "0",
+          "debug_mode": "0",
+          "userdirectoryid": "0",
+          "mfa_status": "0",
+          "mfaid": "0"
+        }
+      ]
+    },
+    {
+      "n": 37,
+      "method": "usergroup.update",
+      "params": [
+        {
+          "name": "zbxapi-spec-usergroups-goc",
+          "debug_mode": 1,
+          "usrgrpid": "89"
+        }
+      ],
+      "result": {
+        "usrgrpids": [
+          "89"
+        ]
+      }
+    },
+    {
+      "n": 38,
+      "method": "usergroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-usergroups-cou"
+        },
+        "output": [
+          "usrgrpid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 39,
+      "method": "usergroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-usergroups-cou"
+        }
+      ],
+      "result": {
+        "usrgrpids": [
+          "90"
+        ]
+      }
+    },
+    {
+      "n": 40,
+      "method": "usergroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-usergroups-added"
+        }
+      ],
+      "result": {
+        "usrgrpids": [
+          "91"
+        ]
+      }
+    },
+    {
+      "n": 41,
+      "method": "usergroup.delete",
+      "params": [
+        91
+      ],
+      "result": {
+        "usrgrpids": [
+          "91"
+        ]
+      }
+    },
+    {
+      "n": 42,
+      "method": "usergroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-usergroups-disposable"
+        }
+      ],
+      "result": {
+        "usrgrpids": [
+          "92"
+        ]
+      }
+    },
+    {
+      "n": 43,
+      "method": "usergroup.delete",
+      "params": [
+        "92"
+      ],
+      "result": {
+        "usrgrpids": [
+          "92"
+        ]
+      }
+    },
+    {
+      "n": 44,
+      "method": "usergroup.delete",
+      "params": [
+        999999999
+      ],
+      "error": {
+        "code": -32500,
+        "message": "Application error.",
+        "data": "No permissions to referred object or it does not exist!"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1358 @@
+{
+  "class": "actions",
+  "scenario": "crud",
+  "recorded_at": "2026-10-19T08:39:58Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "action.create",
+      "params": [
+        {
+          "eventsource": 0,
+          "status": 1,
+          "esc_period": "1h",
+          "operations": [
+            {
+              "operationtype": 0,
+              "opmessage": {
+                "default_msg": 1,
+                "mediatypeid": 443
+              },
+              "opmessage_grp": [
+                {
+                  "usrgrpid": 568
+                }
+              ]
+            }
+          ],
+          "name": "zbxapi-spec-actions-one"
+        }
+      ],
+      "result": {
+        "actionids": [
+          "580"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "action.create",
+      "params": [
+        {
+          "eventsource": 0,
+          "status": 1,
+          "esc_period": "1h",
+          "operations": [
+            {
+              "operationtype": 0,
+              "opmessage": {
+                "default_msg": 1,
+                "mediatypeid": 443
+              },
+              "opmessage_grp": [
+                {
+                  "usrgrpid": 568
+                }
+              ]
+            }
+          ],
+          "name": "zbxapi-spec-actions-one"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Action \"zbxapi-spec-actions-one\" already exists."
+      }
+    },
+    {
+      "n": 3,
+      "method": "action.create",
+      "params": [
+        {
+          "eventsource": 0,
+          "status": 1,
+          "esc_period": "1h",
+          "operations": [
+            {
+              "operationtype": 0,
+              "opmessage": {
+                "default_msg": 1,
+                "mediatypeid": 443
+              },
+              "opmessage_grp": [
+                {
+                  "usrgrpid": 568
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": the parameter \"name\" is missing."
+      }
+    },
+    {
+      "n": 4,
+      "method": "action.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-actions-noops",
+          "eventsource": 0,
+          "status": 1,
+          "esc_period": "1h"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "No operations defined for action \"zbxapi-spec-actions-noops\"."
+      }
+    },
+    {
+      "n": 5,
+      "method": "action.create",
+      "params": [
+        {
+          "eventsource": 0,
+          "status": 1,
+          "esc_period": "1h",
+          "operations": [
+            {
+              "operationtype": 0,
+              "opmessage": {
+                "default_msg": 1,
+                "mediatypeid": 443
+              }
+            }
+          ],
+          "name": "zbxapi-spec-actions-nodest"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "No recipients specified for action operation message."
+      }
+    },
+    {
+      "n": 6,
+      "method": "action.create",
+      "params": [
+        {
+          "eventsource": 0,
+          "status": 1,
+          "esc_period": "1h",
+          "operations": [
+            {
+              "operationtype": 4,
+              "opgroup": [
+                {
+                  "groupid": 1471
+                }
+              ]
+            }
+          ],
+          "name": "zbxapi-spec-actions-optrig4"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/operations/1\": unexpected parameter \"opgroup\"."
+      }
+    },
+    {
+      "n": 7,
+      "method": "action.create",
+      "params": [
+        {
+          "eventsource": 0,
+          "status": 1,
+          "esc_period": "1h",
+          "operations": [
+            {
+              "operationtype": 0,
+              "opmessage": {
+                "default_msg": 1,
+                "mediatypeid": 443
+              },
+              "opmessage_grp": [
+                {
+                  "usrgrpid": 568
+                }
+              ]
+            }
+          ],
+          "name": "zbxapi-spec-actions-withid",
+          "actionid": 99
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"actionid\"."
+      }
+    },
+    {
+      "n": 8,
+      "method": "action.create",
+      "params": [
+        {
+          "eventsource": 5,
+          "status": 1,
+          "esc_period": "1h",
+          "operations": [
+            {
+              "operationtype": 0,
+              "opmessage": {
+                "default_msg": 1,
+                "mediatypeid": 443
+              },
+              "opmessage_grp": [
+                {
+                  "usrgrpid": 568
+                }
+              ]
+            }
+          ],
+          "name": "zbxapi-spec-actions-badsource"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/eventsource\": value must be one of 0, 1, 2, 3, 4."
+      }
+    },
+    {
+      "n": 9,
+      "method": "action.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-actions-escdisc",
+          "eventsource": 1,
+          "status": 1,
+          "esc_period": "1h",
+          "operations": [
+            {
+              "operationtype": 4,
+              "opgroup": [
+                {
+                  "groupid": 1471
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"esc_period\"."
+      }
+    },
+    {
+      "n": 10,
+      "method": "action.create",
+      "params": [
+        {
+          "eventsource": 0,
+          "status": 1,
+          "esc_period": "30s",
+          "operations": [
+            {
+              "operationtype": 0,
+              "opmessage": {
+                "default_msg": 1,
+                "mediatypeid": 443
+              },
+              "opmessage_grp": [
+                {
+                  "usrgrpid": 568
+                }
+              ]
+            }
+          ],
+          "name": "zbxapi-spec-actions-escmin"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/esc_period\": value must be one of 60-604800."
+      }
+    },
+    {
+      "n": 11,
+      "method": "action.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-actions-discovery",
+          "eventsource": 1,
+          "status": 1,
+          "operations": [
+            {
+              "operationtype": 4,
+              "opgroup": [
+                {
+                  "groupid": 1471
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "result": {
+        "actionids": [
+          "581"
+        ]
+      }
+    },
+    {
+      "n": 12,
+      "method": "action.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-actions-one"
+        },
+        "output": "extend",
+        "selectOperations": "extend",
+        "selectRecoveryOperations": "extend",
+        "selectUpdateOperations": "extend",
+        "selectFilter": "extend"
+      },
+      "result": [
+        {
+          "actionid": "580",
+          "name": "zbxapi-spec-actions-one",
+          "eventsource": "0",
+          "status": "1",
+          "esc_period": "1h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1",
+          "filter": {
+            "evaltype": "0",
+            "formula": "",
+            "eval_formula": "",
+            "conditions": []
+          },
+          "operations": [
+            {
+              "operationid": "659",
+              "actionid": "580",
+              "operationtype": "0",
+              "esc_period": "0",
+              "esc_step_from": "1",
+              "esc_step_to": "1",
+              "evaltype": "0",
+              "opconditions": [],
+              "opmessage": {
+                "default_msg": "1",
+                "subject": "",
+                "message": "",
+                "mediatypeid": "443"
+              },
+              "opmessage_grp": [
+                {
+                  "usrgrpid": "568"
+                }
+              ],
+              "opmessage_usr": []
+            }
+          ],
+          "recovery_operations": [],
+          "update_operations": []
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "method": "action.get",
+      "params": {
+        "output": "extend",
+        "selectOperations": "extend",
+        "selectRecoveryOperations": "extend",
+        "selectUpdateOperations": "extend",
+        "selectFilter": "extend"
+      },
+      "result": [
+        {
+          "actionid": "2",
+          "name": "Auto discovery. Linux servers.",
+          "eventsource": "1",
+          "status": "1",
+          "esc_period": "0",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1",
+          "filter": {
+            "evaltype": "0",
+            "formula": "",
+            "eval_formula": "A and B and C",
+            "conditions": [
+              {
+                "conditiontype": "10",
+                "operator": "0",
+                "value": "0",
+                "value2": "",
+                "formulaid": "A"
+              },
+              {
+                "conditiontype": "12",
+                "operator": "2",
+                "value": "Linux",
+                "value2": "",
+                "formulaid": "B"
+              },
+              {
+                "conditiontype": "8",
+                "operator": "0",
+                "value": "9",
+                "value2": "",
+                "formulaid": "C"
+              }
+            ]
+          },
+          "operations": [
+            {
+              "operationid": "1",
+              "actionid": "2",
+              "operationtype": "6",
+              "esc_period": "0",
+              "esc_step_from": "1",
+              "esc_step_to": "1",
+              "evaltype": "0",
+              "opconditions": [],
+              "optemplate": [
+                {
+                  "templateid": "10001"
+                }
+              ]
+            },
+            {
+              "operationid": "2",
+              "actionid": "2",
+              "operationtype": "4",
+              "esc_period": "0",
+              "esc_step_from": "1",
+              "esc_step_to": "1",
+              "evaltype": "0",
+              "opconditions": [],
+              "opgroup": [
+                {
+                  "groupid": "2"
+                }
+              ]
+            }
+          ],
+          "recovery_operations": [],
+          "update_operations": []
+        },
+        {
+          "actionid": "3",
+          "name": "Report problems to Zabbix administrators",
+          "eventsource": "0",
+          "status": "1",
+          "esc_period": "1h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1",
+          "filter": {
+            "evaltype": "0",
+            "formula": "",
+            "eval_formula": "",
+            "conditions": []
+          },
+          "operations": [
+            {
+              "operationid": "3",
+              "actionid": "3",
+              "operationtype": "0",
+              "esc_period": "0",
+              "esc_step_from": "1",
+              "esc_step_to": "1",
+              "evaltype": "0",
+              "opconditions": [],
+              "opmessage": {
+                "default_msg": "1",
+                "subject": "",
+                "message": "",
+                "mediatypeid": "0"
+              },
+              "opmessage_grp": [
+                {
+                  "usrgrpid": "7"
+                }
+              ],
+              "opmessage_usr": []
+            }
+          ],
+          "recovery_operations": [
+            {
+              "operationid": "7",
+              "actionid": "3",
+              "operationtype": "11",
+              "evaltype": "0",
+              "opconditions": [],
+              "opmessage": {
+                "default_msg": "1",
+                "subject": "",
+                "message": "",
+                "mediatypeid": "0"
+              }
+            }
+          ],
+          "update_operations": []
+        },
+        {
+          "actionid": "4",
+          "name": "Report not supported items",
+          "eventsource": "3",
+          "status": "1",
+          "esc_period": "1h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1",
+          "filter": {
+            "evaltype": "0",
+            "formula": "",
+            "eval_formula": "A",
+            "conditions": [
+              {
+                "conditiontype": "23",
+                "operator": "0",
+                "value": "0",
+                "value2": "",
+                "formulaid": "A"
+              }
+            ]
+          },
+          "operations": [
+            {
+              "operationid": "4",
+              "actionid": "4",
+              "operationtype": "0",
+              "esc_period": "0",
+              "esc_step_from": "1",
+              "esc_step_to": "1",
+              "evaltype": "0",
+              "opconditions": [],
+              "opmessage": {
+                "default_msg": "1",
+                "subject": "",
+                "message": "",
+                "mediatypeid": "0"
+              },
+              "opmessage_grp": [
+                {
+                  "usrgrpid": "7"
+                }
+              ],
+              "opmessage_usr": []
+            }
+          ],
+          "recovery_operations": [
+            {
+              "operationid": "8",
+              "actionid": "4",
+              "operationtype": "11",
+              "evaltype": "0",
+              "opconditions": [],
+              "opmessage": {
+                "default_msg": "1",
+                "subject": "",
+                "message": "",
+                "mediatypeid": "0"
+              }
+            }
+          ],
+          "update_operations": []
+        },
+        {
+          "actionid": "5",
+          "name": "Report not supported low level discovery rules",
+          "eventsource": "3",
+          "status": "1",
+          "esc_period": "1h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1",
+          "filter": {
+            "evaltype": "0",
+            "formula": "",
+            "eval_formula": "A",
+            "conditions": [
+              {
+                "conditiontype": "23",
+                "operator": "0",
+                "value": "2",
+                "value2": "",
+                "formulaid": "A"
+              }
+            ]
+          },
+          "operations": [
+            {
+              "operationid": "5",
+              "actionid": "5",
+              "operationtype": "0",
+              "esc_period": "0",
+              "esc_step_from": "1",
+              "esc_step_to": "1",
+              "evaltype": "0",
+              "opconditions": [],
+              "opmessage": {
+                "default_msg": "1",
+                "subject": "",
+                "message": "",
+                "mediatypeid": "0"
+              },
+              "opmessage_grp": [
+                {
+                  "usrgrpid": "7"
+                }
+              ],
+              "opmessage_usr": []
+            }
+          ],
+          "recovery_operations": [
+            {
+              "operationid": "9",
+              "actionid": "5",
+              "operationtype": "11",
+              "evaltype": "0",
+              "opconditions": [],
+              "opmessage": {
+                "default_msg": "1",
+                "subject": "",
+                "message": "",
+                "mediatypeid": "0"
+              }
+            }
+          ],
+          "update_operations": []
+        },
+        {
+          "actionid": "6",
+          "name": "Report unknown triggers",
+          "eventsource": "3",
+          "status": "1",
+          "esc_period": "1h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1",
+          "filter": {
+            "evaltype": "0",
+            "formula": "",
+            "eval_formula": "A",
+            "conditions": [
+              {
+                "conditiontype": "23",
+                "operator": "0",
+                "value": "4",
+                "value2": "",
+                "formulaid": "A"
+              }
+            ]
+          },
+          "operations": [
+            {
+              "operationid": "6",
+              "actionid": "6",
+              "operationtype": "0",
+              "esc_period": "0",
+              "esc_step_from": "1",
+              "esc_step_to": "1",
+              "evaltype": "0",
+              "opconditions": [],
+              "opmessage": {
+                "default_msg": "1",
+                "subject": "",
+                "message": "",
+                "mediatypeid": "0"
+              },
+              "opmessage_grp": [
+                {
+                  "usrgrpid": "7"
+                }
+              ],
+              "opmessage_usr": []
+            }
+          ],
+          "recovery_operations": [
+            {
+              "operationid": "10",
+              "actionid": "6",
+              "operationtype": "11",
+              "evaltype": "0",
+              "opconditions": [],
+              "opmessage": {
+                "default_msg": "1",
+                "subject": "",
+                "message": "",
+                "mediatypeid": "0"
+              }
+            }
+          ],
+          "update_operations": []
+        },
+        {
+          "actionid": "580",
+          "name": "zbxapi-spec-actions-one",
+          "eventsource": "0",
+          "status": "1",
+          "esc_period": "1h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1",
+          "filter": {
+            "evaltype": "0",
+            "formula": "",
+            "eval_formula": "",
+            "conditions": []
+          },
+          "operations": [
+            {
+              "operationid": "659",
+              "actionid": "580",
+              "operationtype": "0",
+              "esc_period": "0",
+              "esc_step_from": "1",
+              "esc_step_to": "1",
+              "evaltype": "0",
+              "opconditions": [],
+              "opmessage": {
+                "default_msg": "1",
+                "subject": "",
+                "message": "",
+                "mediatypeid": "443"
+              },
+              "opmessage_grp": [
+                {
+                  "usrgrpid": "568"
+                }
+              ],
+              "opmessage_usr": []
+            }
+          ],
+          "recovery_operations": [],
+          "update_operations": []
+        },
+        {
+          "actionid": "581",
+          "name": "zbxapi-spec-actions-discovery",
+          "eventsource": "1",
+          "status": "1",
+          "esc_period": "1h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1",
+          "filter": {
+            "evaltype": "0",
+            "formula": "",
+            "eval_formula": "",
+            "conditions": []
+          },
+          "operations": [
+            {
+              "operationid": "660",
+              "actionid": "581",
+              "operationtype": "4",
+              "esc_period": "0",
+              "esc_step_from": "1",
+              "esc_step_to": "1",
+              "evaltype": "0",
+              "opconditions": [],
+              "opgroup": [
+                {
+                  "groupid": "1471"
+                }
+              ]
+            }
+          ],
+          "recovery_operations": [],
+          "update_operations": []
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "method": "action.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-actions-one"
+        },
+        "output": [
+          "actionid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "actionid": "580",
+          "name": "zbxapi-spec-actions-one"
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "method": "action.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-actions-absent"
+        },
+        "output": [
+          "actionid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 16,
+      "method": "action.get",
+      "params": {
+        "filter": {
+          "actionid": 580
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "actionid": "580",
+          "name": "zbxapi-spec-actions-one",
+          "eventsource": "0",
+          "status": "1",
+          "esc_period": "1h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1"
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "method": "action.get",
+      "params": {
+        "output": [
+          "name"
+        ],
+        "usrgrpids": [
+          568
+        ]
+      },
+      "result": [
+        {
+          "actionid": "580",
+          "name": "zbxapi-spec-actions-one"
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "method": "action.get",
+      "params": {
+        "countOutput": true,
+        "actionids": [
+          580
+        ]
+      },
+      "result": "1"
+    },
+    {
+      "n": 19,
+      "method": "action.get",
+      "params": {
+        "output": "extend"
+      },
+      "result": [
+        {
+          "actionid": "2",
+          "name": "Auto discovery. Linux servers.",
+          "eventsource": "1",
+          "status": "1",
+          "esc_period": "0",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1"
+        },
+        {
+          "actionid": "3",
+          "name": "Report problems to Zabbix administrators",
+          "eventsource": "0",
+          "status": "1",
+          "esc_period": "1h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1"
+        },
+        {
+          "actionid": "4",
+          "name": "Report not supported items",
+          "eventsource": "3",
+          "status": "1",
+          "esc_period": "1h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1"
+        },
+        {
+          "actionid": "5",
+          "name": "Report not supported low level discovery rules",
+          "eventsource": "3",
+          "status": "1",
+          "esc_period": "1h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1"
+        },
+        {
+          "actionid": "6",
+          "name": "Report unknown triggers",
+          "eventsource": "3",
+          "status": "1",
+          "esc_period": "1h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1"
+        },
+        {
+          "actionid": "580",
+          "name": "zbxapi-spec-actions-one",
+          "eventsource": "0",
+          "status": "1",
+          "esc_period": "1h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1"
+        },
+        {
+          "actionid": "581",
+          "name": "zbxapi-spec-actions-discovery",
+          "eventsource": "1",
+          "status": "1",
+          "esc_period": "1h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1"
+        }
+      ]
+    },
+    {
+      "n": 20,
+      "method": "action.get",
+      "params": {
+        "filter": {
+          "actionid": 580
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "actionid": "580",
+          "name": "zbxapi-spec-actions-one",
+          "eventsource": "0",
+          "status": "1",
+          "esc_period": "1h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1"
+        }
+      ]
+    },
+    {
+      "n": 21,
+      "method": "action.get",
+      "params": {
+        "filter": {
+          "actionid": 580
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "actionid": "580",
+          "name": "zbxapi-spec-actions-one",
+          "eventsource": "0",
+          "status": "1",
+          "esc_period": "1h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1"
+        }
+      ]
+    },
+    {
+      "n": 22,
+      "method": "action.update",
+      "params": [
+        {
+          "actionid": 580,
+          "esc_period": "2h"
+        }
+      ],
+      "result": {
+        "actionids": [
+          "580"
+        ]
+      }
+    },
+    {
+      "n": 23,
+      "method": "action.get",
+      "params": {
+        "filter": {
+          "actionid": 580
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "actionid": "580",
+          "name": "zbxapi-spec-actions-one",
+          "eventsource": "0",
+          "status": "1",
+          "esc_period": "2h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1"
+        }
+      ]
+    },
+    {
+      "n": 24,
+      "method": "action.update",
+      "params": [
+        {
+          "actionid": 580,
+          "operations": [
+            {
+              "operationtype": 0,
+              "opmessage": {
+                "default_msg": 1,
+                "mediatypeid": 443
+              },
+              "opmessage_grp": [
+                {
+                  "usrgrpid": 568
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "result": {
+        "actionids": [
+          "580"
+        ]
+      }
+    },
+    {
+      "n": 25,
+      "method": "action.get",
+      "params": {
+        "filter": {
+          "actionid": 580
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "actionid": "580",
+          "name": "zbxapi-spec-actions-one",
+          "eventsource": "0",
+          "status": "1",
+          "esc_period": "2h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1"
+        }
+      ]
+    },
+    {
+      "n": 26,
+      "method": "action.update",
+      "params": [
+        {
+          "actionid": 580,
+          "eventsource": 1
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Cannot update \"eventsource\" for action \"zbxapi-spec-actions-one\"."
+      }
+    },
+    {
+      "n": 27,
+      "method": "action.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-actions-one"
+        },
+        "output": [
+          "actionid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "actionid": "580",
+          "name": "zbxapi-spec-actions-one"
+        }
+      ]
+    },
+    {
+      "n": 28,
+      "method": "action.get",
+      "params": {
+        "filter": {
+          "actionid": "580"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "actionid": "580",
+          "name": "zbxapi-spec-actions-one",
+          "eventsource": "0",
+          "status": "1",
+          "esc_period": "2h",
+          "pause_suppressed": "1",
+          "notify_if_canceled": "1",
+          "pause_symptoms": "1"
+        }
+      ]
+    },
+    {
+      "n": 29,
+      "method": "action.update",
+      "params": [
+        {
+          "name": "zbxapi-spec-actions-one",
+          "esc_period": "3h",
+          "actionid": "580"
+        }
+      ],
+      "result": {
+        "actionids": [
+          "580"
+        ]
+      }
+    },
+    {
+      "n": 30,
+      "method": "action.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-actions-upserted"
+        },
+        "output": [
+          "actionid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 31,
+      "method": "action.create",
+      "params": [
+        {
+          "eventsource": 0,
+          "status": 1,
+          "esc_period": "1h",
+          "operations": [
+            {
+              "operationtype": 0,
+              "opmessage": {
+                "default_msg": 1,
+                "mediatypeid": 443
+              },
+              "opmessage_grp": [
+                {
+                  "usrgrpid": 568
+                }
+              ]
+            }
+          ],
+          "name": "zbxapi-spec-actions-upserted"
+        }
+      ],
+      "result": {
+        "actionids": [
+          "582"
+        ]
+      }
+    },
+    {
+      "n": 32,
+      "method": "action.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-actions-one"
+        },
+        "output": [
+          "actionid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "actionid": "580",
+          "name": "zbxapi-spec-actions-one"
+        }
+      ]
+    },
+    {
+      "n": 33,
+      "method": "action.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-actions-gotten"
+        },
+        "output": [
+          "actionid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 34,
+      "method": "action.create",
+      "params": [
+        {
+          "eventsource": 0,
+          "status": 1,
+          "esc_period": "1h",
+          "operations": [
+            {
+              "operationtype": 0,
+              "opmessage": {
+                "default_msg": 1,
+                "mediatypeid": 443
+              },
+              "opmessage_grp": [
+                {
+                  "usrgrpid": 568
+                }
+              ]
+            }
+          ],
+          "name": "zbxapi-spec-actions-gotten"
+        }
+      ],
+      "result": {
+        "actionids": [
+          "583"
+        ]
+      }
+    },
+    {
+      "n": 35,
+      "method": "action.create",
+      "params": [
+        {
+          "eventsource": 0,
+          "status": 1,
+          "esc_period": "1h",
+          "operations": [
+            {
+              "operationtype": 0,
+              "opmessage": {
+                "default_msg": 1,
+                "mediatypeid": 443
+              },
+              "opmessage_grp": [
+                {
+                  "usrgrpid": 568
+                }
+              ]
+            }
+          ],
+          "name": "zbxapi-spec-actions-added"
+        }
+      ],
+      "result": {
+        "actionids": [
+          "584"
+        ]
+      }
+    },
+    {
+      "n": 36,
+      "method": "action.delete",
+      "params": [
+        584
+      ],
+      "result": {
+        "actionids": [
+          "584"
+        ]
+      }
+    },
+    {
+      "n": 37,
+      "method": "action.create",
+      "params": [
+        {
+          "eventsource": 0,
+          "status": 1,
+          "esc_period": "1h",
+          "operations": [
+            {
+              "operationtype": 0,
+              "opmessage": {
+                "default_msg": 1,
+                "mediatypeid": 443
+              },
+              "opmessage_grp": [
+                {
+                  "usrgrpid": 568
+                }
+              ]
+            }
+          ],
+          "name": "zbxapi-spec-actions-disposable"
+        }
+      ],
+      "result": {
+        "actionids": [
+          "585"
+        ]
+      }
+    },
+    {
+      "n": 38,
+      "method": "action.delete",
+      "params": [
+        585
+      ],
+      "result": {
+        "actionids": [
+          "585"
+        ]
+      }
+    },
+    {
+      "n": 39,
+      "method": "action.delete",
+      "params": [
+        999999999
+      ],
+      "error": {
+        "code": -32500,
+        "message": "Application error.",
+        "data": "No permissions to referred object or it does not exist!"
+      }
+    }
+  ]
+}

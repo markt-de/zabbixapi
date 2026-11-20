@@ -1,0 +1,617 @@
+{
+  "class": "hostgroups",
+  "scenario": "crud",
+  "recorded_at": "2026-10-15T14:51:05Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "hostgroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-hostgroups-one"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1229"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "hostgroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-hostgroups-one"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Host group \"zbxapi-spec-hostgroups-one\" already exists."
+      }
+    },
+    {
+      "n": 3,
+      "method": "hostgroup.create",
+      "params": [
+        {
+          "uuid": "d4afb565f15949cfaf005642fd887d31"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": the parameter \"name\" is missing."
+      }
+    },
+    {
+      "n": 4,
+      "method": "hostgroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-hostgroups-flags",
+          "flags": 4
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"flags\"."
+      }
+    },
+    {
+      "n": 5,
+      "method": "hostgroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-hostgroups-baduuid",
+          "uuid": "abcdef0123456789abcdef0123456789"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/uuid\": UUIDv4 is expected."
+      }
+    },
+    {
+      "n": 6,
+      "method": "hostgroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-hostgroups-bulk1"
+        },
+        {
+          "name": "zbxapi-spec-hostgroups-bulk2"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1230",
+          "1231"
+        ]
+      }
+    },
+    {
+      "n": 7,
+      "method": "hostgroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-hostgroups-two",
+          "uuid": "6b9c7deee1424dfb8e38f510994f0378"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1232"
+        ]
+      }
+    },
+    {
+      "n": 8,
+      "method": "hostgroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-hostgroups-one"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "groupid": "1229",
+          "name": "zbxapi-spec-hostgroups-one",
+          "flags": "0",
+          "uuid": "1734364c6037475db19b4aa0a1a8dcfc"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "method": "hostgroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-hostgroups-one"
+        },
+        "output": [
+          "groupid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "groupid": "1229",
+          "name": "zbxapi-spec-hostgroups-one"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "method": "hostgroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-hostgroups-one",
+          "groupid": 1229
+        },
+        "output": [
+          "groupid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "groupid": "1229",
+          "name": "zbxapi-spec-hostgroups-one"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "method": "hostgroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-hostgroups-absent"
+        },
+        "output": [
+          "groupid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 12,
+      "method": "hostgroup.get",
+      "params": {
+        "filter": {
+          "groupid": 1229
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "groupid": "1229",
+          "name": "zbxapi-spec-hostgroups-one",
+          "flags": "0",
+          "uuid": "1734364c6037475db19b4aa0a1a8dcfc"
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "method": "hostgroup.get",
+      "params": {
+        "output": [
+          "name"
+        ],
+        "groupids": [
+          1229
+        ]
+      },
+      "result": [
+        {
+          "name": "zbxapi-spec-hostgroups-one"
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "method": "hostgroup.get",
+      "params": {
+        "countOutput": true,
+        "groupids": [
+          1229
+        ]
+      },
+      "result": "1"
+    },
+    {
+      "n": 15,
+      "method": "hostgroup.get",
+      "params": {
+        "output": "extend"
+      },
+      "result": [
+        {
+          "groupid": "2",
+          "name": "Linux servers",
+          "flags": "0",
+          "uuid": "dc579cd7a1a34222933f24f52a68bcd8"
+        },
+        {
+          "groupid": "4",
+          "name": "Zabbix servers",
+          "flags": "0",
+          "uuid": "6f6799aa69e844b4b3918f779f2abf08"
+        },
+        {
+          "groupid": "5",
+          "name": "Discovered hosts",
+          "flags": "0",
+          "uuid": "f2481361f99448eea617b7b1d4765566"
+        },
+        {
+          "groupid": "6",
+          "name": "Virtual machines",
+          "flags": "0",
+          "uuid": "137f19e6e2dc4219b33553b812627bc2"
+        },
+        {
+          "groupid": "7",
+          "name": "Hypervisors",
+          "flags": "0",
+          "uuid": "1b837a3c078647049a0c00c61b4d57b5"
+        },
+        {
+          "groupid": "19",
+          "name": "Applications",
+          "flags": "0",
+          "uuid": "a571c0d144b14fd4a87a9d9b2aa9fcd6"
+        },
+        {
+          "groupid": "20",
+          "name": "Databases",
+          "flags": "0",
+          "uuid": "748ad4d098d447d492bb935c907f652f"
+        },
+        {
+          "groupid": "1229",
+          "name": "zbxapi-spec-hostgroups-one",
+          "flags": "0",
+          "uuid": "1734364c6037475db19b4aa0a1a8dcfc"
+        },
+        {
+          "groupid": "1230",
+          "name": "zbxapi-spec-hostgroups-bulk1",
+          "flags": "0",
+          "uuid": "42bdb2b826a34ad68c1ded7ee6240cef"
+        },
+        {
+          "groupid": "1231",
+          "name": "zbxapi-spec-hostgroups-bulk2",
+          "flags": "0",
+          "uuid": "b3a8a18a88fc4febb168be5d5516e3f4"
+        },
+        {
+          "groupid": "1232",
+          "name": "zbxapi-spec-hostgroups-two",
+          "flags": "0",
+          "uuid": "6b9c7deee1424dfb8e38f510994f0378"
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "method": "hostgroup.get",
+      "params": {
+        "filter": {
+          "groupid": 1229
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "groupid": "1229",
+          "name": "zbxapi-spec-hostgroups-one",
+          "flags": "0",
+          "uuid": "1734364c6037475db19b4aa0a1a8dcfc"
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "method": "hostgroup.get",
+      "params": {
+        "filter": {
+          "groupid": 1229
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "groupid": "1229",
+          "name": "zbxapi-spec-hostgroups-one",
+          "flags": "0",
+          "uuid": "1734364c6037475db19b4aa0a1a8dcfc"
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "method": "hostgroup.update",
+      "params": [
+        {
+          "groupid": 1229,
+          "name": "zbxapi-spec-hostgroups-batched",
+          "uuid": "0db38ecfbd0a47efaf4f65d054ee19d2"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1229"
+        ]
+      }
+    },
+    {
+      "n": 19,
+      "method": "hostgroup.get",
+      "params": {
+        "filter": {
+          "groupid": 1229
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "groupid": "1229",
+          "name": "zbxapi-spec-hostgroups-batched",
+          "flags": "0",
+          "uuid": "0db38ecfbd0a47efaf4f65d054ee19d2"
+        }
+      ]
+    },
+    {
+      "n": 20,
+      "method": "hostgroup.update",
+      "params": [
+        {
+          "groupid": 1229,
+          "flags": 4
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"flags\"."
+      }
+    },
+    {
+      "n": 21,
+      "method": "hostgroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-hostgroups-two"
+        },
+        "output": [
+          "groupid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "groupid": "1232",
+          "name": "zbxapi-spec-hostgroups-two"
+        }
+      ]
+    },
+    {
+      "n": 22,
+      "method": "hostgroup.get",
+      "params": {
+        "filter": {
+          "groupid": "1232"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "groupid": "1232",
+          "name": "zbxapi-spec-hostgroups-two",
+          "flags": "0",
+          "uuid": "6b9c7deee1424dfb8e38f510994f0378"
+        }
+      ]
+    },
+    {
+      "n": 23,
+      "method": "hostgroup.update",
+      "params": [
+        {
+          "name": "zbxapi-spec-hostgroups-two",
+          "uuid": "37c4255f53bd4f8b9f8804b3cf207e73",
+          "groupid": "1232"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1232"
+        ]
+      }
+    },
+    {
+      "n": 24,
+      "method": "hostgroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-hostgroups-three"
+        },
+        "output": [
+          "groupid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 25,
+      "method": "hostgroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-hostgroups-three"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1233"
+        ]
+      }
+    },
+    {
+      "n": 26,
+      "method": "hostgroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-hostgroups-three"
+        },
+        "output": [
+          "groupid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "groupid": "1233",
+          "name": "zbxapi-spec-hostgroups-three"
+        }
+      ]
+    },
+    {
+      "n": 27,
+      "method": "hostgroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-hostgroups-four"
+        },
+        "output": [
+          "groupid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 28,
+      "method": "hostgroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-hostgroups-four"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1234"
+        ]
+      }
+    },
+    {
+      "n": 29,
+      "method": "hostgroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-hostgroups-added"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1235"
+        ]
+      }
+    },
+    {
+      "n": 30,
+      "method": "hostgroup.delete",
+      "params": [
+        1235
+      ],
+      "result": {
+        "groupids": [
+          1235
+        ]
+      }
+    },
+    {
+      "n": 31,
+      "method": "hostgroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-hostgroups-disposable"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1236"
+        ]
+      }
+    },
+    {
+      "n": 32,
+      "method": "hostgroup.delete",
+      "params": [
+        "1236"
+      ],
+      "result": {
+        "groupids": [
+          "1236"
+        ]
+      }
+    },
+    {
+      "n": 33,
+      "method": "hostgroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-hostgroups-hosted"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1237"
+        ]
+      }
+    },
+    {
+      "n": 34,
+      "method": "host.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-hostgroups-host",
+          "interfaces": [],
+          "status": 1,
+          "groups": [
+            {
+              "groupid": 1237
+            }
+          ]
+        }
+      ],
+      "result": {
+        "hostids": [
+          "12147"
+        ]
+      }
+    },
+    {
+      "n": 35,
+      "method": "hostgroup.delete",
+      "params": [
+        1237
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Host \"zbxapi-spec-hostgroups-host\" cannot be without host group."
+      }
+    }
+  ]
+}

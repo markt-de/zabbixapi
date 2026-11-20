@@ -1,0 +1,1015 @@
+{
+  "class": "mediatypes",
+  "scenario": "crud",
+  "recorded_at": "2026-09-14T18:18:22Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "mediatype.create",
+      "params": [
+        {
+          "type": 0,
+          "smtp_server": "smtp.example.invalid",
+          "smtp_email": "zbxapi-spec@example.invalid",
+          "name": "zbxapi-spec-mediatypes-mail"
+        }
+      ],
+      "result": {
+        "mediatypeids": [
+          "204"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "mediatype.create",
+      "params": [
+        {
+          "type": 0,
+          "smtp_server": "smtp.example.invalid",
+          "smtp_email": "zbxapi-spec@example.invalid",
+          "name": "zbxapi-spec-mediatypes-mail"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Media type \"zbxapi-spec-mediatypes-mail\" already exists."
+      }
+    },
+    {
+      "n": 3,
+      "method": "mediatype.create",
+      "params": [
+        {
+          "type": 4,
+          "script": "return 1;",
+          "name": "zbxapi-spec-mediatypes-hook",
+          "parameters": [
+            {
+              "name": "Message",
+              "value": "{ALERT.MESSAGE}"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "mediatypeids": [
+          "205"
+        ]
+      }
+    },
+    {
+      "n": 4,
+      "method": "mediatype.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-mediatypes-mail"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "mediatypeid": "204",
+          "type": "0",
+          "name": "zbxapi-spec-mediatypes-mail",
+          "smtp_server": "smtp.example.invalid",
+          "smtp_helo": "",
+          "smtp_email": "zbxapi-spec@example.invalid",
+          "exec_path": "",
+          "gsm_modem": "",
+          "username": "",
+          "passwd": "<scrubbed>",
+          "status": "1",
+          "smtp_port": "25",
+          "smtp_security": "0",
+          "smtp_verify_peer": "0",
+          "smtp_verify_host": "0",
+          "smtp_authentication": "0",
+          "maxsessions": "1",
+          "maxattempts": "3",
+          "attempt_interval": "10s",
+          "message_format": "1",
+          "script": "",
+          "timeout": "30s",
+          "process_tags": "0",
+          "show_event_menu": "0",
+          "event_menu_url": "",
+          "event_menu_name": "",
+          "description": "",
+          "provider": "0",
+          "content_type": "1",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "method": "mediatype.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-mediatypes-mail"
+        },
+        "output": [
+          "mediatypeid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "mediatypeid": "204",
+          "name": "zbxapi-spec-mediatypes-mail"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "method": "mediatype.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-mediatypes-mail"
+        },
+        "output": [
+          "mediatypeid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "mediatypeid": "204",
+          "name": "zbxapi-spec-mediatypes-mail"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "method": "mediatype.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-mediatypes-absent"
+        },
+        "output": [
+          "mediatypeid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 8,
+      "method": "mediatype.get",
+      "params": {
+        "filter": {
+          "mediatypeid": 204
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "mediatypeid": "204",
+          "type": "0",
+          "name": "zbxapi-spec-mediatypes-mail",
+          "smtp_server": "smtp.example.invalid",
+          "smtp_helo": "",
+          "smtp_email": "zbxapi-spec@example.invalid",
+          "exec_path": "",
+          "gsm_modem": "",
+          "username": "",
+          "passwd": "<scrubbed>",
+          "status": "1",
+          "smtp_port": "25",
+          "smtp_security": "0",
+          "smtp_verify_peer": "0",
+          "smtp_verify_host": "0",
+          "smtp_authentication": "0",
+          "maxsessions": "1",
+          "maxattempts": "3",
+          "attempt_interval": "10s",
+          "message_format": "1",
+          "script": "",
+          "timeout": "30s",
+          "process_tags": "0",
+          "show_event_menu": "0",
+          "event_menu_url": "",
+          "event_menu_name": "",
+          "description": "",
+          "provider": "0",
+          "content_type": "1",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "method": "mediatype.get",
+      "params": {
+        "mediatypeids": [
+          204
+        ],
+        "selectMessageTemplates": "extend"
+      },
+      "result": [
+        {
+          "mediatypeid": "204",
+          "type": "0",
+          "name": "zbxapi-spec-mediatypes-mail",
+          "smtp_server": "smtp.example.invalid",
+          "smtp_helo": "",
+          "smtp_email": "zbxapi-spec@example.invalid",
+          "exec_path": "",
+          "gsm_modem": "",
+          "username": "",
+          "passwd": "<scrubbed>",
+          "status": "1",
+          "smtp_port": "25",
+          "smtp_security": "0",
+          "smtp_verify_peer": "0",
+          "smtp_verify_host": "0",
+          "smtp_authentication": "0",
+          "maxsessions": "1",
+          "maxattempts": "3",
+          "attempt_interval": "10s",
+          "message_format": "1",
+          "script": "",
+          "timeout": "30s",
+          "process_tags": "0",
+          "show_event_menu": "0",
+          "event_menu_url": "",
+          "event_menu_name": "",
+          "description": "",
+          "provider": "0",
+          "content_type": "1",
+          "message_templates": [],
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "method": "mediatype.get",
+      "params": {
+        "output": [
+          "name"
+        ],
+        "filter": {
+          "type": 4
+        }
+      },
+      "result": [
+        {
+          "mediatypeid": "38",
+          "name": "Brevis.one"
+        },
+        {
+          "mediatypeid": "39",
+          "name": "Discord"
+        },
+        {
+          "mediatypeid": "40",
+          "name": "Event-Driven Ansible"
+        },
+        {
+          "mediatypeid": "41",
+          "name": "Express.ms"
+        },
+        {
+          "mediatypeid": "42",
+          "name": "GitHub"
+        },
+        {
+          "mediatypeid": "44",
+          "name": "iLert"
+        },
+        {
+          "mediatypeid": "45",
+          "name": "iTop"
+        },
+        {
+          "mediatypeid": "46",
+          "name": "Jira"
+        },
+        {
+          "mediatypeid": "47",
+          "name": "Jira Service Management"
+        },
+        {
+          "mediatypeid": "48",
+          "name": "Line"
+        },
+        {
+          "mediatypeid": "49",
+          "name": "ManageEngine ServiceDesk"
+        },
+        {
+          "mediatypeid": "50",
+          "name": "MantisBT"
+        },
+        {
+          "mediatypeid": "51",
+          "name": "Mattermost"
+        },
+        {
+          "mediatypeid": "53",
+          "name": "MS Teams Workflow"
+        },
+        {
+          "mediatypeid": "54",
+          "name": "Opsgenie"
+        },
+        {
+          "mediatypeid": "55",
+          "name": "OTRS CE"
+        },
+        {
+          "mediatypeid": "56",
+          "name": "PagerDuty"
+        },
+        {
+          "mediatypeid": "57",
+          "name": "Pushover"
+        },
+        {
+          "mediatypeid": "58",
+          "name": "Redmine"
+        },
+        {
+          "mediatypeid": "59",
+          "name": "Rocket.Chat"
+        },
+        {
+          "mediatypeid": "60",
+          "name": "ServiceNow"
+        },
+        {
+          "mediatypeid": "61",
+          "name": "SIGNL4"
+        },
+        {
+          "mediatypeid": "62",
+          "name": "Slack"
+        },
+        {
+          "mediatypeid": "63",
+          "name": "SolarWinds Service Desk"
+        },
+        {
+          "mediatypeid": "64",
+          "name": "SysAid"
+        },
+        {
+          "mediatypeid": "65",
+          "name": "Telegram"
+        },
+        {
+          "mediatypeid": "66",
+          "name": "TOPdesk"
+        },
+        {
+          "mediatypeid": "67",
+          "name": "VictorOps"
+        },
+        {
+          "mediatypeid": "68",
+          "name": "Zammad"
+        },
+        {
+          "mediatypeid": "69",
+          "name": "Zendesk"
+        },
+        {
+          "mediatypeid": "70",
+          "name": "GLPI"
+        },
+        {
+          "mediatypeid": "205",
+          "name": "zbxapi-spec-mediatypes-hook"
+        },
+        {
+          "mediatypeid": "71",
+          "name": "IBM Maximo Service Request"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "method": "mediatype.get",
+      "params": {
+        "countOutput": true,
+        "mediatypeids": [
+          204
+        ]
+      },
+      "result": "1"
+    },
+    {
+      "n": 12,
+      "method": "mediatype.get",
+      "params": {
+        "filter": {
+          "mediatypeid": 204
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "mediatypeid": "204",
+          "type": "0",
+          "name": "zbxapi-spec-mediatypes-mail",
+          "smtp_server": "smtp.example.invalid",
+          "smtp_helo": "",
+          "smtp_email": "zbxapi-spec@example.invalid",
+          "exec_path": "",
+          "gsm_modem": "",
+          "username": "",
+          "passwd": "<scrubbed>",
+          "status": "1",
+          "smtp_port": "25",
+          "smtp_security": "0",
+          "smtp_verify_peer": "0",
+          "smtp_verify_host": "0",
+          "smtp_authentication": "0",
+          "maxsessions": "1",
+          "maxattempts": "3",
+          "attempt_interval": "10s",
+          "message_format": "1",
+          "script": "",
+          "timeout": "30s",
+          "process_tags": "0",
+          "show_event_menu": "0",
+          "event_menu_url": "",
+          "event_menu_name": "",
+          "description": "",
+          "provider": "0",
+          "content_type": "1",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "method": "mediatype.update",
+      "params": [
+        {
+          "mediatypeid": 204,
+          "description": "first description"
+        }
+      ],
+      "result": {
+        "mediatypeids": [
+          "204"
+        ]
+      }
+    },
+    {
+      "n": 14,
+      "method": "mediatype.get",
+      "params": {
+        "filter": {
+          "mediatypeid": 204
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "mediatypeid": "204",
+          "type": "0",
+          "name": "zbxapi-spec-mediatypes-mail",
+          "smtp_server": "smtp.example.invalid",
+          "smtp_helo": "",
+          "smtp_email": "zbxapi-spec@example.invalid",
+          "exec_path": "",
+          "gsm_modem": "",
+          "username": "",
+          "passwd": "<scrubbed>",
+          "status": "1",
+          "smtp_port": "25",
+          "smtp_security": "0",
+          "smtp_verify_peer": "0",
+          "smtp_verify_host": "0",
+          "smtp_authentication": "0",
+          "maxsessions": "1",
+          "maxattempts": "3",
+          "attempt_interval": "10s",
+          "message_format": "1",
+          "script": "",
+          "timeout": "30s",
+          "process_tags": "0",
+          "show_event_menu": "0",
+          "event_menu_url": "",
+          "event_menu_name": "",
+          "description": "first description",
+          "provider": "0",
+          "content_type": "1",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "method": "mediatype.get",
+      "params": {
+        "filter": {
+          "mediatypeid": 204
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "mediatypeid": "204",
+          "type": "0",
+          "name": "zbxapi-spec-mediatypes-mail",
+          "smtp_server": "smtp.example.invalid",
+          "smtp_helo": "",
+          "smtp_email": "zbxapi-spec@example.invalid",
+          "exec_path": "",
+          "gsm_modem": "",
+          "username": "",
+          "passwd": "<scrubbed>",
+          "status": "1",
+          "smtp_port": "25",
+          "smtp_security": "0",
+          "smtp_verify_peer": "0",
+          "smtp_verify_host": "0",
+          "smtp_authentication": "0",
+          "maxsessions": "1",
+          "maxattempts": "3",
+          "attempt_interval": "10s",
+          "message_format": "1",
+          "script": "",
+          "timeout": "30s",
+          "process_tags": "0",
+          "show_event_menu": "0",
+          "event_menu_url": "",
+          "event_menu_name": "",
+          "description": "first description",
+          "provider": "0",
+          "content_type": "1",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "method": "mediatype.update",
+      "params": [
+        {
+          "mediatypeid": 204,
+          "description": "first description"
+        }
+      ],
+      "result": {
+        "mediatypeids": [
+          "204"
+        ]
+      }
+    },
+    {
+      "n": 17,
+      "method": "mediatype.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-mediatypes-mail"
+        },
+        "output": [
+          "mediatypeid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "mediatypeid": "204",
+          "name": "zbxapi-spec-mediatypes-mail"
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "method": "mediatype.get",
+      "params": {
+        "filter": {
+          "mediatypeid": 204
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "mediatypeid": "204",
+          "type": "0",
+          "name": "zbxapi-spec-mediatypes-mail",
+          "smtp_server": "smtp.example.invalid",
+          "smtp_helo": "",
+          "smtp_email": "zbxapi-spec@example.invalid",
+          "exec_path": "",
+          "gsm_modem": "",
+          "username": "",
+          "passwd": "<scrubbed>",
+          "status": "1",
+          "smtp_port": "25",
+          "smtp_security": "0",
+          "smtp_verify_peer": "0",
+          "smtp_verify_host": "0",
+          "smtp_authentication": "0",
+          "maxsessions": "1",
+          "maxattempts": "3",
+          "attempt_interval": "10s",
+          "message_format": "1",
+          "script": "",
+          "timeout": "30s",
+          "process_tags": "0",
+          "show_event_menu": "0",
+          "event_menu_url": "",
+          "event_menu_name": "",
+          "description": "first description",
+          "provider": "0",
+          "content_type": "1",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 19,
+      "method": "mediatype.update",
+      "params": [
+        {
+          "name": "zbxapi-spec-mediatypes-mail",
+          "description": "second description",
+          "mediatypeid": 204
+        }
+      ],
+      "result": {
+        "mediatypeids": [
+          "204"
+        ]
+      }
+    },
+    {
+      "n": 20,
+      "method": "mediatype.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-mediatypes-absent"
+        },
+        "output": [
+          "mediatypeid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 21,
+      "method": "mediatype.get",
+      "params": {
+        "filter": {
+          "mediatypeid": 204
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "mediatypeid": "204",
+          "type": "0",
+          "name": "zbxapi-spec-mediatypes-mail",
+          "smtp_server": "smtp.example.invalid",
+          "smtp_helo": "",
+          "smtp_email": "zbxapi-spec@example.invalid",
+          "exec_path": "",
+          "gsm_modem": "",
+          "username": "",
+          "passwd": "<scrubbed>",
+          "status": "1",
+          "smtp_port": "25",
+          "smtp_security": "0",
+          "smtp_verify_peer": "0",
+          "smtp_verify_host": "0",
+          "smtp_authentication": "0",
+          "maxsessions": "1",
+          "maxattempts": "3",
+          "attempt_interval": "10s",
+          "message_format": "1",
+          "script": "",
+          "timeout": "30s",
+          "process_tags": "0",
+          "show_event_menu": "0",
+          "event_menu_url": "",
+          "event_menu_name": "",
+          "description": "second description",
+          "provider": "0",
+          "content_type": "1",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 22,
+      "method": "mediatype.update",
+      "params": [
+        {
+          "mediatypeid": 204,
+          "message_templates": [
+            {
+              "eventsource": 0,
+              "recovery": 0,
+              "subject": "S",
+              "message": "M"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "mediatypeids": [
+          "204"
+        ]
+      }
+    },
+    {
+      "n": 23,
+      "method": "mediatype.get",
+      "params": {
+        "filter": {
+          "mediatypeid": 204
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "mediatypeid": "204",
+          "type": "0",
+          "name": "zbxapi-spec-mediatypes-mail",
+          "smtp_server": "smtp.example.invalid",
+          "smtp_helo": "",
+          "smtp_email": "zbxapi-spec@example.invalid",
+          "exec_path": "",
+          "gsm_modem": "",
+          "username": "",
+          "passwd": "<scrubbed>",
+          "status": "1",
+          "smtp_port": "25",
+          "smtp_security": "0",
+          "smtp_verify_peer": "0",
+          "smtp_verify_host": "0",
+          "smtp_authentication": "0",
+          "maxsessions": "1",
+          "maxattempts": "3",
+          "attempt_interval": "10s",
+          "message_format": "1",
+          "script": "",
+          "timeout": "30s",
+          "process_tags": "0",
+          "show_event_menu": "0",
+          "event_menu_url": "",
+          "event_menu_name": "",
+          "description": "second description",
+          "provider": "0",
+          "content_type": "1",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 24,
+      "method": "mediatype.update",
+      "params": [
+        {
+          "mediatypeid": 204,
+          "maxattempts": 101
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/maxattempts\": value must be one of 1-100."
+      }
+    },
+    {
+      "n": 25,
+      "method": "mediatype.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-mediatypes-mail"
+        },
+        "output": [
+          "mediatypeid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "mediatypeid": "204",
+          "name": "zbxapi-spec-mediatypes-mail"
+        }
+      ]
+    },
+    {
+      "n": 26,
+      "method": "mediatype.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-mediatypes-goc"
+        },
+        "output": [
+          "mediatypeid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 27,
+      "method": "mediatype.create",
+      "params": [
+        {
+          "type": 1,
+          "exec_path": "notify.sh",
+          "name": "zbxapi-spec-mediatypes-goc"
+        }
+      ],
+      "result": {
+        "mediatypeids": [
+          "206"
+        ]
+      }
+    },
+    {
+      "n": 28,
+      "method": "mediatype.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-mediatypes-goc"
+        },
+        "output": [
+          "mediatypeid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "mediatypeid": "206",
+          "name": "zbxapi-spec-mediatypes-goc"
+        }
+      ]
+    },
+    {
+      "n": 29,
+      "method": "mediatype.get",
+      "params": {
+        "filter": {
+          "mediatypeid": "206"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "mediatypeid": "206",
+          "type": "1",
+          "name": "zbxapi-spec-mediatypes-goc",
+          "smtp_server": "",
+          "smtp_helo": "",
+          "smtp_email": "",
+          "exec_path": "notify.sh",
+          "gsm_modem": "",
+          "username": "",
+          "passwd": "<scrubbed>",
+          "status": "1",
+          "smtp_port": "25",
+          "smtp_security": "0",
+          "smtp_verify_peer": "0",
+          "smtp_verify_host": "0",
+          "smtp_authentication": "0",
+          "maxsessions": "1",
+          "maxattempts": "3",
+          "attempt_interval": "10s",
+          "message_format": "1",
+          "script": "",
+          "timeout": "30s",
+          "process_tags": "0",
+          "show_event_menu": "0",
+          "event_menu_url": "",
+          "event_menu_name": "",
+          "description": "",
+          "provider": "0",
+          "content_type": "1",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 30,
+      "method": "mediatype.update",
+      "params": [
+        {
+          "name": "zbxapi-spec-mediatypes-goc",
+          "description": "per upsert",
+          "mediatypeid": "206"
+        }
+      ],
+      "result": {
+        "mediatypeids": [
+          "206"
+        ]
+      }
+    },
+    {
+      "n": 31,
+      "method": "mediatype.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-mediatypes-cou"
+        },
+        "output": [
+          "mediatypeid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 32,
+      "method": "mediatype.create",
+      "params": [
+        {
+          "type": 0,
+          "smtp_server": "smtp.example.invalid",
+          "smtp_email": "zbxapi-spec@example.invalid",
+          "name": "zbxapi-spec-mediatypes-cou"
+        }
+      ],
+      "result": {
+        "mediatypeids": [
+          "207"
+        ]
+      }
+    },
+    {
+      "n": 33,
+      "method": "mediatype.create",
+      "params": [
+        {
+          "type": 0,
+          "smtp_server": "smtp.example.invalid",
+          "smtp_email": "zbxapi-spec@example.invalid",
+          "name": "zbxapi-spec-mediatypes-added"
+        }
+      ],
+      "result": {
+        "mediatypeids": [
+          "208"
+        ]
+      }
+    },
+    {
+      "n": 34,
+      "method": "mediatype.delete",
+      "params": [
+        208
+      ],
+      "result": {
+        "mediatypeids": [
+          "208"
+        ]
+      }
+    },
+    {
+      "n": 35,
+      "method": "mediatype.create",
+      "params": [
+        {
+          "type": 0,
+          "smtp_server": "smtp.example.invalid",
+          "smtp_email": "zbxapi-spec@example.invalid",
+          "name": "zbxapi-spec-mediatypes-disposable"
+        }
+      ],
+      "result": {
+        "mediatypeids": [
+          "209"
+        ]
+      }
+    },
+    {
+      "n": 36,
+      "method": "mediatype.delete",
+      "params": [
+        209
+      ],
+      "result": {
+        "mediatypeids": [
+          "209"
+        ]
+      }
+    },
+    {
+      "n": 37,
+      "method": "mediatype.delete",
+      "params": [
+        999999999
+      ],
+      "error": {
+        "code": -32500,
+        "message": "Application error.",
+        "data": "No permissions to referred object or it does not exist!"
+      }
+    }
+  ]
+}

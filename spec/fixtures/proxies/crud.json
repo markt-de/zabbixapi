@@ -1,0 +1,887 @@
+{
+  "class": "proxies",
+  "scenario": "crud",
+  "recorded_at": "2026-09-14T15:08:57Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "proxy.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxies-active",
+          "operating_mode": 0
+        }
+      ],
+      "result": {
+        "proxyids": [
+          "86"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "proxy.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxies-active",
+          "operating_mode": 0
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Proxy \"zbxapi-spec-proxies-active\" already exists."
+      }
+    },
+    {
+      "n": 3,
+      "method": "proxy.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxies-psk-active",
+          "operating_mode": 0,
+          "tls_connect": 2,
+          "tls_psk_identity": "zbxapi-spec-proxies-psk",
+          "tls_psk": "0123456789abcdef0123456789abcdef"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/tls_connect\": value must be 1."
+      }
+    },
+    {
+      "n": 4,
+      "method": "proxy.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxies-notimeouts",
+          "operating_mode": 0,
+          "custom_timeouts": 1
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": the parameter \"timeout_zabbix_agent\" is missing."
+      }
+    },
+    {
+      "n": 5,
+      "method": "proxy.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxies-passive",
+          "operating_mode": 1,
+          "address": "10.1.2.3",
+          "port": "10061",
+          "tls_connect": 2,
+          "tls_psk_identity": "zbxapi-spec-proxies-psk",
+          "tls_psk": "0123456789abcdef0123456789abcdef"
+        }
+      ],
+      "result": {
+        "proxyids": [
+          "87"
+        ]
+      }
+    },
+    {
+      "n": 6,
+      "method": "proxy.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-proxies-passive"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxyid": "87",
+          "name": "zbxapi-spec-proxies-passive",
+          "proxy_groupid": "0",
+          "local_address": "",
+          "local_port": "10051",
+          "operating_mode": "1",
+          "allowed_addresses": "",
+          "address": "10.1.2.3",
+          "port": "10061",
+          "description": "",
+          "tls_connect": "2",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_timeouts": "0",
+          "timeout_zabbix_agent": "",
+          "timeout_simple_check": "",
+          "timeout_snmp_agent": "",
+          "timeout_external_check": "",
+          "timeout_db_monitor": "",
+          "timeout_http_agent": "",
+          "timeout_ssh_agent": "",
+          "timeout_telnet_agent": "",
+          "timeout_script": "",
+          "timeout_browser": "",
+          "lastaccess": "0",
+          "version": "0",
+          "compatibility": "0",
+          "state": "0"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "method": "proxy.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-proxies-active"
+        },
+        "output": [
+          "proxyid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "proxyid": "86",
+          "name": "zbxapi-spec-proxies-active"
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "method": "proxy.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-proxies-absent"
+        },
+        "output": [
+          "proxyid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 9,
+      "method": "proxy.get",
+      "params": {
+        "filter": {
+          "proxyid": 86
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxyid": "86",
+          "name": "zbxapi-spec-proxies-active",
+          "proxy_groupid": "0",
+          "local_address": "",
+          "local_port": "10051",
+          "operating_mode": "0",
+          "allowed_addresses": "",
+          "address": "127.0.0.1",
+          "port": "10051",
+          "description": "",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_timeouts": "0",
+          "timeout_zabbix_agent": "",
+          "timeout_simple_check": "",
+          "timeout_snmp_agent": "",
+          "timeout_external_check": "",
+          "timeout_db_monitor": "",
+          "timeout_http_agent": "",
+          "timeout_ssh_agent": "",
+          "timeout_telnet_agent": "",
+          "timeout_script": "",
+          "timeout_browser": "",
+          "lastaccess": "0",
+          "version": "0",
+          "compatibility": "0",
+          "state": "0"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "method": "proxy.get",
+      "params": {
+        "output": [
+          "name",
+          "operating_mode"
+        ],
+        "proxyids": [
+          86
+        ]
+      },
+      "result": [
+        {
+          "name": "zbxapi-spec-proxies-active",
+          "operating_mode": "0"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "method": "proxy.get",
+      "params": {
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxyid": "2",
+          "name": "zabbix-proxy-sqlite3",
+          "proxy_groupid": "0",
+          "local_address": "",
+          "local_port": "10051",
+          "operating_mode": "0",
+          "allowed_addresses": "",
+          "address": "127.0.0.1",
+          "port": "10051",
+          "description": "active proxy container, sqlite3 backend, no encryption, global timeouts",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_timeouts": "0",
+          "timeout_zabbix_agent": "",
+          "timeout_simple_check": "",
+          "timeout_snmp_agent": "",
+          "timeout_external_check": "",
+          "timeout_db_monitor": "",
+          "timeout_http_agent": "",
+          "timeout_ssh_agent": "",
+          "timeout_telnet_agent": "",
+          "timeout_script": "",
+          "timeout_browser": "",
+          "lastaccess": "1789398529",
+          "version": "70030",
+          "compatibility": "1",
+          "state": "2"
+        },
+        {
+          "proxyid": "86",
+          "name": "zbxapi-spec-proxies-active",
+          "proxy_groupid": "0",
+          "local_address": "",
+          "local_port": "10051",
+          "operating_mode": "0",
+          "allowed_addresses": "",
+          "address": "127.0.0.1",
+          "port": "10051",
+          "description": "",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_timeouts": "0",
+          "timeout_zabbix_agent": "",
+          "timeout_simple_check": "",
+          "timeout_snmp_agent": "",
+          "timeout_external_check": "",
+          "timeout_db_monitor": "",
+          "timeout_http_agent": "",
+          "timeout_ssh_agent": "",
+          "timeout_telnet_agent": "",
+          "timeout_script": "",
+          "timeout_browser": "",
+          "lastaccess": "0",
+          "version": "0",
+          "compatibility": "0",
+          "state": "0"
+        },
+        {
+          "proxyid": "87",
+          "name": "zbxapi-spec-proxies-passive",
+          "proxy_groupid": "0",
+          "local_address": "",
+          "local_port": "10051",
+          "operating_mode": "1",
+          "allowed_addresses": "",
+          "address": "10.1.2.3",
+          "port": "10061",
+          "description": "",
+          "tls_connect": "2",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_timeouts": "0",
+          "timeout_zabbix_agent": "",
+          "timeout_simple_check": "",
+          "timeout_snmp_agent": "",
+          "timeout_external_check": "",
+          "timeout_db_monitor": "",
+          "timeout_http_agent": "",
+          "timeout_ssh_agent": "",
+          "timeout_telnet_agent": "",
+          "timeout_script": "",
+          "timeout_browser": "",
+          "lastaccess": "0",
+          "version": "0",
+          "compatibility": "0",
+          "state": "0"
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "method": "proxy.get",
+      "params": {
+        "filter": {
+          "proxyid": 86
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxyid": "86",
+          "name": "zbxapi-spec-proxies-active",
+          "proxy_groupid": "0",
+          "local_address": "",
+          "local_port": "10051",
+          "operating_mode": "0",
+          "allowed_addresses": "",
+          "address": "127.0.0.1",
+          "port": "10051",
+          "description": "",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_timeouts": "0",
+          "timeout_zabbix_agent": "",
+          "timeout_simple_check": "",
+          "timeout_snmp_agent": "",
+          "timeout_external_check": "",
+          "timeout_db_monitor": "",
+          "timeout_http_agent": "",
+          "timeout_ssh_agent": "",
+          "timeout_telnet_agent": "",
+          "timeout_script": "",
+          "timeout_browser": "",
+          "lastaccess": "0",
+          "version": "0",
+          "compatibility": "0",
+          "state": "0"
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "method": "proxy.update",
+      "params": [
+        {
+          "proxyid": 86,
+          "description": "desc v1"
+        }
+      ],
+      "result": {
+        "proxyids": [
+          "86"
+        ]
+      }
+    },
+    {
+      "n": 14,
+      "method": "proxy.get",
+      "params": {
+        "filter": {
+          "proxyid": 86
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxyid": "86",
+          "name": "zbxapi-spec-proxies-active",
+          "proxy_groupid": "0",
+          "local_address": "",
+          "local_port": "10051",
+          "operating_mode": "0",
+          "allowed_addresses": "",
+          "address": "127.0.0.1",
+          "port": "10051",
+          "description": "desc v1",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_timeouts": "0",
+          "timeout_zabbix_agent": "",
+          "timeout_simple_check": "",
+          "timeout_snmp_agent": "",
+          "timeout_external_check": "",
+          "timeout_db_monitor": "",
+          "timeout_http_agent": "",
+          "timeout_ssh_agent": "",
+          "timeout_telnet_agent": "",
+          "timeout_script": "",
+          "timeout_browser": "",
+          "lastaccess": "0",
+          "version": "0",
+          "compatibility": "0",
+          "state": "0"
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "method": "proxy.get",
+      "params": {
+        "filter": {
+          "proxyid": 86
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxyid": "86",
+          "name": "zbxapi-spec-proxies-active",
+          "proxy_groupid": "0",
+          "local_address": "",
+          "local_port": "10051",
+          "operating_mode": "0",
+          "allowed_addresses": "",
+          "address": "127.0.0.1",
+          "port": "10051",
+          "description": "desc v1",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_timeouts": "0",
+          "timeout_zabbix_agent": "",
+          "timeout_simple_check": "",
+          "timeout_snmp_agent": "",
+          "timeout_external_check": "",
+          "timeout_db_monitor": "",
+          "timeout_http_agent": "",
+          "timeout_ssh_agent": "",
+          "timeout_telnet_agent": "",
+          "timeout_script": "",
+          "timeout_browser": "",
+          "lastaccess": "0",
+          "version": "0",
+          "compatibility": "0",
+          "state": "0"
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "method": "proxy.update",
+      "params": [
+        {
+          "proxyid": 86,
+          "version": 987654321
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"version\"."
+      }
+    },
+    {
+      "n": 17,
+      "method": "hostgroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxies-group"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "304"
+        ]
+      }
+    },
+    {
+      "n": 18,
+      "method": "host.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-proxies-host",
+          "interfaces": [],
+          "status": 0,
+          "groups": [
+            {
+              "groupid": 304
+            }
+          ]
+        }
+      ],
+      "result": {
+        "hostids": [
+          "11147"
+        ]
+      }
+    },
+    {
+      "n": 19,
+      "method": "proxy.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxies-withhost",
+          "operating_mode": 0,
+          "hosts": [
+            {
+              "hostid": 11147
+            }
+          ]
+        }
+      ],
+      "result": {
+        "proxyids": [
+          "88"
+        ]
+      }
+    },
+    {
+      "n": 20,
+      "method": "proxy.delete",
+      "params": [
+        88
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Host \"zbxapi-spec-proxies-host\" is monitored by proxy \"zbxapi-spec-proxies-withhost\"."
+      }
+    },
+    {
+      "n": 21,
+      "method": "proxy.get",
+      "params": {
+        "filter": {
+          "proxyid": 86
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxyid": "86",
+          "name": "zbxapi-spec-proxies-active",
+          "proxy_groupid": "0",
+          "local_address": "",
+          "local_port": "10051",
+          "operating_mode": "0",
+          "allowed_addresses": "",
+          "address": "127.0.0.1",
+          "port": "10051",
+          "description": "desc v1",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_timeouts": "0",
+          "timeout_zabbix_agent": "",
+          "timeout_simple_check": "",
+          "timeout_snmp_agent": "",
+          "timeout_external_check": "",
+          "timeout_db_monitor": "",
+          "timeout_http_agent": "",
+          "timeout_ssh_agent": "",
+          "timeout_telnet_agent": "",
+          "timeout_script": "",
+          "timeout_browser": "",
+          "lastaccess": "0",
+          "version": "0",
+          "compatibility": "0",
+          "state": "0"
+        }
+      ]
+    },
+    {
+      "n": 22,
+      "method": "proxy.update",
+      "params": [
+        {
+          "proxyid": 86,
+          "hosts": [
+            {
+              "hostid": 11147
+            }
+          ]
+        }
+      ],
+      "result": {
+        "proxyids": [
+          "86"
+        ]
+      }
+    },
+    {
+      "n": 23,
+      "method": "proxy.get",
+      "params": {
+        "filter": {
+          "proxyid": 86
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxyid": "86",
+          "name": "zbxapi-spec-proxies-active",
+          "proxy_groupid": "0",
+          "local_address": "",
+          "local_port": "10051",
+          "operating_mode": "0",
+          "allowed_addresses": "",
+          "address": "127.0.0.1",
+          "port": "10051",
+          "description": "desc v1",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_timeouts": "0",
+          "timeout_zabbix_agent": "",
+          "timeout_simple_check": "",
+          "timeout_snmp_agent": "",
+          "timeout_external_check": "",
+          "timeout_db_monitor": "",
+          "timeout_http_agent": "",
+          "timeout_ssh_agent": "",
+          "timeout_telnet_agent": "",
+          "timeout_script": "",
+          "timeout_browser": "",
+          "lastaccess": "0",
+          "version": "0",
+          "compatibility": "0",
+          "state": "0"
+        }
+      ]
+    },
+    {
+      "n": 24,
+      "method": "proxy.update",
+      "params": [
+        {
+          "proxyid": 86,
+          "hosts": []
+        }
+      ],
+      "result": {
+        "proxyids": [
+          "86"
+        ]
+      }
+    },
+    {
+      "n": 25,
+      "method": "proxy.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-proxies-passive"
+        },
+        "output": [
+          "proxyid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "proxyid": "87",
+          "name": "zbxapi-spec-proxies-passive"
+        }
+      ]
+    },
+    {
+      "n": 26,
+      "method": "proxy.get",
+      "params": {
+        "filter": {
+          "proxyid": "87"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxyid": "87",
+          "name": "zbxapi-spec-proxies-passive",
+          "proxy_groupid": "0",
+          "local_address": "",
+          "local_port": "10051",
+          "operating_mode": "1",
+          "allowed_addresses": "",
+          "address": "10.1.2.3",
+          "port": "10061",
+          "description": "",
+          "tls_connect": "2",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_timeouts": "0",
+          "timeout_zabbix_agent": "",
+          "timeout_simple_check": "",
+          "timeout_snmp_agent": "",
+          "timeout_external_check": "",
+          "timeout_db_monitor": "",
+          "timeout_http_agent": "",
+          "timeout_ssh_agent": "",
+          "timeout_telnet_agent": "",
+          "timeout_script": "",
+          "timeout_browser": "",
+          "lastaccess": "0",
+          "version": "0",
+          "compatibility": "0",
+          "state": "0"
+        }
+      ]
+    },
+    {
+      "n": 27,
+      "method": "proxy.update",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxies-passive",
+          "description": "via cou",
+          "proxyid": "87"
+        }
+      ],
+      "result": {
+        "proxyids": [
+          "87"
+        ]
+      }
+    },
+    {
+      "n": 28,
+      "method": "proxy.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-proxies-upserted"
+        },
+        "output": [
+          "proxyid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 29,
+      "method": "proxy.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxies-upserted",
+          "operating_mode": 0
+        }
+      ],
+      "result": {
+        "proxyids": [
+          "89"
+        ]
+      }
+    },
+    {
+      "n": 30,
+      "method": "proxy.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-proxies-upserted"
+        },
+        "output": [
+          "proxyid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "proxyid": "89",
+          "name": "zbxapi-spec-proxies-upserted"
+        }
+      ]
+    },
+    {
+      "n": 31,
+      "method": "proxy.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-proxies-gotten"
+        },
+        "output": [
+          "proxyid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 32,
+      "method": "proxy.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxies-gotten",
+          "operating_mode": 0
+        }
+      ],
+      "result": {
+        "proxyids": [
+          "90"
+        ]
+      }
+    },
+    {
+      "n": 33,
+      "method": "proxy.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxies-added",
+          "operating_mode": 0
+        }
+      ],
+      "result": {
+        "proxyids": [
+          "91"
+        ]
+      }
+    },
+    {
+      "n": 34,
+      "method": "proxy.delete",
+      "params": [
+        91
+      ],
+      "result": {
+        "proxyids": [
+          "91"
+        ]
+      }
+    },
+    {
+      "n": 35,
+      "method": "proxy.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxies-disposable",
+          "operating_mode": 0
+        }
+      ],
+      "result": {
+        "proxyids": [
+          "92"
+        ]
+      }
+    },
+    {
+      "n": 36,
+      "method": "proxy.delete",
+      "params": [
+        "92"
+      ],
+      "result": {
+        "proxyids": [
+          "92"
+        ]
+      }
+    }
+  ]
+}

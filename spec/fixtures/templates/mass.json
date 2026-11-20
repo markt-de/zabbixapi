@@ -1,0 +1,155 @@
+{
+  "class": "templates",
+  "scenario": "mass",
+  "recorded_at": "2026-10-16T14:44:47Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "template.massAdd",
+      "params": {
+        "templates": [
+          {
+            "templateid": 12312
+          }
+        ],
+        "groups": [
+          {
+            "groupid": 1421
+          }
+        ],
+        "macros": [
+          {
+            "macro": "{$ZBXAPI_SPEC_TEMPLATES_C}",
+            "value": "ccc"
+          }
+        ]
+      },
+      "result": {
+        "templateids": [
+          "12312"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "template.massAdd",
+      "params": {
+        "templates": [
+          {
+            "templateid": 12312
+          }
+        ],
+        "templates_link": [
+          {
+            "templateid": 12311
+          }
+        ]
+      },
+      "result": {
+        "templateids": [
+          "12312"
+        ]
+      }
+    },
+    {
+      "n": 3,
+      "method": "template.massRemove",
+      "params": {
+        "templateids": [
+          12312
+        ],
+        "templateids_clear": [
+          12311
+        ]
+      },
+      "result": {
+        "templateids": [
+          "12312"
+        ]
+      }
+    },
+    {
+      "n": 4,
+      "method": "template.massUpdate",
+      "params": {
+        "templates": [
+          {
+            "templateid": 12312
+          }
+        ],
+        "groups": [
+          {
+            "groupid": 1420
+          }
+        ],
+        "macros": [
+          {
+            "macro": "{$ZBXAPI_SPEC_TEMPLATES_D}",
+            "value": "ddd"
+          }
+        ]
+      },
+      "result": {
+        "templateids": [
+          "12312"
+        ]
+      }
+    },
+    {
+      "n": 5,
+      "method": "template.massAdd",
+      "params": {
+        "templates": [
+          {
+            "templateid": 12312
+          }
+        ],
+        "groups": [
+          {
+            "groupid": 1421
+          }
+        ]
+      },
+      "result": {
+        "templateids": [
+          "12312"
+        ]
+      }
+    },
+    {
+      "n": 6,
+      "method": "template.massRemove",
+      "params": {
+        "templateids": [
+          12312
+        ],
+        "groupids": [
+          1421
+        ]
+      },
+      "result": {
+        "templateids": [
+          "12312"
+        ]
+      }
+    },
+    {
+      "n": 7,
+      "method": "template.massRemove",
+      "params": {
+        "templateids": [
+          12312
+        ],
+        "macros": [
+          "{$ZBXAPI_SPEC_TEMPLATES_D}"
+        ]
+      },
+      "result": {
+        "templateids": [
+          "12312"
+        ]
+      }
+    }
+  ]
+}

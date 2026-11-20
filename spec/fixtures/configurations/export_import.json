@@ -1,0 +1,323 @@
+{
+  "class": "configurations",
+  "scenario": "export_import",
+  "recorded_at": "2026-09-14T11:49:05Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "configuration.export",
+      "params": {
+        "format": "json",
+        "options": {
+          "templates": [
+            11113
+          ]
+        }
+      },
+      "result": "{\"zabbix_export\":{\"version\":\"7.0\",\"template_groups\":[{\"uuid\":\"839aefe970504297ae1b722a2bb8d9ea\",\"name\":\"zbxapi-spec-configurations-tg\"}],\"templates\":[{\"uuid\":\"fe9d632f78e24adba40a5fb4fb31e0d5\",\"template\":\"zbxapi-spec-configurations-t1\",\"name\":\"zbxapi-spec-configurations-t1\",\"description\":\"spec fixture for export and import\",\"groups\":[{\"name\":\"zbxapi-spec-configurations-tg\"}],\"macros\":[{\"macro\":\"{$ZBXAPI_SPEC_CONFIGURATIONS_PLAIN}\",\"value\":\"plain\"}]}]}}"
+    },
+    {
+      "n": 2,
+      "method": "configuration.export",
+      "params": {
+        "format": "xml",
+        "options": {
+          "templates": [
+            11113
+          ]
+        }
+      },
+      "result": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<zabbix_export><version>7.0</version><template_groups><template_group><uuid>839aefe970504297ae1b722a2bb8d9ea</uuid><name>zbxapi-spec-configurations-tg</name></template_group></template_groups><templates><template><uuid>fe9d632f78e24adba40a5fb4fb31e0d5</uuid><template>zbxapi-spec-configurations-t1</template><name>zbxapi-spec-configurations-t1</name><description>spec fixture for export and import</description><groups><group><name>zbxapi-spec-configurations-tg</name></group></groups><macros><macro><macro>{$ZBXAPI_SPEC_CONFIGURATIONS_PLAIN}</macro><value>plain</value></macro></macros></template></templates></zabbix_export>\n"
+    },
+    {
+      "n": 3,
+      "method": "configuration.export",
+      "params": {
+        "format": "yaml",
+        "options": {
+          "templates": [
+            11113
+          ]
+        }
+      },
+      "result": "zabbix_export:\n  version: '7.0'\n  template_groups:\n    - uuid: 839aefe970504297ae1b722a2bb8d9ea\n      name: zbxapi-spec-configurations-tg\n  templates:\n    - uuid: fe9d632f78e24adba40a5fb4fb31e0d5\n      template: zbxapi-spec-configurations-t1\n      name: zbxapi-spec-configurations-t1\n      description: 'spec fixture for export and import'\n      groups:\n        - name: zbxapi-spec-configurations-tg\n      macros:\n        - macro: '{$ZBXAPI_SPEC_CONFIGURATIONS_PLAIN}'\n          value: plain\n"
+    },
+    {
+      "n": 4,
+      "method": "configuration.export",
+      "params": {
+        "format": "raw",
+        "options": {
+          "templates": [
+            11113
+          ]
+        }
+      },
+      "result": {
+        "zabbix_export": {
+          "version": "7.0",
+          "template_groups": [
+            {
+              "uuid": "839aefe970504297ae1b722a2bb8d9ea",
+              "name": "zbxapi-spec-configurations-tg"
+            }
+          ],
+          "templates": [
+            {
+              "uuid": "fe9d632f78e24adba40a5fb4fb31e0d5",
+              "template": "zbxapi-spec-configurations-t1",
+              "name": "zbxapi-spec-configurations-t1",
+              "description": "spec fixture for export and import",
+              "groups": [
+                {
+                  "name": "zbxapi-spec-configurations-tg"
+                }
+              ],
+              "macros": [
+                {
+                  "macro": "{$ZBXAPI_SPEC_CONFIGURATIONS_PLAIN}",
+                  "value": "plain"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "n": 5,
+      "method": "configuration.export",
+      "params": {
+        "format": "json",
+        "options": {
+          "templates": [
+            11113
+          ]
+        },
+        "prettyprint": true
+      },
+      "result": "{\n    \"zabbix_export\": {\n        \"version\": \"7.0\",\n        \"template_groups\": [\n            {\n                \"uuid\": \"839aefe970504297ae1b722a2bb8d9ea\",\n                \"name\": \"zbxapi-spec-configurations-tg\"\n            }\n        ],\n        \"templates\": [\n            {\n                \"uuid\": \"fe9d632f78e24adba40a5fb4fb31e0d5\",\n                \"template\": \"zbxapi-spec-configurations-t1\",\n                \"name\": \"zbxapi-spec-configurations-t1\",\n                \"description\": \"spec fixture for export and import\",\n                \"groups\": [\n                    {\n                        \"name\": \"zbxapi-spec-configurations-tg\"\n                    }\n                ],\n                \"macros\": [\n                    {\n                        \"macro\": \"{$ZBXAPI_SPEC_CONFIGURATIONS_PLAIN}\",\n                        \"value\": \"plain\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+    },
+    {
+      "n": 6,
+      "method": "configuration.export",
+      "params": {
+        "options": {
+          "templates": [
+            11113
+          ]
+        }
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/\": the parameter \"format\" is missing."
+      }
+    },
+    {
+      "n": 7,
+      "method": "configuration.export",
+      "params": {
+        "format": "json"
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/\": the parameter \"options\" is missing."
+      }
+    },
+    {
+      "n": 8,
+      "method": "configuration.export",
+      "params": {
+        "format": "csv",
+        "options": {
+          "templates": [
+            11113
+          ]
+        }
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/format\": value must be one of \"yaml\", \"xml\", \"json\", \"raw\"."
+      }
+    },
+    {
+      "n": 9,
+      "method": "configuration.export",
+      "params": {
+        "format": "json",
+        "options": {
+          "hostgroups": [
+            283
+          ]
+        }
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/options\": unexpected parameter \"hostgroups\"."
+      }
+    },
+    {
+      "n": 10,
+      "method": "configuration.export",
+      "params": {
+        "format": "json",
+        "options": {
+          "templates": [
+            11113
+          ]
+        }
+      },
+      "result": "{\"zabbix_export\":{\"version\":\"7.0\",\"template_groups\":[{\"uuid\":\"839aefe970504297ae1b722a2bb8d9ea\",\"name\":\"zbxapi-spec-configurations-tg\"}],\"templates\":[{\"uuid\":\"fe9d632f78e24adba40a5fb4fb31e0d5\",\"template\":\"zbxapi-spec-configurations-t1\",\"name\":\"zbxapi-spec-configurations-t1\",\"description\":\"spec fixture for export and import\",\"groups\":[{\"name\":\"zbxapi-spec-configurations-tg\"}],\"macros\":[{\"macro\":\"{$ZBXAPI_SPEC_CONFIGURATIONS_PLAIN}\",\"value\":\"plain\"}]}]}}"
+    },
+    {
+      "n": 11,
+      "method": "configuration.importcompare",
+      "params": {
+        "format": "json",
+        "source": "{\"zabbix_export\":{\"version\":\"7.0\",\"template_groups\":[{\"uuid\":\"839aefe970504297ae1b722a2bb8d9ea\",\"name\":\"zbxapi-spec-configurations-tg\"}],\"templates\":[{\"uuid\":\"fe9d632f78e24adba40a5fb4fb31e0d5\",\"template\":\"zbxapi-spec-configurations-t1\",\"name\":\"zbxapi-spec-configurations-t1\",\"description\":\"spec fixture for export and import\",\"groups\":[{\"name\":\"zbxapi-spec-configurations-tg\"}],\"macros\":[{\"macro\":\"{$ZBXAPI_SPEC_CONFIGURATIONS_PLAIN}\",\"value\":\"plain\"}]}]}}",
+        "rules": {}
+      },
+      "result": []
+    },
+    {
+      "n": 12,
+      "method": "configuration.import",
+      "params": {
+        "format": "json",
+        "source": "{\"zabbix_export\":{\"version\":\"7.0\",\"template_groups\":[{\"uuid\":\"839aefe970504297ae1b722a2bb8d9ea\",\"name\":\"zbxapi-spec-configurations-tg\"}],\"templates\":[{\"uuid\":\"fe9d632f78e24adba40a5fb4fb31e0d5\",\"template\":\"zbxapi-spec-configurations-t1\",\"name\":\"zbxapi-spec-configurations-t1\",\"description\":\"spec fixture for export and import\",\"groups\":[{\"name\":\"zbxapi-spec-configurations-tg\"}],\"macros\":[{\"macro\":\"{$ZBXAPI_SPEC_CONFIGURATIONS_PLAIN}\",\"value\":\"plain\"}]}]}}",
+        "rules": {}
+      },
+      "result": true
+    },
+    {
+      "n": 13,
+      "method": "configuration.importcompare",
+      "params": {
+        "format": "json",
+        "source": "{\"zabbix_export\":{\"version\":\"7.0\",\"template_groups\":[{\"uuid\":\"839aefe970504297ae1b722a2bb8d9ea\",\"name\":\"zbxapi-spec-configurations-tg\"}],\"templates\":[{\"uuid\":\"fe9d632f78e24adba40a5fb4fb31e0d5\",\"template\":\"zbxapi-spec-configurations-t1\",\"name\":\"zbxapi-spec-configurations-t1\",\"description\":\"spec fixture for export and import\",\"groups\":[{\"name\":\"zbxapi-spec-configurations-tg\"}],\"macros\":[{\"macro\":\"{$ZBXAPI_SPEC_CONFIGURATIONS_PLAIN}\",\"value\":\"plain\"}]}]}}",
+        "rules": {
+          "template_groups": {
+            "createMissing": true,
+            "updateExisting": true
+          },
+          "templates": {
+            "createMissing": true,
+            "updateExisting": true
+          }
+        }
+      },
+      "result": []
+    },
+    {
+      "n": 14,
+      "method": "configuration.import",
+      "params": {
+        "format": "json",
+        "source": "{\"zabbix_export\":{\"version\":\"7.0\",\"template_groups\":[{\"uuid\":\"839aefe970504297ae1b722a2bb8d9ea\",\"name\":\"zbxapi-spec-configurations-tg\"}],\"templates\":[{\"uuid\":\"fe9d632f78e24adba40a5fb4fb31e0d5\",\"template\":\"zbxapi-spec-configurations-t1\",\"name\":\"zbxapi-spec-configurations-t1\",\"description\":\"spec fixture for export and import\",\"groups\":[{\"name\":\"zbxapi-spec-configurations-tg\"}],\"macros\":[{\"macro\":\"{$ZBXAPI_SPEC_CONFIGURATIONS_PLAIN}\",\"value\":\"plain\"}]}]}}",
+        "rules": {
+          "template_groups": {
+            "createMissing": true,
+            "updateExisting": true
+          },
+          "templates": {
+            "createMissing": true,
+            "updateExisting": true
+          }
+        }
+      },
+      "result": true
+    },
+    {
+      "n": 15,
+      "method": "configuration.import",
+      "params": {
+        "format": "json",
+        "source": "{\"zabbix_export\":{\"version\":\"7.0\",\"template_groups\":[{\"uuid\":\"839aefe970504297ae1b722a2bb8d9ea\",\"name\":\"zbxapi-spec-configurations-tg\"}],\"templates\":[{\"uuid\":\"fe9d632f78e24adba40a5fb4fb31e0d5\",\"template\":\"zbxapi-spec-configurations-t1\",\"name\":\"zbxapi-spec-configurations-t1\",\"description\":\"spec fixture for export and import\",\"groups\":[{\"name\":\"zbxapi-spec-configurations-tg\"}],\"macros\":[{\"macro\":\"{$ZBXAPI_SPEC_CONFIGURATIONS_PLAIN}\",\"value\":\"plain\"}]}]}}"
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/\": the parameter \"rules\" is missing."
+      }
+    },
+    {
+      "n": 16,
+      "method": "configuration.import",
+      "params": {
+        "format": "json",
+        "source": "{\"zabbix_export\":{\"version\":\"7.0\",\"template_groups\":[{\"uuid\":\"839aefe970504297ae1b722a2bb8d9ea\",\"name\":\"zbxapi-spec-configurations-tg\"}],\"templates\":[{\"uuid\":\"fe9d632f78e24adba40a5fb4fb31e0d5\",\"template\":\"zbxapi-spec-configurations-t1\",\"name\":\"zbxapi-spec-configurations-t1\",\"description\":\"spec fixture for export and import\",\"groups\":[{\"name\":\"zbxapi-spec-configurations-tg\"}],\"macros\":[{\"macro\":\"{$ZBXAPI_SPEC_CONFIGURATIONS_PLAIN}\",\"value\":\"plain\"}]}]}}",
+        "rules": {
+          "groups": {
+            "createMissing": true
+          }
+        }
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/rules\": unexpected parameter \"groups\"."
+      }
+    },
+    {
+      "n": 17,
+      "method": "configuration.import",
+      "params": {
+        "format": "xml",
+        "source": "{\"zabbix_export\":{\"version\":\"7.0\",\"template_groups\":[{\"uuid\":\"839aefe970504297ae1b722a2bb8d9ea\",\"name\":\"zbxapi-spec-configurations-tg\"}],\"templates\":[{\"uuid\":\"fe9d632f78e24adba40a5fb4fb31e0d5\",\"template\":\"zbxapi-spec-configurations-t1\",\"name\":\"zbxapi-spec-configurations-t1\",\"description\":\"spec fixture for export and import\",\"groups\":[{\"name\":\"zbxapi-spec-configurations-tg\"}],\"macros\":[{\"macro\":\"{$ZBXAPI_SPEC_CONFIGURATIONS_PLAIN}\",\"value\":\"plain\"}]}]}}",
+        "rules": {
+          "templates": {
+            "createMissing": true
+          }
+        }
+      },
+      "error": {
+        "code": -32500,
+        "message": "Application error.",
+        "data": "Cannot read XML: (4) Start tag expected, '<' not found [Line: 1 | Column: 1]."
+      }
+    },
+    {
+      "n": 18,
+      "method": "configuration.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-configurations-nothing"
+        }
+      ],
+      "error": {
+        "code": -32601,
+        "message": "Method not found.",
+        "data": "Incorrect method \"configuration.create\"."
+      }
+    },
+    {
+      "n": 19,
+      "method": "configuration.delete",
+      "params": [
+        1
+      ],
+      "error": {
+        "code": -32601,
+        "message": "Method not found.",
+        "data": "Incorrect method \"configuration.delete\"."
+      }
+    },
+    {
+      "n": 20,
+      "method": "configuration.get",
+      "params": {
+        "output": "extend"
+      },
+      "error": {
+        "code": -32601,
+        "message": "Method not found.",
+        "data": "Incorrect method \"configuration.get\"."
+      }
+    }
+  ]
+}

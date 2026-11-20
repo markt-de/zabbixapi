@@ -1,0 +1,565 @@
+{
+  "class": "proxygroup",
+  "scenario": "crud",
+  "recorded_at": "2026-09-14T15:05:57Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "proxygroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxygroup-one"
+        }
+      ],
+      "result": {
+        "proxy_groupids": [
+          "52"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "proxygroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxygroup-full",
+          "description": "every documented field",
+          "failover_delay": "5m",
+          "min_online": "10"
+        }
+      ],
+      "result": {
+        "proxy_groupids": [
+          "53"
+        ]
+      }
+    },
+    {
+      "n": 3,
+      "method": "proxygroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxygroup-gid",
+          "proxy_groupid": 999999
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"proxy_groupid\"."
+      }
+    },
+    {
+      "n": 4,
+      "method": "proxygroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxygroup-state",
+          "state": 3
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"state\"."
+      }
+    },
+    {
+      "n": 5,
+      "method": "proxygroup.create",
+      "params": [
+        {
+          "description": "nameless"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": the parameter \"name\" is missing."
+      }
+    },
+    {
+      "n": 6,
+      "method": "proxygroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxygroup-one"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Proxy group \"zbxapi-spec-proxygroup-one\" already exists."
+      }
+    },
+    {
+      "n": 7,
+      "method": "proxygroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-proxygroup-full"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxy_groupid": "53",
+          "name": "zbxapi-spec-proxygroup-full",
+          "failover_delay": "5m",
+          "min_online": "10",
+          "description": "every documented field",
+          "state": "0"
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "method": "proxygroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-proxygroup-one"
+        },
+        "output": [
+          "proxy_groupid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "proxy_groupid": "52",
+          "name": "zbxapi-spec-proxygroup-one"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "method": "proxygroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-proxygroup-absent"
+        },
+        "output": [
+          "proxy_groupid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 10,
+      "method": "proxygroup.get",
+      "params": {
+        "filter": {
+          "proxy_groupid": 52
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxy_groupid": "52",
+          "name": "zbxapi-spec-proxygroup-one",
+          "failover_delay": "1m",
+          "min_online": "1",
+          "description": "",
+          "state": "0"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "method": "proxygroup.get",
+      "params": {
+        "output": [
+          "name"
+        ],
+        "proxy_groupids": [
+          52
+        ]
+      },
+      "result": [
+        {
+          "name": "zbxapi-spec-proxygroup-one"
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "method": "proxygroup.get",
+      "params": {
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxy_groupid": "52",
+          "name": "zbxapi-spec-proxygroup-one",
+          "failover_delay": "1m",
+          "min_online": "1",
+          "description": "",
+          "state": "0"
+        },
+        {
+          "proxy_groupid": "53",
+          "name": "zbxapi-spec-proxygroup-full",
+          "failover_delay": "5m",
+          "min_online": "10",
+          "description": "every documented field",
+          "state": "0"
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "method": "proxygroup.get",
+      "params": {
+        "filter": {
+          "proxy_groupid": 52
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxy_groupid": "52",
+          "name": "zbxapi-spec-proxygroup-one",
+          "failover_delay": "1m",
+          "min_online": "1",
+          "description": "",
+          "state": "0"
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "method": "proxygroup.get",
+      "params": {
+        "filter": {
+          "proxy_groupid": 52
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxy_groupid": "52",
+          "name": "zbxapi-spec-proxygroup-one",
+          "failover_delay": "1m",
+          "min_online": "1",
+          "description": "",
+          "state": "0"
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "method": "proxygroup.update",
+      "params": [
+        {
+          "proxy_groupid": 52,
+          "description": "batched",
+          "failover_delay": "2m",
+          "min_online": "4"
+        }
+      ],
+      "result": {
+        "proxy_groupids": [
+          "52"
+        ]
+      }
+    },
+    {
+      "n": 16,
+      "method": "proxygroup.get",
+      "params": {
+        "filter": {
+          "proxy_groupid": 52
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxy_groupid": "52",
+          "name": "zbxapi-spec-proxygroup-one",
+          "failover_delay": "2m",
+          "min_online": "4",
+          "description": "batched",
+          "state": "0"
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "method": "proxygroup.update",
+      "params": [
+        {
+          "proxy_groupid": 52,
+          "failover_delay": "9s"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/failover_delay\": value must be one of 10-900."
+      }
+    },
+    {
+      "n": 18,
+      "method": "proxygroup.get",
+      "params": {
+        "filter": {
+          "proxy_groupid": 52
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxy_groupid": "52",
+          "name": "zbxapi-spec-proxygroup-one",
+          "failover_delay": "2m",
+          "min_online": "4",
+          "description": "batched",
+          "state": "0"
+        }
+      ]
+    },
+    {
+      "n": 19,
+      "method": "proxygroup.update",
+      "params": [
+        {
+          "proxy_groupid": 52,
+          "state": 3
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"state\"."
+      }
+    },
+    {
+      "n": 20,
+      "method": "proxygroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-proxygroup-full"
+        },
+        "output": [
+          "proxy_groupid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "proxy_groupid": "53",
+          "name": "zbxapi-spec-proxygroup-full"
+        }
+      ]
+    },
+    {
+      "n": 21,
+      "method": "proxygroup.get",
+      "params": {
+        "filter": {
+          "proxy_groupid": "53"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxy_groupid": "53",
+          "name": "zbxapi-spec-proxygroup-full",
+          "failover_delay": "5m",
+          "min_online": "10",
+          "description": "every documented field",
+          "state": "0"
+        }
+      ]
+    },
+    {
+      "n": 22,
+      "method": "proxygroup.update",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxygroup-full",
+          "min_online": "11",
+          "proxy_groupid": "53"
+        }
+      ],
+      "result": {
+        "proxy_groupids": [
+          "53"
+        ]
+      }
+    },
+    {
+      "n": 23,
+      "method": "proxygroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-proxygroup-three"
+        },
+        "output": [
+          "proxy_groupid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 24,
+      "method": "proxygroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxygroup-three"
+        }
+      ],
+      "result": {
+        "proxy_groupids": [
+          "54"
+        ]
+      }
+    },
+    {
+      "n": 25,
+      "method": "proxygroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-proxygroup-three"
+        },
+        "output": [
+          "proxy_groupid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "proxy_groupid": "54",
+          "name": "zbxapi-spec-proxygroup-three"
+        }
+      ]
+    },
+    {
+      "n": 26,
+      "method": "proxygroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-proxygroup-four"
+        },
+        "output": [
+          "proxy_groupid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 27,
+      "method": "proxygroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxygroup-four"
+        }
+      ],
+      "result": {
+        "proxy_groupids": [
+          "55"
+        ]
+      }
+    },
+    {
+      "n": 28,
+      "method": "proxygroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxygroup-added"
+        }
+      ],
+      "result": {
+        "proxy_groupids": [
+          "56"
+        ]
+      }
+    },
+    {
+      "n": 29,
+      "method": "proxygroup.delete",
+      "params": [
+        56
+      ],
+      "result": {
+        "proxy_groupids": [
+          56
+        ]
+      }
+    },
+    {
+      "n": 30,
+      "method": "proxygroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxygroup-disposable"
+        }
+      ],
+      "result": {
+        "proxy_groupids": [
+          "57"
+        ]
+      }
+    },
+    {
+      "n": 31,
+      "method": "proxygroup.delete",
+      "params": [
+        "57"
+      ],
+      "result": {
+        "proxy_groupids": [
+          "57"
+        ]
+      }
+    },
+    {
+      "n": 32,
+      "method": "proxygroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxygroup-inuse"
+        }
+      ],
+      "result": {
+        "proxy_groupids": [
+          "58"
+        ]
+      }
+    },
+    {
+      "n": 33,
+      "method": "proxy.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-proxygroup-member",
+          "operating_mode": 0,
+          "proxy_groupid": 58,
+          "local_address": "proxy",
+          "local_port": "10051"
+        }
+      ],
+      "result": {
+        "proxyids": [
+          "85"
+        ]
+      }
+    },
+    {
+      "n": 34,
+      "method": "proxygroup.delete",
+      "params": [
+        58
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Proxy group \"zbxapi-spec-proxygroup-inuse\" is used by proxy \"zbxapi-spec-proxygroup-member\"."
+      }
+    }
+  ]
+}

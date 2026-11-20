@@ -1,0 +1,1179 @@
+{
+  "class": "scripts",
+  "scenario": "crud",
+  "recorded_at": "2026-09-14T15:16:42Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "hostgroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-scripts-hg"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "333"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "script.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-scripts-one",
+          "scope": 1,
+          "type": 0,
+          "command": "printf 'zbxapi\\n'"
+        }
+      ],
+      "result": {
+        "scriptids": [
+          "169"
+        ]
+      }
+    },
+    {
+      "n": 3,
+      "method": "script.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-scripts-one",
+          "scope": 1,
+          "type": 0,
+          "command": "printf 'zbxapi\\n'"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Script \"zbxapi-spec-scripts-one\" already exists."
+      }
+    },
+    {
+      "n": 4,
+      "method": "script.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-scripts-readonly",
+          "scope": 1,
+          "type": 0,
+          "command": "printf 'zbxapi\\n'",
+          "scriptid": 999999999
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"scriptid\"."
+      }
+    },
+    {
+      "n": 5,
+      "method": "script.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-scripts-type4",
+          "scope": 1,
+          "type": 4,
+          "command": "printf 'zbxapi\\n'"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/type\": value must be one of 0, 1, 2, 3, 5."
+      }
+    },
+    {
+      "n": 6,
+      "method": "script.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-scripts-menu",
+          "scope": 1,
+          "type": 0,
+          "command": "printf 'zbxapi\\n'",
+          "menu_path": "zbxapi-spec/deep"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/menu_path\": value must be empty."
+      }
+    },
+    {
+      "n": 7,
+      "method": "script.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-scripts-webhook",
+          "scope": 1,
+          "type": 5,
+          "command": "Zabbix.log(3, '[zbxapi-spec] webhook probe');\nreturn 'zbxapi';",
+          "timeout": "45s",
+          "parameters": [
+            {
+              "name": "token",
+              "value": "{$ZBXAPI_SPEC}"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "scriptids": [
+          "170"
+        ]
+      }
+    },
+    {
+      "n": 8,
+      "method": "script.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-scripts-dup",
+          "scope": 2,
+          "type": 0,
+          "command": "printf 'zbxapi\\n'",
+          "groupid": 333,
+          "menu_path": "zbxapi-spec/a"
+        }
+      ],
+      "result": {
+        "scriptids": [
+          "171"
+        ]
+      }
+    },
+    {
+      "n": 9,
+      "method": "script.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-scripts-dup",
+          "scope": 2,
+          "type": 0,
+          "command": "printf 'zbxapi\\n'",
+          "groupid": 333,
+          "menu_path": "zbxapi-spec/b"
+        }
+      ],
+      "result": {
+        "scriptids": [
+          "172"
+        ]
+      }
+    },
+    {
+      "n": 10,
+      "method": "script.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-scripts-one"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "scriptid": "169",
+          "name": "zbxapi-spec-scripts-one",
+          "command": "printf 'zbxapi\\n'",
+          "host_access": "2",
+          "usrgrpid": "0",
+          "groupid": "0",
+          "description": "",
+          "confirmation": "",
+          "type": "0",
+          "execute_on": "2",
+          "timeout": "30s",
+          "scope": "1",
+          "port": "",
+          "authtype": "0",
+          "username": "",
+          "password": "<scrubbed>",
+          "publickey": "",
+          "privatekey": "",
+          "menu_path": "",
+          "url": "",
+          "new_window": "1",
+          "manualinput": "0",
+          "manualinput_prompt": "",
+          "manualinput_validator": "",
+          "manualinput_validator_type": "0",
+          "manualinput_default_value": "",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "method": "script.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-scripts-one"
+        },
+        "output": [
+          "scriptid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "scriptid": "169",
+          "name": "zbxapi-spec-scripts-one"
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "method": "script.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-scripts-absent"
+        },
+        "output": [
+          "scriptid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 13,
+      "method": "script.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-scripts-dup"
+        },
+        "output": [
+          "scriptid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "scriptid": "171",
+          "name": "zbxapi-spec-scripts-dup"
+        },
+        {
+          "scriptid": "172",
+          "name": "zbxapi-spec-scripts-dup"
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "method": "script.get",
+      "params": {
+        "filter": {
+          "scriptid": 169
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "scriptid": "169",
+          "name": "zbxapi-spec-scripts-one",
+          "command": "printf 'zbxapi\\n'",
+          "host_access": "2",
+          "usrgrpid": "0",
+          "groupid": "0",
+          "description": "",
+          "confirmation": "",
+          "type": "0",
+          "execute_on": "2",
+          "timeout": "30s",
+          "scope": "1",
+          "port": "",
+          "authtype": "0",
+          "username": "",
+          "password": "<scrubbed>",
+          "publickey": "",
+          "privatekey": "",
+          "menu_path": "",
+          "url": "",
+          "new_window": "1",
+          "manualinput": "0",
+          "manualinput_prompt": "",
+          "manualinput_validator": "",
+          "manualinput_validator_type": "0",
+          "manualinput_default_value": "",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "method": "script.get",
+      "params": {
+        "output": [
+          "name"
+        ],
+        "scriptids": [
+          169
+        ]
+      },
+      "result": [
+        {
+          "name": "zbxapi-spec-scripts-one"
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "method": "script.get",
+      "params": {
+        "output": "extend"
+      },
+      "result": [
+        {
+          "scriptid": "1",
+          "name": "Ping",
+          "command": "ping -c 3 {HOST.CONN}; case $? in [01]) true;; *) false;; esac",
+          "host_access": "2",
+          "usrgrpid": "0",
+          "groupid": "0",
+          "description": "",
+          "confirmation": "",
+          "type": "0",
+          "execute_on": "2",
+          "timeout": "30s",
+          "scope": "2",
+          "port": "",
+          "authtype": "0",
+          "username": "",
+          "password": "<scrubbed>",
+          "publickey": "",
+          "privatekey": "",
+          "menu_path": "",
+          "url": "",
+          "new_window": "1",
+          "manualinput": "0",
+          "manualinput_prompt": "",
+          "manualinput_validator": "",
+          "manualinput_validator_type": "0",
+          "manualinput_default_value": "",
+          "parameters": []
+        },
+        {
+          "scriptid": "2",
+          "name": "Traceroute",
+          "command": "/usr/bin/traceroute {HOST.CONN}",
+          "host_access": "2",
+          "usrgrpid": "0",
+          "groupid": "0",
+          "description": "",
+          "confirmation": "",
+          "type": "0",
+          "execute_on": "2",
+          "timeout": "30s",
+          "scope": "2",
+          "port": "",
+          "authtype": "0",
+          "username": "",
+          "password": "<scrubbed>",
+          "publickey": "",
+          "privatekey": "",
+          "menu_path": "",
+          "url": "",
+          "new_window": "1",
+          "manualinput": "0",
+          "manualinput_prompt": "",
+          "manualinput_validator": "",
+          "manualinput_validator_type": "0",
+          "manualinput_default_value": "",
+          "parameters": []
+        },
+        {
+          "scriptid": "3",
+          "name": "Detect operating system",
+          "command": "sudo /usr/bin/nmap -O {HOST.CONN}",
+          "host_access": "2",
+          "usrgrpid": "7",
+          "groupid": "0",
+          "description": "",
+          "confirmation": "",
+          "type": "0",
+          "execute_on": "2",
+          "timeout": "30s",
+          "scope": "2",
+          "port": "",
+          "authtype": "0",
+          "username": "",
+          "password": "<scrubbed>",
+          "publickey": "",
+          "privatekey": "",
+          "menu_path": "",
+          "url": "",
+          "new_window": "1",
+          "manualinput": "0",
+          "manualinput_prompt": "",
+          "manualinput_validator": "",
+          "manualinput_validator_type": "0",
+          "manualinput_default_value": "",
+          "parameters": []
+        },
+        {
+          "scriptid": "169",
+          "name": "zbxapi-spec-scripts-one",
+          "command": "printf 'zbxapi\\n'",
+          "host_access": "2",
+          "usrgrpid": "0",
+          "groupid": "0",
+          "description": "",
+          "confirmation": "",
+          "type": "0",
+          "execute_on": "2",
+          "timeout": "30s",
+          "scope": "1",
+          "port": "",
+          "authtype": "0",
+          "username": "",
+          "password": "<scrubbed>",
+          "publickey": "",
+          "privatekey": "",
+          "menu_path": "",
+          "url": "",
+          "new_window": "1",
+          "manualinput": "0",
+          "manualinput_prompt": "",
+          "manualinput_validator": "",
+          "manualinput_validator_type": "0",
+          "manualinput_default_value": "",
+          "parameters": []
+        },
+        {
+          "scriptid": "170",
+          "name": "zbxapi-spec-scripts-webhook",
+          "command": "Zabbix.log(3, '[zbxapi-spec] webhook probe');\nreturn 'zbxapi';",
+          "host_access": "2",
+          "usrgrpid": "0",
+          "groupid": "0",
+          "description": "",
+          "confirmation": "",
+          "type": "5",
+          "execute_on": "2",
+          "timeout": "45s",
+          "scope": "1",
+          "port": "",
+          "authtype": "0",
+          "username": "",
+          "password": "<scrubbed>",
+          "publickey": "",
+          "privatekey": "",
+          "menu_path": "",
+          "url": "",
+          "new_window": "1",
+          "manualinput": "0",
+          "manualinput_prompt": "",
+          "manualinput_validator": "",
+          "manualinput_validator_type": "0",
+          "manualinput_default_value": "",
+          "parameters": [
+            {
+              "name": "token",
+              "value": "{$ZBXAPI_SPEC}"
+            }
+          ]
+        },
+        {
+          "scriptid": "171",
+          "name": "zbxapi-spec-scripts-dup",
+          "command": "printf 'zbxapi\\n'",
+          "host_access": "2",
+          "usrgrpid": "0",
+          "groupid": "333",
+          "description": "",
+          "confirmation": "",
+          "type": "0",
+          "execute_on": "2",
+          "timeout": "30s",
+          "scope": "2",
+          "port": "",
+          "authtype": "0",
+          "username": "",
+          "password": "<scrubbed>",
+          "publickey": "",
+          "privatekey": "",
+          "menu_path": "zbxapi-spec/a",
+          "url": "",
+          "new_window": "1",
+          "manualinput": "0",
+          "manualinput_prompt": "",
+          "manualinput_validator": "",
+          "manualinput_validator_type": "0",
+          "manualinput_default_value": "",
+          "parameters": []
+        },
+        {
+          "scriptid": "172",
+          "name": "zbxapi-spec-scripts-dup",
+          "command": "printf 'zbxapi\\n'",
+          "host_access": "2",
+          "usrgrpid": "0",
+          "groupid": "333",
+          "description": "",
+          "confirmation": "",
+          "type": "0",
+          "execute_on": "2",
+          "timeout": "30s",
+          "scope": "2",
+          "port": "",
+          "authtype": "0",
+          "username": "",
+          "password": "<scrubbed>",
+          "publickey": "",
+          "privatekey": "",
+          "menu_path": "zbxapi-spec/b",
+          "url": "",
+          "new_window": "1",
+          "manualinput": "0",
+          "manualinput_prompt": "",
+          "manualinput_validator": "",
+          "manualinput_validator_type": "0",
+          "manualinput_default_value": "",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "method": "script.get",
+      "params": {
+        "filter": {
+          "scriptid": 169
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "scriptid": "169",
+          "name": "zbxapi-spec-scripts-one",
+          "command": "printf 'zbxapi\\n'",
+          "host_access": "2",
+          "usrgrpid": "0",
+          "groupid": "0",
+          "description": "",
+          "confirmation": "",
+          "type": "0",
+          "execute_on": "2",
+          "timeout": "30s",
+          "scope": "1",
+          "port": "",
+          "authtype": "0",
+          "username": "",
+          "password": "<scrubbed>",
+          "publickey": "",
+          "privatekey": "",
+          "menu_path": "",
+          "url": "",
+          "new_window": "1",
+          "manualinput": "0",
+          "manualinput_prompt": "",
+          "manualinput_validator": "",
+          "manualinput_validator_type": "0",
+          "manualinput_default_value": "",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "method": "script.get",
+      "params": {
+        "filter": {
+          "scriptid": 169
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "scriptid": "169",
+          "name": "zbxapi-spec-scripts-one",
+          "command": "printf 'zbxapi\\n'",
+          "host_access": "2",
+          "usrgrpid": "0",
+          "groupid": "0",
+          "description": "",
+          "confirmation": "",
+          "type": "0",
+          "execute_on": "2",
+          "timeout": "30s",
+          "scope": "1",
+          "port": "",
+          "authtype": "0",
+          "username": "",
+          "password": "<scrubbed>",
+          "publickey": "",
+          "privatekey": "",
+          "menu_path": "",
+          "url": "",
+          "new_window": "1",
+          "manualinput": "0",
+          "manualinput_prompt": "",
+          "manualinput_validator": "",
+          "manualinput_validator_type": "0",
+          "manualinput_default_value": "",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 19,
+      "method": "script.get",
+      "params": {
+        "filter": {
+          "scriptid": 170
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "scriptid": "170",
+          "name": "zbxapi-spec-scripts-webhook",
+          "command": "Zabbix.log(3, '[zbxapi-spec] webhook probe');\nreturn 'zbxapi';",
+          "host_access": "2",
+          "usrgrpid": "0",
+          "groupid": "0",
+          "description": "",
+          "confirmation": "",
+          "type": "5",
+          "execute_on": "2",
+          "timeout": "45s",
+          "scope": "1",
+          "port": "",
+          "authtype": "0",
+          "username": "",
+          "password": "<scrubbed>",
+          "publickey": "",
+          "privatekey": "",
+          "menu_path": "",
+          "url": "",
+          "new_window": "1",
+          "manualinput": "0",
+          "manualinput_prompt": "",
+          "manualinput_validator": "",
+          "manualinput_validator_type": "0",
+          "manualinput_default_value": "",
+          "parameters": [
+            {
+              "name": "token",
+              "value": "{$ZBXAPI_SPEC}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 20,
+      "method": "script.get",
+      "params": {
+        "filter": {
+          "scriptid": 169
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "scriptid": "169",
+          "name": "zbxapi-spec-scripts-one",
+          "command": "printf 'zbxapi\\n'",
+          "host_access": "2",
+          "usrgrpid": "0",
+          "groupid": "0",
+          "description": "",
+          "confirmation": "",
+          "type": "0",
+          "execute_on": "2",
+          "timeout": "30s",
+          "scope": "1",
+          "port": "",
+          "authtype": "0",
+          "username": "",
+          "password": "<scrubbed>",
+          "publickey": "",
+          "privatekey": "",
+          "menu_path": "",
+          "url": "",
+          "new_window": "1",
+          "manualinput": "0",
+          "manualinput_prompt": "",
+          "manualinput_validator": "",
+          "manualinput_validator_type": "0",
+          "manualinput_default_value": "",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 21,
+      "method": "script.update",
+      "params": [
+        {
+          "scriptid": 169,
+          "description": "zbxapi-spec after"
+        }
+      ],
+      "result": {
+        "scriptids": [
+          "169"
+        ]
+      }
+    },
+    {
+      "n": 22,
+      "method": "script.get",
+      "params": {
+        "filter": {
+          "scriptid": 170
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "scriptid": "170",
+          "name": "zbxapi-spec-scripts-webhook",
+          "command": "Zabbix.log(3, '[zbxapi-spec] webhook probe');\nreturn 'zbxapi';",
+          "host_access": "2",
+          "usrgrpid": "0",
+          "groupid": "0",
+          "description": "",
+          "confirmation": "",
+          "type": "5",
+          "execute_on": "2",
+          "timeout": "45s",
+          "scope": "1",
+          "port": "",
+          "authtype": "0",
+          "username": "",
+          "password": "<scrubbed>",
+          "publickey": "",
+          "privatekey": "",
+          "menu_path": "",
+          "url": "",
+          "new_window": "1",
+          "manualinput": "0",
+          "manualinput_prompt": "",
+          "manualinput_validator": "",
+          "manualinput_validator_type": "0",
+          "manualinput_default_value": "",
+          "parameters": [
+            {
+              "name": "token",
+              "value": "{$ZBXAPI_SPEC}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 23,
+      "method": "script.update",
+      "params": [
+        {
+          "scriptid": 170,
+          "type": 0,
+          "command": "printf 'zbxapi\\n'"
+        }
+      ],
+      "result": {
+        "scriptids": [
+          "170"
+        ]
+      }
+    },
+    {
+      "n": 24,
+      "method": "script.get",
+      "params": {
+        "filter": {
+          "scriptid": 170
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "scriptid": "170",
+          "name": "zbxapi-spec-scripts-webhook",
+          "command": "printf 'zbxapi\\n'",
+          "host_access": "2",
+          "usrgrpid": "0",
+          "groupid": "0",
+          "description": "",
+          "confirmation": "",
+          "type": "0",
+          "execute_on": "2",
+          "timeout": "30s",
+          "scope": "1",
+          "port": "",
+          "authtype": "0",
+          "username": "",
+          "password": "<scrubbed>",
+          "publickey": "",
+          "privatekey": "",
+          "menu_path": "",
+          "url": "",
+          "new_window": "1",
+          "manualinput": "0",
+          "manualinput_prompt": "",
+          "manualinput_validator": "",
+          "manualinput_validator_type": "0",
+          "manualinput_default_value": "",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 25,
+      "method": "script.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-scripts-one"
+        },
+        "output": [
+          "scriptid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "scriptid": "169",
+          "name": "zbxapi-spec-scripts-one"
+        }
+      ]
+    },
+    {
+      "n": 26,
+      "method": "script.get",
+      "params": {
+        "filter": {
+          "scriptid": "169"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "scriptid": "169",
+          "name": "zbxapi-spec-scripts-one",
+          "command": "printf 'zbxapi\\n'",
+          "host_access": "2",
+          "usrgrpid": "0",
+          "groupid": "0",
+          "description": "zbxapi-spec after",
+          "confirmation": "",
+          "type": "0",
+          "execute_on": "2",
+          "timeout": "30s",
+          "scope": "1",
+          "port": "",
+          "authtype": "0",
+          "username": "",
+          "password": "<scrubbed>",
+          "publickey": "",
+          "privatekey": "",
+          "menu_path": "",
+          "url": "",
+          "new_window": "1",
+          "manualinput": "0",
+          "manualinput_prompt": "",
+          "manualinput_validator": "",
+          "manualinput_validator_type": "0",
+          "manualinput_default_value": "",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 27,
+      "method": "script.update",
+      "params": [
+        {
+          "name": "zbxapi-spec-scripts-one",
+          "scope": 1,
+          "type": 0,
+          "command": "printf 'zbxapi\\n'",
+          "description": "zbxapi-spec upserted",
+          "scriptid": "169"
+        }
+      ],
+      "result": {
+        "scriptids": [
+          "169"
+        ]
+      }
+    },
+    {
+      "n": 28,
+      "method": "script.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-scripts-three"
+        },
+        "output": [
+          "scriptid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 29,
+      "method": "script.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-scripts-three",
+          "scope": 1,
+          "type": 0,
+          "command": "printf 'zbxapi\\n'"
+        }
+      ],
+      "result": {
+        "scriptids": [
+          "173"
+        ]
+      }
+    },
+    {
+      "n": 30,
+      "method": "script.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-scripts-three"
+        },
+        "output": [
+          "scriptid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "scriptid": "173",
+          "name": "zbxapi-spec-scripts-three"
+        }
+      ]
+    },
+    {
+      "n": 31,
+      "method": "script.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-scripts-four"
+        },
+        "output": [
+          "scriptid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 32,
+      "method": "script.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-scripts-four",
+          "scope": 1,
+          "type": 0,
+          "command": "printf 'zbxapi\\n'"
+        }
+      ],
+      "result": {
+        "scriptids": [
+          "174"
+        ]
+      }
+    },
+    {
+      "n": 33,
+      "method": "script.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-scripts-added",
+          "scope": 1,
+          "type": 0,
+          "command": "printf 'zbxapi\\n'"
+        }
+      ],
+      "result": {
+        "scriptids": [
+          "175"
+        ]
+      }
+    },
+    {
+      "n": 34,
+      "method": "script.delete",
+      "params": [
+        175
+      ],
+      "result": {
+        "scriptids": [
+          "175"
+        ]
+      }
+    },
+    {
+      "n": 35,
+      "method": "script.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-scripts-operation",
+          "scope": 1,
+          "type": 0,
+          "command": "printf 'zbxapi\\n'"
+        }
+      ],
+      "result": {
+        "scriptids": [
+          "176"
+        ]
+      }
+    },
+    {
+      "n": 36,
+      "method": "action.create",
+      "params": {
+        "name": "zbxapi-spec-scripts-action",
+        "eventsource": 0,
+        "status": 1,
+        "esc_period": "1h",
+        "filter": {
+          "evaltype": 0,
+          "conditions": [
+            {
+              "conditiontype": 0,
+              "operator": 0,
+              "value": "333"
+            }
+          ]
+        },
+        "operations": [
+          {
+            "operationtype": 1,
+            "opcommand": {
+              "scriptid": 176
+            },
+            "opcommand_hst": [
+              {
+                "hostid": 0
+              }
+            ]
+          }
+        ]
+      },
+      "result": {
+        "actionids": [
+          "134"
+        ]
+      }
+    },
+    {
+      "n": 37,
+      "method": "script.delete",
+      "params": [
+        176
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Cannot delete scripts. Script \"zbxapi-spec-scripts-operation\" is used in action operation \"zbxapi-spec-scripts-action\"."
+      }
+    },
+    {
+      "n": 38,
+      "method": "script.get",
+      "params": {
+        "filter": {
+          "scriptid": 176
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "scriptid": "176",
+          "name": "zbxapi-spec-scripts-operation",
+          "command": "printf 'zbxapi\\n'",
+          "host_access": "2",
+          "usrgrpid": "0",
+          "groupid": "0",
+          "description": "",
+          "confirmation": "",
+          "type": "0",
+          "execute_on": "2",
+          "timeout": "30s",
+          "scope": "1",
+          "port": "",
+          "authtype": "0",
+          "username": "",
+          "password": "<scrubbed>",
+          "publickey": "",
+          "privatekey": "",
+          "menu_path": "",
+          "url": "",
+          "new_window": "1",
+          "manualinput": "0",
+          "manualinput_prompt": "",
+          "manualinput_validator": "",
+          "manualinput_validator_type": "0",
+          "manualinput_default_value": "",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "n": 39,
+      "method": "script.update",
+      "params": [
+        {
+          "scriptid": 176,
+          "scope": 2,
+          "groupid": 333
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Cannot update script scope. Script \"zbxapi-spec-scripts-operation\" is used in action \"zbxapi-spec-scripts-action\"."
+      }
+    },
+    {
+      "n": 40,
+      "method": "action.delete",
+      "params": [
+        134
+      ],
+      "result": {
+        "actionids": [
+          "134"
+        ]
+      }
+    },
+    {
+      "n": 41,
+      "method": "script.delete",
+      "params": [
+        176
+      ],
+      "result": {
+        "scriptids": [
+          "176"
+        ]
+      }
+    },
+    {
+      "n": 42,
+      "method": "script.delete",
+      "params": [
+        999999999
+      ],
+      "error": {
+        "code": -32500,
+        "message": "Application error.",
+        "data": "No permissions to referred object or it does not exist!"
+      }
+    }
+  ]
+}

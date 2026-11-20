@@ -1,0 +1,879 @@
+{
+  "class": "maintenance",
+  "scenario": "crud",
+  "recorded_at": "2026-09-14T15:27:25Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "maintenance.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-maintenance-one",
+          "active_since": 1789396020,
+          "active_till": 1789482420,
+          "groups": [
+            {
+              "groupid": 361
+            }
+          ],
+          "timeperiods": [
+            {
+              "timeperiod_type": 0,
+              "period": 3600,
+              "start_date": 1789396020
+            }
+          ]
+        }
+      ],
+      "result": {
+        "maintenanceids": [
+          "129"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "maintenance.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-maintenance-one",
+          "active_since": 1789396020,
+          "active_till": 1789482420,
+          "groups": [
+            {
+              "groupid": 361
+            }
+          ],
+          "timeperiods": [
+            {
+              "timeperiod_type": 0,
+              "period": 3600,
+              "start_date": 1789396020
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Maintenance \"zbxapi-spec-maintenance-one\" already exists."
+      }
+    },
+    {
+      "n": 3,
+      "method": "maintenance.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-maintenance-one",
+          "active_since": 1789396020,
+          "active_till": 1789482420,
+          "groups": [
+            {
+              "groupid": 361
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": the parameter \"timeperiods\" is missing."
+      }
+    },
+    {
+      "n": 4,
+      "method": "maintenance.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-maintenance-nogroup",
+          "active_since": 1789396020,
+          "active_till": 1789482420,
+          "groups": [],
+          "timeperiods": [
+            {
+              "timeperiod_type": 0,
+              "period": 3600,
+              "start_date": 1789396020
+            }
+          ],
+          "hosts": []
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "At least one host group or host must be selected."
+      }
+    },
+    {
+      "n": 5,
+      "method": "maintenance.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-maintenance-tphole",
+          "active_since": 1789396020,
+          "active_till": 1789482420,
+          "groups": [
+            {
+              "groupid": 361
+            }
+          ],
+          "timeperiods": [
+            {
+              "timeperiod_type": 1,
+              "period": 3600
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/timeperiods/1/timeperiod_type\": value must be one of 0, 2, 3, 4."
+      }
+    },
+    {
+      "n": 6,
+      "method": "maintenance.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-maintenance-sttot",
+          "active_since": 1789396020,
+          "active_till": 1789482420,
+          "groups": [
+            {
+              "groupid": 361
+            }
+          ],
+          "timeperiods": [
+            {
+              "timeperiod_type": 0,
+              "period": 3600,
+              "start_date": 1789396020,
+              "start_time": 0
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/timeperiods/1\": unexpected parameter \"start_time\"."
+      }
+    },
+    {
+      "n": 7,
+      "method": "maintenance.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-maintenance-withid",
+          "active_since": 1789396020,
+          "active_till": 1789482420,
+          "groups": [
+            {
+              "groupid": 361
+            }
+          ],
+          "timeperiods": [
+            {
+              "timeperiod_type": 0,
+              "period": 3600,
+              "start_date": 1789396020
+            }
+          ],
+          "maintenanceid": 99
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"maintenanceid\"."
+      }
+    },
+    {
+      "n": 8,
+      "method": "maintenance.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-maintenance-rich",
+          "description": "every collection at once",
+          "active_since": 1789396020,
+          "active_till": 1789482420,
+          "maintenance_type": 0,
+          "tags_evaltype": 2,
+          "groups": [
+            {
+              "groupid": 361
+            },
+            {
+              "groupid": 362
+            }
+          ],
+          "hosts": [
+            {
+              "hostid": 11163
+            }
+          ],
+          "tags": [
+            {
+              "tag": "service",
+              "operator": 0,
+              "value": "mysqld"
+            },
+            {
+              "tag": "error",
+              "operator": 2,
+              "value": ""
+            }
+          ],
+          "timeperiods": [
+            {
+              "timeperiod_type": 0,
+              "period": 3600,
+              "start_date": 1789396020
+            },
+            {
+              "timeperiod_type": 2,
+              "period": 3600,
+              "start_time": 3600,
+              "every": 1
+            },
+            {
+              "timeperiod_type": 3,
+              "period": 3600,
+              "start_time": 3600,
+              "every": 1,
+              "dayofweek": 64
+            },
+            {
+              "timeperiod_type": 4,
+              "period": 3600,
+              "start_time": 3600,
+              "every": 1,
+              "dayofweek": 64,
+              "month": 1
+            }
+          ]
+        }
+      ],
+      "result": {
+        "maintenanceids": [
+          "130"
+        ]
+      }
+    },
+    {
+      "n": 9,
+      "method": "maintenance.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-maintenance-one"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "maintenanceid": "129",
+          "name": "zbxapi-spec-maintenance-one",
+          "maintenance_type": "0",
+          "description": "",
+          "active_since": "1789396020",
+          "active_till": "1789482420",
+          "tags_evaltype": "0"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "method": "maintenance.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-maintenance-one"
+        },
+        "output": [
+          "maintenanceid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "maintenanceid": "129",
+          "name": "zbxapi-spec-maintenance-one"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "method": "maintenance.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-maintenance-absent"
+        },
+        "output": [
+          "maintenanceid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 12,
+      "method": "maintenance.get",
+      "params": {
+        "filter": {
+          "maintenanceid": 129
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "maintenanceid": "129",
+          "name": "zbxapi-spec-maintenance-one",
+          "maintenance_type": "0",
+          "description": "",
+          "active_since": "1789396020",
+          "active_till": "1789482420",
+          "tags_evaltype": "0"
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "method": "maintenance.get",
+      "params": {
+        "maintenanceids": [
+          130
+        ],
+        "selectHostGroups": "extend",
+        "selectHosts": "extend",
+        "selectTags": "extend",
+        "selectTimeperiods": "extend"
+      },
+      "result": [
+        {
+          "maintenanceid": "130",
+          "name": "zbxapi-spec-maintenance-rich",
+          "maintenance_type": "0",
+          "description": "every collection at once",
+          "active_since": "1789396020",
+          "active_till": "1789482420",
+          "tags_evaltype": "2",
+          "hostgroups": [
+            {
+              "groupid": "361",
+              "name": "zbxapi-spec-maintenance-hg1",
+              "flags": "0",
+              "uuid": "f5efba21d29f4b00a33bcef4069d5d5a"
+            },
+            {
+              "groupid": "362",
+              "name": "zbxapi-spec-maintenance-hg2",
+              "flags": "0",
+              "uuid": "eef510810f234d0b8c3af889a0e2a5a6"
+            }
+          ],
+          "hosts": [
+            {
+              "hostid": "11163",
+              "proxyid": "0",
+              "host": "zbxapi-spec-maintenance-h1",
+              "status": "0",
+              "ipmi_authtype": "-1",
+              "ipmi_privilege": "2",
+              "ipmi_username": "",
+              "ipmi_password": "",
+              "maintenanceid": "0",
+              "maintenance_status": "0",
+              "maintenance_type": "0",
+              "maintenance_from": "0",
+              "name": "zbxapi-spec-maintenance-h1",
+              "flags": "0",
+              "templateid": "0",
+              "description": "",
+              "tls_connect": "1",
+              "tls_accept": "1",
+              "tls_issuer": "",
+              "tls_subject": "",
+              "custom_interfaces": "0",
+              "uuid": "",
+              "vendor_name": "",
+              "vendor_version": "",
+              "proxy_groupid": "0",
+              "monitored_by": "0",
+              "inventory_mode": "-1",
+              "active_available": "0",
+              "assigned_proxyid": "0"
+            }
+          ],
+          "tags": [
+            {
+              "tag": "service",
+              "operator": "0",
+              "value": "mysqld"
+            },
+            {
+              "tag": "error",
+              "operator": "2",
+              "value": ""
+            }
+          ],
+          "timeperiods": [
+            {
+              "timeperiod_type": "0",
+              "every": "1",
+              "month": "0",
+              "dayofweek": "0",
+              "day": "0",
+              "start_time": "0",
+              "period": "3600",
+              "start_date": "1789396020"
+            },
+            {
+              "timeperiod_type": "2",
+              "every": "1",
+              "month": "0",
+              "dayofweek": "0",
+              "day": "0",
+              "start_time": "3600",
+              "period": "3600",
+              "start_date": "0"
+            },
+            {
+              "timeperiod_type": "3",
+              "every": "1",
+              "month": "0",
+              "dayofweek": "64",
+              "day": "0",
+              "start_time": "3600",
+              "period": "3600",
+              "start_date": "0"
+            },
+            {
+              "timeperiod_type": "4",
+              "every": "1",
+              "month": "1",
+              "dayofweek": "64",
+              "day": "0",
+              "start_time": "3600",
+              "period": "3600",
+              "start_date": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "method": "maintenance.get",
+      "params": {
+        "output": "extend"
+      },
+      "result": [
+        {
+          "maintenanceid": "129",
+          "name": "zbxapi-spec-maintenance-one",
+          "maintenance_type": "0",
+          "description": "",
+          "active_since": "1789396020",
+          "active_till": "1789482420",
+          "tags_evaltype": "0"
+        },
+        {
+          "maintenanceid": "130",
+          "name": "zbxapi-spec-maintenance-rich",
+          "maintenance_type": "0",
+          "description": "every collection at once",
+          "active_since": "1789396020",
+          "active_till": "1789482420",
+          "tags_evaltype": "2"
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "method": "maintenance.get",
+      "params": {
+        "filter": {
+          "maintenanceid": 129
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "maintenanceid": "129",
+          "name": "zbxapi-spec-maintenance-one",
+          "maintenance_type": "0",
+          "description": "",
+          "active_since": "1789396020",
+          "active_till": "1789482420",
+          "tags_evaltype": "0"
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "method": "maintenance.get",
+      "params": {
+        "filter": {
+          "maintenanceid": 129
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "maintenanceid": "129",
+          "name": "zbxapi-spec-maintenance-one",
+          "maintenance_type": "0",
+          "description": "",
+          "active_since": "1789396020",
+          "active_till": "1789482420",
+          "tags_evaltype": "0"
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "method": "maintenance.update",
+      "params": [
+        {
+          "maintenanceid": 129,
+          "description": "erste"
+        }
+      ],
+      "result": {
+        "maintenanceids": [
+          "129"
+        ]
+      }
+    },
+    {
+      "n": 18,
+      "method": "maintenance.get",
+      "params": {
+        "filter": {
+          "maintenanceid": 129
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "maintenanceid": "129",
+          "name": "zbxapi-spec-maintenance-one",
+          "maintenance_type": "0",
+          "description": "erste",
+          "active_since": "1789396020",
+          "active_till": "1789482420",
+          "tags_evaltype": "0"
+        }
+      ]
+    },
+    {
+      "n": 19,
+      "method": "maintenance.update",
+      "params": [
+        {
+          "maintenanceid": 129,
+          "groups": [
+            {
+              "groupid": 362
+            }
+          ]
+        }
+      ],
+      "result": {
+        "maintenanceids": [
+          "129"
+        ]
+      }
+    },
+    {
+      "n": 20,
+      "method": "maintenance.get",
+      "params": {
+        "filter": {
+          "maintenanceid": 129
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "maintenanceid": "129",
+          "name": "zbxapi-spec-maintenance-one",
+          "maintenance_type": "0",
+          "description": "erste",
+          "active_since": "1789396020",
+          "active_till": "1789482420",
+          "tags_evaltype": "0"
+        }
+      ]
+    },
+    {
+      "n": 21,
+      "method": "maintenance.update",
+      "params": [
+        {
+          "maintenanceid": 129,
+          "groups": [],
+          "hosts": []
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "At least one host group or host must be selected."
+      }
+    },
+    {
+      "n": 22,
+      "method": "maintenance.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-maintenance-one"
+        },
+        "output": [
+          "maintenanceid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "maintenanceid": "129",
+          "name": "zbxapi-spec-maintenance-one"
+        }
+      ]
+    },
+    {
+      "n": 23,
+      "method": "maintenance.get",
+      "params": {
+        "filter": {
+          "maintenanceid": "129"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "maintenanceid": "129",
+          "name": "zbxapi-spec-maintenance-one",
+          "maintenance_type": "0",
+          "description": "erste",
+          "active_since": "1789396020",
+          "active_till": "1789482420",
+          "tags_evaltype": "0"
+        }
+      ]
+    },
+    {
+      "n": 24,
+      "method": "maintenance.update",
+      "params": [
+        {
+          "name": "zbxapi-spec-maintenance-one",
+          "description": "per upsert",
+          "maintenanceid": "129"
+        }
+      ],
+      "result": {
+        "maintenanceids": [
+          "129"
+        ]
+      }
+    },
+    {
+      "n": 25,
+      "method": "maintenance.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-maintenance-upserted"
+        },
+        "output": [
+          "maintenanceid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 26,
+      "method": "maintenance.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-maintenance-upserted",
+          "active_since": 1789396020,
+          "active_till": 1789482420,
+          "groups": [
+            {
+              "groupid": 361
+            }
+          ],
+          "timeperiods": [
+            {
+              "timeperiod_type": 0,
+              "period": 3600,
+              "start_date": 1789396020
+            }
+          ]
+        }
+      ],
+      "result": {
+        "maintenanceids": [
+          "131"
+        ]
+      }
+    },
+    {
+      "n": 27,
+      "method": "maintenance.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-maintenance-one"
+        },
+        "output": [
+          "maintenanceid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "maintenanceid": "129",
+          "name": "zbxapi-spec-maintenance-one"
+        }
+      ]
+    },
+    {
+      "n": 28,
+      "method": "maintenance.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-maintenance-gotten"
+        },
+        "output": [
+          "maintenanceid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 29,
+      "method": "maintenance.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-maintenance-gotten",
+          "active_since": 1789396020,
+          "active_till": 1789482420,
+          "groups": [
+            {
+              "groupid": 361
+            }
+          ],
+          "timeperiods": [
+            {
+              "timeperiod_type": 0,
+              "period": 3600,
+              "start_date": 1789396020
+            }
+          ]
+        }
+      ],
+      "result": {
+        "maintenanceids": [
+          "132"
+        ]
+      }
+    },
+    {
+      "n": 30,
+      "method": "maintenance.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-maintenance-added",
+          "active_since": 1789396020,
+          "active_till": 1789482420,
+          "groups": [
+            {
+              "groupid": 361
+            }
+          ],
+          "timeperiods": [
+            {
+              "timeperiod_type": 0,
+              "period": 3600,
+              "start_date": 1789396020
+            }
+          ]
+        }
+      ],
+      "result": {
+        "maintenanceids": [
+          "133"
+        ]
+      }
+    },
+    {
+      "n": 31,
+      "method": "maintenance.delete",
+      "params": [
+        133
+      ],
+      "result": {
+        "maintenanceids": [
+          133
+        ]
+      }
+    },
+    {
+      "n": 32,
+      "method": "maintenance.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-maintenance-disposable",
+          "active_since": 1789396020,
+          "active_till": 1789482420,
+          "groups": [
+            {
+              "groupid": 361
+            }
+          ],
+          "timeperiods": [
+            {
+              "timeperiod_type": 0,
+              "period": 3600,
+              "start_date": 1789396020
+            }
+          ]
+        }
+      ],
+      "result": {
+        "maintenanceids": [
+          "134"
+        ]
+      }
+    },
+    {
+      "n": 33,
+      "method": "maintenance.delete",
+      "params": [
+        "134"
+      ],
+      "result": {
+        "maintenanceids": [
+          "134"
+        ]
+      }
+    },
+    {
+      "n": 34,
+      "method": "maintenance.delete",
+      "params": [
+        999999999
+      ],
+      "error": {
+        "code": -32500,
+        "message": "Application error.",
+        "data": "No permissions to referred object or it does not exist!"
+      }
+    }
+  ]
+}

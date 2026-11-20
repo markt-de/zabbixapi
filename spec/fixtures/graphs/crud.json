@@ -1,0 +1,1073 @@
+{
+  "class": "graphs",
+  "scenario": "crud",
+  "recorded_at": "2026-09-14T11:48:51Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "graph.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-graphs-base",
+          "width": 900,
+          "height": 200,
+          "gitems": [
+            {
+              "itemid": 54068,
+              "color": "00AA00"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "graphids": [
+          "3853"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "graph.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-graphs-full",
+          "width": 1000,
+          "height": 300,
+          "graphtype": 0,
+          "show_legend": 0,
+          "show_work_period": 0,
+          "show_triggers": 0,
+          "yaxismin": 5,
+          "yaxismax": 50,
+          "ymin_type": 1,
+          "ymax_type": 1,
+          "percent_left": 10,
+          "percent_right": 20,
+          "gitems": [
+            {
+              "itemid": 54068,
+              "color": "00AA00",
+              "drawtype": 2,
+              "sortorder": 0,
+              "yaxisside": 1,
+              "calc_fnc": 4,
+              "type": 0
+            },
+            {
+              "itemid": 54069,
+              "color": "3333FF",
+              "drawtype": 5,
+              "sortorder": 1,
+              "yaxisside": 0,
+              "calc_fnc": 1,
+              "type": 0
+            }
+          ]
+        }
+      ],
+      "result": {
+        "graphids": [
+          "3854"
+        ]
+      }
+    },
+    {
+      "n": 3,
+      "method": "graph.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-graphs-base",
+          "width": 900,
+          "height": 200,
+          "gitems": [
+            {
+              "itemid": 54070,
+              "color": "00AA00"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "graphids": [
+          "3855"
+        ]
+      }
+    },
+    {
+      "n": 4,
+      "method": "graph.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-graphs-nogitems",
+          "width": 900,
+          "height": 200
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Missing items for graph \"zbxapi-spec-graphs-nogitems\"."
+      }
+    },
+    {
+      "n": 5,
+      "method": "graph.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-graphs-badcolor",
+          "width": 900,
+          "height": 200,
+          "gitems": [
+            {
+              "itemid": 54068,
+              "color": "not-a-colour"
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Color \"not-a-colour\" is not correct: expecting hexadecimal color code (6 symbols)."
+      }
+    },
+    {
+      "n": 6,
+      "method": "graph.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-graphs-base",
+          "width": 900,
+          "height": 200,
+          "gitems": [
+            {
+              "itemid": 54069,
+              "color": "3333FF"
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Graph \"zbxapi-spec-graphs-base\" already exists on the host \"zbxapi-spec-graphs-h1\"."
+      }
+    },
+    {
+      "n": 7,
+      "method": "graph.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-graphs-tplid",
+          "width": 900,
+          "height": 200,
+          "templateid": 999999,
+          "gitems": [
+            {
+              "itemid": 54068,
+              "color": "00AA00"
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Cannot set \"templateid\" for graph \"zbxapi-spec-graphs-tplid\"."
+      }
+    },
+    {
+      "n": 8,
+      "method": "graph.get",
+      "params": {
+        "search": {
+          "name": "zbxapi-spec-graphs-base"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "graphid": "3853",
+          "name": "zbxapi-spec-graphs-base",
+          "width": "900",
+          "height": "200",
+          "yaxismin": "0",
+          "yaxismax": "100",
+          "templateid": "0",
+          "show_work_period": "1",
+          "show_triggers": "1",
+          "graphtype": "0",
+          "show_legend": "1",
+          "show_3d": "0",
+          "percent_left": "0",
+          "percent_right": "0",
+          "ymin_type": "0",
+          "ymax_type": "0",
+          "ymin_itemid": "0",
+          "ymax_itemid": "0",
+          "flags": "0",
+          "uuid": ""
+        },
+        {
+          "graphid": "3855",
+          "name": "zbxapi-spec-graphs-base",
+          "width": "900",
+          "height": "200",
+          "yaxismin": "0",
+          "yaxismax": "100",
+          "templateid": "0",
+          "show_work_period": "1",
+          "show_triggers": "1",
+          "graphtype": "0",
+          "show_legend": "1",
+          "show_3d": "0",
+          "percent_left": "0",
+          "percent_right": "0",
+          "ymin_type": "0",
+          "ymax_type": "0",
+          "ymin_itemid": "0",
+          "ymax_itemid": "0",
+          "flags": "0",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "method": "graph.get",
+      "params": {
+        "search": {
+          "name": "zbxapi-spec-graphs"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "graphid": "3853",
+          "name": "zbxapi-spec-graphs-base",
+          "width": "900",
+          "height": "200",
+          "yaxismin": "0",
+          "yaxismax": "100",
+          "templateid": "0",
+          "show_work_period": "1",
+          "show_triggers": "1",
+          "graphtype": "0",
+          "show_legend": "1",
+          "show_3d": "0",
+          "percent_left": "0",
+          "percent_right": "0",
+          "ymin_type": "0",
+          "ymax_type": "0",
+          "ymin_itemid": "0",
+          "ymax_itemid": "0",
+          "flags": "0",
+          "uuid": ""
+        },
+        {
+          "graphid": "3854",
+          "name": "zbxapi-spec-graphs-full",
+          "width": "1000",
+          "height": "300",
+          "yaxismin": "5",
+          "yaxismax": "50",
+          "templateid": "0",
+          "show_work_period": "0",
+          "show_triggers": "0",
+          "graphtype": "0",
+          "show_legend": "0",
+          "show_3d": "0",
+          "percent_left": "10",
+          "percent_right": "20",
+          "ymin_type": "1",
+          "ymax_type": "1",
+          "ymin_itemid": "0",
+          "ymax_itemid": "0",
+          "flags": "0",
+          "uuid": ""
+        },
+        {
+          "graphid": "3855",
+          "name": "zbxapi-spec-graphs-base",
+          "width": "900",
+          "height": "200",
+          "yaxismin": "0",
+          "yaxismax": "100",
+          "templateid": "0",
+          "show_work_period": "1",
+          "show_triggers": "1",
+          "graphtype": "0",
+          "show_legend": "1",
+          "show_3d": "0",
+          "percent_left": "0",
+          "percent_right": "0",
+          "ymin_type": "0",
+          "ymax_type": "0",
+          "ymin_itemid": "0",
+          "ymax_itemid": "0",
+          "flags": "0",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "method": "graph.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-graphs-base"
+        },
+        "output": [
+          "graphid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "graphid": "3853",
+          "name": "zbxapi-spec-graphs-base"
+        },
+        {
+          "graphid": "3855",
+          "name": "zbxapi-spec-graphs-base"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "method": "graph.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-graphs-base",
+          "hostid": 11101
+        },
+        "output": [
+          "graphid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "graphid": "3853",
+          "name": "zbxapi-spec-graphs-base"
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "method": "graph.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-graphs-absent"
+        },
+        "output": [
+          "graphid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 13,
+      "method": "graph.get",
+      "params": {
+        "filter": {
+          "graphid": 3853
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "graphid": "3853",
+          "name": "zbxapi-spec-graphs-base",
+          "width": "900",
+          "height": "200",
+          "yaxismin": "0",
+          "yaxismax": "100",
+          "templateid": "0",
+          "show_work_period": "1",
+          "show_triggers": "1",
+          "graphtype": "0",
+          "show_legend": "1",
+          "show_3d": "0",
+          "percent_left": "0",
+          "percent_right": "0",
+          "ymin_type": "0",
+          "ymax_type": "0",
+          "ymin_itemid": "0",
+          "ymax_itemid": "0",
+          "flags": "0",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "method": "graph.get",
+      "params": {
+        "graphids": [
+          3853
+        ],
+        "output": [
+          "graphid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "graphid": "3853",
+          "name": "zbxapi-spec-graphs-base"
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "method": "graph.get",
+      "params": {
+        "filter": {
+          "host": "zbxapi-spec-graphs-h1"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "graphid": "3853",
+          "name": "zbxapi-spec-graphs-base",
+          "width": "900",
+          "height": "200",
+          "yaxismin": "0",
+          "yaxismax": "100",
+          "templateid": "0",
+          "show_work_period": "1",
+          "show_triggers": "1",
+          "graphtype": "0",
+          "show_legend": "1",
+          "show_3d": "0",
+          "percent_left": "0",
+          "percent_right": "0",
+          "ymin_type": "0",
+          "ymax_type": "0",
+          "ymin_itemid": "0",
+          "ymax_itemid": "0",
+          "flags": "0",
+          "uuid": ""
+        },
+        {
+          "graphid": "3854",
+          "name": "zbxapi-spec-graphs-full",
+          "width": "1000",
+          "height": "300",
+          "yaxismin": "5",
+          "yaxismax": "50",
+          "templateid": "0",
+          "show_work_period": "0",
+          "show_triggers": "0",
+          "graphtype": "0",
+          "show_legend": "0",
+          "show_3d": "0",
+          "percent_left": "10",
+          "percent_right": "20",
+          "ymin_type": "1",
+          "ymax_type": "1",
+          "ymin_itemid": "0",
+          "ymax_itemid": "0",
+          "flags": "0",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "method": "graph.get",
+      "params": {
+        "filter": {
+          "host": "zbxapi-spec-graphs-h1"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "graphid": "3853",
+          "name": "zbxapi-spec-graphs-base",
+          "width": "900",
+          "height": "200",
+          "yaxismin": "0",
+          "yaxismax": "100",
+          "templateid": "0",
+          "show_work_period": "1",
+          "show_triggers": "1",
+          "graphtype": "0",
+          "show_legend": "1",
+          "show_3d": "0",
+          "percent_left": "0",
+          "percent_right": "0",
+          "ymin_type": "0",
+          "ymax_type": "0",
+          "ymin_itemid": "0",
+          "ymax_itemid": "0",
+          "flags": "0",
+          "uuid": ""
+        },
+        {
+          "graphid": "3854",
+          "name": "zbxapi-spec-graphs-full",
+          "width": "1000",
+          "height": "300",
+          "yaxismin": "5",
+          "yaxismax": "50",
+          "templateid": "0",
+          "show_work_period": "0",
+          "show_triggers": "0",
+          "graphtype": "0",
+          "show_legend": "0",
+          "show_3d": "0",
+          "percent_left": "10",
+          "percent_right": "20",
+          "ymin_type": "1",
+          "ymax_type": "1",
+          "ymin_itemid": "0",
+          "ymax_itemid": "0",
+          "flags": "0",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "method": "graphitem.get",
+      "params": {
+        "graphids": [
+          3854
+        ],
+        "output": "extend"
+      },
+      "result": [
+        {
+          "gitemid": "413185",
+          "graphid": "3854",
+          "itemid": "54068",
+          "drawtype": "2",
+          "sortorder": "0",
+          "color": "00AA00",
+          "yaxisside": "1",
+          "calc_fnc": "4",
+          "type": "0"
+        },
+        {
+          "gitemid": "413186",
+          "graphid": "3854",
+          "itemid": "54069",
+          "drawtype": "5",
+          "sortorder": "1",
+          "color": "3333FF",
+          "yaxisside": "0",
+          "calc_fnc": "1",
+          "type": "0"
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "method": "graphitem.get",
+      "params": {
+        "graphids": [
+          {
+            "graphids": 3854
+          }
+        ],
+        "output": "extend"
+      },
+      "error": {
+        "code": -32500,
+        "message": "Application error.",
+        "data": "Database error occurred."
+      }
+    },
+    {
+      "n": 19,
+      "method": "graph.get",
+      "params": {
+        "filter": {
+          "graphid": 3853
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "graphid": "3853",
+          "name": "zbxapi-spec-graphs-base",
+          "width": "900",
+          "height": "200",
+          "yaxismin": "0",
+          "yaxismax": "100",
+          "templateid": "0",
+          "show_work_period": "1",
+          "show_triggers": "1",
+          "graphtype": "0",
+          "show_legend": "1",
+          "show_3d": "0",
+          "percent_left": "0",
+          "percent_right": "0",
+          "ymin_type": "0",
+          "ymax_type": "0",
+          "ymin_itemid": "0",
+          "ymax_itemid": "0",
+          "flags": "0",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 20,
+      "method": "graph.update",
+      "params": [
+        {
+          "graphid": 3853,
+          "height": 250
+        }
+      ],
+      "result": {
+        "graphids": [
+          3853
+        ]
+      }
+    },
+    {
+      "n": 21,
+      "method": "graph.get",
+      "params": {
+        "filter": {
+          "graphid": 3853
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "graphid": "3853",
+          "name": "zbxapi-spec-graphs-base",
+          "width": "900",
+          "height": "250",
+          "yaxismin": "0",
+          "yaxismax": "100",
+          "templateid": "0",
+          "show_work_period": "1",
+          "show_triggers": "1",
+          "graphtype": "0",
+          "show_legend": "1",
+          "show_3d": "0",
+          "percent_left": "0",
+          "percent_right": "0",
+          "ymin_type": "0",
+          "ymax_type": "0",
+          "ymin_itemid": "0",
+          "ymax_itemid": "0",
+          "flags": "0",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 22,
+      "method": "graph.get",
+      "params": {
+        "filter": {
+          "graphid": 3853
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "graphid": "3853",
+          "name": "zbxapi-spec-graphs-base",
+          "width": "900",
+          "height": "250",
+          "yaxismin": "0",
+          "yaxismax": "100",
+          "templateid": "0",
+          "show_work_period": "1",
+          "show_triggers": "1",
+          "graphtype": "0",
+          "show_legend": "1",
+          "show_3d": "0",
+          "percent_left": "0",
+          "percent_right": "0",
+          "ymin_type": "0",
+          "ymax_type": "0",
+          "ymin_itemid": "0",
+          "ymax_itemid": "0",
+          "flags": "0",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 23,
+      "method": "graph.update",
+      "params": [
+        {
+          "graphid": 3853,
+          "height": 250
+        }
+      ],
+      "result": {
+        "graphids": [
+          3853
+        ]
+      }
+    },
+    {
+      "n": 24,
+      "method": "graph.get",
+      "params": {
+        "filter": {
+          "graphid": 3854
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "graphid": "3854",
+          "name": "zbxapi-spec-graphs-full",
+          "width": "1000",
+          "height": "300",
+          "yaxismin": "5",
+          "yaxismax": "50",
+          "templateid": "0",
+          "show_work_period": "0",
+          "show_triggers": "0",
+          "graphtype": "0",
+          "show_legend": "0",
+          "show_3d": "0",
+          "percent_left": "10",
+          "percent_right": "20",
+          "ymin_type": "1",
+          "ymax_type": "1",
+          "ymin_itemid": "0",
+          "ymax_itemid": "0",
+          "flags": "0",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 25,
+      "method": "graph.update",
+      "params": [
+        {
+          "graphid": 3854,
+          "gitems": [
+            {
+              "itemid": 54068,
+              "color": "FFAA00"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "graphids": [
+          3854
+        ]
+      }
+    },
+    {
+      "n": 26,
+      "method": "graph.get",
+      "params": {
+        "filter": {
+          "graphid": 3853
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "graphid": "3853",
+          "name": "zbxapi-spec-graphs-base",
+          "width": "900",
+          "height": "250",
+          "yaxismin": "0",
+          "yaxismax": "100",
+          "templateid": "0",
+          "show_work_period": "1",
+          "show_triggers": "1",
+          "graphtype": "0",
+          "show_legend": "1",
+          "show_3d": "0",
+          "percent_left": "0",
+          "percent_right": "0",
+          "ymin_type": "0",
+          "ymax_type": "0",
+          "ymin_itemid": "0",
+          "ymax_itemid": "0",
+          "flags": "0",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 27,
+      "method": "graph.update",
+      "params": [
+        {
+          "graphid": 3853,
+          "templateid": 999999
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Cannot update \"templateid\" for graph \"zbxapi-spec-graphs-base\"."
+      }
+    },
+    {
+      "n": 28,
+      "method": "graph.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-graphs-base",
+          "hostid": 11101
+        },
+        "output": [
+          "graphid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "graphid": "3853",
+          "name": "zbxapi-spec-graphs-base"
+        }
+      ]
+    },
+    {
+      "n": 29,
+      "method": "graph.get",
+      "params": {
+        "filter": {
+          "graphid": 3853
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "graphid": "3853",
+          "name": "zbxapi-spec-graphs-base",
+          "width": "900",
+          "height": "250",
+          "yaxismin": "0",
+          "yaxismax": "100",
+          "templateid": "0",
+          "show_work_period": "1",
+          "show_triggers": "1",
+          "graphtype": "0",
+          "show_legend": "1",
+          "show_3d": "0",
+          "percent_left": "0",
+          "percent_right": "0",
+          "ymin_type": "0",
+          "ymax_type": "0",
+          "ymin_itemid": "0",
+          "ymax_itemid": "0",
+          "flags": "0",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 30,
+      "method": "graph.update",
+      "params": [
+        {
+          "name": "zbxapi-spec-graphs-base",
+          "width": 950,
+          "gitems": [
+            {
+              "itemid": 54068,
+              "color": "00AA00"
+            }
+          ],
+          "graphid": 3853
+        }
+      ],
+      "result": {
+        "graphids": [
+          3853
+        ]
+      }
+    },
+    {
+      "n": 31,
+      "method": "graph.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-graphs-cou",
+          "hostid": 11101
+        },
+        "output": [
+          "graphid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 32,
+      "method": "graph.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-graphs-cou",
+          "width": 900,
+          "height": 200,
+          "gitems": [
+            {
+              "itemid": 54068,
+              "color": "00AA00"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "graphids": [
+          "3856"
+        ]
+      }
+    },
+    {
+      "n": 33,
+      "method": "graph.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-graphs-base",
+          "hostid": 11101
+        },
+        "output": [
+          "graphid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "graphid": "3853",
+          "name": "zbxapi-spec-graphs-base"
+        }
+      ]
+    },
+    {
+      "n": 34,
+      "method": "graph.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-graphs-goc",
+          "hostid": 11101
+        },
+        "output": [
+          "graphid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 35,
+      "method": "graph.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-graphs-goc",
+          "width": 900,
+          "height": 200,
+          "gitems": [
+            {
+              "itemid": 54069,
+              "color": "3333FF"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "graphids": [
+          "3857"
+        ]
+      }
+    },
+    {
+      "n": 36,
+      "method": "graph.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-graphs-added",
+          "width": 900,
+          "height": 200,
+          "gitems": [
+            {
+              "itemid": 54068,
+              "color": "00AA00"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "graphids": [
+          "3872"
+        ]
+      }
+    },
+    {
+      "n": 37,
+      "method": "graph.delete",
+      "params": [
+        3872
+      ],
+      "result": {
+        "graphids": [
+          "3872"
+        ]
+      }
+    },
+    {
+      "n": 38,
+      "method": "graph.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-graphs-disposable",
+          "width": 900,
+          "height": 200,
+          "gitems": [
+            {
+              "itemid": 54068,
+              "color": "00AA00"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "graphids": [
+          "3873"
+        ]
+      }
+    },
+    {
+      "n": 39,
+      "method": "graph.delete",
+      "params": [
+        "3873"
+      ],
+      "result": {
+        "graphids": [
+          "3873"
+        ]
+      }
+    },
+    {
+      "n": 40,
+      "method": "graph.delete",
+      "params": [
+        999999999
+      ],
+      "error": {
+        "code": -32500,
+        "message": "Application error.",
+        "data": "No permissions to referred object or it does not exist!"
+      }
+    }
+  ]
+}

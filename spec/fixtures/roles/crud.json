@@ -1,0 +1,2937 @@
+{
+  "class": "roles",
+  "scenario": "crud",
+  "recorded_at": "2026-09-14T10:47:10Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "role.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-roles-one",
+          "type": 1
+        }
+      ],
+      "result": {
+        "roleids": [
+          "66"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "role.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-roles-one",
+          "type": 1
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "User role \"zbxapi-spec-roles-one\" already exists."
+      }
+    },
+    {
+      "n": 3,
+      "method": "role.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-roles-typeless"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": the parameter \"type\" is missing."
+      }
+    },
+    {
+      "n": 4,
+      "method": "role.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-roles-badtype",
+          "type": 0
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/type\": value must be one of 1, 2, 3."
+      }
+    },
+    {
+      "n": 5,
+      "method": "role.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-roles-readonly",
+          "type": 1,
+          "readonly": 1
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"readonly\"."
+      }
+    },
+    {
+      "n": 6,
+      "method": "role.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-roles-badui",
+          "type": 1,
+          "rules": {
+            "ui": [
+              {
+                "name": "administration.general",
+                "status": 1
+              }
+            ]
+          }
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "UI element \"administration.general\" is not available for user role \"zbxapi-spec-roles-badui\"."
+      }
+    },
+    {
+      "n": 7,
+      "method": "role.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-roles-full",
+          "type": 1,
+          "rules": {
+            "ui": [
+              {
+                "name": "monitoring.maps",
+                "status": 0
+              }
+            ],
+            "ui.default_access": 1,
+            "api.access": 1,
+            "api.mode": 0,
+            "api": [
+              "*.create",
+              "*.update",
+              "*.delete"
+            ],
+            "actions": [
+              {
+                "name": "execute_scripts",
+                "status": 0
+              }
+            ],
+            "actions.default_access": 1,
+            "modules.default_access": 0,
+            "services.read.mode": 1,
+            "services.write.mode": 0
+          }
+        }
+      ],
+      "result": {
+        "roleids": [
+          "67"
+        ]
+      }
+    },
+    {
+      "n": 8,
+      "method": "role.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-roles-one"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "roleid": "66",
+          "name": "zbxapi-spec-roles-one",
+          "type": "1",
+          "readonly": "0"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "method": "role.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-roles-one"
+        },
+        "output": [
+          "roleid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "roleid": "66",
+          "name": "zbxapi-spec-roles-one"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "method": "role.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-roles-absent"
+        },
+        "output": [
+          "roleid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 11,
+      "method": "role.get",
+      "params": {
+        "output": "extend",
+        "selectRules": "extend",
+        "roleids": [
+          66
+        ]
+      },
+      "result": [
+        {
+          "roleid": "66",
+          "name": "zbxapi-spec-roles-one",
+          "type": "1",
+          "readonly": "0",
+          "rules": {
+            "ui": [
+              {
+                "name": "monitoring.dashboard",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.problems",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.hosts",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.latest_data",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.maps",
+                "status": "1"
+              },
+              {
+                "name": "services.services",
+                "status": "1"
+              },
+              {
+                "name": "services.sla_report",
+                "status": "1"
+              },
+              {
+                "name": "inventory.overview",
+                "status": "1"
+              },
+              {
+                "name": "inventory.hosts",
+                "status": "1"
+              },
+              {
+                "name": "reports.availability_report",
+                "status": "1"
+              },
+              {
+                "name": "reports.top_triggers",
+                "status": "1"
+              }
+            ],
+            "ui.default_access": "1",
+            "services.read.mode": "1",
+            "services.read.list": [],
+            "services.read.tag": {
+              "tag": "",
+              "value": ""
+            },
+            "services.write.mode": "0",
+            "services.write.list": [],
+            "services.write.tag": {
+              "tag": "",
+              "value": ""
+            },
+            "modules": [
+              {
+                "moduleid": 1,
+                "status": "1"
+              },
+              {
+                "moduleid": 2,
+                "status": "1"
+              },
+              {
+                "moduleid": 3,
+                "status": "1"
+              },
+              {
+                "moduleid": 4,
+                "status": "1"
+              },
+              {
+                "moduleid": 5,
+                "status": "1"
+              },
+              {
+                "moduleid": 6,
+                "status": "1"
+              },
+              {
+                "moduleid": 7,
+                "status": "1"
+              },
+              {
+                "moduleid": 8,
+                "status": "1"
+              },
+              {
+                "moduleid": 9,
+                "status": "1"
+              },
+              {
+                "moduleid": 10,
+                "status": "1"
+              },
+              {
+                "moduleid": 11,
+                "status": "1"
+              },
+              {
+                "moduleid": 12,
+                "status": "1"
+              },
+              {
+                "moduleid": 13,
+                "status": "1"
+              },
+              {
+                "moduleid": 14,
+                "status": "1"
+              },
+              {
+                "moduleid": 15,
+                "status": "1"
+              },
+              {
+                "moduleid": 16,
+                "status": "1"
+              },
+              {
+                "moduleid": 17,
+                "status": "1"
+              },
+              {
+                "moduleid": 18,
+                "status": "1"
+              },
+              {
+                "moduleid": 19,
+                "status": "1"
+              },
+              {
+                "moduleid": 20,
+                "status": "1"
+              },
+              {
+                "moduleid": 21,
+                "status": "1"
+              },
+              {
+                "moduleid": 22,
+                "status": "1"
+              },
+              {
+                "moduleid": 23,
+                "status": "1"
+              },
+              {
+                "moduleid": 24,
+                "status": "1"
+              },
+              {
+                "moduleid": 25,
+                "status": "1"
+              },
+              {
+                "moduleid": 26,
+                "status": "1"
+              },
+              {
+                "moduleid": 27,
+                "status": "1"
+              },
+              {
+                "moduleid": 28,
+                "status": "1"
+              },
+              {
+                "moduleid": 29,
+                "status": "1"
+              },
+              {
+                "moduleid": 30,
+                "status": "1"
+              }
+            ],
+            "modules.default_access": "1",
+            "api.access": "1",
+            "api.mode": "0",
+            "api": [],
+            "actions": [
+              {
+                "name": "edit_dashboards",
+                "status": "1"
+              },
+              {
+                "name": "edit_maps",
+                "status": "1"
+              },
+              {
+                "name": "acknowledge_problems",
+                "status": "1"
+              },
+              {
+                "name": "suppress_problems",
+                "status": "1"
+              },
+              {
+                "name": "close_problems",
+                "status": "1"
+              },
+              {
+                "name": "change_severity",
+                "status": "1"
+              },
+              {
+                "name": "add_problem_comments",
+                "status": "1"
+              },
+              {
+                "name": "execute_scripts",
+                "status": "1"
+              },
+              {
+                "name": "manage_api_tokens",
+                "status": "1"
+              },
+              {
+                "name": "invoke_execute_now",
+                "status": "1"
+              },
+              {
+                "name": "change_problem_ranking",
+                "status": "1"
+              }
+            ],
+            "actions.default_access": "1"
+          }
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "method": "role.get",
+      "params": {
+        "output": "extend",
+        "selectRules": "extend",
+        "roleids": [
+          66
+        ]
+      },
+      "result": [
+        {
+          "roleid": "66",
+          "name": "zbxapi-spec-roles-one",
+          "type": "1",
+          "readonly": "0",
+          "rules": {
+            "ui": [
+              {
+                "name": "monitoring.dashboard",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.problems",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.hosts",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.latest_data",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.maps",
+                "status": "1"
+              },
+              {
+                "name": "services.services",
+                "status": "1"
+              },
+              {
+                "name": "services.sla_report",
+                "status": "1"
+              },
+              {
+                "name": "inventory.overview",
+                "status": "1"
+              },
+              {
+                "name": "inventory.hosts",
+                "status": "1"
+              },
+              {
+                "name": "reports.availability_report",
+                "status": "1"
+              },
+              {
+                "name": "reports.top_triggers",
+                "status": "1"
+              }
+            ],
+            "ui.default_access": "1",
+            "services.read.mode": "1",
+            "services.read.list": [],
+            "services.read.tag": {
+              "tag": "",
+              "value": ""
+            },
+            "services.write.mode": "0",
+            "services.write.list": [],
+            "services.write.tag": {
+              "tag": "",
+              "value": ""
+            },
+            "modules": [
+              {
+                "moduleid": 1,
+                "status": "1"
+              },
+              {
+                "moduleid": 2,
+                "status": "1"
+              },
+              {
+                "moduleid": 3,
+                "status": "1"
+              },
+              {
+                "moduleid": 4,
+                "status": "1"
+              },
+              {
+                "moduleid": 5,
+                "status": "1"
+              },
+              {
+                "moduleid": 6,
+                "status": "1"
+              },
+              {
+                "moduleid": 7,
+                "status": "1"
+              },
+              {
+                "moduleid": 8,
+                "status": "1"
+              },
+              {
+                "moduleid": 9,
+                "status": "1"
+              },
+              {
+                "moduleid": 10,
+                "status": "1"
+              },
+              {
+                "moduleid": 11,
+                "status": "1"
+              },
+              {
+                "moduleid": 12,
+                "status": "1"
+              },
+              {
+                "moduleid": 13,
+                "status": "1"
+              },
+              {
+                "moduleid": 14,
+                "status": "1"
+              },
+              {
+                "moduleid": 15,
+                "status": "1"
+              },
+              {
+                "moduleid": 16,
+                "status": "1"
+              },
+              {
+                "moduleid": 17,
+                "status": "1"
+              },
+              {
+                "moduleid": 18,
+                "status": "1"
+              },
+              {
+                "moduleid": 19,
+                "status": "1"
+              },
+              {
+                "moduleid": 20,
+                "status": "1"
+              },
+              {
+                "moduleid": 21,
+                "status": "1"
+              },
+              {
+                "moduleid": 22,
+                "status": "1"
+              },
+              {
+                "moduleid": 23,
+                "status": "1"
+              },
+              {
+                "moduleid": 24,
+                "status": "1"
+              },
+              {
+                "moduleid": 25,
+                "status": "1"
+              },
+              {
+                "moduleid": 26,
+                "status": "1"
+              },
+              {
+                "moduleid": 27,
+                "status": "1"
+              },
+              {
+                "moduleid": 28,
+                "status": "1"
+              },
+              {
+                "moduleid": 29,
+                "status": "1"
+              },
+              {
+                "moduleid": 30,
+                "status": "1"
+              }
+            ],
+            "modules.default_access": "1",
+            "api.access": "1",
+            "api.mode": "0",
+            "api": [],
+            "actions": [
+              {
+                "name": "edit_dashboards",
+                "status": "1"
+              },
+              {
+                "name": "edit_maps",
+                "status": "1"
+              },
+              {
+                "name": "acknowledge_problems",
+                "status": "1"
+              },
+              {
+                "name": "suppress_problems",
+                "status": "1"
+              },
+              {
+                "name": "close_problems",
+                "status": "1"
+              },
+              {
+                "name": "change_severity",
+                "status": "1"
+              },
+              {
+                "name": "add_problem_comments",
+                "status": "1"
+              },
+              {
+                "name": "execute_scripts",
+                "status": "1"
+              },
+              {
+                "name": "manage_api_tokens",
+                "status": "1"
+              },
+              {
+                "name": "invoke_execute_now",
+                "status": "1"
+              },
+              {
+                "name": "change_problem_ranking",
+                "status": "1"
+              }
+            ],
+            "actions.default_access": "1"
+          }
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "method": "role.get",
+      "params": {
+        "roleids": [
+          66
+        ],
+        "selectUsers": "extend"
+      },
+      "result": [
+        {
+          "roleid": "66",
+          "name": "zbxapi-spec-roles-one",
+          "type": "1",
+          "readonly": "0",
+          "users": []
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "method": "role.get",
+      "params": {
+        "output": "extend"
+      },
+      "result": [
+        {
+          "roleid": "1",
+          "name": "User role",
+          "type": "1",
+          "readonly": "0"
+        },
+        {
+          "roleid": "2",
+          "name": "Admin role",
+          "type": "2",
+          "readonly": "0"
+        },
+        {
+          "roleid": "3",
+          "name": "Super admin role",
+          "type": "3",
+          "readonly": "1"
+        },
+        {
+          "roleid": "4",
+          "name": "Guest role",
+          "type": "1",
+          "readonly": "0"
+        },
+        {
+          "roleid": "65",
+          "name": "zbxapi-spec-roles-member",
+          "type": "1",
+          "readonly": "0"
+        },
+        {
+          "roleid": "66",
+          "name": "zbxapi-spec-roles-one",
+          "type": "1",
+          "readonly": "0"
+        },
+        {
+          "roleid": "67",
+          "name": "zbxapi-spec-roles-full",
+          "type": "1",
+          "readonly": "0"
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "method": "role.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-roles-one"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "roleid": "66",
+          "name": "zbxapi-spec-roles-one",
+          "type": "1",
+          "readonly": "0"
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "method": "role.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-roles-absent"
+        },
+        "output": "extend"
+      },
+      "result": []
+    },
+    {
+      "n": 17,
+      "method": "role.get",
+      "params": {
+        "output": "extend",
+        "selectRules": "extend",
+        "roleids": [
+          66
+        ]
+      },
+      "result": [
+        {
+          "roleid": "66",
+          "name": "zbxapi-spec-roles-one",
+          "type": "1",
+          "readonly": "0",
+          "rules": {
+            "ui": [
+              {
+                "name": "monitoring.dashboard",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.problems",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.hosts",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.latest_data",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.maps",
+                "status": "1"
+              },
+              {
+                "name": "services.services",
+                "status": "1"
+              },
+              {
+                "name": "services.sla_report",
+                "status": "1"
+              },
+              {
+                "name": "inventory.overview",
+                "status": "1"
+              },
+              {
+                "name": "inventory.hosts",
+                "status": "1"
+              },
+              {
+                "name": "reports.availability_report",
+                "status": "1"
+              },
+              {
+                "name": "reports.top_triggers",
+                "status": "1"
+              }
+            ],
+            "ui.default_access": "1",
+            "services.read.mode": "1",
+            "services.read.list": [],
+            "services.read.tag": {
+              "tag": "",
+              "value": ""
+            },
+            "services.write.mode": "0",
+            "services.write.list": [],
+            "services.write.tag": {
+              "tag": "",
+              "value": ""
+            },
+            "modules": [
+              {
+                "moduleid": 1,
+                "status": "1"
+              },
+              {
+                "moduleid": 2,
+                "status": "1"
+              },
+              {
+                "moduleid": 3,
+                "status": "1"
+              },
+              {
+                "moduleid": 4,
+                "status": "1"
+              },
+              {
+                "moduleid": 5,
+                "status": "1"
+              },
+              {
+                "moduleid": 6,
+                "status": "1"
+              },
+              {
+                "moduleid": 7,
+                "status": "1"
+              },
+              {
+                "moduleid": 8,
+                "status": "1"
+              },
+              {
+                "moduleid": 9,
+                "status": "1"
+              },
+              {
+                "moduleid": 10,
+                "status": "1"
+              },
+              {
+                "moduleid": 11,
+                "status": "1"
+              },
+              {
+                "moduleid": 12,
+                "status": "1"
+              },
+              {
+                "moduleid": 13,
+                "status": "1"
+              },
+              {
+                "moduleid": 14,
+                "status": "1"
+              },
+              {
+                "moduleid": 15,
+                "status": "1"
+              },
+              {
+                "moduleid": 16,
+                "status": "1"
+              },
+              {
+                "moduleid": 17,
+                "status": "1"
+              },
+              {
+                "moduleid": 18,
+                "status": "1"
+              },
+              {
+                "moduleid": 19,
+                "status": "1"
+              },
+              {
+                "moduleid": 20,
+                "status": "1"
+              },
+              {
+                "moduleid": 21,
+                "status": "1"
+              },
+              {
+                "moduleid": 22,
+                "status": "1"
+              },
+              {
+                "moduleid": 23,
+                "status": "1"
+              },
+              {
+                "moduleid": 24,
+                "status": "1"
+              },
+              {
+                "moduleid": 25,
+                "status": "1"
+              },
+              {
+                "moduleid": 26,
+                "status": "1"
+              },
+              {
+                "moduleid": 27,
+                "status": "1"
+              },
+              {
+                "moduleid": 28,
+                "status": "1"
+              },
+              {
+                "moduleid": 29,
+                "status": "1"
+              },
+              {
+                "moduleid": 30,
+                "status": "1"
+              }
+            ],
+            "modules.default_access": "1",
+            "api.access": "1",
+            "api.mode": "0",
+            "api": [],
+            "actions": [
+              {
+                "name": "edit_dashboards",
+                "status": "1"
+              },
+              {
+                "name": "edit_maps",
+                "status": "1"
+              },
+              {
+                "name": "acknowledge_problems",
+                "status": "1"
+              },
+              {
+                "name": "suppress_problems",
+                "status": "1"
+              },
+              {
+                "name": "close_problems",
+                "status": "1"
+              },
+              {
+                "name": "change_severity",
+                "status": "1"
+              },
+              {
+                "name": "add_problem_comments",
+                "status": "1"
+              },
+              {
+                "name": "execute_scripts",
+                "status": "1"
+              },
+              {
+                "name": "manage_api_tokens",
+                "status": "1"
+              },
+              {
+                "name": "invoke_execute_now",
+                "status": "1"
+              },
+              {
+                "name": "change_problem_ranking",
+                "status": "1"
+              }
+            ],
+            "actions.default_access": "1"
+          }
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "method": "role.get",
+      "params": {
+        "output": "extend",
+        "selectRules": "extend",
+        "roleids": [
+          66
+        ]
+      },
+      "result": [
+        {
+          "roleid": "66",
+          "name": "zbxapi-spec-roles-one",
+          "type": "1",
+          "readonly": "0",
+          "rules": {
+            "ui": [
+              {
+                "name": "monitoring.dashboard",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.problems",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.hosts",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.latest_data",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.maps",
+                "status": "1"
+              },
+              {
+                "name": "services.services",
+                "status": "1"
+              },
+              {
+                "name": "services.sla_report",
+                "status": "1"
+              },
+              {
+                "name": "inventory.overview",
+                "status": "1"
+              },
+              {
+                "name": "inventory.hosts",
+                "status": "1"
+              },
+              {
+                "name": "reports.availability_report",
+                "status": "1"
+              },
+              {
+                "name": "reports.top_triggers",
+                "status": "1"
+              }
+            ],
+            "ui.default_access": "1",
+            "services.read.mode": "1",
+            "services.read.list": [],
+            "services.read.tag": {
+              "tag": "",
+              "value": ""
+            },
+            "services.write.mode": "0",
+            "services.write.list": [],
+            "services.write.tag": {
+              "tag": "",
+              "value": ""
+            },
+            "modules": [
+              {
+                "moduleid": 1,
+                "status": "1"
+              },
+              {
+                "moduleid": 2,
+                "status": "1"
+              },
+              {
+                "moduleid": 3,
+                "status": "1"
+              },
+              {
+                "moduleid": 4,
+                "status": "1"
+              },
+              {
+                "moduleid": 5,
+                "status": "1"
+              },
+              {
+                "moduleid": 6,
+                "status": "1"
+              },
+              {
+                "moduleid": 7,
+                "status": "1"
+              },
+              {
+                "moduleid": 8,
+                "status": "1"
+              },
+              {
+                "moduleid": 9,
+                "status": "1"
+              },
+              {
+                "moduleid": 10,
+                "status": "1"
+              },
+              {
+                "moduleid": 11,
+                "status": "1"
+              },
+              {
+                "moduleid": 12,
+                "status": "1"
+              },
+              {
+                "moduleid": 13,
+                "status": "1"
+              },
+              {
+                "moduleid": 14,
+                "status": "1"
+              },
+              {
+                "moduleid": 15,
+                "status": "1"
+              },
+              {
+                "moduleid": 16,
+                "status": "1"
+              },
+              {
+                "moduleid": 17,
+                "status": "1"
+              },
+              {
+                "moduleid": 18,
+                "status": "1"
+              },
+              {
+                "moduleid": 19,
+                "status": "1"
+              },
+              {
+                "moduleid": 20,
+                "status": "1"
+              },
+              {
+                "moduleid": 21,
+                "status": "1"
+              },
+              {
+                "moduleid": 22,
+                "status": "1"
+              },
+              {
+                "moduleid": 23,
+                "status": "1"
+              },
+              {
+                "moduleid": 24,
+                "status": "1"
+              },
+              {
+                "moduleid": 25,
+                "status": "1"
+              },
+              {
+                "moduleid": 26,
+                "status": "1"
+              },
+              {
+                "moduleid": 27,
+                "status": "1"
+              },
+              {
+                "moduleid": 28,
+                "status": "1"
+              },
+              {
+                "moduleid": 29,
+                "status": "1"
+              },
+              {
+                "moduleid": 30,
+                "status": "1"
+              }
+            ],
+            "modules.default_access": "1",
+            "api.access": "1",
+            "api.mode": "0",
+            "api": [],
+            "actions": [
+              {
+                "name": "edit_dashboards",
+                "status": "1"
+              },
+              {
+                "name": "edit_maps",
+                "status": "1"
+              },
+              {
+                "name": "acknowledge_problems",
+                "status": "1"
+              },
+              {
+                "name": "suppress_problems",
+                "status": "1"
+              },
+              {
+                "name": "close_problems",
+                "status": "1"
+              },
+              {
+                "name": "change_severity",
+                "status": "1"
+              },
+              {
+                "name": "add_problem_comments",
+                "status": "1"
+              },
+              {
+                "name": "execute_scripts",
+                "status": "1"
+              },
+              {
+                "name": "manage_api_tokens",
+                "status": "1"
+              },
+              {
+                "name": "invoke_execute_now",
+                "status": "1"
+              },
+              {
+                "name": "change_problem_ranking",
+                "status": "1"
+              }
+            ],
+            "actions.default_access": "1"
+          }
+        }
+      ]
+    },
+    {
+      "n": 19,
+      "method": "role.update",
+      "params": [
+        {
+          "roleid": 66,
+          "name": "zbxapi-spec-roles-renamed",
+          "type": 2
+        }
+      ],
+      "result": {
+        "roleids": [
+          "66"
+        ]
+      }
+    },
+    {
+      "n": 20,
+      "method": "role.get",
+      "params": {
+        "output": "extend",
+        "selectRules": "extend",
+        "roleids": [
+          66
+        ]
+      },
+      "result": [
+        {
+          "roleid": "66",
+          "name": "zbxapi-spec-roles-renamed",
+          "type": "2",
+          "readonly": "0",
+          "rules": {
+            "ui": [
+              {
+                "name": "monitoring.dashboard",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.problems",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.hosts",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.latest_data",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.maps",
+                "status": "1"
+              },
+              {
+                "name": "services.services",
+                "status": "1"
+              },
+              {
+                "name": "services.sla_report",
+                "status": "1"
+              },
+              {
+                "name": "inventory.overview",
+                "status": "1"
+              },
+              {
+                "name": "inventory.hosts",
+                "status": "1"
+              },
+              {
+                "name": "reports.availability_report",
+                "status": "1"
+              },
+              {
+                "name": "reports.top_triggers",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.discovery",
+                "status": "1"
+              },
+              {
+                "name": "services.sla",
+                "status": "1"
+              },
+              {
+                "name": "reports.scheduled_reports",
+                "status": "1"
+              },
+              {
+                "name": "reports.notifications",
+                "status": "1"
+              },
+              {
+                "name": "configuration.template_groups",
+                "status": "1"
+              },
+              {
+                "name": "configuration.host_groups",
+                "status": "1"
+              },
+              {
+                "name": "configuration.templates",
+                "status": "1"
+              },
+              {
+                "name": "configuration.hosts",
+                "status": "1"
+              },
+              {
+                "name": "configuration.maintenance",
+                "status": "1"
+              },
+              {
+                "name": "configuration.discovery",
+                "status": "1"
+              },
+              {
+                "name": "configuration.trigger_actions",
+                "status": "1"
+              },
+              {
+                "name": "configuration.service_actions",
+                "status": "1"
+              },
+              {
+                "name": "configuration.discovery_actions",
+                "status": "1"
+              },
+              {
+                "name": "configuration.autoregistration_actions",
+                "status": "1"
+              },
+              {
+                "name": "configuration.internal_actions",
+                "status": "1"
+              }
+            ],
+            "ui.default_access": "1",
+            "services.read.mode": "1",
+            "services.read.list": [],
+            "services.read.tag": {
+              "tag": "",
+              "value": ""
+            },
+            "services.write.mode": "0",
+            "services.write.list": [],
+            "services.write.tag": {
+              "tag": "",
+              "value": ""
+            },
+            "modules": [
+              {
+                "moduleid": 1,
+                "status": "1"
+              },
+              {
+                "moduleid": 2,
+                "status": "1"
+              },
+              {
+                "moduleid": 3,
+                "status": "1"
+              },
+              {
+                "moduleid": 4,
+                "status": "1"
+              },
+              {
+                "moduleid": 5,
+                "status": "1"
+              },
+              {
+                "moduleid": 6,
+                "status": "1"
+              },
+              {
+                "moduleid": 7,
+                "status": "1"
+              },
+              {
+                "moduleid": 8,
+                "status": "1"
+              },
+              {
+                "moduleid": 9,
+                "status": "1"
+              },
+              {
+                "moduleid": 10,
+                "status": "1"
+              },
+              {
+                "moduleid": 11,
+                "status": "1"
+              },
+              {
+                "moduleid": 12,
+                "status": "1"
+              },
+              {
+                "moduleid": 13,
+                "status": "1"
+              },
+              {
+                "moduleid": 14,
+                "status": "1"
+              },
+              {
+                "moduleid": 15,
+                "status": "1"
+              },
+              {
+                "moduleid": 16,
+                "status": "1"
+              },
+              {
+                "moduleid": 17,
+                "status": "1"
+              },
+              {
+                "moduleid": 18,
+                "status": "1"
+              },
+              {
+                "moduleid": 19,
+                "status": "1"
+              },
+              {
+                "moduleid": 20,
+                "status": "1"
+              },
+              {
+                "moduleid": 21,
+                "status": "1"
+              },
+              {
+                "moduleid": 22,
+                "status": "1"
+              },
+              {
+                "moduleid": 23,
+                "status": "1"
+              },
+              {
+                "moduleid": 24,
+                "status": "1"
+              },
+              {
+                "moduleid": 25,
+                "status": "1"
+              },
+              {
+                "moduleid": 26,
+                "status": "1"
+              },
+              {
+                "moduleid": 27,
+                "status": "1"
+              },
+              {
+                "moduleid": 28,
+                "status": "1"
+              },
+              {
+                "moduleid": 29,
+                "status": "1"
+              },
+              {
+                "moduleid": 30,
+                "status": "1"
+              }
+            ],
+            "modules.default_access": "1",
+            "api.access": "1",
+            "api.mode": "0",
+            "api": [],
+            "actions": [
+              {
+                "name": "edit_dashboards",
+                "status": "1"
+              },
+              {
+                "name": "edit_maps",
+                "status": "1"
+              },
+              {
+                "name": "acknowledge_problems",
+                "status": "1"
+              },
+              {
+                "name": "suppress_problems",
+                "status": "1"
+              },
+              {
+                "name": "close_problems",
+                "status": "1"
+              },
+              {
+                "name": "change_severity",
+                "status": "1"
+              },
+              {
+                "name": "add_problem_comments",
+                "status": "1"
+              },
+              {
+                "name": "execute_scripts",
+                "status": "1"
+              },
+              {
+                "name": "manage_api_tokens",
+                "status": "1"
+              },
+              {
+                "name": "edit_maintenance",
+                "status": "1"
+              },
+              {
+                "name": "manage_scheduled_reports",
+                "status": "1"
+              },
+              {
+                "name": "manage_sla",
+                "status": "1"
+              },
+              {
+                "name": "invoke_execute_now",
+                "status": "1"
+              },
+              {
+                "name": "change_problem_ranking",
+                "status": "1"
+              }
+            ],
+            "actions.default_access": "1"
+          }
+        }
+      ]
+    },
+    {
+      "n": 21,
+      "method": "role.update",
+      "params": [
+        {
+          "roleid": 66,
+          "readonly": 1
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"readonly\"."
+      }
+    },
+    {
+      "n": 22,
+      "method": "role.get",
+      "params": {
+        "output": "extend",
+        "selectRules": "extend",
+        "roleids": [
+          67
+        ]
+      },
+      "result": [
+        {
+          "roleid": "67",
+          "name": "zbxapi-spec-roles-full",
+          "type": "1",
+          "readonly": "0",
+          "rules": {
+            "ui": [
+              {
+                "name": "monitoring.maps",
+                "status": "0"
+              },
+              {
+                "name": "monitoring.dashboard",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.problems",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.hosts",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.latest_data",
+                "status": "1"
+              },
+              {
+                "name": "services.services",
+                "status": "1"
+              },
+              {
+                "name": "services.sla_report",
+                "status": "1"
+              },
+              {
+                "name": "inventory.overview",
+                "status": "1"
+              },
+              {
+                "name": "inventory.hosts",
+                "status": "1"
+              },
+              {
+                "name": "reports.availability_report",
+                "status": "1"
+              },
+              {
+                "name": "reports.top_triggers",
+                "status": "1"
+              }
+            ],
+            "ui.default_access": "1",
+            "services.read.mode": "1",
+            "services.read.list": [],
+            "services.read.tag": {
+              "tag": "",
+              "value": ""
+            },
+            "services.write.mode": "0",
+            "services.write.list": [],
+            "services.write.tag": {
+              "tag": "",
+              "value": ""
+            },
+            "modules": [
+              {
+                "moduleid": 1,
+                "status": "1"
+              },
+              {
+                "moduleid": 2,
+                "status": "1"
+              },
+              {
+                "moduleid": 3,
+                "status": "1"
+              },
+              {
+                "moduleid": 4,
+                "status": "1"
+              },
+              {
+                "moduleid": 5,
+                "status": "1"
+              },
+              {
+                "moduleid": 6,
+                "status": "1"
+              },
+              {
+                "moduleid": 7,
+                "status": "1"
+              },
+              {
+                "moduleid": 8,
+                "status": "1"
+              },
+              {
+                "moduleid": 9,
+                "status": "1"
+              },
+              {
+                "moduleid": 10,
+                "status": "1"
+              },
+              {
+                "moduleid": 11,
+                "status": "1"
+              },
+              {
+                "moduleid": 12,
+                "status": "1"
+              },
+              {
+                "moduleid": 13,
+                "status": "1"
+              },
+              {
+                "moduleid": 14,
+                "status": "1"
+              },
+              {
+                "moduleid": 15,
+                "status": "1"
+              },
+              {
+                "moduleid": 16,
+                "status": "1"
+              },
+              {
+                "moduleid": 17,
+                "status": "1"
+              },
+              {
+                "moduleid": 18,
+                "status": "1"
+              },
+              {
+                "moduleid": 19,
+                "status": "1"
+              },
+              {
+                "moduleid": 20,
+                "status": "1"
+              },
+              {
+                "moduleid": 21,
+                "status": "1"
+              },
+              {
+                "moduleid": 22,
+                "status": "1"
+              },
+              {
+                "moduleid": 23,
+                "status": "1"
+              },
+              {
+                "moduleid": 24,
+                "status": "1"
+              },
+              {
+                "moduleid": 25,
+                "status": "1"
+              },
+              {
+                "moduleid": 26,
+                "status": "1"
+              },
+              {
+                "moduleid": 27,
+                "status": "1"
+              },
+              {
+                "moduleid": 28,
+                "status": "1"
+              },
+              {
+                "moduleid": 29,
+                "status": "1"
+              },
+              {
+                "moduleid": 30,
+                "status": "1"
+              }
+            ],
+            "modules.default_access": "0",
+            "api.access": "1",
+            "api.mode": "0",
+            "api": [
+              "*.create",
+              "*.update",
+              "*.delete"
+            ],
+            "actions": [
+              {
+                "name": "execute_scripts",
+                "status": "0"
+              },
+              {
+                "name": "edit_dashboards",
+                "status": "1"
+              },
+              {
+                "name": "edit_maps",
+                "status": "1"
+              },
+              {
+                "name": "acknowledge_problems",
+                "status": "1"
+              },
+              {
+                "name": "suppress_problems",
+                "status": "1"
+              },
+              {
+                "name": "close_problems",
+                "status": "1"
+              },
+              {
+                "name": "change_severity",
+                "status": "1"
+              },
+              {
+                "name": "add_problem_comments",
+                "status": "1"
+              },
+              {
+                "name": "manage_api_tokens",
+                "status": "1"
+              },
+              {
+                "name": "invoke_execute_now",
+                "status": "1"
+              },
+              {
+                "name": "change_problem_ranking",
+                "status": "1"
+              }
+            ],
+            "actions.default_access": "1"
+          }
+        }
+      ]
+    },
+    {
+      "n": 23,
+      "method": "role.get",
+      "params": {
+        "output": "extend",
+        "selectRules": "extend",
+        "roleids": [
+          67
+        ]
+      },
+      "result": [
+        {
+          "roleid": "67",
+          "name": "zbxapi-spec-roles-full",
+          "type": "1",
+          "readonly": "0",
+          "rules": {
+            "ui": [
+              {
+                "name": "monitoring.maps",
+                "status": "0"
+              },
+              {
+                "name": "monitoring.dashboard",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.problems",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.hosts",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.latest_data",
+                "status": "1"
+              },
+              {
+                "name": "services.services",
+                "status": "1"
+              },
+              {
+                "name": "services.sla_report",
+                "status": "1"
+              },
+              {
+                "name": "inventory.overview",
+                "status": "1"
+              },
+              {
+                "name": "inventory.hosts",
+                "status": "1"
+              },
+              {
+                "name": "reports.availability_report",
+                "status": "1"
+              },
+              {
+                "name": "reports.top_triggers",
+                "status": "1"
+              }
+            ],
+            "ui.default_access": "1",
+            "services.read.mode": "1",
+            "services.read.list": [],
+            "services.read.tag": {
+              "tag": "",
+              "value": ""
+            },
+            "services.write.mode": "0",
+            "services.write.list": [],
+            "services.write.tag": {
+              "tag": "",
+              "value": ""
+            },
+            "modules": [
+              {
+                "moduleid": 1,
+                "status": "1"
+              },
+              {
+                "moduleid": 2,
+                "status": "1"
+              },
+              {
+                "moduleid": 3,
+                "status": "1"
+              },
+              {
+                "moduleid": 4,
+                "status": "1"
+              },
+              {
+                "moduleid": 5,
+                "status": "1"
+              },
+              {
+                "moduleid": 6,
+                "status": "1"
+              },
+              {
+                "moduleid": 7,
+                "status": "1"
+              },
+              {
+                "moduleid": 8,
+                "status": "1"
+              },
+              {
+                "moduleid": 9,
+                "status": "1"
+              },
+              {
+                "moduleid": 10,
+                "status": "1"
+              },
+              {
+                "moduleid": 11,
+                "status": "1"
+              },
+              {
+                "moduleid": 12,
+                "status": "1"
+              },
+              {
+                "moduleid": 13,
+                "status": "1"
+              },
+              {
+                "moduleid": 14,
+                "status": "1"
+              },
+              {
+                "moduleid": 15,
+                "status": "1"
+              },
+              {
+                "moduleid": 16,
+                "status": "1"
+              },
+              {
+                "moduleid": 17,
+                "status": "1"
+              },
+              {
+                "moduleid": 18,
+                "status": "1"
+              },
+              {
+                "moduleid": 19,
+                "status": "1"
+              },
+              {
+                "moduleid": 20,
+                "status": "1"
+              },
+              {
+                "moduleid": 21,
+                "status": "1"
+              },
+              {
+                "moduleid": 22,
+                "status": "1"
+              },
+              {
+                "moduleid": 23,
+                "status": "1"
+              },
+              {
+                "moduleid": 24,
+                "status": "1"
+              },
+              {
+                "moduleid": 25,
+                "status": "1"
+              },
+              {
+                "moduleid": 26,
+                "status": "1"
+              },
+              {
+                "moduleid": 27,
+                "status": "1"
+              },
+              {
+                "moduleid": 28,
+                "status": "1"
+              },
+              {
+                "moduleid": 29,
+                "status": "1"
+              },
+              {
+                "moduleid": 30,
+                "status": "1"
+              }
+            ],
+            "modules.default_access": "0",
+            "api.access": "1",
+            "api.mode": "0",
+            "api": [
+              "*.create",
+              "*.update",
+              "*.delete"
+            ],
+            "actions": [
+              {
+                "name": "execute_scripts",
+                "status": "0"
+              },
+              {
+                "name": "edit_dashboards",
+                "status": "1"
+              },
+              {
+                "name": "edit_maps",
+                "status": "1"
+              },
+              {
+                "name": "acknowledge_problems",
+                "status": "1"
+              },
+              {
+                "name": "suppress_problems",
+                "status": "1"
+              },
+              {
+                "name": "close_problems",
+                "status": "1"
+              },
+              {
+                "name": "change_severity",
+                "status": "1"
+              },
+              {
+                "name": "add_problem_comments",
+                "status": "1"
+              },
+              {
+                "name": "manage_api_tokens",
+                "status": "1"
+              },
+              {
+                "name": "invoke_execute_now",
+                "status": "1"
+              },
+              {
+                "name": "change_problem_ranking",
+                "status": "1"
+              }
+            ],
+            "actions.default_access": "1"
+          }
+        }
+      ]
+    },
+    {
+      "n": 24,
+      "method": "role.get",
+      "params": {
+        "output": "extend",
+        "selectRules": "extend",
+        "roleids": [
+          67
+        ]
+      },
+      "result": [
+        {
+          "roleid": "67",
+          "name": "zbxapi-spec-roles-full",
+          "type": "1",
+          "readonly": "0",
+          "rules": {
+            "ui": [
+              {
+                "name": "monitoring.maps",
+                "status": "0"
+              },
+              {
+                "name": "monitoring.dashboard",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.problems",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.hosts",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.latest_data",
+                "status": "1"
+              },
+              {
+                "name": "services.services",
+                "status": "1"
+              },
+              {
+                "name": "services.sla_report",
+                "status": "1"
+              },
+              {
+                "name": "inventory.overview",
+                "status": "1"
+              },
+              {
+                "name": "inventory.hosts",
+                "status": "1"
+              },
+              {
+                "name": "reports.availability_report",
+                "status": "1"
+              },
+              {
+                "name": "reports.top_triggers",
+                "status": "1"
+              }
+            ],
+            "ui.default_access": "1",
+            "services.read.mode": "1",
+            "services.read.list": [],
+            "services.read.tag": {
+              "tag": "",
+              "value": ""
+            },
+            "services.write.mode": "0",
+            "services.write.list": [],
+            "services.write.tag": {
+              "tag": "",
+              "value": ""
+            },
+            "modules": [
+              {
+                "moduleid": 1,
+                "status": "1"
+              },
+              {
+                "moduleid": 2,
+                "status": "1"
+              },
+              {
+                "moduleid": 3,
+                "status": "1"
+              },
+              {
+                "moduleid": 4,
+                "status": "1"
+              },
+              {
+                "moduleid": 5,
+                "status": "1"
+              },
+              {
+                "moduleid": 6,
+                "status": "1"
+              },
+              {
+                "moduleid": 7,
+                "status": "1"
+              },
+              {
+                "moduleid": 8,
+                "status": "1"
+              },
+              {
+                "moduleid": 9,
+                "status": "1"
+              },
+              {
+                "moduleid": 10,
+                "status": "1"
+              },
+              {
+                "moduleid": 11,
+                "status": "1"
+              },
+              {
+                "moduleid": 12,
+                "status": "1"
+              },
+              {
+                "moduleid": 13,
+                "status": "1"
+              },
+              {
+                "moduleid": 14,
+                "status": "1"
+              },
+              {
+                "moduleid": 15,
+                "status": "1"
+              },
+              {
+                "moduleid": 16,
+                "status": "1"
+              },
+              {
+                "moduleid": 17,
+                "status": "1"
+              },
+              {
+                "moduleid": 18,
+                "status": "1"
+              },
+              {
+                "moduleid": 19,
+                "status": "1"
+              },
+              {
+                "moduleid": 20,
+                "status": "1"
+              },
+              {
+                "moduleid": 21,
+                "status": "1"
+              },
+              {
+                "moduleid": 22,
+                "status": "1"
+              },
+              {
+                "moduleid": 23,
+                "status": "1"
+              },
+              {
+                "moduleid": 24,
+                "status": "1"
+              },
+              {
+                "moduleid": 25,
+                "status": "1"
+              },
+              {
+                "moduleid": 26,
+                "status": "1"
+              },
+              {
+                "moduleid": 27,
+                "status": "1"
+              },
+              {
+                "moduleid": 28,
+                "status": "1"
+              },
+              {
+                "moduleid": 29,
+                "status": "1"
+              },
+              {
+                "moduleid": 30,
+                "status": "1"
+              }
+            ],
+            "modules.default_access": "0",
+            "api.access": "1",
+            "api.mode": "0",
+            "api": [
+              "*.create",
+              "*.update",
+              "*.delete"
+            ],
+            "actions": [
+              {
+                "name": "execute_scripts",
+                "status": "0"
+              },
+              {
+                "name": "edit_dashboards",
+                "status": "1"
+              },
+              {
+                "name": "edit_maps",
+                "status": "1"
+              },
+              {
+                "name": "acknowledge_problems",
+                "status": "1"
+              },
+              {
+                "name": "suppress_problems",
+                "status": "1"
+              },
+              {
+                "name": "close_problems",
+                "status": "1"
+              },
+              {
+                "name": "change_severity",
+                "status": "1"
+              },
+              {
+                "name": "add_problem_comments",
+                "status": "1"
+              },
+              {
+                "name": "manage_api_tokens",
+                "status": "1"
+              },
+              {
+                "name": "invoke_execute_now",
+                "status": "1"
+              },
+              {
+                "name": "change_problem_ranking",
+                "status": "1"
+              }
+            ],
+            "actions.default_access": "1"
+          }
+        }
+      ]
+    },
+    {
+      "n": 25,
+      "method": "role.update",
+      "params": [
+        {
+          "roleid": 67,
+          "rules": {
+            "api.mode": 1
+          }
+        }
+      ],
+      "result": {
+        "roleids": [
+          "67"
+        ]
+      }
+    },
+    {
+      "n": 26,
+      "method": "role.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-roles-rules-method",
+          "type": 1,
+          "rules": {
+            "api.access": 1,
+            "api.mode": 1,
+            "api": [
+              "host.get"
+            ],
+            "modules.default_access": 0
+          }
+        }
+      ],
+      "result": {
+        "roleids": [
+          "68"
+        ]
+      }
+    },
+    {
+      "n": 27,
+      "method": "role.update",
+      "params": {
+        "roleid": 68,
+        "rules": {
+          "api.mode": 0
+        }
+      },
+      "result": {
+        "roleids": [
+          "68"
+        ]
+      }
+    },
+    {
+      "n": 28,
+      "method": "role.update",
+      "params": {
+        "roleid": null,
+        "rules": {
+          "api.mode": 0
+        }
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/roleid\": a number is expected."
+      }
+    },
+    {
+      "n": 29,
+      "method": "role.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-roles-renamed"
+        },
+        "output": [
+          "roleid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "roleid": "66",
+          "name": "zbxapi-spec-roles-renamed"
+        }
+      ]
+    },
+    {
+      "n": 30,
+      "method": "role.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-roles-goc"
+        },
+        "output": [
+          "roleid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 31,
+      "method": "role.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-roles-goc",
+          "type": 1
+        }
+      ],
+      "result": {
+        "roleids": [
+          "69"
+        ]
+      }
+    },
+    {
+      "n": 32,
+      "method": "role.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-roles-goc"
+        },
+        "output": [
+          "roleid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "roleid": "69",
+          "name": "zbxapi-spec-roles-goc"
+        }
+      ]
+    },
+    {
+      "n": 33,
+      "method": "role.get",
+      "params": {
+        "output": "extend",
+        "selectRules": "extend",
+        "roleids": [
+          "69"
+        ]
+      },
+      "result": [
+        {
+          "roleid": "69",
+          "name": "zbxapi-spec-roles-goc",
+          "type": "1",
+          "readonly": "0",
+          "rules": {
+            "ui": [
+              {
+                "name": "monitoring.dashboard",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.problems",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.hosts",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.latest_data",
+                "status": "1"
+              },
+              {
+                "name": "monitoring.maps",
+                "status": "1"
+              },
+              {
+                "name": "services.services",
+                "status": "1"
+              },
+              {
+                "name": "services.sla_report",
+                "status": "1"
+              },
+              {
+                "name": "inventory.overview",
+                "status": "1"
+              },
+              {
+                "name": "inventory.hosts",
+                "status": "1"
+              },
+              {
+                "name": "reports.availability_report",
+                "status": "1"
+              },
+              {
+                "name": "reports.top_triggers",
+                "status": "1"
+              }
+            ],
+            "ui.default_access": "1",
+            "services.read.mode": "1",
+            "services.read.list": [],
+            "services.read.tag": {
+              "tag": "",
+              "value": ""
+            },
+            "services.write.mode": "0",
+            "services.write.list": [],
+            "services.write.tag": {
+              "tag": "",
+              "value": ""
+            },
+            "modules": [
+              {
+                "moduleid": 1,
+                "status": "1"
+              },
+              {
+                "moduleid": 2,
+                "status": "1"
+              },
+              {
+                "moduleid": 3,
+                "status": "1"
+              },
+              {
+                "moduleid": 4,
+                "status": "1"
+              },
+              {
+                "moduleid": 5,
+                "status": "1"
+              },
+              {
+                "moduleid": 6,
+                "status": "1"
+              },
+              {
+                "moduleid": 7,
+                "status": "1"
+              },
+              {
+                "moduleid": 8,
+                "status": "1"
+              },
+              {
+                "moduleid": 9,
+                "status": "1"
+              },
+              {
+                "moduleid": 10,
+                "status": "1"
+              },
+              {
+                "moduleid": 11,
+                "status": "1"
+              },
+              {
+                "moduleid": 12,
+                "status": "1"
+              },
+              {
+                "moduleid": 13,
+                "status": "1"
+              },
+              {
+                "moduleid": 14,
+                "status": "1"
+              },
+              {
+                "moduleid": 15,
+                "status": "1"
+              },
+              {
+                "moduleid": 16,
+                "status": "1"
+              },
+              {
+                "moduleid": 17,
+                "status": "1"
+              },
+              {
+                "moduleid": 18,
+                "status": "1"
+              },
+              {
+                "moduleid": 19,
+                "status": "1"
+              },
+              {
+                "moduleid": 20,
+                "status": "1"
+              },
+              {
+                "moduleid": 21,
+                "status": "1"
+              },
+              {
+                "moduleid": 22,
+                "status": "1"
+              },
+              {
+                "moduleid": 23,
+                "status": "1"
+              },
+              {
+                "moduleid": 24,
+                "status": "1"
+              },
+              {
+                "moduleid": 25,
+                "status": "1"
+              },
+              {
+                "moduleid": 26,
+                "status": "1"
+              },
+              {
+                "moduleid": 27,
+                "status": "1"
+              },
+              {
+                "moduleid": 28,
+                "status": "1"
+              },
+              {
+                "moduleid": 29,
+                "status": "1"
+              },
+              {
+                "moduleid": 30,
+                "status": "1"
+              }
+            ],
+            "modules.default_access": "1",
+            "api.access": "1",
+            "api.mode": "0",
+            "api": [],
+            "actions": [
+              {
+                "name": "edit_dashboards",
+                "status": "1"
+              },
+              {
+                "name": "edit_maps",
+                "status": "1"
+              },
+              {
+                "name": "acknowledge_problems",
+                "status": "1"
+              },
+              {
+                "name": "suppress_problems",
+                "status": "1"
+              },
+              {
+                "name": "close_problems",
+                "status": "1"
+              },
+              {
+                "name": "change_severity",
+                "status": "1"
+              },
+              {
+                "name": "add_problem_comments",
+                "status": "1"
+              },
+              {
+                "name": "execute_scripts",
+                "status": "1"
+              },
+              {
+                "name": "manage_api_tokens",
+                "status": "1"
+              },
+              {
+                "name": "invoke_execute_now",
+                "status": "1"
+              },
+              {
+                "name": "change_problem_ranking",
+                "status": "1"
+              }
+            ],
+            "actions.default_access": "1"
+          }
+        }
+      ]
+    },
+    {
+      "n": 34,
+      "method": "role.update",
+      "params": [
+        {
+          "name": "zbxapi-spec-roles-goc",
+          "type": 2,
+          "roleid": "69"
+        }
+      ],
+      "result": {
+        "roleids": [
+          "69"
+        ]
+      }
+    },
+    {
+      "n": 35,
+      "method": "role.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-roles-cou"
+        },
+        "output": [
+          "roleid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 36,
+      "method": "role.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-roles-cou",
+          "type": 1
+        }
+      ],
+      "result": {
+        "roleids": [
+          "70"
+        ]
+      }
+    },
+    {
+      "n": 37,
+      "method": "role.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-roles-added",
+          "type": 1
+        }
+      ],
+      "result": {
+        "roleids": [
+          "71"
+        ]
+      }
+    },
+    {
+      "n": 38,
+      "method": "role.delete",
+      "params": [
+        71
+      ],
+      "result": {
+        "roleids": [
+          "71"
+        ]
+      }
+    },
+    {
+      "n": 39,
+      "method": "role.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-roles-disposable",
+          "type": 1
+        }
+      ],
+      "result": {
+        "roleids": [
+          "72"
+        ]
+      }
+    },
+    {
+      "n": 40,
+      "method": "role.delete",
+      "params": [
+        72
+      ],
+      "result": {
+        "roleids": [
+          "72"
+        ]
+      }
+    },
+    {
+      "n": 41,
+      "method": "role.delete",
+      "params": [
+        65
+      ],
+      "error": {
+        "code": -32500,
+        "message": "Application error.",
+        "data": "Cannot delete assigned user role \"zbxapi-spec-roles-member\"."
+      }
+    }
+  ]
+}

@@ -1,0 +1,1622 @@
+{
+  "class": "triggers",
+  "scenario": "crud",
+  "recorded_at": "2026-10-19T08:34:47Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "trigger.create",
+      "params": [
+        {
+          "description": "zbxapi-spec-triggers-base",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0"
+        }
+      ],
+      "result": {
+        "triggerids": [
+          "28688"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "trigger.create",
+      "params": [
+        {
+          "description": "zbxapi-spec-triggers-base",
+          "expression": "last(/zbxapi-spec-triggers-h2/zbxapi.spec.triggers.value)>0"
+        }
+      ],
+      "result": {
+        "triggerids": [
+          "28689"
+        ]
+      }
+    },
+    {
+      "n": 3,
+      "method": "trigger.create",
+      "params": [
+        {
+          "description": "zbxapi-spec-triggers-base",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Trigger \"zbxapi-spec-triggers-base\" already exists on \"zbxapi-spec-triggers-h1\"."
+      }
+    },
+    {
+      "n": 4,
+      "method": "trigger.create",
+      "params": [
+        {
+          "description": "zbxapi-spec-triggers-full",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0",
+          "event_name": "evt {HOST.NAME}",
+          "opdata": "op",
+          "comments": "recorded for the triggers fixture",
+          "priority": 5,
+          "status": 1,
+          "type": 1,
+          "url": "http://example.invalid/",
+          "url_name": "runbook",
+          "manual_close": 1,
+          "tags": [
+            {
+              "tag": "zbxapi-spec",
+              "value": "triggers"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "triggerids": [
+          "28690"
+        ]
+      }
+    },
+    {
+      "n": 5,
+      "method": "trigger.create",
+      "params": [
+        {
+          "description": "zbxapi-spec-triggers-rm1",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0",
+          "recovery_mode": 1
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Incorrect value for field \"recovery_expression\": cannot be empty."
+      }
+    },
+    {
+      "n": 6,
+      "method": "trigger.create",
+      "params": [
+        {
+          "description": "zbxapi-spec-triggers-pri",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0",
+          "priority": 6
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/priority\": value must be one of 0, 1, 2, 3, 4, 5."
+      }
+    },
+    {
+      "n": 7,
+      "method": "trigger.create",
+      "params": [
+        {
+          "description": "zbxapi-spec-triggers-scoped",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0",
+          "hostid": 12360
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"hostid\"."
+      }
+    },
+    {
+      "n": 8,
+      "method": "trigger.get",
+      "params": {
+        "filter": {
+          "description": "zbxapi-spec-triggers-base"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "triggerid": "28688",
+          "expression": "{41805}>0",
+          "description": "zbxapi-spec-triggers-base",
+          "url": "",
+          "status": "0",
+          "value": "0",
+          "priority": "0",
+          "lastchange": "0",
+          "comments": "",
+          "error": "",
+          "templateid": "0",
+          "type": "0",
+          "state": "0",
+          "flags": "0",
+          "recovery_mode": "0",
+          "recovery_expression": "",
+          "correlation_mode": "0",
+          "correlation_tag": "",
+          "manual_close": "0",
+          "opdata": "",
+          "event_name": "",
+          "uuid": "",
+          "url_name": ""
+        },
+        {
+          "triggerid": "28689",
+          "expression": "{41806}>0",
+          "description": "zbxapi-spec-triggers-base",
+          "url": "",
+          "status": "0",
+          "value": "0",
+          "priority": "0",
+          "lastchange": "0",
+          "comments": "",
+          "error": "",
+          "templateid": "0",
+          "type": "0",
+          "state": "0",
+          "flags": "0",
+          "recovery_mode": "0",
+          "recovery_expression": "",
+          "correlation_mode": "0",
+          "correlation_tag": "",
+          "manual_close": "0",
+          "opdata": "",
+          "event_name": "",
+          "uuid": "",
+          "url_name": ""
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "method": "trigger.get",
+      "params": {
+        "filter": {
+          "description": "zbxapi-spec-triggers-base",
+          "hostid": 12360
+        },
+        "output": [
+          "triggerid",
+          "description"
+        ]
+      },
+      "result": [
+        {
+          "triggerid": "28688",
+          "description": "zbxapi-spec-triggers-base"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "method": "trigger.get",
+      "params": {
+        "filter": {
+          "description": "zbxapi-spec-triggers-base"
+        },
+        "output": [
+          "triggerid",
+          "description"
+        ]
+      },
+      "result": [
+        {
+          "triggerid": "28688",
+          "description": "zbxapi-spec-triggers-base"
+        },
+        {
+          "triggerid": "28689",
+          "description": "zbxapi-spec-triggers-base"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "method": "trigger.get",
+      "params": {
+        "filter": {
+          "description": "zbxapi-spec-triggers-absent"
+        },
+        "output": [
+          "triggerid",
+          "description"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 12,
+      "method": "trigger.get",
+      "params": {
+        "filter": {
+          "triggerid": 28688
+        },
+        "output": "extend",
+        "expandExpression": true,
+        "selectItems": "extend",
+        "selectFunctions": "extend"
+      },
+      "result": [
+        {
+          "triggerid": "28688",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0",
+          "description": "zbxapi-spec-triggers-base",
+          "url": "",
+          "status": "0",
+          "value": "0",
+          "priority": "0",
+          "lastchange": "0",
+          "comments": "",
+          "error": "",
+          "templateid": "0",
+          "type": "0",
+          "state": "0",
+          "flags": "0",
+          "recovery_mode": "0",
+          "recovery_expression": "",
+          "correlation_mode": "0",
+          "correlation_tag": "",
+          "manual_close": "0",
+          "opdata": "",
+          "event_name": "",
+          "uuid": "",
+          "url_name": "",
+          "functions": [
+            {
+              "functionid": "41805",
+              "itemid": "62303",
+              "triggerid": "28688",
+              "parameter": "$",
+              "function": "last"
+            }
+          ],
+          "items": [
+            {
+              "itemid": "62303",
+              "type": "2",
+              "snmp_oid": "",
+              "hostid": "12360",
+              "name": "zbxapi-spec-triggers-h1-trap",
+              "key_": "zbxapi.spec.triggers.value",
+              "delay": "0",
+              "history": "31d",
+              "trends": "365d",
+              "status": "0",
+              "value_type": "3",
+              "trapper_hosts": "",
+              "units": "",
+              "formula": "",
+              "logtimefmt": "",
+              "templateid": "0",
+              "valuemapid": "0",
+              "params": "",
+              "ipmi_sensor": "",
+              "authtype": "0",
+              "username": "",
+              "password": "<scrubbed>",
+              "publickey": "",
+              "privatekey": "",
+              "flags": "0",
+              "interfaceid": "0",
+              "description": "",
+              "inventory_link": "0",
+              "lifetime": "7d",
+              "evaltype": "0",
+              "jmx_endpoint": "",
+              "master_itemid": "0",
+              "timeout": "",
+              "url": "",
+              "query_fields": [],
+              "posts": "",
+              "status_codes": "200",
+              "follow_redirects": "1",
+              "post_type": "0",
+              "http_proxy": "",
+              "headers": [],
+              "retrieve_mode": "0",
+              "request_method": "0",
+              "output_format": "0",
+              "ssl_cert_file": "",
+              "ssl_key_file": "",
+              "ssl_key_password": "",
+              "verify_peer": "0",
+              "verify_host": "0",
+              "allow_traps": "0",
+              "uuid": "",
+              "lifetime_type": "0",
+              "enabled_lifetime_type": "2",
+              "enabled_lifetime": "0",
+              "state": "0",
+              "error": "",
+              "name_resolved": "zbxapi-spec-triggers-h1-trap",
+              "parameters": [],
+              "lastclock": "0",
+              "lastns": "0",
+              "lastvalue": "0",
+              "prevvalue": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "method": "trigger.get",
+      "params": {
+        "triggerids": [
+          28688
+        ],
+        "output": [
+          "triggerid",
+          "description",
+          "expression"
+        ],
+        "expandExpression": true
+      },
+      "result": [
+        {
+          "triggerid": "28688",
+          "description": "zbxapi-spec-triggers-base",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0"
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "method": "trigger.get",
+      "params": {
+        "filter": {
+          "triggerid": 28688
+        },
+        "output": "extend",
+        "expandExpression": true,
+        "selectItems": "extend",
+        "selectFunctions": "extend"
+      },
+      "result": [
+        {
+          "triggerid": "28688",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0",
+          "description": "zbxapi-spec-triggers-base",
+          "url": "",
+          "status": "0",
+          "value": "0",
+          "priority": "0",
+          "lastchange": "0",
+          "comments": "",
+          "error": "",
+          "templateid": "0",
+          "type": "0",
+          "state": "0",
+          "flags": "0",
+          "recovery_mode": "0",
+          "recovery_expression": "",
+          "correlation_mode": "0",
+          "correlation_tag": "",
+          "manual_close": "0",
+          "opdata": "",
+          "event_name": "",
+          "uuid": "",
+          "url_name": "",
+          "functions": [
+            {
+              "functionid": "41805",
+              "itemid": "62303",
+              "triggerid": "28688",
+              "parameter": "$",
+              "function": "last"
+            }
+          ],
+          "items": [
+            {
+              "itemid": "62303",
+              "type": "2",
+              "snmp_oid": "",
+              "hostid": "12360",
+              "name": "zbxapi-spec-triggers-h1-trap",
+              "key_": "zbxapi.spec.triggers.value",
+              "delay": "0",
+              "history": "31d",
+              "trends": "365d",
+              "status": "0",
+              "value_type": "3",
+              "trapper_hosts": "",
+              "units": "",
+              "formula": "",
+              "logtimefmt": "",
+              "templateid": "0",
+              "valuemapid": "0",
+              "params": "",
+              "ipmi_sensor": "",
+              "authtype": "0",
+              "username": "",
+              "password": "<scrubbed>",
+              "publickey": "",
+              "privatekey": "",
+              "flags": "0",
+              "interfaceid": "0",
+              "description": "",
+              "inventory_link": "0",
+              "lifetime": "7d",
+              "evaltype": "0",
+              "jmx_endpoint": "",
+              "master_itemid": "0",
+              "timeout": "",
+              "url": "",
+              "query_fields": [],
+              "posts": "",
+              "status_codes": "200",
+              "follow_redirects": "1",
+              "post_type": "0",
+              "http_proxy": "",
+              "headers": [],
+              "retrieve_mode": "0",
+              "request_method": "0",
+              "output_format": "0",
+              "ssl_cert_file": "",
+              "ssl_key_file": "",
+              "ssl_key_password": "",
+              "verify_peer": "0",
+              "verify_host": "0",
+              "allow_traps": "0",
+              "uuid": "",
+              "lifetime_type": "0",
+              "enabled_lifetime_type": "2",
+              "enabled_lifetime": "0",
+              "state": "0",
+              "error": "",
+              "name_resolved": "zbxapi-spec-triggers-h1-trap",
+              "parameters": [],
+              "lastclock": "0",
+              "lastns": "0",
+              "lastvalue": "0",
+              "prevvalue": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "method": "trigger.update",
+      "params": [
+        {
+          "triggerid": 28688,
+          "comments": "recorded update"
+        }
+      ],
+      "result": {
+        "triggerids": [
+          "28688"
+        ]
+      }
+    },
+    {
+      "n": 16,
+      "method": "trigger.get",
+      "params": {
+        "filter": {
+          "triggerid": 28688
+        },
+        "output": "extend",
+        "expandExpression": true,
+        "selectItems": "extend",
+        "selectFunctions": "extend"
+      },
+      "result": [
+        {
+          "triggerid": "28688",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0",
+          "description": "zbxapi-spec-triggers-base",
+          "url": "",
+          "status": "0",
+          "value": "0",
+          "priority": "0",
+          "lastchange": "0",
+          "comments": "recorded update",
+          "error": "",
+          "templateid": "0",
+          "type": "0",
+          "state": "0",
+          "flags": "0",
+          "recovery_mode": "0",
+          "recovery_expression": "",
+          "correlation_mode": "0",
+          "correlation_tag": "",
+          "manual_close": "0",
+          "opdata": "",
+          "event_name": "",
+          "uuid": "",
+          "url_name": "",
+          "functions": [
+            {
+              "functionid": "41805",
+              "itemid": "62303",
+              "triggerid": "28688",
+              "parameter": "$",
+              "function": "last"
+            }
+          ],
+          "items": [
+            {
+              "itemid": "62303",
+              "type": "2",
+              "snmp_oid": "",
+              "hostid": "12360",
+              "name": "zbxapi-spec-triggers-h1-trap",
+              "key_": "zbxapi.spec.triggers.value",
+              "delay": "0",
+              "history": "31d",
+              "trends": "365d",
+              "status": "0",
+              "value_type": "3",
+              "trapper_hosts": "",
+              "units": "",
+              "formula": "",
+              "logtimefmt": "",
+              "templateid": "0",
+              "valuemapid": "0",
+              "params": "",
+              "ipmi_sensor": "",
+              "authtype": "0",
+              "username": "",
+              "password": "<scrubbed>",
+              "publickey": "",
+              "privatekey": "",
+              "flags": "0",
+              "interfaceid": "0",
+              "description": "",
+              "inventory_link": "0",
+              "lifetime": "7d",
+              "evaltype": "0",
+              "jmx_endpoint": "",
+              "master_itemid": "0",
+              "timeout": "",
+              "url": "",
+              "query_fields": [],
+              "posts": "",
+              "status_codes": "200",
+              "follow_redirects": "1",
+              "post_type": "0",
+              "http_proxy": "",
+              "headers": [],
+              "retrieve_mode": "0",
+              "request_method": "0",
+              "output_format": "0",
+              "ssl_cert_file": "",
+              "ssl_key_file": "",
+              "ssl_key_password": "",
+              "verify_peer": "0",
+              "verify_host": "0",
+              "allow_traps": "0",
+              "uuid": "",
+              "lifetime_type": "0",
+              "enabled_lifetime_type": "2",
+              "enabled_lifetime": "0",
+              "state": "0",
+              "error": "",
+              "name_resolved": "zbxapi-spec-triggers-h1-trap",
+              "parameters": [],
+              "lastclock": "0",
+              "lastns": "0",
+              "lastvalue": "0",
+              "prevvalue": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "method": "trigger.get",
+      "params": {
+        "filter": {
+          "triggerid": 28688
+        },
+        "output": "extend",
+        "expandExpression": true,
+        "selectItems": "extend",
+        "selectFunctions": "extend"
+      },
+      "result": [
+        {
+          "triggerid": "28688",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0",
+          "description": "zbxapi-spec-triggers-base",
+          "url": "",
+          "status": "0",
+          "value": "0",
+          "priority": "0",
+          "lastchange": "0",
+          "comments": "recorded update",
+          "error": "",
+          "templateid": "0",
+          "type": "0",
+          "state": "0",
+          "flags": "0",
+          "recovery_mode": "0",
+          "recovery_expression": "",
+          "correlation_mode": "0",
+          "correlation_tag": "",
+          "manual_close": "0",
+          "opdata": "",
+          "event_name": "",
+          "uuid": "",
+          "url_name": "",
+          "functions": [
+            {
+              "functionid": "41805",
+              "itemid": "62303",
+              "triggerid": "28688",
+              "parameter": "$",
+              "function": "last"
+            }
+          ],
+          "items": [
+            {
+              "itemid": "62303",
+              "type": "2",
+              "snmp_oid": "",
+              "hostid": "12360",
+              "name": "zbxapi-spec-triggers-h1-trap",
+              "key_": "zbxapi.spec.triggers.value",
+              "delay": "0",
+              "history": "31d",
+              "trends": "365d",
+              "status": "0",
+              "value_type": "3",
+              "trapper_hosts": "",
+              "units": "",
+              "formula": "",
+              "logtimefmt": "",
+              "templateid": "0",
+              "valuemapid": "0",
+              "params": "",
+              "ipmi_sensor": "",
+              "authtype": "0",
+              "username": "",
+              "password": "<scrubbed>",
+              "publickey": "",
+              "privatekey": "",
+              "flags": "0",
+              "interfaceid": "0",
+              "description": "",
+              "inventory_link": "0",
+              "lifetime": "7d",
+              "evaltype": "0",
+              "jmx_endpoint": "",
+              "master_itemid": "0",
+              "timeout": "",
+              "url": "",
+              "query_fields": [],
+              "posts": "",
+              "status_codes": "200",
+              "follow_redirects": "1",
+              "post_type": "0",
+              "http_proxy": "",
+              "headers": [],
+              "retrieve_mode": "0",
+              "request_method": "0",
+              "output_format": "0",
+              "ssl_cert_file": "",
+              "ssl_key_file": "",
+              "ssl_key_password": "",
+              "verify_peer": "0",
+              "verify_host": "0",
+              "allow_traps": "0",
+              "uuid": "",
+              "lifetime_type": "0",
+              "enabled_lifetime_type": "2",
+              "enabled_lifetime": "0",
+              "state": "0",
+              "error": "",
+              "name_resolved": "zbxapi-spec-triggers-h1-trap",
+              "parameters": [],
+              "lastclock": "0",
+              "lastns": "0",
+              "lastvalue": "0",
+              "prevvalue": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "method": "trigger.update",
+      "params": [
+        {
+          "triggerid": 28688,
+          "tags": [
+            {
+              "tag": "zbxapi-spec",
+              "value": "triggers"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "triggerids": [
+          "28688"
+        ]
+      }
+    },
+    {
+      "n": 19,
+      "method": "trigger.get",
+      "params": {
+        "filter": {
+          "triggerid": 28688
+        },
+        "output": "extend",
+        "expandExpression": true,
+        "selectItems": "extend",
+        "selectFunctions": "extend"
+      },
+      "result": [
+        {
+          "triggerid": "28688",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0",
+          "description": "zbxapi-spec-triggers-base",
+          "url": "",
+          "status": "0",
+          "value": "0",
+          "priority": "0",
+          "lastchange": "0",
+          "comments": "recorded update",
+          "error": "",
+          "templateid": "0",
+          "type": "0",
+          "state": "0",
+          "flags": "0",
+          "recovery_mode": "0",
+          "recovery_expression": "",
+          "correlation_mode": "0",
+          "correlation_tag": "",
+          "manual_close": "0",
+          "opdata": "",
+          "event_name": "",
+          "uuid": "",
+          "url_name": "",
+          "functions": [
+            {
+              "functionid": "41805",
+              "itemid": "62303",
+              "triggerid": "28688",
+              "parameter": "$",
+              "function": "last"
+            }
+          ],
+          "items": [
+            {
+              "itemid": "62303",
+              "type": "2",
+              "snmp_oid": "",
+              "hostid": "12360",
+              "name": "zbxapi-spec-triggers-h1-trap",
+              "key_": "zbxapi.spec.triggers.value",
+              "delay": "0",
+              "history": "31d",
+              "trends": "365d",
+              "status": "0",
+              "value_type": "3",
+              "trapper_hosts": "",
+              "units": "",
+              "formula": "",
+              "logtimefmt": "",
+              "templateid": "0",
+              "valuemapid": "0",
+              "params": "",
+              "ipmi_sensor": "",
+              "authtype": "0",
+              "username": "",
+              "password": "<scrubbed>",
+              "publickey": "",
+              "privatekey": "",
+              "flags": "0",
+              "interfaceid": "0",
+              "description": "",
+              "inventory_link": "0",
+              "lifetime": "7d",
+              "evaltype": "0",
+              "jmx_endpoint": "",
+              "master_itemid": "0",
+              "timeout": "",
+              "url": "",
+              "query_fields": [],
+              "posts": "",
+              "status_codes": "200",
+              "follow_redirects": "1",
+              "post_type": "0",
+              "http_proxy": "",
+              "headers": [],
+              "retrieve_mode": "0",
+              "request_method": "0",
+              "output_format": "0",
+              "ssl_cert_file": "",
+              "ssl_key_file": "",
+              "ssl_key_password": "",
+              "verify_peer": "0",
+              "verify_host": "0",
+              "allow_traps": "0",
+              "uuid": "",
+              "lifetime_type": "0",
+              "enabled_lifetime_type": "2",
+              "enabled_lifetime": "0",
+              "state": "0",
+              "error": "",
+              "name_resolved": "zbxapi-spec-triggers-h1-trap",
+              "parameters": [],
+              "lastclock": "0",
+              "lastns": "0",
+              "lastvalue": "0",
+              "prevvalue": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 20,
+      "method": "trigger.update",
+      "params": [
+        {
+          "triggerid": 28688,
+          "templateid": 999999
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"templateid\"."
+      }
+    },
+    {
+      "n": 21,
+      "method": "trigger.create",
+      "params": [
+        {
+          "description": "zbxapi-spec-triggers-safe",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0",
+          "priority": 2
+        }
+      ],
+      "result": {
+        "triggerids": [
+          "28691"
+        ]
+      }
+    },
+    {
+      "n": 22,
+      "method": "trigger.get",
+      "params": {
+        "filter": {
+          "triggerid": 28691
+        },
+        "output": "extend",
+        "expandExpression": true,
+        "selectItems": "extend",
+        "selectFunctions": "extend"
+      },
+      "result": [
+        {
+          "triggerid": "28691",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0",
+          "description": "zbxapi-spec-triggers-safe",
+          "url": "",
+          "status": "0",
+          "value": "0",
+          "priority": "2",
+          "lastchange": "0",
+          "comments": "",
+          "error": "",
+          "templateid": "0",
+          "type": "0",
+          "state": "0",
+          "flags": "0",
+          "recovery_mode": "0",
+          "recovery_expression": "",
+          "correlation_mode": "0",
+          "correlation_tag": "",
+          "manual_close": "0",
+          "opdata": "",
+          "event_name": "",
+          "uuid": "",
+          "url_name": "",
+          "functions": [
+            {
+              "functionid": "41808",
+              "itemid": "62303",
+              "triggerid": "28691",
+              "parameter": "$",
+              "function": "last"
+            }
+          ],
+          "items": [
+            {
+              "itemid": "62303",
+              "type": "2",
+              "snmp_oid": "",
+              "hostid": "12360",
+              "name": "zbxapi-spec-triggers-h1-trap",
+              "key_": "zbxapi.spec.triggers.value",
+              "delay": "0",
+              "history": "31d",
+              "trends": "365d",
+              "status": "0",
+              "value_type": "3",
+              "trapper_hosts": "",
+              "units": "",
+              "formula": "",
+              "logtimefmt": "",
+              "templateid": "0",
+              "valuemapid": "0",
+              "params": "",
+              "ipmi_sensor": "",
+              "authtype": "0",
+              "username": "",
+              "password": "<scrubbed>",
+              "publickey": "",
+              "privatekey": "",
+              "flags": "0",
+              "interfaceid": "0",
+              "description": "",
+              "inventory_link": "0",
+              "lifetime": "7d",
+              "evaltype": "0",
+              "jmx_endpoint": "",
+              "master_itemid": "0",
+              "timeout": "",
+              "url": "",
+              "query_fields": [],
+              "posts": "",
+              "status_codes": "200",
+              "follow_redirects": "1",
+              "post_type": "0",
+              "http_proxy": "",
+              "headers": [],
+              "retrieve_mode": "0",
+              "request_method": "0",
+              "output_format": "0",
+              "ssl_cert_file": "",
+              "ssl_key_file": "",
+              "ssl_key_password": "",
+              "verify_peer": "0",
+              "verify_host": "0",
+              "allow_traps": "0",
+              "uuid": "",
+              "lifetime_type": "0",
+              "enabled_lifetime_type": "2",
+              "enabled_lifetime": "0",
+              "state": "0",
+              "error": "",
+              "name_resolved": "zbxapi-spec-triggers-h1-trap",
+              "parameters": [],
+              "lastclock": "0",
+              "lastns": "0",
+              "lastvalue": "0",
+              "prevvalue": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 23,
+      "method": "trigger.get",
+      "params": {
+        "filter": {
+          "triggerid": 28691
+        },
+        "output": "extend",
+        "expandExpression": true,
+        "selectItems": "extend",
+        "selectFunctions": "extend"
+      },
+      "result": [
+        {
+          "triggerid": "28691",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0",
+          "description": "zbxapi-spec-triggers-safe",
+          "url": "",
+          "status": "0",
+          "value": "0",
+          "priority": "2",
+          "lastchange": "0",
+          "comments": "",
+          "error": "",
+          "templateid": "0",
+          "type": "0",
+          "state": "0",
+          "flags": "0",
+          "recovery_mode": "0",
+          "recovery_expression": "",
+          "correlation_mode": "0",
+          "correlation_tag": "",
+          "manual_close": "0",
+          "opdata": "",
+          "event_name": "",
+          "uuid": "",
+          "url_name": "",
+          "functions": [
+            {
+              "functionid": "41808",
+              "itemid": "62303",
+              "triggerid": "28691",
+              "parameter": "$",
+              "function": "last"
+            }
+          ],
+          "items": [
+            {
+              "itemid": "62303",
+              "type": "2",
+              "snmp_oid": "",
+              "hostid": "12360",
+              "name": "zbxapi-spec-triggers-h1-trap",
+              "key_": "zbxapi.spec.triggers.value",
+              "delay": "0",
+              "history": "31d",
+              "trends": "365d",
+              "status": "0",
+              "value_type": "3",
+              "trapper_hosts": "",
+              "units": "",
+              "formula": "",
+              "logtimefmt": "",
+              "templateid": "0",
+              "valuemapid": "0",
+              "params": "",
+              "ipmi_sensor": "",
+              "authtype": "0",
+              "username": "",
+              "password": "<scrubbed>",
+              "publickey": "",
+              "privatekey": "",
+              "flags": "0",
+              "interfaceid": "0",
+              "description": "",
+              "inventory_link": "0",
+              "lifetime": "7d",
+              "evaltype": "0",
+              "jmx_endpoint": "",
+              "master_itemid": "0",
+              "timeout": "",
+              "url": "",
+              "query_fields": [],
+              "posts": "",
+              "status_codes": "200",
+              "follow_redirects": "1",
+              "post_type": "0",
+              "http_proxy": "",
+              "headers": [],
+              "retrieve_mode": "0",
+              "request_method": "0",
+              "output_format": "0",
+              "ssl_cert_file": "",
+              "ssl_key_file": "",
+              "ssl_key_password": "",
+              "verify_peer": "0",
+              "verify_host": "0",
+              "allow_traps": "0",
+              "uuid": "",
+              "lifetime_type": "0",
+              "enabled_lifetime_type": "2",
+              "enabled_lifetime": "0",
+              "state": "0",
+              "error": "",
+              "name_resolved": "zbxapi-spec-triggers-h1-trap",
+              "parameters": [],
+              "lastclock": "0",
+              "lastns": "0",
+              "lastvalue": "0",
+              "prevvalue": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 24,
+      "method": "trigger.delete",
+      "params": [
+        28691
+      ],
+      "result": {
+        "triggerids": [
+          "28691"
+        ]
+      }
+    },
+    {
+      "n": 25,
+      "method": "trigger.create",
+      "params": [
+        {
+          "description": "zbxapi-spec-triggers-safe2",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0",
+          "priority": 2
+        }
+      ],
+      "result": {
+        "triggerids": [
+          "28692"
+        ]
+      }
+    },
+    {
+      "n": 26,
+      "method": "trigger.get",
+      "params": {
+        "filter": {
+          "triggerid": 999999999
+        },
+        "output": "extend",
+        "expandExpression": true,
+        "selectItems": "extend",
+        "selectFunctions": "extend"
+      },
+      "result": []
+    },
+    {
+      "n": 27,
+      "method": "trigger.get",
+      "params": {
+        "filter": {
+          "description": "zbxapi-spec-triggers-base",
+          "hostid": 12360
+        },
+        "output": [
+          "triggerid",
+          "description"
+        ]
+      },
+      "result": [
+        {
+          "triggerid": "28688",
+          "description": "zbxapi-spec-triggers-base"
+        }
+      ]
+    },
+    {
+      "n": 28,
+      "method": "trigger.get",
+      "params": {
+        "filter": {
+          "description": "zbxapi-spec-triggers-goc",
+          "hostid": 12360
+        },
+        "output": [
+          "triggerid",
+          "description"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 29,
+      "method": "trigger.create",
+      "params": [
+        {
+          "description": "zbxapi-spec-triggers-goc",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0"
+        }
+      ],
+      "result": {
+        "triggerids": [
+          "28693"
+        ]
+      }
+    },
+    {
+      "n": 30,
+      "method": "trigger.get",
+      "params": {
+        "filter": {
+          "description": "zbxapi-spec-triggers-base",
+          "hostid": 12360
+        },
+        "output": [
+          "triggerid",
+          "description"
+        ]
+      },
+      "result": [
+        {
+          "triggerid": "28688",
+          "description": "zbxapi-spec-triggers-base"
+        }
+      ]
+    },
+    {
+      "n": 31,
+      "method": "trigger.get",
+      "params": {
+        "filter": {
+          "triggerid": 28688
+        },
+        "output": "extend",
+        "expandExpression": true,
+        "selectItems": "extend",
+        "selectFunctions": "extend"
+      },
+      "result": [
+        {
+          "triggerid": "28688",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0",
+          "description": "zbxapi-spec-triggers-base",
+          "url": "",
+          "status": "0",
+          "value": "0",
+          "priority": "0",
+          "lastchange": "0",
+          "comments": "recorded update",
+          "error": "",
+          "templateid": "0",
+          "type": "0",
+          "state": "0",
+          "flags": "0",
+          "recovery_mode": "0",
+          "recovery_expression": "",
+          "correlation_mode": "0",
+          "correlation_tag": "",
+          "manual_close": "0",
+          "opdata": "",
+          "event_name": "",
+          "uuid": "",
+          "url_name": "",
+          "functions": [
+            {
+              "functionid": "41805",
+              "itemid": "62303",
+              "triggerid": "28688",
+              "parameter": "$",
+              "function": "last"
+            }
+          ],
+          "items": [
+            {
+              "itemid": "62303",
+              "type": "2",
+              "snmp_oid": "",
+              "hostid": "12360",
+              "name": "zbxapi-spec-triggers-h1-trap",
+              "key_": "zbxapi.spec.triggers.value",
+              "delay": "0",
+              "history": "31d",
+              "trends": "365d",
+              "status": "0",
+              "value_type": "3",
+              "trapper_hosts": "",
+              "units": "",
+              "formula": "",
+              "logtimefmt": "",
+              "templateid": "0",
+              "valuemapid": "0",
+              "params": "",
+              "ipmi_sensor": "",
+              "authtype": "0",
+              "username": "",
+              "password": "<scrubbed>",
+              "publickey": "",
+              "privatekey": "",
+              "flags": "0",
+              "interfaceid": "0",
+              "description": "",
+              "inventory_link": "0",
+              "lifetime": "7d",
+              "evaltype": "0",
+              "jmx_endpoint": "",
+              "master_itemid": "0",
+              "timeout": "",
+              "url": "",
+              "query_fields": [],
+              "posts": "",
+              "status_codes": "200",
+              "follow_redirects": "1",
+              "post_type": "0",
+              "http_proxy": "",
+              "headers": [],
+              "retrieve_mode": "0",
+              "request_method": "0",
+              "output_format": "0",
+              "ssl_cert_file": "",
+              "ssl_key_file": "",
+              "ssl_key_password": "",
+              "verify_peer": "0",
+              "verify_host": "0",
+              "allow_traps": "0",
+              "uuid": "",
+              "lifetime_type": "0",
+              "enabled_lifetime_type": "2",
+              "enabled_lifetime": "0",
+              "state": "0",
+              "error": "",
+              "name_resolved": "zbxapi-spec-triggers-h1-trap",
+              "parameters": [],
+              "lastclock": "0",
+              "lastns": "0",
+              "lastvalue": "0",
+              "prevvalue": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 32,
+      "method": "trigger.update",
+      "params": [
+        {
+          "description": "zbxapi-spec-triggers-base",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0",
+          "priority": 5,
+          "triggerid": 28688
+        }
+      ],
+      "result": {
+        "triggerids": [
+          "28688"
+        ]
+      }
+    },
+    {
+      "n": 33,
+      "method": "trigger.create",
+      "params": [
+        {
+          "description": "zbxapi-spec-triggers-dep",
+          "expression": "last(/zbxapi-spec-triggers-h2/zbxapi.spec.triggers.value)>0"
+        }
+      ],
+      "result": {
+        "triggerids": [
+          "28694"
+        ]
+      }
+    },
+    {
+      "n": 34,
+      "method": "trigger.create",
+      "params": [
+        {
+          "description": "zbxapi-spec-triggers-withdep",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0",
+          "dependencies": [
+            {
+              "triggerid": 28694
+            }
+          ]
+        }
+      ],
+      "result": {
+        "triggerids": [
+          "28695"
+        ]
+      }
+    },
+    {
+      "n": 35,
+      "method": "trigger.get",
+      "params": {
+        "filter": {
+          "triggerid": 28695
+        },
+        "output": "extend",
+        "expandExpression": true,
+        "selectItems": "extend",
+        "selectFunctions": "extend"
+      },
+      "result": [
+        {
+          "triggerid": "28695",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0",
+          "description": "zbxapi-spec-triggers-withdep",
+          "url": "",
+          "status": "0",
+          "value": "0",
+          "priority": "0",
+          "lastchange": "0",
+          "comments": "",
+          "error": "",
+          "templateid": "0",
+          "type": "0",
+          "state": "0",
+          "flags": "0",
+          "recovery_mode": "0",
+          "recovery_expression": "",
+          "correlation_mode": "0",
+          "correlation_tag": "",
+          "manual_close": "0",
+          "opdata": "",
+          "event_name": "",
+          "uuid": "",
+          "url_name": "",
+          "functions": [
+            {
+              "functionid": "41812",
+              "itemid": "62303",
+              "triggerid": "28695",
+              "parameter": "$",
+              "function": "last"
+            }
+          ],
+          "items": [
+            {
+              "itemid": "62303",
+              "type": "2",
+              "snmp_oid": "",
+              "hostid": "12360",
+              "name": "zbxapi-spec-triggers-h1-trap",
+              "key_": "zbxapi.spec.triggers.value",
+              "delay": "0",
+              "history": "31d",
+              "trends": "365d",
+              "status": "0",
+              "value_type": "3",
+              "trapper_hosts": "",
+              "units": "",
+              "formula": "",
+              "logtimefmt": "",
+              "templateid": "0",
+              "valuemapid": "0",
+              "params": "",
+              "ipmi_sensor": "",
+              "authtype": "0",
+              "username": "",
+              "password": "<scrubbed>",
+              "publickey": "",
+              "privatekey": "",
+              "flags": "0",
+              "interfaceid": "0",
+              "description": "",
+              "inventory_link": "0",
+              "lifetime": "7d",
+              "evaltype": "0",
+              "jmx_endpoint": "",
+              "master_itemid": "0",
+              "timeout": "",
+              "url": "",
+              "query_fields": [],
+              "posts": "",
+              "status_codes": "200",
+              "follow_redirects": "1",
+              "post_type": "0",
+              "http_proxy": "",
+              "headers": [],
+              "retrieve_mode": "0",
+              "request_method": "0",
+              "output_format": "0",
+              "ssl_cert_file": "",
+              "ssl_key_file": "",
+              "ssl_key_password": "",
+              "verify_peer": "0",
+              "verify_host": "0",
+              "allow_traps": "0",
+              "uuid": "",
+              "lifetime_type": "0",
+              "enabled_lifetime_type": "2",
+              "enabled_lifetime": "0",
+              "state": "0",
+              "error": "",
+              "name_resolved": "zbxapi-spec-triggers-h1-trap",
+              "parameters": [],
+              "lastclock": "0",
+              "lastns": "0",
+              "lastvalue": "0",
+              "prevvalue": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 36,
+      "method": "trigger.update",
+      "params": [
+        {
+          "triggerid": 28695,
+          "dependencies": [
+            {
+              "triggerid": 28695
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Trigger \"zbxapi-spec-triggers-withdep\" cannot depend on the trigger \"zbxapi-spec-triggers-withdep\", because a circular linkage (\"zbxapi-spec-triggers-withdep\" -> \"zbxapi-spec-triggers-withdep\") would occur."
+      }
+    },
+    {
+      "n": 37,
+      "method": "trigger.create",
+      "params": [
+        {
+          "description": "zbxapi-spec-triggers-added",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0"
+        }
+      ],
+      "result": {
+        "triggerids": [
+          "28696"
+        ]
+      }
+    },
+    {
+      "n": 38,
+      "method": "trigger.delete",
+      "params": [
+        28696
+      ],
+      "result": {
+        "triggerids": [
+          "28696"
+        ]
+      }
+    },
+    {
+      "n": 39,
+      "method": "trigger.create",
+      "params": [
+        {
+          "description": "zbxapi-spec-triggers-disposable",
+          "expression": "last(/zbxapi-spec-triggers-h1/zbxapi.spec.triggers.value)>0"
+        }
+      ],
+      "result": {
+        "triggerids": [
+          "28697"
+        ]
+      }
+    },
+    {
+      "n": 40,
+      "method": "trigger.delete",
+      "params": [
+        "28697"
+      ],
+      "result": {
+        "triggerids": [
+          "28697"
+        ]
+      }
+    },
+    {
+      "n": 41,
+      "method": "trigger.delete",
+      "params": [
+        999999999
+      ],
+      "error": {
+        "code": -32500,
+        "message": "Application error.",
+        "data": "No permissions to referred object or it does not exist!"
+      }
+    }
+  ]
+}

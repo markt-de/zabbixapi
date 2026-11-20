@@ -1,0 +1,1111 @@
+{
+  "class": "users",
+  "scenario": "crud",
+  "recorded_at": "2026-09-14T18:18:45Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "user.create",
+      "params": [
+        {
+          "username": "zbxapi-spec-users-minimal",
+          "passwd": "<scrubbed>",
+          "roleid": 121,
+          "usrgrps": [
+            {
+              "usrgrpid": 93
+            }
+          ]
+        }
+      ],
+      "result": {
+        "userids": [
+          "51"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "user.create",
+      "params": [
+        {
+          "username": "zbxapi-spec-users-minimal",
+          "passwd": "<scrubbed>",
+          "roleid": 121,
+          "usrgrps": [
+            {
+              "usrgrpid": 93
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "User with username \"zbxapi-spec-users-minimal\" already exists."
+      }
+    },
+    {
+      "n": 3,
+      "method": "user.create",
+      "params": [
+        {
+          "passwd": "<scrubbed>",
+          "roleid": 121,
+          "usrgrps": [
+            {
+              "usrgrpid": 93
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": the parameter \"username\" is missing."
+      }
+    },
+    {
+      "n": 4,
+      "method": "user.create",
+      "params": [
+        {
+          "username": "zbxapi-spec-users-readonly",
+          "passwd": "<scrubbed>",
+          "roleid": 121,
+          "attempt_failed": 1
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"attempt_failed\"."
+      }
+    },
+    {
+      "n": 5,
+      "method": "user.create",
+      "params": [
+        {
+          "username": "zbxapi-spec-users-theme",
+          "passwd": "<scrubbed>",
+          "roleid": 121,
+          "theme": "nope"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/theme\": value must be one of \"default\", \"blue-theme\", \"dark-theme\", \"hc-light\", \"hc-dark\"."
+      }
+    },
+    {
+      "n": 6,
+      "method": "user.create",
+      "params": [
+        {
+          "username": "zbxapi-spec-users-weak",
+          "passwd": "<scrubbed>",
+          "roleid": 121,
+          "usrgrps": [
+            {
+              "usrgrpid": 93
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Incorrect value for field \"/1/passwd\": must be at least 8 characters long."
+      }
+    },
+    {
+      "n": 7,
+      "method": "user.create",
+      "params": [
+        {
+          "username": "zbxapi-spec-users-full",
+          "passwd": "<scrubbed>",
+          "roleid": 121,
+          "usrgrps": [
+            {
+              "usrgrpid": 93
+            },
+            {
+              "usrgrpid": 94
+            }
+          ],
+          "name": "Vor",
+          "surname": "Nach",
+          "url": "zabbix.php?action=dashboard.view",
+          "autologin": 1,
+          "autologout": "0",
+          "lang": "en_US",
+          "refresh": "1m",
+          "rows_per_page": 100,
+          "theme": "dark-theme",
+          "timezone": "Europe/Berlin",
+          "medias": [
+            {
+              "mediatypeid": 1,
+              "sendto": [
+                "first@example.invalid"
+              ],
+              "active": 0,
+              "severity": 48,
+              "period": "1-5,09:00-18:00"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "userids": [
+          "52"
+        ]
+      }
+    },
+    {
+      "n": 8,
+      "method": "user.create",
+      "params": [
+        {
+          "username": "zbxapi-spec-users-groupless",
+          "passwd": "<scrubbed>",
+          "roleid": 121
+        }
+      ],
+      "result": {
+        "userids": [
+          "53"
+        ]
+      }
+    },
+    {
+      "n": 9,
+      "method": "user.get",
+      "params": {
+        "filter": {
+          "username": "zbxapi-spec-users-minimal"
+        },
+        "output": [
+          "userid",
+          "username"
+        ]
+      },
+      "result": [
+        {
+          "userid": "51",
+          "username": "zbxapi-spec-users-minimal"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "method": "user.get",
+      "params": {
+        "filter": {
+          "username": "zbxapi-spec-users-absent"
+        },
+        "output": [
+          "userid",
+          "username"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 11,
+      "method": "user.get",
+      "params": {
+        "filter": {
+          "username": "zbxapi-spec-users-minimal"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "userid": "51",
+          "username": "zbxapi-spec-users-minimal",
+          "name": "",
+          "surname": "",
+          "url": "",
+          "autologin": "0",
+          "autologout": "15m",
+          "lang": "default",
+          "refresh": "30s",
+          "theme": "default",
+          "attempt_failed": "0",
+          "attempt_ip": "",
+          "attempt_clock": "0",
+          "rows_per_page": "50",
+          "timezone": "default",
+          "roleid": "121",
+          "userdirectoryid": "0",
+          "ts_provisioned": "0",
+          "provisioned": "0"
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "method": "user.get",
+      "params": {
+        "filter": {
+          "userid": 51
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "userid": "51",
+          "username": "zbxapi-spec-users-minimal",
+          "name": "",
+          "surname": "",
+          "url": "",
+          "autologin": "0",
+          "autologout": "15m",
+          "lang": "default",
+          "refresh": "30s",
+          "theme": "default",
+          "attempt_failed": "0",
+          "attempt_ip": "",
+          "attempt_clock": "0",
+          "rows_per_page": "50",
+          "timezone": "default",
+          "roleid": "121",
+          "userdirectoryid": "0",
+          "ts_provisioned": "0",
+          "provisioned": "0"
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "method": "user.get",
+      "params": {
+        "userids": [
+          52
+        ],
+        "selectMedias": "extend"
+      },
+      "result": [
+        {
+          "userid": "52",
+          "username": "zbxapi-spec-users-full",
+          "name": "Vor",
+          "surname": "Nach",
+          "url": "zabbix.php?action=dashboard.view",
+          "autologin": "1",
+          "autologout": "0",
+          "lang": "en_US",
+          "refresh": "1m",
+          "theme": "dark-theme",
+          "attempt_failed": "0",
+          "attempt_ip": "",
+          "attempt_clock": "0",
+          "rows_per_page": "100",
+          "timezone": "Europe/Berlin",
+          "roleid": "121",
+          "userdirectoryid": "0",
+          "ts_provisioned": "0",
+          "provisioned": "0",
+          "medias": [
+            {
+              "mediaid": "12",
+              "mediatypeid": "1",
+              "sendto": [
+                "first@example.invalid"
+              ],
+              "active": "0",
+              "severity": "48",
+              "period": "1-5,09:00-18:00",
+              "userdirectory_mediaid": "0",
+              "provisioned": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "method": "user.get",
+      "params": {
+        "userids": [
+          52
+        ],
+        "getAccess": true
+      },
+      "result": [
+        {
+          "userid": "52",
+          "username": "zbxapi-spec-users-full",
+          "name": "Vor",
+          "surname": "Nach",
+          "url": "zabbix.php?action=dashboard.view",
+          "autologin": "1",
+          "autologout": "0",
+          "lang": "en_US",
+          "refresh": "1m",
+          "theme": "dark-theme",
+          "attempt_failed": "0",
+          "attempt_ip": "",
+          "attempt_clock": "0",
+          "rows_per_page": "100",
+          "timezone": "Europe/Berlin",
+          "roleid": "121",
+          "userdirectoryid": "0",
+          "ts_provisioned": "0",
+          "provisioned": "0",
+          "gui_access": "0",
+          "debug_mode": "0",
+          "users_status": "0"
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "method": "user.get",
+      "params": {
+        "usrgrpids": [
+          94
+        ],
+        "output": [
+          "username"
+        ]
+      },
+      "result": [
+        {
+          "userid": "52",
+          "username": "zbxapi-spec-users-full"
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "method": "user.get",
+      "params": {
+        "output": "extend"
+      },
+      "result": [
+        {
+          "userid": "2",
+          "username": "guest",
+          "name": "",
+          "surname": "",
+          "url": "",
+          "autologin": "0",
+          "autologout": "15m",
+          "lang": "default",
+          "refresh": "30s",
+          "theme": "default",
+          "attempt_failed": "0",
+          "attempt_ip": "",
+          "attempt_clock": "0",
+          "rows_per_page": "50",
+          "timezone": "default",
+          "roleid": "4",
+          "userdirectoryid": "0",
+          "ts_provisioned": "0",
+          "provisioned": "0"
+        },
+        {
+          "userid": "1",
+          "username": "Admin",
+          "name": "Zabbix",
+          "surname": "Administrator",
+          "url": "",
+          "autologin": "0",
+          "autologout": "0",
+          "lang": "en_US",
+          "refresh": "30s",
+          "theme": "dark-theme",
+          "attempt_failed": "0",
+          "attempt_ip": "10.89.0.10",
+          "attempt_clock": "1788179117",
+          "rows_per_page": "200",
+          "timezone": "default",
+          "roleid": "3",
+          "userdirectoryid": "0",
+          "ts_provisioned": "0",
+          "provisioned": "0"
+        },
+        {
+          "userid": "51",
+          "username": "zbxapi-spec-users-minimal",
+          "name": "",
+          "surname": "",
+          "url": "",
+          "autologin": "0",
+          "autologout": "15m",
+          "lang": "default",
+          "refresh": "30s",
+          "theme": "default",
+          "attempt_failed": "0",
+          "attempt_ip": "",
+          "attempt_clock": "0",
+          "rows_per_page": "50",
+          "timezone": "default",
+          "roleid": "121",
+          "userdirectoryid": "0",
+          "ts_provisioned": "0",
+          "provisioned": "0"
+        },
+        {
+          "userid": "52",
+          "username": "zbxapi-spec-users-full",
+          "name": "Vor",
+          "surname": "Nach",
+          "url": "zabbix.php?action=dashboard.view",
+          "autologin": "1",
+          "autologout": "0",
+          "lang": "en_US",
+          "refresh": "1m",
+          "theme": "dark-theme",
+          "attempt_failed": "0",
+          "attempt_ip": "",
+          "attempt_clock": "0",
+          "rows_per_page": "100",
+          "timezone": "Europe/Berlin",
+          "roleid": "121",
+          "userdirectoryid": "0",
+          "ts_provisioned": "0",
+          "provisioned": "0"
+        },
+        {
+          "userid": "53",
+          "username": "zbxapi-spec-users-groupless",
+          "name": "",
+          "surname": "",
+          "url": "",
+          "autologin": "0",
+          "autologout": "15m",
+          "lang": "default",
+          "refresh": "30s",
+          "theme": "default",
+          "attempt_failed": "0",
+          "attempt_ip": "",
+          "attempt_clock": "0",
+          "rows_per_page": "50",
+          "timezone": "default",
+          "roleid": "121",
+          "userdirectoryid": "0",
+          "ts_provisioned": "0",
+          "provisioned": "0"
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "method": "user.get",
+      "params": {
+        "filter": {
+          "userid": 51
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "userid": "51",
+          "username": "zbxapi-spec-users-minimal",
+          "name": "",
+          "surname": "",
+          "url": "",
+          "autologin": "0",
+          "autologout": "15m",
+          "lang": "default",
+          "refresh": "30s",
+          "theme": "default",
+          "attempt_failed": "0",
+          "attempt_ip": "",
+          "attempt_clock": "0",
+          "rows_per_page": "50",
+          "timezone": "default",
+          "roleid": "121",
+          "userdirectoryid": "0",
+          "ts_provisioned": "0",
+          "provisioned": "0"
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "method": "user.update",
+      "params": [
+        {
+          "userid": 51,
+          "name": "Geändert"
+        }
+      ],
+      "result": {
+        "userids": [
+          "51"
+        ]
+      }
+    },
+    {
+      "n": 19,
+      "method": "user.get",
+      "params": {
+        "filter": {
+          "userid": 51
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "userid": "51",
+          "username": "zbxapi-spec-users-minimal",
+          "name": "Geändert",
+          "surname": "",
+          "url": "",
+          "autologin": "0",
+          "autologout": "15m",
+          "lang": "default",
+          "refresh": "30s",
+          "theme": "default",
+          "attempt_failed": "0",
+          "attempt_ip": "",
+          "attempt_clock": "0",
+          "rows_per_page": "50",
+          "timezone": "default",
+          "roleid": "121",
+          "userdirectoryid": "0",
+          "ts_provisioned": "0",
+          "provisioned": "0"
+        }
+      ]
+    },
+    {
+      "n": 20,
+      "method": "user.get",
+      "params": {
+        "filter": {
+          "userid": 51
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "userid": "51",
+          "username": "zbxapi-spec-users-minimal",
+          "name": "Geändert",
+          "surname": "",
+          "url": "",
+          "autologin": "0",
+          "autologout": "15m",
+          "lang": "default",
+          "refresh": "30s",
+          "theme": "default",
+          "attempt_failed": "0",
+          "attempt_ip": "",
+          "attempt_clock": "0",
+          "rows_per_page": "50",
+          "timezone": "default",
+          "roleid": "121",
+          "userdirectoryid": "0",
+          "ts_provisioned": "0",
+          "provisioned": "0"
+        }
+      ]
+    },
+    {
+      "n": 21,
+      "method": "user.update",
+      "params": [
+        {
+          "userid": 51,
+          "name": "Geändert"
+        }
+      ],
+      "result": {
+        "userids": [
+          "51"
+        ]
+      }
+    },
+    {
+      "n": 22,
+      "method": "user.get",
+      "params": {
+        "filter": {
+          "userid": 52
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "userid": "52",
+          "username": "zbxapi-spec-users-full",
+          "name": "Vor",
+          "surname": "Nach",
+          "url": "zabbix.php?action=dashboard.view",
+          "autologin": "1",
+          "autologout": "0",
+          "lang": "en_US",
+          "refresh": "1m",
+          "theme": "dark-theme",
+          "attempt_failed": "0",
+          "attempt_ip": "",
+          "attempt_clock": "0",
+          "rows_per_page": "100",
+          "timezone": "Europe/Berlin",
+          "roleid": "121",
+          "userdirectoryid": "0",
+          "ts_provisioned": "0",
+          "provisioned": "0"
+        }
+      ]
+    },
+    {
+      "n": 23,
+      "method": "user.update",
+      "params": [
+        {
+          "userid": 52,
+          "usrgrps": [
+            {
+              "usrgrpid": 93
+            }
+          ]
+        }
+      ],
+      "result": {
+        "userids": [
+          "52"
+        ]
+      }
+    },
+    {
+      "n": 24,
+      "method": "user.get",
+      "params": {
+        "filter": {
+          "userid": 51
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "userid": "51",
+          "username": "zbxapi-spec-users-minimal",
+          "name": "Geändert",
+          "surname": "",
+          "url": "",
+          "autologin": "0",
+          "autologout": "15m",
+          "lang": "default",
+          "refresh": "30s",
+          "theme": "default",
+          "attempt_failed": "0",
+          "attempt_ip": "",
+          "attempt_clock": "0",
+          "rows_per_page": "50",
+          "timezone": "default",
+          "roleid": "121",
+          "userdirectoryid": "0",
+          "ts_provisioned": "0",
+          "provisioned": "0"
+        }
+      ]
+    },
+    {
+      "n": 25,
+      "method": "user.update",
+      "params": [
+        {
+          "userid": 51,
+          "attempt_failed": 3
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"attempt_failed\"."
+      }
+    },
+    {
+      "n": 26,
+      "method": "user.update",
+      "params": [
+        {
+          "userid": 52,
+          "medias": [
+            {
+              "mediatypeid": 1,
+              "sendto": [
+                "second@example.invalid"
+              ]
+            }
+          ]
+        }
+      ],
+      "result": {
+        "userids": [
+          "52"
+        ]
+      }
+    },
+    {
+      "n": 27,
+      "method": "user.update",
+      "params": [
+        {
+          "userid": 52,
+          "medias": [
+            {
+              "mediatypeid": 1,
+              "sendto": [
+                "a@example.invalid"
+              ]
+            },
+            {
+              "mediatypeid": 1,
+              "sendto": [
+                "b@example.invalid"
+              ]
+            }
+          ]
+        }
+      ],
+      "result": {
+        "userids": [
+          "52"
+        ]
+      }
+    },
+    {
+      "n": 28,
+      "method": "user.update",
+      "params": [
+        {
+          "userid": 52,
+          "medias": []
+        }
+      ],
+      "result": {
+        "userids": [
+          "52"
+        ]
+      }
+    },
+    {
+      "n": 29,
+      "method": "user.update",
+      "params": [
+        {
+          "userid": 52,
+          "medias": []
+        }
+      ],
+      "result": {
+        "userids": [
+          "52"
+        ]
+      }
+    },
+    {
+      "n": 30,
+      "method": "user.update",
+      "params": [
+        {
+          "userid": 52,
+          "medias": [
+            {
+              "mediatypeid": 1,
+              "sendto": [
+                "both@example.invalid"
+              ]
+            }
+          ]
+        },
+        {
+          "userid": 53,
+          "medias": [
+            {
+              "mediatypeid": 1,
+              "sendto": [
+                "both@example.invalid"
+              ]
+            }
+          ]
+        }
+      ],
+      "result": {
+        "userids": [
+          "52",
+          "53"
+        ]
+      }
+    },
+    {
+      "n": 31,
+      "method": "user.get",
+      "params": {
+        "filter": {
+          "username": "zbxapi-spec-users-minimal"
+        },
+        "output": [
+          "userid",
+          "username"
+        ]
+      },
+      "result": [
+        {
+          "userid": "51",
+          "username": "zbxapi-spec-users-minimal"
+        }
+      ]
+    },
+    {
+      "n": 32,
+      "method": "user.get",
+      "params": {
+        "filter": {
+          "username": "zbxapi-spec-users-goc"
+        },
+        "output": [
+          "userid",
+          "username"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 33,
+      "method": "user.create",
+      "params": [
+        {
+          "username": "zbxapi-spec-users-goc",
+          "passwd": "<scrubbed>",
+          "roleid": 121,
+          "usrgrps": [
+            {
+              "usrgrpid": 93
+            }
+          ]
+        }
+      ],
+      "result": {
+        "userids": [
+          "54"
+        ]
+      }
+    },
+    {
+      "n": 34,
+      "method": "user.get",
+      "params": {
+        "filter": {
+          "username": "zbxapi-spec-users-goc"
+        },
+        "output": [
+          "userid",
+          "username"
+        ]
+      },
+      "result": [
+        {
+          "userid": "54",
+          "username": "zbxapi-spec-users-goc"
+        }
+      ]
+    },
+    {
+      "n": 35,
+      "method": "user.get",
+      "params": {
+        "filter": {
+          "userid": "54"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "userid": "54",
+          "username": "zbxapi-spec-users-goc",
+          "name": "",
+          "surname": "",
+          "url": "",
+          "autologin": "0",
+          "autologout": "15m",
+          "lang": "default",
+          "refresh": "30s",
+          "theme": "default",
+          "attempt_failed": "0",
+          "attempt_ip": "",
+          "attempt_clock": "0",
+          "rows_per_page": "50",
+          "timezone": "default",
+          "roleid": "121",
+          "userdirectoryid": "0",
+          "ts_provisioned": "0",
+          "provisioned": "0"
+        }
+      ]
+    },
+    {
+      "n": 36,
+      "method": "user.update",
+      "params": [
+        {
+          "username": "zbxapi-spec-users-goc",
+          "surname": "Upsert",
+          "userid": "54"
+        }
+      ],
+      "result": {
+        "userids": [
+          "54"
+        ]
+      }
+    },
+    {
+      "n": 37,
+      "method": "user.get",
+      "params": {
+        "filter": {
+          "username": "zbxapi-spec-users-cou"
+        },
+        "output": [
+          "userid",
+          "username"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 38,
+      "method": "user.create",
+      "params": [
+        {
+          "username": "zbxapi-spec-users-cou",
+          "passwd": "<scrubbed>",
+          "roleid": 121,
+          "usrgrps": [
+            {
+              "usrgrpid": 93
+            }
+          ]
+        }
+      ],
+      "result": {
+        "userids": [
+          "55"
+        ]
+      }
+    },
+    {
+      "n": 39,
+      "method": "user.create",
+      "params": [
+        {
+          "username": "zbxapi-spec-users-added",
+          "passwd": "<scrubbed>",
+          "roleid": 121,
+          "usrgrps": [
+            {
+              "usrgrpid": 93
+            }
+          ]
+        }
+      ],
+      "result": {
+        "userids": [
+          "56"
+        ]
+      }
+    },
+    {
+      "n": 40,
+      "method": "user.delete",
+      "params": [
+        56
+      ],
+      "result": {
+        "userids": [
+          "56"
+        ]
+      }
+    },
+    {
+      "n": 41,
+      "method": "user.create",
+      "params": [
+        {
+          "username": "zbxapi-spec-users-doomed",
+          "passwd": "<scrubbed>",
+          "roleid": 121,
+          "usrgrps": [
+            {
+              "usrgrpid": 93
+            }
+          ]
+        }
+      ],
+      "result": {
+        "userids": [
+          "57"
+        ]
+      }
+    },
+    {
+      "n": 42,
+      "method": "user.create",
+      "params": [
+        {
+          "username": "zbxapi-spec-users-disposable",
+          "passwd": "<scrubbed>",
+          "roleid": 121,
+          "usrgrps": [
+            {
+              "usrgrpid": 93
+            }
+          ]
+        }
+      ],
+      "result": {
+        "userids": [
+          "58"
+        ]
+      }
+    },
+    {
+      "n": 43,
+      "method": "user.delete",
+      "params": [
+        57
+      ],
+      "result": {
+        "userids": [
+          "57"
+        ]
+      }
+    },
+    {
+      "n": 44,
+      "method": "user.delete",
+      "params": [
+        "58"
+      ],
+      "result": {
+        "userids": [
+          "58"
+        ]
+      }
+    },
+    {
+      "n": 45,
+      "method": "user.delete",
+      "params": [
+        999999999
+      ],
+      "error": {
+        "code": -32500,
+        "message": "Application error.",
+        "data": "No permissions to referred object or it does not exist!"
+      }
+    }
+  ]
+}

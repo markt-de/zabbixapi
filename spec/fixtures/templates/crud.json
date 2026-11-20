@@ -1,0 +1,776 @@
+{
+  "class": "templates",
+  "scenario": "crud",
+  "recorded_at": "2026-09-14T10:47:00Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "template.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-templates-one",
+          "groups": [
+            {
+              "groupid": 209
+            }
+          ]
+        }
+      ],
+      "result": {
+        "templateids": [
+          "10918"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "template.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-templates-one",
+          "groups": [
+            {
+              "groupid": 209
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Template with host name \"zbxapi-spec-templates-one\" already exists."
+      }
+    },
+    {
+      "n": 3,
+      "method": "template.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-templates-nogroups"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": the parameter \"groups\" is missing."
+      }
+    },
+    {
+      "n": 4,
+      "method": "template.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-templates-vendor",
+          "groups": [
+            {
+              "groupid": 209
+            }
+          ],
+          "vendor_name": "markt.de"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": both vendor_name and vendor_version should be either present or empty."
+      }
+    },
+    {
+      "n": 5,
+      "method": "template.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-templates-full",
+          "name": "zbxapi-spec-templates-full-visible",
+          "description": "spec fixture",
+          "uuid": "6e87d05098e344eca8015989ba2fbaf0",
+          "vendor_name": "markt.de",
+          "vendor_version": "1.0",
+          "groups": [
+            {
+              "groupid": 209
+            },
+            {
+              "groupid": 210
+            }
+          ],
+          "tags": [
+            {
+              "tag": "zbxapi-spec",
+              "value": "templates"
+            }
+          ],
+          "macros": [
+            {
+              "macro": "{$ZBXAPI_SPEC_TEMPLATES_A}",
+              "value": "aaa"
+            }
+          ],
+          "templates": [
+            {
+              "templateid": 10918
+            }
+          ]
+        }
+      ],
+      "result": {
+        "templateids": [
+          "10919"
+        ]
+      }
+    },
+    {
+      "n": 6,
+      "method": "template.get",
+      "params": {
+        "filter": {
+          "host": "zbxapi-spec-templates-one"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxyid": "0",
+          "host": "zbxapi-spec-templates-one",
+          "status": "3",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "zbxapi-spec-templates-one",
+          "flags": "0",
+          "templateid": "10918",
+          "description": "",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "tls_psk_identity": "",
+          "tls_psk": "",
+          "custom_interfaces": "0",
+          "uuid": "8d85d8d3db2f4e49b6763d6a8e60316c",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "method": "template.get",
+      "params": {
+        "filter": {
+          "host": "zbxapi-spec-templates-one"
+        },
+        "output": [
+          "templateid",
+          "host"
+        ]
+      },
+      "result": [
+        {
+          "templateid": "10918",
+          "host": "zbxapi-spec-templates-one"
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "method": "template.get",
+      "params": {
+        "filter": {
+          "host": "zbxapi-spec-templates-absent"
+        },
+        "output": [
+          "templateid",
+          "host"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 9,
+      "method": "template.get",
+      "params": {
+        "templateids": [
+          10918
+        ],
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxyid": "0",
+          "host": "zbxapi-spec-templates-one",
+          "status": "3",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "zbxapi-spec-templates-one",
+          "flags": "0",
+          "templateid": "10918",
+          "description": "",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "tls_psk_identity": "",
+          "tls_psk": "",
+          "custom_interfaces": "0",
+          "uuid": "8d85d8d3db2f4e49b6763d6a8e60316c",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "method": "template.get",
+      "params": {
+        "output": [
+          "host"
+        ],
+        "templateids": [
+          10918
+        ],
+        "selectTemplateGroups": [
+          "groupid"
+        ]
+      },
+      "result": [
+        {
+          "host": "zbxapi-spec-templates-one",
+          "templateid": "10918",
+          "templategroups": [
+            {
+              "groupid": "209"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "method": "template.get",
+      "params": {
+        "filter": {
+          "host": "zbxapi-spec-templates-one"
+        },
+        "output": [
+          "templateid"
+        ]
+      },
+      "result": [
+        {
+          "templateid": "10918"
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "method": "template.get",
+      "params": {
+        "templateids": [
+          10918
+        ]
+      },
+      "result": [
+        {
+          "proxyid": "0",
+          "host": "zbxapi-spec-templates-one",
+          "status": "3",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "zbxapi-spec-templates-one",
+          "flags": "0",
+          "templateid": "10918",
+          "description": "",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "tls_psk_identity": "",
+          "tls_psk": "",
+          "custom_interfaces": "0",
+          "uuid": "8d85d8d3db2f4e49b6763d6a8e60316c",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0"
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "method": "template.get",
+      "params": {
+        "templateids": [
+          10918
+        ],
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxyid": "0",
+          "host": "zbxapi-spec-templates-one",
+          "status": "3",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "zbxapi-spec-templates-one",
+          "flags": "0",
+          "templateid": "10918",
+          "description": "",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "tls_psk_identity": "",
+          "tls_psk": "",
+          "custom_interfaces": "0",
+          "uuid": "8d85d8d3db2f4e49b6763d6a8e60316c",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0"
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "method": "template.get",
+      "params": {
+        "templateids": [
+          10918
+        ],
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxyid": "0",
+          "host": "zbxapi-spec-templates-one",
+          "status": "3",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "zbxapi-spec-templates-one",
+          "flags": "0",
+          "templateid": "10918",
+          "description": "",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "tls_psk_identity": "",
+          "tls_psk": "",
+          "custom_interfaces": "0",
+          "uuid": "8d85d8d3db2f4e49b6763d6a8e60316c",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0"
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "method": "template.update",
+      "params": [
+        {
+          "templateid": 10918,
+          "description": "desc v1",
+          "name": "zbxapi-spec-templates-one-visible"
+        }
+      ],
+      "result": {
+        "templateids": [
+          "10918"
+        ]
+      }
+    },
+    {
+      "n": 16,
+      "method": "template.get",
+      "params": {
+        "templateids": [
+          10918
+        ],
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxyid": "0",
+          "host": "zbxapi-spec-templates-one",
+          "status": "3",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "zbxapi-spec-templates-one-visible",
+          "flags": "0",
+          "templateid": "10918",
+          "description": "desc v1",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "tls_psk_identity": "",
+          "tls_psk": "",
+          "custom_interfaces": "0",
+          "uuid": "8d85d8d3db2f4e49b6763d6a8e60316c",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0"
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "method": "template.update",
+      "params": [
+        {
+          "templateid": 10918,
+          "macros": [
+            {
+              "macro": "{$ZBXAPI_SPEC_TEMPLATES_B}",
+              "value": "bbb"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "templateids": [
+          "10918"
+        ]
+      }
+    },
+    {
+      "n": 18,
+      "method": "template.get",
+      "params": {
+        "filter": {
+          "host": "zbxapi-spec-templates-one"
+        },
+        "output": [
+          "templateid",
+          "host"
+        ]
+      },
+      "result": [
+        {
+          "templateid": "10918",
+          "host": "zbxapi-spec-templates-one"
+        }
+      ]
+    },
+    {
+      "n": 19,
+      "method": "template.get",
+      "params": {
+        "templateids": [
+          "10918"
+        ],
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxyid": "0",
+          "host": "zbxapi-spec-templates-one",
+          "status": "3",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "zbxapi-spec-templates-one-visible",
+          "flags": "0",
+          "templateid": "10918",
+          "description": "desc v1",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "tls_psk_identity": "",
+          "tls_psk": "",
+          "custom_interfaces": "0",
+          "uuid": "8d85d8d3db2f4e49b6763d6a8e60316c",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0"
+        }
+      ]
+    },
+    {
+      "n": 20,
+      "method": "template.update",
+      "params": [
+        {
+          "host": "zbxapi-spec-templates-one",
+          "description": "via create_or_update",
+          "templateid": "10918"
+        }
+      ],
+      "result": {
+        "templateids": [
+          "10918"
+        ]
+      }
+    },
+    {
+      "n": 21,
+      "method": "template.get",
+      "params": {
+        "filter": {
+          "host": "zbxapi-spec-templates-viacou"
+        },
+        "output": [
+          "templateid",
+          "host"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 22,
+      "method": "template.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-templates-viacou",
+          "groups": [
+            {
+              "groupid": 209
+            }
+          ]
+        }
+      ],
+      "result": {
+        "templateids": [
+          "10920"
+        ]
+      }
+    },
+    {
+      "n": 23,
+      "method": "template.get",
+      "params": {
+        "filter": {
+          "host": "zbxapi-spec-templates-viacou"
+        },
+        "output": [
+          "templateid",
+          "host"
+        ]
+      },
+      "result": [
+        {
+          "templateid": "10920",
+          "host": "zbxapi-spec-templates-viacou"
+        }
+      ]
+    },
+    {
+      "n": 24,
+      "method": "template.get",
+      "params": {
+        "filter": {
+          "host": "zbxapi-spec-templates-gotten"
+        },
+        "output": [
+          "templateid",
+          "host"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 25,
+      "method": "template.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-templates-gotten",
+          "groups": [
+            {
+              "groupid": 209
+            }
+          ]
+        }
+      ],
+      "result": {
+        "templateids": [
+          "10921"
+        ]
+      }
+    },
+    {
+      "n": 26,
+      "method": "template.get",
+      "params": {
+        "filter": {
+          "host": "zbxapi-spec-templates-one"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "proxyid": "0",
+          "host": "zbxapi-spec-templates-one",
+          "status": "3",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "zbxapi-spec-templates-one-visible",
+          "flags": "0",
+          "templateid": "10918",
+          "description": "via create_or_update",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "tls_psk_identity": "",
+          "tls_psk": "",
+          "custom_interfaces": "0",
+          "uuid": "8d85d8d3db2f4e49b6763d6a8e60316c",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0"
+        }
+      ]
+    },
+    {
+      "n": 27,
+      "method": "template.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-templates-added",
+          "groups": [
+            {
+              "groupid": 209
+            }
+          ]
+        }
+      ],
+      "result": {
+        "templateids": [
+          "10922"
+        ]
+      }
+    },
+    {
+      "n": 28,
+      "method": "template.delete",
+      "params": [
+        10922
+      ],
+      "result": {
+        "templateids": [
+          "10922"
+        ]
+      }
+    },
+    {
+      "n": 29,
+      "method": "template.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-templates-disposable",
+          "groups": [
+            {
+              "groupid": 209
+            }
+          ]
+        }
+      ],
+      "result": {
+        "templateids": [
+          "10923"
+        ]
+      }
+    },
+    {
+      "n": 30,
+      "method": "template.delete",
+      "params": [
+        10923
+      ],
+      "result": {
+        "templateids": [
+          "10923"
+        ]
+      }
+    },
+    {
+      "n": 31,
+      "method": "template.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-templates-stringly",
+          "groups": [
+            {
+              "groupid": 209
+            }
+          ]
+        }
+      ],
+      "result": {
+        "templateids": [
+          "10924"
+        ]
+      }
+    },
+    {
+      "n": 32,
+      "method": "template.delete",
+      "params": [
+        "10924"
+      ],
+      "result": {
+        "templateids": [
+          "10924"
+        ]
+      }
+    }
+  ]
+}

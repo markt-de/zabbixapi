@@ -1,0 +1,895 @@
+{
+  "class": "httptests",
+  "scenario": "crud",
+  "recorded_at": "2026-10-27T15:18:06Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "httptest.create",
+      "params": [
+        {
+          "hostid": 12441,
+          "name": "zbxapi-spec-httptests-base",
+          "steps": [
+            {
+              "name": "home",
+              "url": "http://example.invalid/home",
+              "no": 1
+            }
+          ],
+          "status": 1,
+          "delay": "1h"
+        }
+      ],
+      "result": {
+        "httptestids": [
+          "413"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "httptest.create",
+      "params": [
+        {
+          "hostid": 12441,
+          "name": "zbxapi-spec-httptests-nosteps",
+          "steps": [],
+          "status": 1,
+          "delay": "1h"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/steps\": cannot be empty."
+      }
+    },
+    {
+      "n": 3,
+      "method": "httptest.create",
+      "params": [
+        {
+          "hostid": 12441,
+          "steps": [
+            {
+              "name": "home",
+              "url": "http://example.invalid/home",
+              "no": 1
+            }
+          ],
+          "status": 1,
+          "delay": "1h"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": the parameter \"name\" is missing."
+      }
+    },
+    {
+      "n": 4,
+      "method": "httptest.create",
+      "params": [
+        {
+          "hostid": 12441,
+          "name": "zbxapi-spec-httptests-base",
+          "steps": [
+            {
+              "name": "home",
+              "url": "http://example.invalid/home",
+              "no": 1
+            }
+          ],
+          "status": 1,
+          "delay": "1h"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Web scenario \"zbxapi-spec-httptests-base\" already exists."
+      }
+    },
+    {
+      "n": 5,
+      "method": "httptest.create",
+      "params": [
+        {
+          "hostid": 12441,
+          "name": "zbxapi-spec-httptests-toolong",
+          "steps": [
+            {
+              "name": "home",
+              "url": "http://example.invalid/home",
+              "no": 1,
+              "timeout": "2h"
+            }
+          ],
+          "status": 1,
+          "delay": "1h"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/steps/1/timeout\": value must be one of 1-3600."
+      }
+    },
+    {
+      "n": 6,
+      "method": "httptest.create",
+      "params": [
+        {
+          "hostid": 12442,
+          "name": "zbxapi-spec-httptests-base",
+          "steps": [
+            {
+              "name": "home",
+              "url": "http://example.invalid/home",
+              "no": 1
+            }
+          ],
+          "status": 1,
+          "delay": "1h"
+        }
+      ],
+      "result": {
+        "httptestids": [
+          "414"
+        ]
+      }
+    },
+    {
+      "n": 7,
+      "method": "httptest.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-httptests-base"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "httptestid": "413",
+          "name": "zbxapi-spec-httptests-base",
+          "delay": "1h",
+          "status": "1",
+          "agent": "Zabbix",
+          "authentication": "0",
+          "http_user": "",
+          "http_password": "",
+          "hostid": "12441",
+          "templateid": "0",
+          "http_proxy": "",
+          "retries": "1",
+          "ssl_cert_file": "",
+          "ssl_key_file": "",
+          "ssl_key_password": "",
+          "verify_peer": "0",
+          "verify_host": "0",
+          "uuid": "",
+          "headers": [],
+          "variables": []
+        },
+        {
+          "httptestid": "414",
+          "name": "zbxapi-spec-httptests-base",
+          "delay": "1h",
+          "status": "1",
+          "agent": "Zabbix",
+          "authentication": "0",
+          "http_user": "",
+          "http_password": "",
+          "hostid": "12442",
+          "templateid": "0",
+          "http_proxy": "",
+          "retries": "1",
+          "ssl_cert_file": "",
+          "ssl_key_file": "",
+          "ssl_key_password": "",
+          "verify_peer": "0",
+          "verify_host": "0",
+          "uuid": "",
+          "headers": [],
+          "variables": []
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "method": "httptest.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-httptests-base",
+          "hostid": 12441
+        },
+        "output": [
+          "httptestid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "httptestid": "413",
+          "name": "zbxapi-spec-httptests-base"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "method": "httptest.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-httptests-base",
+          "hostid": 12442
+        },
+        "output": [
+          "httptestid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "httptestid": "414",
+          "name": "zbxapi-spec-httptests-base"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "method": "httptest.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-httptests-base"
+        },
+        "output": [
+          "httptestid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "httptestid": "413",
+          "name": "zbxapi-spec-httptests-base"
+        },
+        {
+          "httptestid": "414",
+          "name": "zbxapi-spec-httptests-base"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "method": "httptest.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-httptests-absent"
+        },
+        "output": [
+          "httptestid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 12,
+      "method": "httptest.get",
+      "params": {
+        "filter": {
+          "httptestid": 413
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "httptestid": "413",
+          "name": "zbxapi-spec-httptests-base",
+          "delay": "1h",
+          "status": "1",
+          "agent": "Zabbix",
+          "authentication": "0",
+          "http_user": "",
+          "http_password": "",
+          "hostid": "12441",
+          "templateid": "0",
+          "http_proxy": "",
+          "retries": "1",
+          "ssl_cert_file": "",
+          "ssl_key_file": "",
+          "ssl_key_password": "",
+          "verify_peer": "0",
+          "verify_host": "0",
+          "uuid": "",
+          "headers": [],
+          "variables": []
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "method": "httptest.get",
+      "params": {
+        "output": [
+          "httptestid",
+          "name"
+        ],
+        "httptestids": [
+          413
+        ]
+      },
+      "result": [
+        {
+          "httptestid": "413",
+          "name": "zbxapi-spec-httptests-base"
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "method": "httptest.get",
+      "params": {
+        "output": [
+          "httptestid"
+        ],
+        "httptestids": [
+          413
+        ],
+        "selectSteps": "count"
+      },
+      "result": [
+        {
+          "httptestid": "413",
+          "steps": "1"
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "method": "httptest.get",
+      "params": {
+        "output": "extend"
+      },
+      "result": [
+        {
+          "httptestid": "413",
+          "name": "zbxapi-spec-httptests-base",
+          "delay": "1h",
+          "status": "1",
+          "agent": "Zabbix",
+          "authentication": "0",
+          "http_user": "",
+          "http_password": "",
+          "hostid": "12441",
+          "templateid": "0",
+          "http_proxy": "",
+          "retries": "1",
+          "ssl_cert_file": "",
+          "ssl_key_file": "",
+          "ssl_key_password": "",
+          "verify_peer": "0",
+          "verify_host": "0",
+          "uuid": "",
+          "headers": [],
+          "variables": []
+        },
+        {
+          "httptestid": "414",
+          "name": "zbxapi-spec-httptests-base",
+          "delay": "1h",
+          "status": "1",
+          "agent": "Zabbix",
+          "authentication": "0",
+          "http_user": "",
+          "http_password": "",
+          "hostid": "12442",
+          "templateid": "0",
+          "http_proxy": "",
+          "retries": "1",
+          "ssl_cert_file": "",
+          "ssl_key_file": "",
+          "ssl_key_password": "",
+          "verify_peer": "0",
+          "verify_host": "0",
+          "uuid": "",
+          "headers": [],
+          "variables": []
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "method": "httptest.get",
+      "params": {
+        "filter": {
+          "httptestid": 413
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "httptestid": "413",
+          "name": "zbxapi-spec-httptests-base",
+          "delay": "1h",
+          "status": "1",
+          "agent": "Zabbix",
+          "authentication": "0",
+          "http_user": "",
+          "http_password": "",
+          "hostid": "12441",
+          "templateid": "0",
+          "http_proxy": "",
+          "retries": "1",
+          "ssl_cert_file": "",
+          "ssl_key_file": "",
+          "ssl_key_password": "",
+          "verify_peer": "0",
+          "verify_host": "0",
+          "uuid": "",
+          "headers": [],
+          "variables": []
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "method": "httptest.get",
+      "params": {
+        "filter": {
+          "httptestid": 413
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "httptestid": "413",
+          "name": "zbxapi-spec-httptests-base",
+          "delay": "1h",
+          "status": "1",
+          "agent": "Zabbix",
+          "authentication": "0",
+          "http_user": "",
+          "http_password": "",
+          "hostid": "12441",
+          "templateid": "0",
+          "http_proxy": "",
+          "retries": "1",
+          "ssl_cert_file": "",
+          "ssl_key_file": "",
+          "ssl_key_password": "",
+          "verify_peer": "0",
+          "verify_host": "0",
+          "uuid": "",
+          "headers": [],
+          "variables": []
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "method": "httptest.update",
+      "params": [
+        {
+          "httptestid": 413,
+          "retries": 3,
+          "agent": "curl"
+        }
+      ],
+      "result": {
+        "httptestids": [
+          "413"
+        ]
+      }
+    },
+    {
+      "n": 19,
+      "method": "httptest.get",
+      "params": {
+        "filter": {
+          "httptestid": 413
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "httptestid": "413",
+          "name": "zbxapi-spec-httptests-base",
+          "delay": "1h",
+          "status": "1",
+          "agent": "curl",
+          "authentication": "0",
+          "http_user": "",
+          "http_password": "",
+          "hostid": "12441",
+          "templateid": "0",
+          "http_proxy": "",
+          "retries": "3",
+          "ssl_cert_file": "",
+          "ssl_key_file": "",
+          "ssl_key_password": "",
+          "verify_peer": "0",
+          "verify_host": "0",
+          "uuid": "",
+          "headers": [],
+          "variables": []
+        }
+      ]
+    },
+    {
+      "n": 20,
+      "method": "httptest.update",
+      "params": [
+        {
+          "httptestid": 413,
+          "steps": [
+            {
+              "name": "home",
+              "url": "http://example.invalid/home",
+              "no": 1
+            },
+            {
+              "name": "about",
+              "url": "http://example.invalid/about",
+              "no": 2
+            }
+          ]
+        }
+      ],
+      "result": {
+        "httptestids": [
+          "413"
+        ]
+      }
+    },
+    {
+      "n": 21,
+      "method": "httptest.get",
+      "params": {
+        "filter": {
+          "httptestid": 413
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "httptestid": "413",
+          "name": "zbxapi-spec-httptests-base",
+          "delay": "1h",
+          "status": "1",
+          "agent": "curl",
+          "authentication": "0",
+          "http_user": "",
+          "http_password": "",
+          "hostid": "12441",
+          "templateid": "0",
+          "http_proxy": "",
+          "retries": "3",
+          "ssl_cert_file": "",
+          "ssl_key_file": "",
+          "ssl_key_password": "",
+          "verify_peer": "0",
+          "verify_host": "0",
+          "uuid": "",
+          "headers": [],
+          "variables": []
+        }
+      ]
+    },
+    {
+      "n": 22,
+      "method": "httptest.update",
+      "params": [
+        {
+          "httptestid": 413,
+          "hostid": 12441,
+          "agent": "wget"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"hostid\"."
+      }
+    },
+    {
+      "n": 23,
+      "method": "httptest.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-httptests-base",
+          "hostid": 12441
+        },
+        "output": [
+          "httptestid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "httptestid": "413",
+          "name": "zbxapi-spec-httptests-base"
+        }
+      ]
+    },
+    {
+      "n": 24,
+      "method": "httptest.get",
+      "params": {
+        "filter": {
+          "httptestid": 413
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "httptestid": "413",
+          "name": "zbxapi-spec-httptests-base",
+          "delay": "1h",
+          "status": "1",
+          "agent": "curl",
+          "authentication": "0",
+          "http_user": "",
+          "http_password": "",
+          "hostid": "12441",
+          "templateid": "0",
+          "http_proxy": "",
+          "retries": "3",
+          "ssl_cert_file": "",
+          "ssl_key_file": "",
+          "ssl_key_password": "",
+          "verify_peer": "0",
+          "verify_host": "0",
+          "uuid": "",
+          "headers": [],
+          "variables": []
+        }
+      ]
+    },
+    {
+      "n": 25,
+      "method": "httptest.update",
+      "params": [
+        {
+          "name": "zbxapi-spec-httptests-base",
+          "status": 1,
+          "delay": "1h",
+          "steps": [
+            {
+              "name": "home",
+              "url": "http://example.invalid/home",
+              "no": 1
+            }
+          ],
+          "agent": "upserted",
+          "httptestid": 413
+        }
+      ],
+      "result": {
+        "httptestids": [
+          "413"
+        ]
+      }
+    },
+    {
+      "n": 26,
+      "method": "httptest.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-httptests-upserted",
+          "hostid": 12441
+        },
+        "output": [
+          "httptestid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 27,
+      "method": "httptest.create",
+      "params": [
+        {
+          "hostid": 12441,
+          "name": "zbxapi-spec-httptests-upserted",
+          "steps": [
+            {
+              "name": "home",
+              "url": "http://example.invalid/home",
+              "no": 1
+            }
+          ],
+          "status": 1,
+          "delay": "1h"
+        }
+      ],
+      "result": {
+        "httptestids": [
+          "415"
+        ]
+      }
+    },
+    {
+      "n": 28,
+      "method": "httptest.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-httptests-base",
+          "hostid": 12441
+        },
+        "output": [
+          "httptestid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "httptestid": "413",
+          "name": "zbxapi-spec-httptests-base"
+        }
+      ]
+    },
+    {
+      "n": 29,
+      "method": "httptest.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-httptests-gotten",
+          "hostid": 12441
+        },
+        "output": [
+          "httptestid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 30,
+      "method": "httptest.create",
+      "params": [
+        {
+          "hostid": 12441,
+          "name": "zbxapi-spec-httptests-gotten",
+          "steps": [
+            {
+              "name": "home",
+              "url": "http://example.invalid/home",
+              "no": 1
+            }
+          ],
+          "status": 1,
+          "delay": "1h"
+        }
+      ],
+      "result": {
+        "httptestids": [
+          "416"
+        ]
+      }
+    },
+    {
+      "n": 31,
+      "method": "httptest.create",
+      "params": [
+        {
+          "hostid": 12441,
+          "name": "zbxapi-spec-httptests-added",
+          "steps": [
+            {
+              "name": "home",
+              "url": "http://example.invalid/home",
+              "no": 1
+            }
+          ],
+          "status": 1,
+          "delay": "1h"
+        }
+      ],
+      "result": {
+        "httptestids": [
+          "417"
+        ]
+      }
+    },
+    {
+      "n": 32,
+      "method": "httptest.delete",
+      "params": [
+        417
+      ],
+      "result": {
+        "httptestids": [
+          417
+        ]
+      }
+    },
+    {
+      "n": 33,
+      "method": "httptest.create",
+      "params": [
+        {
+          "hostid": 12441,
+          "name": "zbxapi-spec-httptests-disposable",
+          "steps": [
+            {
+              "name": "home",
+              "url": "http://example.invalid/home",
+              "no": 1
+            }
+          ],
+          "status": 1,
+          "delay": "1h"
+        }
+      ],
+      "result": {
+        "httptestids": [
+          "418"
+        ]
+      }
+    },
+    {
+      "n": 34,
+      "method": "httptest.delete",
+      "params": [
+        418
+      ],
+      "result": {
+        "httptestids": [
+          418
+        ]
+      }
+    },
+    {
+      "n": 35,
+      "method": "httptest.create",
+      "params": [
+        {
+          "hostid": 12441,
+          "name": "zbxapi-spec-httptests-spare",
+          "steps": [
+            {
+              "name": "home",
+              "url": "http://example.invalid/home",
+              "no": 1
+            }
+          ],
+          "status": 1,
+          "delay": "1h"
+        }
+      ],
+      "result": {
+        "httptestids": [
+          "419"
+        ]
+      }
+    },
+    {
+      "n": 36,
+      "method": "httptest.delete",
+      "params": [
+        "419"
+      ],
+      "result": {
+        "httptestids": [
+          "419"
+        ]
+      }
+    },
+    {
+      "n": 37,
+      "method": "httptest.delete",
+      "params": [
+        999999999
+      ],
+      "error": {
+        "code": -32500,
+        "message": "Application error.",
+        "data": "No permissions to referred object or it does not exist!"
+      }
+    }
+  ]
+}

@@ -1,0 +1,623 @@
+{
+  "class": "templategroups",
+  "scenario": "crud",
+  "recorded_at": "2026-10-15T14:57:24Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "templategroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-templategroups-one"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1238"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "templategroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-templategroups-one"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Template group \"zbxapi-spec-templategroups-one\" already exists."
+      }
+    },
+    {
+      "n": 3,
+      "method": "templategroup.create",
+      "params": [
+        {
+          "uuid": "6578b05c3e4f46ae8c0eaf4df44a5024"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": the parameter \"name\" is missing."
+      }
+    },
+    {
+      "n": 4,
+      "method": "templategroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-templategroups-roid",
+          "groupid": 1238
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"groupid\"."
+      }
+    },
+    {
+      "n": 5,
+      "method": "templategroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-templategroups-baduuid",
+          "uuid": "abcdef0123456789abcdef0123456789"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/uuid\": UUIDv4 is expected."
+      }
+    },
+    {
+      "n": 6,
+      "method": "templategroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-templategroups-bulk1"
+        },
+        {
+          "name": "zbxapi-spec-templategroups-bulk2"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1239",
+          "1240"
+        ]
+      }
+    },
+    {
+      "n": 7,
+      "method": "templategroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-templategroups-two",
+          "uuid": "73ab8f79429c4a839c0d275ae925e2a8"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1241"
+        ]
+      }
+    },
+    {
+      "n": 8,
+      "method": "templategroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-templategroups-one"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "groupid": "1238",
+          "name": "zbxapi-spec-templategroups-one",
+          "uuid": "f5a82da351e74b4c9ceab81c07e931d4"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "method": "templategroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-templategroups-one"
+        },
+        "output": [
+          "groupid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "groupid": "1238",
+          "name": "zbxapi-spec-templategroups-one"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "method": "templategroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-templategroups-one",
+          "groupid": 1238
+        },
+        "output": [
+          "groupid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "groupid": "1238",
+          "name": "zbxapi-spec-templategroups-one"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "method": "templategroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-templategroups-absent"
+        },
+        "output": [
+          "groupid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 12,
+      "method": "templategroup.get",
+      "params": {
+        "filter": {
+          "groupid": 1238
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "groupid": "1238",
+          "name": "zbxapi-spec-templategroups-one",
+          "uuid": "f5a82da351e74b4c9ceab81c07e931d4"
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "method": "templategroup.get",
+      "params": {
+        "output": [
+          "name"
+        ],
+        "groupids": [
+          1238
+        ]
+      },
+      "result": [
+        {
+          "name": "zbxapi-spec-templategroups-one"
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "method": "templategroup.get",
+      "params": {
+        "countOutput": true,
+        "groupids": [
+          1238
+        ]
+      },
+      "result": "1"
+    },
+    {
+      "n": 15,
+      "method": "templategroup.get",
+      "params": {
+        "output": "extend"
+      },
+      "result": [
+        {
+          "groupid": "1",
+          "name": "Templates",
+          "uuid": "7df96b18c230490a9a0a9e2307226338"
+        },
+        {
+          "groupid": "9",
+          "name": "Templates/Network devices",
+          "uuid": "36bff6c29af64692839d077febfc7079"
+        },
+        {
+          "groupid": "10",
+          "name": "Templates/Operating systems",
+          "uuid": "846977d1dfed4968bc5f8bdb363285bc"
+        },
+        {
+          "groupid": "11",
+          "name": "Templates/Server hardware",
+          "uuid": "e960332b3f6c46a1956486d4f3f99fce"
+        },
+        {
+          "groupid": "12",
+          "name": "Templates/Applications",
+          "uuid": "a571c0d144b14fd4a87a9d9b2aa9fcd6"
+        },
+        {
+          "groupid": "13",
+          "name": "Templates/Databases",
+          "uuid": "748ad4d098d447d492bb935c907f652f"
+        },
+        {
+          "groupid": "14",
+          "name": "Templates/Virtualization",
+          "uuid": "02e4df4f20b848e79267641790f241da"
+        },
+        {
+          "groupid": "15",
+          "name": "Templates/Telephony",
+          "uuid": "1d12408342854fd5a4436dd6d5d1bd4a"
+        },
+        {
+          "groupid": "16",
+          "name": "Templates/SAN",
+          "uuid": "7c2cb727f85b492d88cd56e17127c64d"
+        },
+        {
+          "groupid": "17",
+          "name": "Templates/Video surveillance",
+          "uuid": "d37f71c7e3f7469bab645852a69a2018"
+        },
+        {
+          "groupid": "18",
+          "name": "Templates/Power",
+          "uuid": "3dcd5bbe90534f9e8eb5c2d53756af63"
+        },
+        {
+          "groupid": "21",
+          "name": "Templates/Cloud",
+          "uuid": "c2c162144c2d4c5491c8801193af4945"
+        },
+        {
+          "groupid": "1238",
+          "name": "zbxapi-spec-templategroups-one",
+          "uuid": "f5a82da351e74b4c9ceab81c07e931d4"
+        },
+        {
+          "groupid": "1239",
+          "name": "zbxapi-spec-templategroups-bulk1",
+          "uuid": "e5be46daf1a747dca5c60c05d947a90e"
+        },
+        {
+          "groupid": "1240",
+          "name": "zbxapi-spec-templategroups-bulk2",
+          "uuid": "08df766881cb49efb80d87dd38286dfa"
+        },
+        {
+          "groupid": "1241",
+          "name": "zbxapi-spec-templategroups-two",
+          "uuid": "73ab8f79429c4a839c0d275ae925e2a8"
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "method": "templategroup.get",
+      "params": {
+        "filter": {
+          "groupid": 1238
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "groupid": "1238",
+          "name": "zbxapi-spec-templategroups-one",
+          "uuid": "f5a82da351e74b4c9ceab81c07e931d4"
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "method": "templategroup.get",
+      "params": {
+        "filter": {
+          "groupid": 1238
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "groupid": "1238",
+          "name": "zbxapi-spec-templategroups-one",
+          "uuid": "f5a82da351e74b4c9ceab81c07e931d4"
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "method": "templategroup.update",
+      "params": [
+        {
+          "groupid": 1238,
+          "name": "zbxapi-spec-templategroups-batched",
+          "uuid": "1308c02fc2904f9a9d4dc2342aa8831a"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1238"
+        ]
+      }
+    },
+    {
+      "n": 19,
+      "method": "templategroup.get",
+      "params": {
+        "filter": {
+          "groupid": 1238
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "groupid": "1238",
+          "name": "zbxapi-spec-templategroups-batched",
+          "uuid": "1308c02fc2904f9a9d4dc2342aa8831a"
+        }
+      ]
+    },
+    {
+      "n": 20,
+      "method": "templategroup.update",
+      "params": [
+        {
+          "groupid": 1238,
+          "uuid": "abcdef0123456789abcdef0123456789"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/uuid\": UUIDv4 is expected."
+      }
+    },
+    {
+      "n": 21,
+      "method": "templategroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-templategroups-two"
+        },
+        "output": [
+          "groupid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "groupid": "1241",
+          "name": "zbxapi-spec-templategroups-two"
+        }
+      ]
+    },
+    {
+      "n": 22,
+      "method": "templategroup.get",
+      "params": {
+        "filter": {
+          "groupid": "1241"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "groupid": "1241",
+          "name": "zbxapi-spec-templategroups-two",
+          "uuid": "73ab8f79429c4a839c0d275ae925e2a8"
+        }
+      ]
+    },
+    {
+      "n": 23,
+      "method": "templategroup.update",
+      "params": [
+        {
+          "name": "zbxapi-spec-templategroups-two",
+          "uuid": "2b917d4a5314478691599eeeaac2dbe5",
+          "groupid": "1241"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1241"
+        ]
+      }
+    },
+    {
+      "n": 24,
+      "method": "templategroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-templategroups-three"
+        },
+        "output": [
+          "groupid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 25,
+      "method": "templategroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-templategroups-three"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1242"
+        ]
+      }
+    },
+    {
+      "n": 26,
+      "method": "templategroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-templategroups-three"
+        },
+        "output": [
+          "groupid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "groupid": "1242",
+          "name": "zbxapi-spec-templategroups-three"
+        }
+      ]
+    },
+    {
+      "n": 27,
+      "method": "templategroup.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-templategroups-four"
+        },
+        "output": [
+          "groupid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 28,
+      "method": "templategroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-templategroups-four"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1243"
+        ]
+      }
+    },
+    {
+      "n": 29,
+      "method": "templategroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-templategroups-added"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1244"
+        ]
+      }
+    },
+    {
+      "n": 30,
+      "method": "templategroup.delete",
+      "params": [
+        1244
+      ],
+      "result": {
+        "groupids": [
+          1244
+        ]
+      }
+    },
+    {
+      "n": 31,
+      "method": "templategroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-templategroups-disposable"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1245"
+        ]
+      }
+    },
+    {
+      "n": 32,
+      "method": "templategroup.delete",
+      "params": [
+        "1245"
+      ],
+      "result": {
+        "groupids": [
+          "1245"
+        ]
+      }
+    },
+    {
+      "n": 33,
+      "method": "templategroup.create",
+      "params": [
+        {
+          "name": "zbxapi-spec-templategroups-templated"
+        }
+      ],
+      "result": {
+        "groupids": [
+          "1246"
+        ]
+      }
+    },
+    {
+      "n": 34,
+      "method": "template.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-templategroups-tpl",
+          "groups": [
+            {
+              "groupid": 1246
+            }
+          ]
+        }
+      ],
+      "result": {
+        "templateids": [
+          "12148"
+        ]
+      }
+    },
+    {
+      "n": 35,
+      "method": "templategroup.delete",
+      "params": [
+        1246
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Template \"zbxapi-spec-templategroups-tpl\" cannot be without template group."
+      }
+    }
+  ]
+}

@@ -1,0 +1,1217 @@
+{
+  "class": "hosts",
+  "scenario": "crud",
+  "recorded_at": "2026-09-14T11:18:45Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "host.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-hosts-one",
+          "interfaces": [],
+          "status": 0,
+          "groups": [
+            {
+              "groupid": 241
+            }
+          ]
+        }
+      ],
+      "result": {
+        "hostids": [
+          "11007"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "host.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-hosts-nogroups",
+          "interfaces": [],
+          "status": 0,
+          "groups": []
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/groups\": cannot be empty."
+      }
+    },
+    {
+      "n": 3,
+      "method": "host.create",
+      "params": [
+        {
+          "host": null,
+          "interfaces": [],
+          "status": 0,
+          "groups": [
+            {
+              "groupid": 241
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Wrong fields for host \"\"."
+      }
+    },
+    {
+      "n": 4,
+      "method": "host.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-hosts-noifdns",
+          "interfaces": [
+            {
+              "type": 1,
+              "main": 1,
+              "useip": 1,
+              "ip": "192.0.2.10",
+              "port": "10050"
+            }
+          ],
+          "status": 0,
+          "groups": [
+            {
+              "groupid": 241
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Incorrect arguments passed to function."
+      }
+    },
+    {
+      "n": 5,
+      "method": "host.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-hosts-full",
+          "interfaces": [
+            {
+              "type": 1,
+              "main": 1,
+              "useip": 1,
+              "ip": "192.0.2.11",
+              "dns": "",
+              "port": "10050"
+            },
+            {
+              "type": 2,
+              "main": 1,
+              "useip": 1,
+              "ip": "192.0.2.11",
+              "dns": "",
+              "port": "161",
+              "details": {
+                "version": 2,
+                "bulk": 1,
+                "community": "public"
+              }
+            }
+          ],
+          "status": 0,
+          "groups": [
+            {
+              "groupid": 241
+            },
+            {
+              "groupid": 242
+            }
+          ],
+          "name": "Full Visible Name",
+          "description": "spec fixture: every documented create collection",
+          "tags": [
+            {
+              "tag": "zbxapi-spec",
+              "value": "hosts"
+            }
+          ],
+          "templates": [
+            {
+              "templateid": 10343
+            }
+          ],
+          "macros": [
+            {
+              "macro": "{$ZBXAPI_SPEC_HOSTS}",
+              "value": "hhh"
+            }
+          ],
+          "inventory_mode": 0,
+          "inventory": {
+            "location": "Leipzig",
+            "os": "Linux Debian"
+          }
+        }
+      ],
+      "result": {
+        "hostids": [
+          "11008"
+        ]
+      }
+    },
+    {
+      "n": 6,
+      "method": "host.get",
+      "params": {
+        "filter": {
+          "host": "zbxapi-spec-hosts-one"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "hostid": "11007",
+          "proxyid": "0",
+          "host": "zbxapi-spec-hosts-one",
+          "status": "0",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "zbxapi-spec-hosts-one",
+          "flags": "0",
+          "templateid": "0",
+          "description": "",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_interfaces": "0",
+          "uuid": "",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0",
+          "inventory_mode": "-1",
+          "active_available": "0",
+          "assigned_proxyid": "0"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "method": "host.get",
+      "params": {
+        "filter": {
+          "host": "zbxapi-spec-hosts-one"
+        },
+        "output": [
+          "hostid",
+          "host"
+        ]
+      },
+      "result": [
+        {
+          "hostid": "11007",
+          "host": "zbxapi-spec-hosts-one"
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "method": "host.get",
+      "params": {
+        "filter": {
+          "host": "zbxapi-spec-hosts-absent"
+        },
+        "output": [
+          "hostid",
+          "host"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 9,
+      "method": "host.get",
+      "params": {
+        "filter": {
+          "hostid": 11007
+        },
+        "output": "extend",
+        "selectHostGroups": "extend"
+      },
+      "result": [
+        {
+          "hostid": "11007",
+          "proxyid": "0",
+          "host": "zbxapi-spec-hosts-one",
+          "status": "0",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "zbxapi-spec-hosts-one",
+          "flags": "0",
+          "templateid": "0",
+          "description": "",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_interfaces": "0",
+          "uuid": "",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0",
+          "inventory_mode": "-1",
+          "active_available": "0",
+          "assigned_proxyid": "0",
+          "hostgroups": [
+            {
+              "groupid": "241",
+              "name": "zbxapi-spec-hosts-grp1",
+              "flags": "0",
+              "uuid": "3b0114307fe64907bec413c6143f1e93"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "method": "host.get",
+      "params": {
+        "output": [
+          "host",
+          "status"
+        ],
+        "hostids": [
+          11007
+        ]
+      },
+      "result": [
+        {
+          "hostid": "11007",
+          "host": "zbxapi-spec-hosts-one",
+          "status": "0"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "method": "host.get",
+      "params": {
+        "output": "extend"
+      },
+      "result": [
+        {
+          "hostid": "10692",
+          "proxyid": "2",
+          "host": "agent12",
+          "status": "0",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "agent12",
+          "flags": "0",
+          "templateid": "0",
+          "description": "zabbix agent v1, monitored via proxy",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_interfaces": "0",
+          "uuid": "",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "1",
+          "inventory_mode": "-1",
+          "active_available": "1",
+          "assigned_proxyid": "0"
+        },
+        {
+          "hostid": "10694",
+          "proxyid": "2",
+          "host": "agent22",
+          "status": "0",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "agent22",
+          "flags": "0",
+          "templateid": "0",
+          "description": "zabbix agent v2, monitored via proxy",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_interfaces": "0",
+          "uuid": "",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "1",
+          "inventory_mode": "-1",
+          "active_available": "1",
+          "assigned_proxyid": "0"
+        },
+        {
+          "hostid": "10693",
+          "proxyid": "0",
+          "host": "agent21",
+          "status": "0",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "agent21",
+          "flags": "0",
+          "templateid": "0",
+          "description": "zabbix agent v2, monitored directly by server",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_interfaces": "0",
+          "uuid": "",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0",
+          "inventory_mode": "-1",
+          "active_available": "0",
+          "assigned_proxyid": "0"
+        },
+        {
+          "hostid": "10691",
+          "proxyid": "0",
+          "host": "agent11",
+          "status": "0",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "agent11",
+          "flags": "0",
+          "templateid": "0",
+          "description": "zabbix agent v1, monitored directly by server",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_interfaces": "0",
+          "uuid": "",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0",
+          "inventory_mode": "-1",
+          "active_available": "0",
+          "assigned_proxyid": "0"
+        },
+        {
+          "hostid": "11007",
+          "proxyid": "0",
+          "host": "zbxapi-spec-hosts-one",
+          "status": "0",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "zbxapi-spec-hosts-one",
+          "flags": "0",
+          "templateid": "0",
+          "description": "",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_interfaces": "0",
+          "uuid": "",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0",
+          "inventory_mode": "-1",
+          "active_available": "0",
+          "assigned_proxyid": "0"
+        },
+        {
+          "hostid": "11008",
+          "proxyid": "0",
+          "host": "zbxapi-spec-hosts-full",
+          "status": "0",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "Full Visible Name",
+          "flags": "0",
+          "templateid": "0",
+          "description": "spec fixture: every documented create collection",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_interfaces": "0",
+          "uuid": "",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0",
+          "inventory_mode": "0",
+          "active_available": "0",
+          "assigned_proxyid": "0"
+        },
+        {
+          "hostid": "10084",
+          "proxyid": "0",
+          "host": "Zabbix server",
+          "status": "0",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "Zabbix server",
+          "flags": "0",
+          "templateid": "0",
+          "description": "",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_interfaces": "0",
+          "uuid": "",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0",
+          "inventory_mode": "1",
+          "active_available": "0",
+          "assigned_proxyid": "0"
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "method": "host.get",
+      "params": {
+        "filter": {
+          "hostid": 11007
+        },
+        "output": "extend",
+        "selectHostGroups": "extend"
+      },
+      "result": [
+        {
+          "hostid": "11007",
+          "proxyid": "0",
+          "host": "zbxapi-spec-hosts-one",
+          "status": "0",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "zbxapi-spec-hosts-one",
+          "flags": "0",
+          "templateid": "0",
+          "description": "",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_interfaces": "0",
+          "uuid": "",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0",
+          "inventory_mode": "-1",
+          "active_available": "0",
+          "assigned_proxyid": "0",
+          "hostgroups": [
+            {
+              "groupid": "241",
+              "name": "zbxapi-spec-hosts-grp1",
+              "flags": "0",
+              "uuid": "3b0114307fe64907bec413c6143f1e93"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "method": "host.get",
+      "params": {
+        "filter": {
+          "hostid": 11007
+        },
+        "output": "extend",
+        "selectHostGroups": "extend"
+      },
+      "result": [
+        {
+          "hostid": "11007",
+          "proxyid": "0",
+          "host": "zbxapi-spec-hosts-one",
+          "status": "0",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "zbxapi-spec-hosts-one",
+          "flags": "0",
+          "templateid": "0",
+          "description": "",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_interfaces": "0",
+          "uuid": "",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0",
+          "inventory_mode": "-1",
+          "active_available": "0",
+          "assigned_proxyid": "0",
+          "hostgroups": [
+            {
+              "groupid": "241",
+              "name": "zbxapi-spec-hosts-grp1",
+              "flags": "0",
+              "uuid": "3b0114307fe64907bec413c6143f1e93"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "method": "host.update",
+      "params": [
+        {
+          "hostid": 11007,
+          "description": "desc v1"
+        }
+      ],
+      "result": {
+        "hostids": [
+          "11007"
+        ]
+      }
+    },
+    {
+      "n": 15,
+      "method": "host.get",
+      "params": {
+        "filter": {
+          "hostid": 11007
+        },
+        "output": "extend",
+        "selectHostGroups": "extend"
+      },
+      "result": [
+        {
+          "hostid": "11007",
+          "proxyid": "0",
+          "host": "zbxapi-spec-hosts-one",
+          "status": "0",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "zbxapi-spec-hosts-one",
+          "flags": "0",
+          "templateid": "0",
+          "description": "desc v1",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_interfaces": "0",
+          "uuid": "",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0",
+          "inventory_mode": "-1",
+          "active_available": "0",
+          "assigned_proxyid": "0",
+          "hostgroups": [
+            {
+              "groupid": "241",
+              "name": "zbxapi-spec-hosts-grp1",
+              "flags": "0",
+              "uuid": "3b0114307fe64907bec413c6143f1e93"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "method": "host.update",
+      "params": [
+        {
+          "hostid": 11007,
+          "groups": [
+            {
+              "groupid": 241
+            },
+            {
+              "groupid": 242
+            }
+          ]
+        }
+      ],
+      "result": {
+        "hostids": [
+          "11007"
+        ]
+      }
+    },
+    {
+      "n": 17,
+      "method": "host.get",
+      "params": {
+        "filter": {
+          "hostid": 11007
+        },
+        "output": "extend",
+        "selectHostGroups": "extend"
+      },
+      "result": [
+        {
+          "hostid": "11007",
+          "proxyid": "0",
+          "host": "zbxapi-spec-hosts-one",
+          "status": "0",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "zbxapi-spec-hosts-one",
+          "flags": "0",
+          "templateid": "0",
+          "description": "desc v1",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_interfaces": "0",
+          "uuid": "",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0",
+          "inventory_mode": "-1",
+          "active_available": "0",
+          "assigned_proxyid": "0",
+          "hostgroups": [
+            {
+              "groupid": "241",
+              "name": "zbxapi-spec-hosts-grp1",
+              "flags": "0",
+              "uuid": "3b0114307fe64907bec413c6143f1e93"
+            },
+            {
+              "groupid": "242",
+              "name": "zbxapi-spec-hosts-grp2",
+              "flags": "0",
+              "uuid": "b83b76294a9542f895634876d2c19f63"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "method": "host.get",
+      "params": {
+        "filter": {
+          "hostid": 11007
+        },
+        "output": "extend",
+        "selectHostGroups": "extend"
+      },
+      "result": [
+        {
+          "hostid": "11007",
+          "proxyid": "0",
+          "host": "zbxapi-spec-hosts-one",
+          "status": "0",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "zbxapi-spec-hosts-one",
+          "flags": "0",
+          "templateid": "0",
+          "description": "desc v1",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_interfaces": "0",
+          "uuid": "",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0",
+          "inventory_mode": "-1",
+          "active_available": "0",
+          "assigned_proxyid": "0",
+          "hostgroups": [
+            {
+              "groupid": "241",
+              "name": "zbxapi-spec-hosts-grp1",
+              "flags": "0",
+              "uuid": "3b0114307fe64907bec413c6143f1e93"
+            },
+            {
+              "groupid": "242",
+              "name": "zbxapi-spec-hosts-grp2",
+              "flags": "0",
+              "uuid": "b83b76294a9542f895634876d2c19f63"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 19,
+      "method": "host.update",
+      "params": [
+        {
+          "hostid": 11007,
+          "interfaces": [
+            {
+              "type": 1,
+              "main": 1,
+              "useip": 1,
+              "ip": "192.0.2.12",
+              "dns": "",
+              "port": "10050"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "hostids": [
+          "11007"
+        ]
+      }
+    },
+    {
+      "n": 20,
+      "method": "host.get",
+      "params": {
+        "filter": {
+          "hostid": 11007
+        },
+        "output": "extend",
+        "selectHostGroups": "extend"
+      },
+      "result": [
+        {
+          "hostid": "11007",
+          "proxyid": "0",
+          "host": "zbxapi-spec-hosts-one",
+          "status": "0",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "zbxapi-spec-hosts-one",
+          "flags": "0",
+          "templateid": "0",
+          "description": "desc v1",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_interfaces": "0",
+          "uuid": "",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0",
+          "inventory_mode": "-1",
+          "active_available": "0",
+          "assigned_proxyid": "0",
+          "hostgroups": [
+            {
+              "groupid": "241",
+              "name": "zbxapi-spec-hosts-grp1",
+              "flags": "0",
+              "uuid": "3b0114307fe64907bec413c6143f1e93"
+            },
+            {
+              "groupid": "242",
+              "name": "zbxapi-spec-hosts-grp2",
+              "flags": "0",
+              "uuid": "b83b76294a9542f895634876d2c19f63"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 21,
+      "method": "host.update",
+      "params": [
+        {
+          "hostid": 11007,
+          "tags": [
+            {
+              "tag": "zbxapi-spec",
+              "value": "hosts",
+              "automatic": 1
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/tags/1\": unexpected parameter \"automatic\"."
+      }
+    },
+    {
+      "n": 22,
+      "method": "host.massRemove",
+      "params": {
+        "hostids": [
+          11008
+        ],
+        "templateids": [
+          10343
+        ]
+      },
+      "result": {
+        "hostids": [
+          "11008"
+        ]
+      }
+    },
+    {
+      "n": 23,
+      "method": "host.get",
+      "params": {
+        "filter": {
+          "host": "zbxapi-spec-hosts-one"
+        },
+        "output": [
+          "hostid",
+          "host"
+        ]
+      },
+      "result": [
+        {
+          "hostid": "11007",
+          "host": "zbxapi-spec-hosts-one"
+        }
+      ]
+    },
+    {
+      "n": 24,
+      "method": "host.get",
+      "params": {
+        "filter": {
+          "hostid": "11007"
+        },
+        "output": "extend",
+        "selectHostGroups": "extend"
+      },
+      "result": [
+        {
+          "hostid": "11007",
+          "proxyid": "0",
+          "host": "zbxapi-spec-hosts-one",
+          "status": "0",
+          "ipmi_authtype": "-1",
+          "ipmi_privilege": "2",
+          "ipmi_username": "",
+          "ipmi_password": "",
+          "maintenanceid": "0",
+          "maintenance_status": "0",
+          "maintenance_type": "0",
+          "maintenance_from": "0",
+          "name": "zbxapi-spec-hosts-one",
+          "flags": "0",
+          "templateid": "0",
+          "description": "desc v1",
+          "tls_connect": "1",
+          "tls_accept": "1",
+          "tls_issuer": "",
+          "tls_subject": "",
+          "custom_interfaces": "0",
+          "uuid": "",
+          "vendor_name": "",
+          "vendor_version": "",
+          "proxy_groupid": "0",
+          "monitored_by": "0",
+          "inventory_mode": "-1",
+          "active_available": "0",
+          "assigned_proxyid": "0",
+          "hostgroups": [
+            {
+              "groupid": "241",
+              "name": "zbxapi-spec-hosts-grp1",
+              "flags": "0",
+              "uuid": "3b0114307fe64907bec413c6143f1e93"
+            },
+            {
+              "groupid": "242",
+              "name": "zbxapi-spec-hosts-grp2",
+              "flags": "0",
+              "uuid": "b83b76294a9542f895634876d2c19f63"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 25,
+      "method": "host.update",
+      "params": [
+        {
+          "host": "zbxapi-spec-hosts-one",
+          "description": "via upsert",
+          "hostid": "11007"
+        }
+      ],
+      "result": {
+        "hostids": [
+          "11007"
+        ]
+      }
+    },
+    {
+      "n": 26,
+      "method": "host.get",
+      "params": {
+        "filter": {
+          "host": "zbxapi-spec-hosts-two"
+        },
+        "output": [
+          "hostid",
+          "host"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 27,
+      "method": "host.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-hosts-two",
+          "interfaces": [],
+          "status": 0,
+          "groups": [
+            {
+              "groupid": 241
+            }
+          ]
+        }
+      ],
+      "result": {
+        "hostids": [
+          "11010"
+        ]
+      }
+    },
+    {
+      "n": 28,
+      "method": "host.get",
+      "params": {
+        "filter": {
+          "host": "zbxapi-spec-hosts-two"
+        },
+        "output": [
+          "hostid",
+          "host"
+        ]
+      },
+      "result": [
+        {
+          "hostid": "11010",
+          "host": "zbxapi-spec-hosts-two"
+        }
+      ]
+    },
+    {
+      "n": 29,
+      "method": "host.get",
+      "params": {
+        "filter": {
+          "host": "zbxapi-spec-hosts-three"
+        },
+        "output": [
+          "hostid",
+          "host"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 30,
+      "method": "host.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-hosts-three",
+          "interfaces": [],
+          "status": 0,
+          "groups": [
+            {
+              "groupid": 241
+            }
+          ]
+        }
+      ],
+      "result": {
+        "hostids": [
+          "11013"
+        ]
+      }
+    },
+    {
+      "n": 31,
+      "method": "host.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-hosts-added",
+          "interfaces": [],
+          "status": 0,
+          "groups": [
+            {
+              "groupid": 241
+            }
+          ]
+        }
+      ],
+      "result": {
+        "hostids": [
+          "11014"
+        ]
+      }
+    },
+    {
+      "n": 32,
+      "method": "host.delete",
+      "params": [
+        11014
+      ],
+      "result": {
+        "hostids": [
+          "11014"
+        ]
+      }
+    },
+    {
+      "n": 33,
+      "method": "host.create",
+      "params": [
+        {
+          "host": "zbxapi-spec-hosts-disposable",
+          "interfaces": [],
+          "status": 0,
+          "groups": [
+            {
+              "groupid": 241
+            }
+          ]
+        }
+      ],
+      "result": {
+        "hostids": [
+          "11015"
+        ]
+      }
+    },
+    {
+      "n": 34,
+      "method": "host.delete",
+      "params": [
+        "11015"
+      ],
+      "result": {
+        "hostids": [
+          "11015"
+        ]
+      }
+    }
+  ]
+}

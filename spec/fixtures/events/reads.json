@@ -1,0 +1,246 @@
+{
+  "class": "events",
+  "scenario": "reads",
+  "recorded_at": "2026-09-14T10:49:06Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "event.get",
+      "params": {
+        "filter": {
+          "eventid": 438
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "eventid": "438",
+          "source": "0",
+          "object": "0",
+          "objectid": "25912",
+          "clock": "1789382940",
+          "value": "1",
+          "acknowledged": "0",
+          "ns": "321561433",
+          "name": "zbxapi-spec-events-trg-closeable",
+          "severity": "2",
+          "r_eventid": "0",
+          "c_eventid": "0",
+          "correlationid": "0",
+          "userid": "0",
+          "suppressed": "0",
+          "cause_eventid": "0",
+          "opdata": "",
+          "urls": []
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "method": "event.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-events-trg-closeable"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "eventid": "434",
+          "source": "0",
+          "object": "0",
+          "objectid": "25912",
+          "clock": "1789382935",
+          "value": "1",
+          "acknowledged": "0",
+          "ns": "420292800",
+          "name": "zbxapi-spec-events-trg-closeable",
+          "severity": "2",
+          "r_eventid": "436",
+          "c_eventid": "0",
+          "correlationid": "0",
+          "userid": "0",
+          "suppressed": "0",
+          "cause_eventid": "0",
+          "opdata": "",
+          "urls": []
+        },
+        {
+          "eventid": "438",
+          "source": "0",
+          "object": "0",
+          "objectid": "25912",
+          "clock": "1789382940",
+          "value": "1",
+          "acknowledged": "0",
+          "ns": "321561433",
+          "name": "zbxapi-spec-events-trg-closeable",
+          "severity": "2",
+          "r_eventid": "0",
+          "c_eventid": "0",
+          "correlationid": "0",
+          "userid": "0",
+          "suppressed": "0",
+          "cause_eventid": "0",
+          "opdata": "",
+          "urls": []
+        },
+        {
+          "eventid": "436",
+          "source": "0",
+          "object": "0",
+          "objectid": "25912",
+          "clock": "1789382937",
+          "value": "0",
+          "acknowledged": "0",
+          "ns": "865338042",
+          "name": "zbxapi-spec-events-trg-closeable",
+          "severity": "0",
+          "r_eventid": "0",
+          "c_eventid": "0",
+          "correlationid": "0",
+          "userid": "0",
+          "suppressed": "0",
+          "cause_eventid": "0",
+          "opdata": "",
+          "urls": []
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "method": "event.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-events-trg-closeable"
+        },
+        "output": [
+          "eventid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "eventid": "438",
+          "name": "zbxapi-spec-events-trg-closeable"
+        },
+        {
+          "eventid": "434",
+          "name": "zbxapi-spec-events-trg-closeable"
+        },
+        {
+          "eventid": "436",
+          "name": "zbxapi-spec-events-trg-closeable"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "method": "event.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-events-no-such-event"
+        },
+        "output": [
+          "eventid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 5,
+      "method": "event.get",
+      "params": {
+        "eventids": [
+          438,
+          439
+        ],
+        "output": [
+          "eventid",
+          "name",
+          "value",
+          "severity"
+        ]
+      },
+      "result": [
+        {
+          "eventid": "438",
+          "name": "zbxapi-spec-events-trg-closeable",
+          "value": "1",
+          "severity": "2"
+        },
+        {
+          "eventid": "439",
+          "name": "zbxapi-spec-events-trg-locked",
+          "value": "1",
+          "severity": "4"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "method": "event.get",
+      "params": {
+        "eventids": [
+          438
+        ],
+        "output": [
+          "eventid"
+        ],
+        "selectAcknowledges": "extend",
+        "selectHosts": [
+          "hostid",
+          "host"
+        ],
+        "selectTags": "extend"
+      },
+      "result": [
+        {
+          "eventid": "438",
+          "acknowledges": [],
+          "hosts": [
+            {
+              "hostid": "10925",
+              "host": "zbxapi-spec-events-h1"
+            }
+          ],
+          "tags": [
+            {
+              "tag": "zbxapi-spec",
+              "value": "events"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "method": "event.get",
+      "params": {
+        "objectids": [
+          25912,
+          25913
+        ],
+        "countOutput": true
+      },
+      "result": "6"
+    },
+    {
+      "n": 8,
+      "method": "event.get",
+      "params": {
+        "sortfield": "name",
+        "output": [
+          "eventid"
+        ]
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/sortfield/1\": value must be one of \"eventid\", \"objectid\", \"clock\", \"rowscount\"."
+      }
+    }
+  ]
+}

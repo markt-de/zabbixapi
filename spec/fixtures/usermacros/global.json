@@ -1,0 +1,326 @@
+{
+  "class": "usermacros",
+  "scenario": "global",
+  "recorded_at": "2026-10-19T08:38:52Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "usermacro.createglobal",
+      "params": {
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_GBASE}",
+        "value": "g1"
+      },
+      "result": {
+        "globalmacroids": [
+          "165"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "usermacro.createglobal",
+      "params": {
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_GBASE}",
+        "value": "again"
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Macro \"{$ZBXAPI_SPEC_USERMACROS_GBASE}\" already exists."
+      }
+    },
+    {
+      "n": 3,
+      "method": "usermacro.createglobal",
+      "params": {
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_GHOST}",
+        "value": "g",
+        "hostid": 12362
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"hostid\"."
+      }
+    },
+    {
+      "n": 4,
+      "method": "usermacro.createglobal",
+      "params": {
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_GNOVAL}"
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": the parameter \"value\" is missing."
+      }
+    },
+    {
+      "n": 5,
+      "method": "usermacro.createglobal",
+      "params": {
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+        "value": "global-one"
+      },
+      "result": {
+        "globalmacroids": [
+          "166"
+        ]
+      }
+    },
+    {
+      "n": 6,
+      "method": "usermacro.get",
+      "params": {
+        "globalmacro": true,
+        "filter": {
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_GBASE}"
+        }
+      },
+      "result": [
+        {
+          "globalmacroid": "165",
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_GBASE}",
+          "value": "g1",
+          "description": "",
+          "type": "0"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "method": "usermacro.get",
+      "params": {
+        "globalmacro": true,
+        "filter": {
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_ABSENT}"
+        }
+      },
+      "result": []
+    },
+    {
+      "n": 8,
+      "method": "usermacro.get",
+      "params": {
+        "globalmacro": true,
+        "filter": {
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+          "hostid": 999999
+        }
+      },
+      "result": [
+        {
+          "globalmacroid": "166",
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+          "value": "global-one",
+          "description": "",
+          "type": "0"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "method": "usermacro.get",
+      "params": {
+        "globalmacro": true,
+        "filter": {
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_GBASE}"
+        }
+      },
+      "result": [
+        {
+          "globalmacroid": "165",
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_GBASE}",
+          "value": "g1",
+          "description": "",
+          "type": "0"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "method": "usermacro.get",
+      "params": {
+        "globalmacro": true,
+        "globalmacroids": [
+          165
+        ],
+        "output": [
+          "globalmacroid",
+          "macro"
+        ]
+      },
+      "result": [
+        {
+          "globalmacroid": "165",
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_GBASE}"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "method": "usermacro.updateglobal",
+      "params": {
+        "globalmacroid": 165,
+        "value": "g1-updated"
+      },
+      "result": {
+        "globalmacroids": [
+          "165"
+        ]
+      }
+    },
+    {
+      "n": 12,
+      "method": "usermacro.updateglobal",
+      "params": {
+        "globalmacroid": 165,
+        "hostid": 12362,
+        "value": "x"
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"hostid\"."
+      }
+    },
+    {
+      "n": 13,
+      "method": "usermacro.get",
+      "params": {
+        "globalmacro": true,
+        "filter": {
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_GBASE}"
+        }
+      },
+      "result": [
+        {
+          "globalmacroid": "165",
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_GBASE}",
+          "value": "g1-updated",
+          "description": "",
+          "type": "0"
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "method": "usermacro.get",
+      "params": {
+        "globalmacro": true,
+        "filter": {
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_GGOC}"
+        }
+      },
+      "result": []
+    },
+    {
+      "n": 15,
+      "method": "usermacro.createglobal",
+      "params": {
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_GGOC}",
+        "value": "gv"
+      },
+      "result": {
+        "globalmacroids": [
+          "167"
+        ]
+      }
+    },
+    {
+      "n": 16,
+      "method": "usermacro.get",
+      "params": {
+        "globalmacro": true,
+        "filter": {
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_GBASE}"
+        }
+      },
+      "result": [
+        {
+          "globalmacroid": "165",
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_GBASE}",
+          "value": "g1-updated",
+          "description": "",
+          "type": "0"
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "method": "usermacro.updateglobal",
+      "params": {
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_GBASE}",
+        "value": "g-via-upsert",
+        "globalmacroid": 165
+      },
+      "result": {
+        "globalmacroids": [
+          "165"
+        ]
+      }
+    },
+    {
+      "n": 18,
+      "method": "usermacro.get",
+      "params": {
+        "globalmacro": true,
+        "filter": {
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_GCOU}"
+        }
+      },
+      "result": []
+    },
+    {
+      "n": 19,
+      "method": "usermacro.createglobal",
+      "params": {
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_GCOU}",
+        "value": "gv"
+      },
+      "result": {
+        "globalmacroids": [
+          "168"
+        ]
+      }
+    },
+    {
+      "n": 20,
+      "method": "usermacro.createglobal",
+      "params": {
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_GGONE}",
+        "value": "v"
+      },
+      "result": {
+        "globalmacroids": [
+          "169"
+        ]
+      }
+    },
+    {
+      "n": 21,
+      "method": "usermacro.deleteglobal",
+      "params": [
+        169
+      ],
+      "result": {
+        "globalmacroids": [
+          "169"
+        ]
+      }
+    },
+    {
+      "n": 22,
+      "method": "usermacro.deleteglobal",
+      "params": [
+        999999999
+      ],
+      "error": {
+        "code": -32500,
+        "message": "Application error.",
+        "data": "No permissions to referred object or it does not exist!"
+      }
+    }
+  ]
+}

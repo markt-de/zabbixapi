@@ -1,0 +1,521 @@
+{
+  "class": "usermacros",
+  "scenario": "crud",
+  "recorded_at": "2026-10-19T08:38:50Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "usermacro.create",
+      "params": {
+        "hostid": 12362,
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+        "value": "v1"
+      },
+      "result": {
+        "hostmacroids": [
+          "8765"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "usermacro.create",
+      "params": {
+        "hostid": 12362,
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+        "value": "again"
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Macro \"{$ZBXAPI_SPEC_USERMACROS_BASE}\" already exists on \"zbxapi-spec-usermacros-h1\"."
+      }
+    },
+    {
+      "n": 3,
+      "method": "usermacro.create",
+      "params": {
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_NOHOST}",
+        "value": "v"
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": the parameter \"hostid\" is missing."
+      }
+    },
+    {
+      "n": 4,
+      "method": "usermacro.create",
+      "params": {
+        "hostid": 12362,
+        "macro": "not_a_macro",
+        "value": "v"
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/macro\": incorrect syntax near \"not_a_macro\"."
+      }
+    },
+    {
+      "n": 5,
+      "method": "usermacro.create",
+      "params": {
+        "hostid": 12362,
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_AUTO}",
+        "value": "v",
+        "automatic": 1
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"automatic\"."
+      }
+    },
+    {
+      "n": 6,
+      "method": "usermacro.create",
+      "params": {
+        "hostid": 12362,
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_BADTYPE}",
+        "value": "v",
+        "type": 3
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/type\": value must be one of 0, 1, 2."
+      }
+    },
+    {
+      "n": 7,
+      "method": "usermacro.create",
+      "params": {
+        "hostid": 12362,
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_SECRET}",
+        "value": "zbxapi-spec-usermacros-secret",
+        "type": 1
+      },
+      "result": {
+        "hostmacroids": [
+          "8766"
+        ]
+      }
+    },
+    {
+      "n": 8,
+      "method": "usermacro.create",
+      "params": {
+        "hostid": 12363,
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+        "value": "v2"
+      },
+      "result": {
+        "hostmacroids": [
+          "8767"
+        ]
+      }
+    },
+    {
+      "n": 9,
+      "method": "usermacro.get",
+      "params": {
+        "filter": {
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+          "hostid": 12362
+        }
+      },
+      "result": [
+        {
+          "hostmacroid": "8765",
+          "hostid": "12362",
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+          "value": "v1",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "method": "usermacro.get",
+      "params": {
+        "filter": {
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_ABSENT}",
+          "hostid": 12362
+        }
+      },
+      "result": []
+    },
+    {
+      "n": 11,
+      "method": "usermacro.get",
+      "params": {
+        "filter": {
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}"
+        }
+      },
+      "result": [
+        {
+          "hostmacroid": "8765",
+          "hostid": "12362",
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+          "value": "v1",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "8767",
+          "hostid": "12363",
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+          "value": "v2",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "method": "usermacro.get",
+      "params": {
+        "filter": {
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+          "hostid": 12362
+        }
+      },
+      "result": [
+        {
+          "hostmacroid": "8765",
+          "hostid": "12362",
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+          "value": "v1",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "method": "usermacro.get",
+      "params": {
+        "filter": {
+          "hostmacroid": 8765
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "hostmacroid": "8765",
+          "hostid": "12362",
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+          "value": "v1",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "method": "usermacro.get",
+      "params": {
+        "filter": {
+          "hostmacroid": 8766
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "hostmacroid": "8766",
+          "hostid": "12362",
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_SECRET}",
+          "description": "",
+          "type": "1",
+          "automatic": "0"
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "method": "usermacro.get",
+      "params": {
+        "hostmacroids": [
+          8765
+        ],
+        "output": [
+          "hostmacroid",
+          "macro"
+        ],
+        "selectHosts": "extend"
+      },
+      "result": [
+        {
+          "hostmacroid": "8765",
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+          "hosts": [
+            {
+              "hostid": "12362",
+              "proxyid": "0",
+              "host": "zbxapi-spec-usermacros-h1",
+              "status": "0",
+              "ipmi_authtype": "-1",
+              "ipmi_privilege": "2",
+              "ipmi_username": "",
+              "ipmi_password": "",
+              "maintenanceid": "0",
+              "maintenance_status": "0",
+              "maintenance_type": "0",
+              "maintenance_from": "0",
+              "name": "zbxapi-spec-usermacros-h1",
+              "flags": "0",
+              "templateid": "0",
+              "description": "",
+              "tls_connect": "1",
+              "tls_accept": "1",
+              "tls_issuer": "",
+              "tls_subject": "",
+              "custom_interfaces": "0",
+              "uuid": "",
+              "vendor_name": "",
+              "vendor_version": "",
+              "proxy_groupid": "0",
+              "monitored_by": "0",
+              "inventory_mode": "-1",
+              "active_available": "0",
+              "assigned_proxyid": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "method": "usermacro.update",
+      "params": {
+        "hostmacroid": 8765,
+        "value": "v1-updated"
+      },
+      "result": {
+        "hostmacroids": [
+          "8765"
+        ]
+      }
+    },
+    {
+      "n": 17,
+      "method": "usermacro.update",
+      "params": {
+        "hostmacroid": 8765,
+        "value": "v1-updated"
+      },
+      "result": {
+        "hostmacroids": [
+          "8765"
+        ]
+      }
+    },
+    {
+      "n": 18,
+      "method": "usermacro.update",
+      "params": {
+        "hostmacroid": 8765,
+        "description": "recorded by the spec suite"
+      },
+      "result": {
+        "hostmacroids": [
+          "8765"
+        ]
+      }
+    },
+    {
+      "n": 19,
+      "method": "usermacro.update",
+      "params": {
+        "hostmacroid": 8765,
+        "hostid": 12362,
+        "value": "moved"
+      },
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"hostid\"."
+      }
+    },
+    {
+      "n": 20,
+      "method": "usermacro.get",
+      "params": {
+        "filter": {
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+          "hostid": 12362
+        }
+      },
+      "result": [
+        {
+          "hostmacroid": "8765",
+          "hostid": "12362",
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+          "value": "v1-updated",
+          "description": "recorded by the spec suite",
+          "type": "0",
+          "automatic": "0"
+        }
+      ]
+    },
+    {
+      "n": 21,
+      "method": "usermacro.get",
+      "params": {
+        "filter": {
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_GOC}",
+          "hostid": 12362
+        }
+      },
+      "result": []
+    },
+    {
+      "n": 22,
+      "method": "usermacro.create",
+      "params": {
+        "hostid": 12362,
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_GOC}",
+        "value": "v"
+      },
+      "result": {
+        "hostmacroids": [
+          "8768"
+        ]
+      }
+    },
+    {
+      "n": 23,
+      "method": "usermacro.get",
+      "params": {
+        "filter": {
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+          "hostid": 12362
+        }
+      },
+      "result": [
+        {
+          "hostmacroid": "8765",
+          "hostid": "12362",
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+          "value": "v1-updated",
+          "description": "recorded by the spec suite",
+          "type": "0",
+          "automatic": "0"
+        }
+      ]
+    },
+    {
+      "n": 24,
+      "method": "usermacro.update",
+      "params": {
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_BASE}",
+        "value": "via-upsert",
+        "hostmacroid": 8765
+      },
+      "result": {
+        "hostmacroids": [
+          "8765"
+        ]
+      }
+    },
+    {
+      "n": 25,
+      "method": "usermacro.get",
+      "params": {
+        "filter": {
+          "macro": "{$ZBXAPI_SPEC_USERMACROS_COU}",
+          "hostid": 12362
+        }
+      },
+      "result": []
+    },
+    {
+      "n": 26,
+      "method": "usermacro.create",
+      "params": {
+        "hostid": 12362,
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_COU}",
+        "value": "v"
+      },
+      "result": {
+        "hostmacroids": [
+          "8769"
+        ]
+      }
+    },
+    {
+      "n": 27,
+      "method": "usermacro.create",
+      "params": {
+        "hostid": 12362,
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_ADDED}",
+        "value": "v"
+      },
+      "result": {
+        "hostmacroids": [
+          "8770"
+        ]
+      }
+    },
+    {
+      "n": 28,
+      "method": "usermacro.delete",
+      "params": [
+        8770
+      ],
+      "result": {
+        "hostmacroids": [
+          "8770"
+        ]
+      }
+    },
+    {
+      "n": 29,
+      "method": "usermacro.create",
+      "params": {
+        "hostid": 12362,
+        "macro": "{$ZBXAPI_SPEC_USERMACROS_GONE}",
+        "value": "v"
+      },
+      "result": {
+        "hostmacroids": [
+          "8771"
+        ]
+      }
+    },
+    {
+      "n": 30,
+      "method": "usermacro.delete",
+      "params": [
+        "8771"
+      ],
+      "result": {
+        "hostmacroids": [
+          "8771"
+        ]
+      }
+    },
+    {
+      "n": 31,
+      "method": "usermacro.delete",
+      "params": [
+        999999999
+      ],
+      "error": {
+        "code": -32500,
+        "message": "Application error.",
+        "data": "No permissions to referred object or it does not exist!"
+      }
+    }
+  ]
+}

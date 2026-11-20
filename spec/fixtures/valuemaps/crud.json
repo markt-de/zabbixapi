@@ -1,0 +1,787 @@
+{
+  "class": "valuemaps",
+  "scenario": "crud",
+  "recorded_at": "2026-09-14T18:18:09Z",
+  "server": "7.0.30",
+  "exchanges": [
+    {
+      "n": 1,
+      "method": "valuemap.create",
+      "params": [
+        {
+          "hostid": 11222,
+          "name": "zbxapi-spec-valuemaps-base",
+          "mappings": [
+            {
+              "type": 0,
+              "value": "1",
+              "newvalue": "Up"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "valuemapids": [
+          "1546"
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "method": "valuemap.create",
+      "params": [
+        {
+          "hostid": 11222,
+          "name": "zbxapi-spec-valuemaps-nomap"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": the parameter \"mappings\" is missing."
+      }
+    },
+    {
+      "n": 3,
+      "method": "valuemap.create",
+      "params": [
+        {
+          "hostid": 11222,
+          "name": "zbxapi-spec-valuemaps-nonewvalue",
+          "mappings": [
+            {
+              "type": 0,
+              "value": "1"
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/mappings/1\": the parameter \"newvalue\" is missing."
+      }
+    },
+    {
+      "n": 4,
+      "method": "valuemap.create",
+      "params": [
+        {
+          "hostid": 11222,
+          "name": "zbxapi-spec-valuemaps-ty5value",
+          "mappings": [
+            {
+              "type": 5,
+              "value": "x",
+              "newvalue": "y"
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/mappings/1/value\": should be empty."
+      }
+    },
+    {
+      "n": 5,
+      "method": "valuemap.create",
+      "params": [
+        {
+          "hostid": 11222,
+          "name": "zbxapi-spec-valuemaps-badtype",
+          "mappings": [
+            {
+              "type": 6,
+              "value": "1",
+              "newvalue": "x"
+            }
+          ]
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/mappings/1/type\": value must be one of 0, 1, 2, 3, 4, 5."
+      }
+    },
+    {
+      "n": 6,
+      "method": "valuemap.create",
+      "params": [
+        {
+          "hostid": 11222,
+          "name": "zbxapi-spec-valuemaps-uuid",
+          "mappings": [
+            {
+              "type": 0,
+              "value": "1",
+              "newvalue": "Up"
+            }
+          ],
+          "uuid": "5ff42d7d07e04f2bb5557375582b1ee8"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1/uuid\": value must be empty."
+      }
+    },
+    {
+      "n": 7,
+      "method": "valuemap.create",
+      "params": [
+        {
+          "hostid": 11223,
+          "name": "zbxapi-spec-valuemaps-base",
+          "mappings": [
+            {
+              "type": 0,
+              "value": "1",
+              "newvalue": "Up"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "valuemapids": [
+          "1547"
+        ]
+      }
+    },
+    {
+      "n": 8,
+      "method": "valuemap.create",
+      "params": [
+        {
+          "hostid": 11224,
+          "name": "zbxapi-spec-valuemaps-tplmap",
+          "mappings": [
+            {
+              "type": 0,
+              "value": "1",
+              "newvalue": "Up"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "valuemapids": [
+          "1548"
+        ]
+      }
+    },
+    {
+      "n": 9,
+      "method": "valuemap.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-valuemaps-base"
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "valuemapid": "1546",
+          "hostid": "11222",
+          "name": "zbxapi-spec-valuemaps-base",
+          "uuid": ""
+        },
+        {
+          "valuemapid": "1547",
+          "hostid": "11223",
+          "name": "zbxapi-spec-valuemaps-base",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "method": "valuemap.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-valuemaps-base",
+          "hostid": 11222
+        },
+        "output": [
+          "valuemapid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "valuemapid": "1546",
+          "name": "zbxapi-spec-valuemaps-base"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "method": "valuemap.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-valuemaps-base"
+        },
+        "output": [
+          "valuemapid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "valuemapid": "1546",
+          "name": "zbxapi-spec-valuemaps-base"
+        },
+        {
+          "valuemapid": "1547",
+          "name": "zbxapi-spec-valuemaps-base"
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "method": "valuemap.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-valuemaps-absent"
+        },
+        "output": [
+          "valuemapid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 13,
+      "method": "valuemap.get",
+      "params": {
+        "filter": {
+          "valuemapid": 1546
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "valuemapid": "1546",
+          "hostid": "11222",
+          "name": "zbxapi-spec-valuemaps-base",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "method": "valuemap.get",
+      "params": {
+        "valuemapids": [
+          1546
+        ],
+        "selectMappings": "extend"
+      },
+      "result": [
+        {
+          "valuemapid": "1546",
+          "hostid": "11222",
+          "name": "zbxapi-spec-valuemaps-base",
+          "uuid": "",
+          "mappings": [
+            {
+              "value": "1",
+              "newvalue": "Up",
+              "type": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "method": "valuemap.get",
+      "params": {
+        "valuemapids": [
+          1546
+        ],
+        "selectMappings": "count"
+      },
+      "result": [
+        {
+          "valuemapid": "1546",
+          "hostid": "11222",
+          "name": "zbxapi-spec-valuemaps-base",
+          "uuid": "",
+          "mappings": "1"
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "method": "valuemap.get",
+      "params": {
+        "hostids": [
+          11222
+        ],
+        "output": [
+          "valuemapid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "valuemapid": "1546",
+          "name": "zbxapi-spec-valuemaps-base"
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "method": "valuemap.get",
+      "params": {
+        "filter": {
+          "valuemapid": 1548
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "valuemapid": "1548",
+          "hostid": "11224",
+          "name": "zbxapi-spec-valuemaps-tplmap",
+          "uuid": "0972472d3b8f4df88dee513d7f8ab9e8"
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "method": "valuemap.get",
+      "params": {
+        "filter": {
+          "valuemapid": 1546
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "valuemapid": "1546",
+          "hostid": "11222",
+          "name": "zbxapi-spec-valuemaps-base",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 19,
+      "method": "valuemap.get",
+      "params": {
+        "filter": {
+          "valuemapid": 1546
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "valuemapid": "1546",
+          "hostid": "11222",
+          "name": "zbxapi-spec-valuemaps-base",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 20,
+      "method": "valuemap.update",
+      "params": [
+        {
+          "valuemapid": 1546,
+          "name": "zbxapi-spec-valuemaps-renamed"
+        }
+      ],
+      "result": {
+        "valuemapids": [
+          "1546"
+        ]
+      }
+    },
+    {
+      "n": 21,
+      "method": "valuemap.get",
+      "params": {
+        "filter": {
+          "valuemapid": 1546
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "valuemapid": "1546",
+          "hostid": "11222",
+          "name": "zbxapi-spec-valuemaps-renamed",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 22,
+      "method": "valuemap.update",
+      "params": [
+        {
+          "valuemapid": 1546,
+          "name": "zbxapi-spec-valuemaps-base"
+        }
+      ],
+      "result": {
+        "valuemapids": [
+          "1546"
+        ]
+      }
+    },
+    {
+      "n": 23,
+      "method": "valuemap.get",
+      "params": {
+        "filter": {
+          "valuemapid": 1546
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "valuemapid": "1546",
+          "hostid": "11222",
+          "name": "zbxapi-spec-valuemaps-base",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 24,
+      "method": "valuemap.update",
+      "params": [
+        {
+          "valuemapid": 1546,
+          "mappings": [
+            {
+              "type": 0,
+              "value": "0",
+              "newvalue": "Offline"
+            },
+            {
+              "type": 0,
+              "value": "1",
+              "newvalue": "Online"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "valuemapids": [
+          "1546"
+        ]
+      }
+    },
+    {
+      "n": 25,
+      "method": "valuemap.get",
+      "params": {
+        "filter": {
+          "valuemapid": 1546
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "valuemapid": "1546",
+          "hostid": "11222",
+          "name": "zbxapi-spec-valuemaps-base",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 26,
+      "method": "valuemap.update",
+      "params": [
+        {
+          "valuemapid": 1546,
+          "hostid": 11222,
+          "name": "zbxapi-spec-valuemaps-moved"
+        }
+      ],
+      "error": {
+        "code": -32602,
+        "message": "Invalid params.",
+        "data": "Invalid parameter \"/1\": unexpected parameter \"hostid\"."
+      }
+    },
+    {
+      "n": 27,
+      "method": "valuemap.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-valuemaps-base",
+          "hostid": 11222
+        },
+        "output": [
+          "valuemapid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "valuemapid": "1546",
+          "name": "zbxapi-spec-valuemaps-base"
+        }
+      ]
+    },
+    {
+      "n": 28,
+      "method": "valuemap.get",
+      "params": {
+        "filter": {
+          "valuemapid": 1546
+        },
+        "output": "extend"
+      },
+      "result": [
+        {
+          "valuemapid": "1546",
+          "hostid": "11222",
+          "name": "zbxapi-spec-valuemaps-base",
+          "uuid": ""
+        }
+      ]
+    },
+    {
+      "n": 29,
+      "method": "valuemap.update",
+      "params": [
+        {
+          "name": "zbxapi-spec-valuemaps-base",
+          "mappings": [
+            {
+              "type": 0,
+              "value": "1",
+              "newvalue": "Up"
+            }
+          ],
+          "valuemapid": 1546
+        }
+      ],
+      "result": {
+        "valuemapids": [
+          "1546"
+        ]
+      }
+    },
+    {
+      "n": 30,
+      "method": "valuemap.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-valuemaps-cou",
+          "hostid": 11222
+        },
+        "output": [
+          "valuemapid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 31,
+      "method": "valuemap.create",
+      "params": [
+        {
+          "hostid": 11222,
+          "name": "zbxapi-spec-valuemaps-cou",
+          "mappings": [
+            {
+              "type": 0,
+              "value": "1",
+              "newvalue": "Up"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "valuemapids": [
+          "1549"
+        ]
+      }
+    },
+    {
+      "n": 32,
+      "method": "valuemap.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-valuemaps-base",
+          "hostid": 11222
+        },
+        "output": [
+          "valuemapid",
+          "name"
+        ]
+      },
+      "result": [
+        {
+          "valuemapid": "1546",
+          "name": "zbxapi-spec-valuemaps-base"
+        }
+      ]
+    },
+    {
+      "n": 33,
+      "method": "valuemap.get",
+      "params": {
+        "filter": {
+          "name": "zbxapi-spec-valuemaps-goc",
+          "hostid": 11222
+        },
+        "output": [
+          "valuemapid",
+          "name"
+        ]
+      },
+      "result": []
+    },
+    {
+      "n": 34,
+      "method": "valuemap.create",
+      "params": [
+        {
+          "hostid": 11222,
+          "name": "zbxapi-spec-valuemaps-goc",
+          "mappings": [
+            {
+              "type": 0,
+              "value": "1",
+              "newvalue": "Up"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "valuemapids": [
+          "1550"
+        ]
+      }
+    },
+    {
+      "n": 35,
+      "method": "valuemap.create",
+      "params": [
+        {
+          "hostid": 11222,
+          "name": "zbxapi-spec-valuemaps-added",
+          "mappings": [
+            {
+              "type": 0,
+              "value": "1",
+              "newvalue": "Up"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "valuemapids": [
+          "1551"
+        ]
+      }
+    },
+    {
+      "n": 36,
+      "method": "valuemap.delete",
+      "params": [
+        1551
+      ],
+      "result": {
+        "valuemapids": [
+          "1551"
+        ]
+      }
+    },
+    {
+      "n": 37,
+      "method": "valuemap.create",
+      "params": [
+        {
+          "hostid": 11222,
+          "name": "zbxapi-spec-valuemaps-gone1",
+          "mappings": [
+            {
+              "type": 0,
+              "value": "1",
+              "newvalue": "Up"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "valuemapids": [
+          "1552"
+        ]
+      }
+    },
+    {
+      "n": 38,
+      "method": "valuemap.delete",
+      "params": [
+        1552
+      ],
+      "result": {
+        "valuemapids": [
+          "1552"
+        ]
+      }
+    },
+    {
+      "n": 39,
+      "method": "valuemap.create",
+      "params": [
+        {
+          "hostid": 11222,
+          "name": "zbxapi-spec-valuemaps-gone2",
+          "mappings": [
+            {
+              "type": 0,
+              "value": "1",
+              "newvalue": "Up"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "valuemapids": [
+          "1553"
+        ]
+      }
+    },
+    {
+      "n": 40,
+      "method": "valuemap.delete",
+      "params": [
+        "1553"
+      ],
+      "result": {
+        "valuemapids": [
+          "1553"
+        ]
+      }
+    },
+    {
+      "n": 41,
+      "method": "valuemap.delete",
+      "params": [
+        999999999
+      ],
+      "error": {
+        "code": -32500,
+        "message": "Application error.",
+        "data": "No permissions to referred object or it does not exist!"
+      }
+    }
+  ]
+}
