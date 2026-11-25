@@ -13,12 +13,12 @@ Gem::Specification.new do |spec|
   spec.authors     = ['markt.de']
   spec.email       = ['github-oss-noreply@markt.de']
 
-  spec.summary     = 'Ruby module for working with the Zabbix API'
-  spec.description = 'Allows you to work with zabbix api from ruby.'
+  spec.summary     = 'Zabbix API interface for Ruby'
+  spec.description = 'Ruby module for working with the Zabbix API'
   spec.homepage    = 'https://github.com/markt-de/zabbixapi'
   spec.licenses    = 'MIT'
 
   spec.files         = ['CHANGELOG.md', 'LICENSE.md', 'README.md', 'zabbixapi.gemspec'] + Dir['lib/**/*.rb']
   spec.require_paths = 'lib'
-  spec.required_ruby_version = '>= 3.3.0'
+  spec.required_ruby_version = '>= 3.2.0'
 end
