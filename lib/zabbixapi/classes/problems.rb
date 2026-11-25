@@ -33,8 +33,7 @@ class ZabbixApi
     # Every documented `problem.get` parameter is forwarded; `sortfield` is dropped when
     # `countOutput` is set. A caller's `filter` is merged under the `name` shortcut, so a
     # top-level `name:` wins over a `filter: { name: ... }`. `problem.get`'s filter accepts 11 of
-    # the object's 17 properties and refuses any other key, where other objects ignore an unknown
-    # one; its `search` takes `name` alone.
+    # the object's 18 properties and refuses any other key; its `search` takes `name` alone.
     #
     # `output` defaults to `extend` and may be overridden; the three selects may not.
     # `sortorder` defaults to `DESC`, newest first, where the API sorts ascending.
